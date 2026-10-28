@@ -3,55 +3,57 @@ ARBOR AI STUDIO — PROPRIETARY COMMERCIAL SOFTWARE LICENSE AGREEMENT
 اتفاقية ترخيص وحقوق الملكية الفكرية لبرنامج ARBOR AI STUDIO
 ================================================================================
 
-Copyright (c) 2026 Abdelrhman Mahmoud — MAVYR Studio. All Rights Reserved.
-جميع الحقوق محفوظة © 2026 عبد الرحمن محمود — استوديو MAVYR Studio.
+Copyright © 2026 MAVYR Studio. All Rights Reserved.
+جميع الحقوق محفوظة © 2026 استوديو MAVYR Studio.
 
 --------------------------------------------------------------------------------
-1. OWNERSHIP & INTELLECTUAL PROPERTY | الملكية الفكرية
+1. OWNERSHIP & INTELLECTUAL PROPERTY | الملكية الفكرية الحصرية
 --------------------------------------------------------------------------------
 Arbor AI Studio (including its compiled binaries, user interface, visual design,
-workflows, branding, icons, and underlying architecture) is the exclusive
-proprietary intellectual property of Abdelrhman Mahmoud / MAVYR Studio.
+node workflow engine, branding, icons, and underlying software architecture) is
+the exclusive proprietary intellectual property of MAVYR Studio.
 
 برنامج Arbor AI Studio (بما يشمل الملفات التنفيذية المترجمة، الواجهات الرسومية،
-الهوية البصرية، مسارات العمل، والمعمارية البرمجية) هو ملكية فكرية حصرية ومحمية
-لصالح عبد الرحمن محمود / MAVYR Studio.
+الهوية البصرية، محرك مسارات العمل، والمعمارية البرمجية) هو ملكية فكرية حصرية
+ومحمية بالكامل لصالح استوديو MAVYR Studio.
 
 --------------------------------------------------------------------------------
-2. PERMITTED USE | الاستخدام المسموح به
+2. PERMITTED LICENSE GRANT | نطاق الترخيص الممنوح
 --------------------------------------------------------------------------------
-Authorized recipients who receive an official installer link from MAVYR Studio
+Authorized users who obtain an official copy of Arbor AI Studio from MAVYR Studio
 are granted a personal, non-exclusive, non-transferable, revocable license to
-install and use the compiled Arbor AI Studio software on their personal Windows
-workstation.
+install and operate the compiled application on their personal Windows workstation.
 
-يُمنح المستخدمون المصرح لهم بتحميل النسخة الرسمية ترخيصاً شخصياً غير حصري وغير
-قابل للنقل لتثبيت واستخدام البرنامج على أجهزتهم الشخصية فقط.
+يُمنح المستخدم المصرح له ترخيصاً شخصياً غير حصري وغير قابل للنقل لتثبيت وتشغيل
+النسخة الرسمية المترجمة من البرنامج على جهازه الشخصي فقط وفق بنود هذه الاتفاقية.
 
 --------------------------------------------------------------------------------
-3. STRICT RESTRICTIONS | القيود والمحظورات الصارمة
+3. STRICT RESTRICTIONS | القيود والمحظورات القانونية
 --------------------------------------------------------------------------------
 You may NOT, under any circumstances:
-  (a) Copy, redistribute, publish,upload, or share this installer or its files
-      publicly without prior written authorization from MAVYR Studio.
+  (a) Copy, redistribute, publish, upload, or share this installer or its binary
+      components publicly without prior written authorization from MAVYR Studio.
   (b) Decompile, disassemble, reverse-engineer, unpack, or attempt to extract
-      the source code or internal binaries of Arbor AI Studio.
-  (c) Remove, alter, or obscure any copyright, trademark, or attribution notices
-      belonging to Abdelrhman Mahmoud or MAVYR Studio.
-  (d) Sell, sublicense, rent, or commercially exploit the software itself.
+      the source code, internal assets, or compiled binaries of Arbor AI Studio.
+  (c) Remove, alter, or obscure any copyright, trademark, or brand notices
+      belonging to MAVYR Studio.
+  (d) Sell, rent, lease, sublicense, or commercially redistribute the software.
 
-يُحظر تماماً وبشكل قاطع:
-  (أ) إعادة نشر أو توزيع أو مشاركة ملف التثبيت علناً بدون إذن كتابي مسبق.
-  (ب) محاولة الهندسة العكسية أو فك التشفير أو استخراج الكود المصدري للبرنامج.
-  (ج) إزالة أو تعديل أي إشعارات حقوق ملكية خاصة بـ Abdelrhman Mahmoud أو MAVYR Studio.
-  (د) بيع البرنامج أو المتاجرة بنسخه تحت أي مسمى.
+يُحظر تماماً وبشكل قاطع تحت طائلة المساءلة القانونية:
+  (أ) إعادة نشر أو رفع أو توزيع ملف التثبيت أو ملفاته الداخلية علناً بدون إذن
+      كتابي مسبق من إدارة MAVYR Studio.
+  (ب) إجراء أي هندسة عكسية أو فك حزم أو محاولة استخراج الشيفرة المصدرية للبرنامج.
+  (ج) إزالة أو طمس أو تعديل شعارات وعلامات حقوق الملكية الخاصة بـ MAVYR Studio.
+  (د) بيع البرنامج أو تأجيره أو المتاجرة بنسخه بأي شكل من الأشكال.
 
 --------------------------------------------------------------------------------
-4. DISCLAIMER | إخلاء المسؤولية
+4. UPDATES, PRIVACY & DISCLAIMER | التحديثات والخصوصية وإخلاء المسؤولية
 --------------------------------------------------------------------------------
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. THIRD-PARTY
-OPEN-SOURCE AI WEIGHTS DOWNLOADED ON-DEMAND BY THE USER REMAIN SUBJECT TO THEIR
-RESPECTIVE UPSTREAM MODEL LICENSES.
+All renders, local project files, and encrypted API keys remain stored locally on
+your device. Optional automatic software updates fetch signed/verified binary
+releases from MAVYR Studio's official update channel. Third-party open-source AI
+model weights downloaded on demand remain subject to their upstream licenses.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 
-© 2026 Abdelrhman Mahmoud · MAVYR Studio. All Rights Reserved.
+© 2026 MAVYR Studio. All Rights Reserved.
 ================================================================================

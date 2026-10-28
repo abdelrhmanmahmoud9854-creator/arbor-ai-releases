@@ -1,43 +1,50 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Arbor AI Studio — MAVYR Studio</title>
-  <meta name="description" content="استوديو الذكاء الاصطناعي المكتبي المتكامل لتوليد الفيديو والصور والصوت، مسارات النود المرئية، وأربور كود. من تطوير MAVYR Studio." />
-
+  <title>Arbor AI Studio — Creative &amp; Engineering AI Workstation | MAVYR Studio</title>
+  <meta name="description" content="Cinema generation, visual node pipelines, and agentic software engineering—native to your GPU. Built by MAVYR Studio with 68 open-source models and unified multi-API routing." />
+  <meta property="og:title" content="Arbor AI Studio — Native AI Workstation by MAVYR Studio" />
+  <meta property="og:description" content="Direct 1080p video, wire visual node graphs, and ship code inside one local workstation. Download v2.2 for Windows." />
+  <meta property="og:image" content="https://abdelrhmanmahmoud9854-creator.github.io/arbor-ai-releases/assets/lp-home-en.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Arbor AI Studio — Official Release by MAVYR Studio" />
-  <meta property="og:description" content="استوديو الإنتاج المتكامل للفيديو والصور والصوت، مسارات النود، والبرمجة المحلية على نظام ويندوز. تطوير MAVYR Studio." />
-  <meta property="og:image" content="https://abdelrhmanmahmoud9854-creator.github.io/arbor-ai-releases/assets/screen-home.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-
+  <meta name="theme-color" content="#050709" />
   <link rel="icon" type="image/png" href="assets/arbor-icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-void: #040507;
-      --bg-stage: #090b10;
-      --bg-surface: #0f1219;
-      --bg-elevated: #161a24;
-      --border-hairline: rgba(255, 255, 255, 0.08);
-      --border-strong: rgba(255, 255, 255, 0.17);
-      --text-primary: #f5f6f8;
-      --text-secondary: #a1a6b5;
-      --text-muted: #656b7c;
-      --ivory: #f5f6f8;
-      --ivory-hover: #ffffff;
-      --ink-dark: #060709;
-      --emerald: #10b981;
-      --emerald-soft: rgba(16, 185, 129, 0.14);
+      --bg-void: #050709;
+      --bg-stage: #090C10;
+      --bg-surface: #0D1218;
+      --bg-elevated: #121922;
+      --line-subtle: rgba(214, 232, 225, 0.08);
+      --line-strong: rgba(214, 232, 225, 0.16);
+      --line-emerald: rgba(16, 185, 129, 0.34);
+
+      --text-primary: #F3F6F8;
+      --text-secondary: rgba(224, 235, 231, 0.72);
+      --text-muted: rgba(205, 220, 214, 0.50);
+
+      --emerald-core: #10B981;
+      --emerald-bright: #34D399;
+      --emerald-deep: #065F46;
+      --cyan-optic: #38BDF8;
+
+      --font-en: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-ar: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
       --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+      --container-max: 1240px;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -45,161 +52,172 @@
 
     ::selection {
       background: rgba(16, 185, 129, 0.28);
-      color: #ffffff;
+      color: #F8FAFC;
     }
 
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 9px;
+      height: 9px;
     }
     ::-webkit-scrollbar-track {
-      background: #040507;
+      background: var(--bg-void);
     }
     ::-webkit-scrollbar-thumb {
-      background: #232836;
-      border-radius: 99px;
+      background: #18222B;
+      border-radius: 999px;
+      border: 2px solid var(--bg-void);
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #363e52;
+      background: #23323F;
     }
 
     html {
       scroll-behavior: smooth;
       background-color: var(--bg-void);
       color: var(--text-primary);
-    }
-
-    body {
-      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-void);
-      color: var(--text-primary);
-      line-height: 1.65;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
     }
 
-    html[lang="en"] body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    body {
+      font-family: var(--font-en);
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: clip;
+      position: relative;
     }
 
-    .mono {
-      font-family: 'JetBrains Mono', monospace;
+    html[lang="ar"] body {
+      font-family: var(--font-ar);
+      line-height: 1.72;
+    }
+
+    a, button {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--emerald-core);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .tabular {
       font-variant-numeric: tabular-nums;
-      direction: ltr;
-      unicode-bidi: isolate;
-    }
-
-    /* ==================== LAYER 0: 3D SPATIAL WORLD CANVAS ==================== */
-    #worldCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.85;
-    }
-
-    .ambient-horizon {
-      position: fixed;
-      top: -32vh;
-      left: 50%;
-      width: 98vw;
-      max-width: 1320px;
-      height: 70vh;
-      transform: translate3d(-50%, 0, 0);
-      background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.085) 0%, rgba(245, 246, 248, 0.045) 36%, transparent 72%);
-      pointer-events: none;
-      z-index: 1;
-      will-change: transform, opacity;
-    }
-
-    /* Top Scroll Progress Beam (Composite scaleX only) */
-    .scroll-progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2.5px;
-      background: linear-gradient(90deg, var(--emerald), var(--ivory));
-      transform-origin: right center;
-      transform: scaleX(0);
-      z-index: 220;
-      pointer-events: none;
-    }
-    html[dir="ltr"] .scroll-progress-bar {
-      transform-origin: left center;
     }
 
     .container {
       width: 100%;
-      max-width: 1220px;
+      max-width: var(--container-max);
       margin: 0 auto;
       padding: 0 28px;
-      position: relative;
-      z-index: 3;
     }
 
-    /* ==================== FLOATING GLASS NAVBAR ==================== */
-    .navbar-wrap {
+    /* Scroll reading progress filament */
+    .scroll-filament {
       position: fixed;
-      top: 18px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      z-index: 120;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .scroll-filament-bar {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--emerald-core), var(--emerald-bright), var(--cyan-optic));
+      transform-origin: 0% 50%;
+      transform: scaleX(0);
+      will-change: transform;
+    }
+    html[dir="rtl"] .scroll-filament-bar {
+      transform-origin: 100% 50%;
+    }
+
+    /* Top Navigation Bar */
+    .site-header {
+      position: fixed;
+      top: 16px;
       left: 0;
       right: 0;
-      z-index: 150;
-      padding: 0 20px;
+      z-index: 100;
       pointer-events: none;
     }
 
-    .navbar {
+    .nav-shell {
+      pointer-events: auto;
       max-width: 1120px;
       margin: 0 auto;
-      height: 60px;
-      padding: 0 18px;
+      padding: 10px 14px 10px 18px;
       border-radius: 999px;
-      background: rgba(9, 11, 16, 0.74);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border-hairline);
+      background: rgba(9, 13, 18, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--line-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      pointer-events: auto;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.52);
+      gap: 16px;
+      transition: background-color 220ms ease, border-color 220ms ease;
     }
 
-    .brand-cluster {
-      display: flex;
+    .nav-shell.is-scrolled {
+      background: rgba(7, 10, 14, 0.92);
+      border-color: var(--line-strong);
+    }
+
+    .brand-link {
+      display: inline-flex;
       align-items: center;
       gap: 11px;
       text-decoration: none;
-      color: var(--text-primary);
-    }
-
-    .brand-icon {
-      width: 33px;
-      height: 33px;
-      border-radius: 9px;
-      border: 1px solid var(--border-strong);
-    }
-
-    .brand-title {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.96rem;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
-    .brand-divider {
-      width: 1px;
-      height: 16px;
-      background: var(--border-hairline);
-      margin: 0 4px;
+    .brand-mark-mini {
+      width: 28px;
+      height: 28px;
+      display: block;
+      flex-shrink: 0;
     }
 
-    .nav-mavyr {
-      height: 15px;
-      opacity: 0.86;
+    .brand-release-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--emerald-bright);
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
     }
 
     .nav-actions {
@@ -208,2102 +226,2167 @@
       gap: 8px;
     }
 
-    .ghost-pill {
-      background: transparent;
+    .lang-btn {
+      appearance: none;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line-subtle);
       color: var(--text-secondary);
-      border: 1px solid var(--border-hairline);
-      padding: 6px 13px;
+      height: 36px;
+      padding: 0 13px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 500;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
       cursor: pointer;
-      font-family: inherit;
-      text-decoration: none;
-      transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
-    }
-    .ghost-pill:hover {
-      color: var(--text-primary);
-      border-color: var(--border-strong);
-      background: rgba(255, 255, 255, 0.045);
+      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
     }
 
-    .pill-new-dot {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--emerald);
-      margin-inline-end: 6px;
-      vertical-align: middle;
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      border-color: var(--line-strong);
     }
 
     .nav-cta {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: var(--ivory);
-      color: var(--ink-dark);
+      gap: 8px;
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--text-primary);
+      color: #050709;
       text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 7px 17px;
-      border-radius: 999px;
-      transition: transform 200ms var(--ease-out-expo), background-color 180ms ease;
-    }
-    .nav-cta:hover {
-      background: var(--ivory-hover);
-      transform: scale(1.03);
-    }
-
-    @media (max-width: 680px) {
-      .hide-mobile {
-        display: none;
-      }
-    }
-
-    /* ==================== ACT 1: HERO + 3D MULTI-PLANE STAGE ==================== */
-    .hero {
-      padding: 150px 0 64px;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.28);
-      color: #d1fae5;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 24px;
-    }
-
-    .hero-copy-wrap {
-      max-width: 860px;
-      margin: 0 auto 38px;
-      will-change: transform, opacity;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 5.4vw, 4.55rem);
+      font-size: 0.84rem;
       font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
-      margin-bottom: 22px;
-      text-wrap: balance;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: transform 200ms var(--ease-smooth), background-color 200ms ease;
     }
 
-    .hero-sub {
-      font-size: clamp(1.02rem, 1.45vw, 1.22rem);
-      color: var(--text-secondary);
-      max-width: 65ch;
-      margin: 0 auto 34px;
-      font-weight: 400;
+    .nav-cta:hover {
+      background: #FFFFFF;
+      transform: translate3d(0, -1px, 0);
     }
 
-    .hero-cta-group {
+    /* ==========================================================================
+       ACT 1: VOLUMETRIC 3D ARBOR LOGO PORTAL & WORKSTATION STAGE
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding-top: 94px;
+      padding-bottom: 104px;
+      overflow: clip;
+    }
+
+    /* Atmospheric optical field rooted directly behind the 3D logo */
+    .hero-atmosphere {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(620px 390px at 50% 195px, rgba(16, 185, 129, 0.17), rgba(6, 95, 70, 0.05) 52%, transparent 76%),
+        radial-gradient(960px 560px at 50% 640px, rgba(56, 189, 248, 0.08), transparent 72%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      text-align: center;
     }
 
-    .btn-premiere {
-      display: inline-flex;
+    /* 3D Interactive Multi-Plane Arbor Neural Sculpture */
+    .logo-portal-viewport {
+      width: 176px;
+      height: 176px;
+      perspective: 1200px;
+      margin-bottom: 18px;
+      position: relative;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .logo-portal-rig {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      transition: transform 140ms linear;
+    }
+
+    .logo-plane {
+      position: absolute;
+      inset: 0;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      background: var(--ivory);
-      color: var(--ink-dark);
-      text-decoration: none;
-      font-size: 1.04rem;
-      font-weight: 600;
-      padding: 17px 36px;
-      border-radius: 999px;
-      filter: drop-shadow(0 18px 38px rgba(245, 246, 248, 0.16));
-      transition: transform 240ms var(--ease-out-expo), background-color 200ms ease;
-    }
-    .btn-premiere:hover {
-      background: var(--ivory-hover);
-      transform: translate3d(0, -3px, 0) scale(1.02);
+      pointer-events: none;
+      transform-style: preserve-3d;
     }
 
-    .hero-specs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    /* Plane -3: Deep ambient emerald core */
+    .logo-plane-aura {
+      transform: translate3d(0, 0, -90px);
     }
-    .hero-specs strong {
+    .logo-plane-aura::before {
+      content: "";
+      width: 184px;
+      height: 184px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.36) 0%, rgba(16, 185, 129, 0.09) 48%, transparent 72%);
+    }
+
+    /* Plane -2: Precision orbital azimuth rings */
+    .logo-plane-orbit {
+      transform: translate3d(0, 0, -48px);
+    }
+    .orbit-svg {
+      width: 176px;
+      height: 176px;
+      overflow: visible;
+      will-change: transform;
+    }
+
+    /* Plane -1: Sculpted obsidian glass monolith plinth */
+    .logo-plane-plinth {
+      transform: translate3d(0, 0, 0px);
+    }
+    .monolith-disc {
+      width: 120px;
+      height: 120px;
+      border-radius: 32px;
+      background: linear-gradient(160deg, rgba(22, 32, 40, 0.94) 0%, rgba(8, 12, 16, 0.98) 100%);
+      border: 1px solid rgba(52, 211, 153, 0.28);
+      box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.78),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+    .monolith-sheen {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.22), transparent 55%);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
+    /* Plane +1: Primary Arbor Neural Tree geometry */
+    .logo-plane-tree {
+      transform: translate3d(0, 0, 34px);
+    }
+    .arbor-hero-svg {
+      width: 92px;
+      height: 92px;
+      overflow: visible;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.65));
+    }
+
+    /* Plane +2: Elevated canopy node highlights for unmistakable 3D parallax */
+    .logo-plane-crown {
+      transform: translate3d(0, 0, 62px);
+    }
+    .arbor-crown-svg {
+      width: 92px;
+      height: 92px;
+      overflow: visible;
+    }
+
+    /* Bioluminescent SVG path signal pulse */
+    .sap-pulse {
+      stroke-dasharray: 26 110;
+      animation: sapFlow 3.4s linear infinite;
+    }
+    .sap-pulse-delay-1 {
+      animation-delay: -1.1s;
+    }
+    .sap-pulse-delay-2 {
+      animation-delay: -2.2s;
+    }
+
+    @keyframes sapFlow {
+      from { stroke-dashoffset: 136; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes nodeBreath {
+      0%, 100% { transform: scale(1); opacity: 0.92; }
+      50% { transform: scale(1.16); opacity: 1; }
+    }
+
+    .crown-node {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: nodeBreath 3.2s ease-in-out infinite;
+    }
+    .crown-node-d1 { animation-delay: -0.8s; }
+    .crown-node-d2 { animation-delay: -1.6s; }
+
+    /* Hero Typography */
+    .hero-copy-wrap {
+      max-width: 820px;
+      will-change: transform, opacity;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4.5vw, 3.85rem);
+      font-weight: 800;
+      line-height: 1.07;
+      letter-spacing: -0.035em;
+      color: var(--text-primary);
+      text-wrap: balance;
+      margin-bottom: 16px;
+    }
+
+    html[lang="ar"] .hero-title {
+      letter-spacing: 0;
+      line-height: 1.18;
+      font-size: clamp(2.1rem, 4.2vw, 3.45rem);
+    }
+
+    .hero-lead {
+      font-size: clamp(0.98rem, 1.28vw, 1.12rem);
       color: var(--text-secondary);
-      font-weight: 500;
+      max-width: 64ch;
+      margin: 0 auto 26px;
+      font-weight: 400;
+      text-wrap: pretty;
     }
 
-    /* High-Trust Psychological Safety Strip */
-    .trust-strip {
-      margin: 26px auto 0;
-      max-width: 960px;
+    /* Multi-Platform Download Cluster */
+    .os-download-cluster {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
       gap: 10px;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(13, 18, 24, 0.86);
+      border: 1px solid var(--line-subtle);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.52);
     }
 
-    .trust-chip {
+    .btn-win-primary {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: rgba(15, 18, 25, 0.82);
-      border: 1px solid var(--border-hairline);
-      font-size: 0.79rem;
-      color: var(--text-secondary);
+      gap: 10px;
+      height: 48px;
+      padding: 0 20px;
+      border-radius: 12px;
+      background: var(--text-primary);
+      color: #050709;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.94rem;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: transform 200ms var(--ease-smooth), background-color 200ms ease;
     }
-    .trust-chip svg {
-      color: var(--emerald);
+
+    .btn-win-primary:hover {
+      background: #FFFFFF;
+      transform: translate3d(0, -1.5px, 0);
+    }
+
+    .btn-win-primary:active {
+      transform: translate3d(0, 0, 0) scale(0.99);
+    }
+
+    .btn-win-meta {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: rgba(5, 7, 9, 0.62);
+      padding-inline-start: 8px;
+      border-inline-start: 1px solid rgba(5, 7, 9, 0.16);
+    }
+
+    .btn-os-soon {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line-subtle);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .btn-os-soon:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--line-strong);
+      color: var(--text-primary);
+    }
+
+    .soon-pill {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.10);
+      color: #93C5FD;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      letter-spacing: 0.01em;
+    }
+
+    .os-icon {
+      width: 17px;
+      height: 17px;
       flex-shrink: 0;
     }
 
-    /* 3D Multi-Plane Stage */
-    .hero-3d-perspective {
-      margin-top: 52px;
-      perspective: 1800px;
+    .hero-os-note {
+      margin-top: 14px;
+      min-height: 22px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: color 200ms ease, opacity 200ms ease;
+    }
+
+    .hero-os-note.is-highlighted {
+      color: var(--emerald-bright);
+    }
+
+    /* 3D Workstation Depth Stage (Scroll-Driven Perspective Leveling) */
+    .workstation-stage-outer {
+      width: 100%;
+      max-width: 1180px;
+      margin: 30px auto 0;
+      perspective: 1500px;
       position: relative;
     }
 
-    .hero-3d-frame {
+    .workstation-frame-3d {
       position: relative;
-      border-radius: 22px;
-      background: var(--bg-stage);
-      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      background: var(--bg-surface);
+      border: 1px solid rgba(224, 238, 232, 0.16);
+      box-shadow: 0 44px 110px rgba(0, 0, 0, 0.85);
       overflow: hidden;
-      box-shadow: 0 46px 120px rgba(0, 0, 0, 0.88), 0 0 0 1px rgba(255, 255, 255, 0.05);
-      transform: rotateX(19deg) scale(0.88) translate3d(0, 32px, 0);
-      transform-origin: center top;
+      transform-origin: 50% 0%;
+      transform: translate3d(0, 12px, -85px) rotateX(13deg) scale(0.95);
       will-change: transform;
-      cursor: zoom-in;
     }
 
-    .hero-3d-glare {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.025) 30%, transparent 58%);
-      pointer-events: none;
-      z-index: 3;
-      will-change: opacity, transform;
-    }
-
-    .hero-3d-frame img {
+    .workstation-frame-3d img {
       display: block;
       width: 100%;
       height: auto;
     }
 
-    /* Floating 3D Depth Satellites around Hero */
-    .hero-satellite {
+    .workstation-glare {
       position: absolute;
-      z-index: 6;
-      background: rgba(12, 15, 22, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-strong);
-      border-radius: 16px;
-      padding: 13px 18px;
-      text-align: start;
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.68);
+      inset: 0;
       pointer-events: none;
+      background: linear-gradient(
+        112deg,
+        transparent 24%,
+        rgba(255, 255, 255, 0.07) 46%,
+        rgba(52, 211, 153, 0.08) 50%,
+        transparent 68%
+      );
+      transform: translate3d(-45%, 0, 0);
       will-change: transform;
     }
-    .hero-sat-right {
-      top: 12%;
-      right: -18px;
-    }
-    .hero-sat-left {
-      bottom: 14%;
-      left: -18px;
-    }
-    .sat-tag {
-      font-size: 0.7rem;
-      color: var(--emerald);
-      font-weight: 600;
-      display: block;
-      margin-bottom: 3px;
-    }
-    .sat-title {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: block;
-    }
-    .sat-sub {
-      font-size: 0.76rem;
-      color: var(--text-secondary);
-    }
 
-    @media (max-width: 1040px) {
-      .hero-satellite {
-        display: none;
-      }
-    }
-
-    /* ==================== ACT 2: SCROLL-LINKED KINETIC DUAL RIBBONS ==================== */
-    .kinetic-ribbons {
-      padding: 46px 0;
-      overflow: hidden;
-      border-top: 1px solid var(--border-hairline);
-      border-bottom: 1px solid var(--border-hairline);
-      background: rgba(9, 11, 16, 0.62);
+    /* ==========================================================================
+       ACT 2: INTERACTIVE WORKSTATION DISCIPLINES (STICKY / TABBED SHOWCASE)
+       ========================================================================== */
+    .disciplines-section {
+      padding: 128px 0 116px;
       position: relative;
-      z-index: 3;
-      direction: ltr;
+      border-top: 1px solid var(--line-subtle);
     }
 
-    .ribbon-row {
-      display: flex;
-      gap: 14px;
-      width: max-content;
-      will-change: transform;
-    }
-    .ribbon-row + .ribbon-row {
-      margin-top: 14px;
+    .section-head {
+      max-width: 700px;
+      margin-bottom: 56px;
     }
 
-    .ribbon-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      color: var(--text-secondary);
-      font-size: 0.86rem;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .ribbon-chip strong {
+    .section-title {
+      font-size: clamp(2rem, 3.6vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
       color: var(--text-primary);
-      font-weight: 600;
-    }
-    .ribbon-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--emerald);
-      flex-shrink: 0;
-    }
-
-    /* ==================== SHARED SECTION HEADINGS ==================== */
-    .section-intro {
-      max-width: 740px;
-      margin-bottom: 52px;
-    }
-
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 0.76rem;
-      color: var(--ivory);
+      text-wrap: balance;
       margin-bottom: 16px;
     }
 
-    .section-intro h2 {
-      font-size: clamp(1.95rem, 3.7vw, 3.15rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-      margin-bottom: 14px;
-      text-wrap: balance;
+    html[lang="ar"] .section-title {
+      letter-spacing: 0;
+      line-height: 1.22;
     }
 
-    .section-intro p {
+    .section-subtitle {
       font-size: 1.06rem;
       color: var(--text-secondary);
       max-width: 62ch;
     }
 
-    /* ==================== ACT 3: PINNED 3D STACKING PORTAL (WHAT'S NEW v2.1) ==================== */
-    .v21-portal-section {
-      position: relative;
-      padding: 116px 0 80px;
+    .disciplines-layout {
+      display: grid;
+      grid-template-columns: 370px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
     }
 
-    .portal-nav-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .portal-pill-btn {
-      background: var(--bg-surface);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-hairline);
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
-    }
-    .portal-pill-btn.active {
-      background: var(--ivory);
-      color: var(--ink-dark);
-      border-color: var(--ivory);
-      font-weight: 600;
-    }
-
-    @media (min-width: 960px) {
-      .v21-portal-track {
-        height: 360vh;
-        position: relative;
-      }
-      .v21-portal-sticky {
-        position: sticky;
-        top: 88px;
-      }
-      .v21-deck-stage {
-        position: relative;
-        height: min(74vh, 620px);
-        perspective: 1600px;
-      }
-      .v21-deck-card {
-        position: absolute;
-        inset: 0;
-        border-radius: 24px;
-        background: var(--bg-surface);
-        border: 1px solid var(--border-strong);
-        box-shadow: 0 36px 96px rgba(0, 0, 0, 0.82);
-        display: grid;
-        grid-template-columns: 0.88fr 1.12fr;
-        overflow: hidden;
-        transform-origin: center top;
-        will-change: transform, opacity;
-      }
-    }
-
-    @media (max-width: 959px) {
-      .v21-deck-stage {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-      .v21-deck-card {
-        border-radius: 20px;
-        background: var(--bg-surface);
-        border: 1px solid var(--border-strong);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column-reverse;
-      }
-    }
-
-    .v21-card-copy {
-      padding: 38px 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-      background: linear-gradient(165deg, rgba(22, 26, 36, 0.72) 0%, rgba(12, 15, 21, 0.96) 100%);
-    }
-
-    .v21-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      align-self: flex-start;
-      padding: 5px 12px;
-      border-radius: 999px;
-      background: var(--emerald-soft);
-      border: 1px solid rgba(16, 185, 129, 0.32);
-      color: #6ee7b7;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    .v21-card-copy h3 {
-      font-size: clamp(1.45rem, 2.3vw, 2rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--text-primary);
-    }
-
-    .v21-card-copy p {
-      font-size: 0.96rem;
-      color: var(--text-secondary);
-      line-height: 1.72;
-    }
-
-    .v21-feature-points {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-top: 4px;
-    }
-    .v21-feature-points li {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 0.87rem;
-      color: var(--text-primary);
-    }
-    .v21-feature-points li::before {
-      content: "✓";
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 19px;
-      height: 19px;
-      border-radius: 50%;
-      background: var(--emerald-soft);
-      color: var(--emerald);
-      font-size: 0.72rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .v21-card-visual {
-      position: relative;
-      background: #06070a;
-      border-inline-start: 1px solid var(--border-hairline);
-      overflow: hidden;
-      cursor: zoom-in;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-
-    .v21-card-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 14px;
-      border: 1px solid var(--border-strong);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
-      transition: transform 360ms var(--ease-out-expo);
-    }
-    .v21-card-visual:hover img {
-      transform: scale(1.02);
-    }
-
-    /* ==================== ACT 4: STICKY 4-WORLD WORKSTATION DEEP TOUR ==================== */
-    .scrolly-section {
-      position: relative;
-      padding: 110px 0 90px;
-      border-top: 1px solid var(--border-hairline);
-    }
-
-    @media (min-width: 960px) {
-      .scrolly-track {
-        height: 330vh;
-        position: relative;
-      }
-      .scrolly-sticky {
-        position: sticky;
-        top: 94px;
-        display: grid;
-        grid-template-columns: 365px 1fr;
-        gap: 34px;
-        align-items: center;
-      }
-    }
-
-    @media (max-width: 959px) {
-      .scrolly-sticky {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
-    }
-
-    .chapter-list {
+    .discipline-rail {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .chapter-btn {
-      position: relative;
-      text-align: inherit;
-      font-family: inherit;
+    .discipline-tab {
+      appearance: none;
+      width: 100%;
+      text-align: start;
       background: transparent;
       border: 1px solid transparent;
-      border-radius: 15px;
-      padding: 18px 20px;
+      border-radius: 14px;
+      padding: 20px 22px;
       cursor: pointer;
-      color: var(--text-secondary);
-      overflow: hidden;
-      transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease, transform 240ms var(--ease-out-expo);
+      position: relative;
+      transition: background-color 220ms ease, border-color 220ms ease, transform 220ms var(--ease-smooth);
     }
-    .chapter-btn:hover {
-      background: rgba(255, 255, 255, 0.03);
+
+    .discipline-tab:hover {
+      background: rgba(255, 255, 255, 0.025);
     }
-    .chapter-btn.active {
+
+    .discipline-tab.is-active {
       background: var(--bg-surface);
-      border-color: var(--border-strong);
-      color: var(--text-primary);
-      transform: translate3d(-4px, 0, 0);
-    }
-    html[dir="ltr"] .chapter-btn.active {
-      transform: translate3d(4px, 0, 0);
+      border-color: var(--line-strong);
     }
 
-    .chapter-btn h3 {
+    .discipline-tab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .discipline-tab-title {
       font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: inherit;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
     }
-    .chapter-btn p {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      transition: color 240ms ease;
-    }
-    .chapter-btn.active p {
+
+    .discipline-tab:not(.is-active) .discipline-tab-title {
       color: var(--text-secondary);
     }
 
-    .chapter-progress {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2.5px;
+    .discipline-spec {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--emerald-bright);
+      opacity: 0.85;
+    }
+
+    .discipline-tab-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .discipline-tab:not(.is-active) .discipline-tab-desc {
+      color: var(--text-muted);
+    }
+
+    .discipline-progress-track {
+      margin-top: 14px;
+      height: 2px;
+      width: 100%;
       background: rgba(255, 255, 255, 0.06);
-      opacity: 0;
-      transition: opacity 200ms ease;
+      border-radius: 999px;
+      overflow: hidden;
+      display: none;
     }
-    .chapter-btn.active .chapter-progress {
-      opacity: 1;
+
+    .discipline-tab.is-active .discipline-progress-track {
+      display: block;
     }
-    .chapter-progress-fill {
+
+    .discipline-progress-fill {
       height: 100%;
       width: 100%;
-      background: var(--emerald);
-      transform-origin: right center;
-      transform: scaleX(0);
+      background: var(--emerald-core);
+      transform-origin: 0% 50%;
+      transform: scaleX(1);
     }
-    html[dir="ltr"] .chapter-progress-fill {
-      transform-origin: left center;
+    html[dir="rtl"] .discipline-progress-fill {
+      transform-origin: 100% 50%;
     }
 
-    .scrolly-stage-frame {
+    .discipline-screen-stage {
+      perspective: 1400px;
       position: relative;
-      border-radius: 20px;
-      background: var(--bg-stage);
-      border: 1px solid var(--border-strong);
-      overflow: hidden;
-      aspect-ratio: 16 / 10;
-      box-shadow: 0 36px 92px rgba(0, 0, 0, 0.76);
-      cursor: zoom-in;
-      perspective: 1200px;
     }
 
-    .scrolly-slide-img {
+    .discipline-window {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 36px 90px rgba(0, 0, 0, 0.76);
+      aspect-ratio: 1520 / 940;
+    }
+
+    .discipline-shot {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center;
       opacity: 0;
-      transform: scale(1.06) translate3d(0, 22px, 0);
-      transition: opacity 520ms var(--ease-out-expo), transform 620ms var(--ease-out-expo);
+      transform: scale3d(0.985, 0.985, 1);
+      transition: opacity 340ms var(--ease-smooth), transform 420ms var(--ease-out-expo);
       pointer-events: none;
     }
-    .scrolly-slide-img.active {
+
+    .discipline-shot.is-active {
       opacity: 1;
-      transform: scale(1) translate3d(0, 0, 0);
+      transform: scale3d(1, 1, 1);
       pointer-events: auto;
     }
 
-    /* ==================== ACT 5: DEEP PARALLAX THEMES + TRUST PILLARS ==================== */
-    .craft-section {
-      padding: 116px 0;
-      border-top: 1px solid var(--border-hairline);
-    }
-
-    .parallax-showcase {
-      display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
-      gap: 30px;
-      align-items: center;
-      margin-top: 48px;
-    }
-    @media (max-width: 900px) {
-      .parallax-showcase {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .parallax-card {
+    /* ==========================================================================
+       ACT 3: 3D ARBOR NEURAL CORE REACTOR (SPATIAL LOGO DEPTH ARCHITECTURE)
+       ========================================================================== */
+    .core-section {
+      padding: 124px 0 128px;
+      border-top: 1px solid var(--line-subtle);
+      background:
+        radial-gradient(760px 460px at 50% 54%, rgba(16, 185, 129, 0.11), transparent 72%),
+        var(--bg-stage);
       position: relative;
-      border-radius: 20px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      overflow: hidden;
-      box-shadow: 0 30px 76px rgba(0, 0, 0, 0.65);
-      will-change: transform;
-      cursor: zoom-in;
-    }
-    .parallax-card img {
-      display: block;
-      width: 100%;
-      height: auto;
+      overflow: clip;
     }
 
-    .parallax-caption {
-      padding: 18px 22px;
-      border-top: 1px solid var(--border-hairline);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .parallax-caption strong {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .parallax-caption span {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .core-head-centered {
+      max-width: 720px;
+      margin: 0 auto 64px;
+      text-align: center;
     }
 
-    .specs-ribbon {
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 860px) {
-      .specs-ribbon {
-        grid-template-columns: 1fr;
-      }
+    .core-head-centered .section-subtitle {
+      margin: 0 auto;
     }
 
-    .spotlight-surface {
+    .reactor-arena {
       position: relative;
-      border-radius: 18px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      padding: 28px;
-      overflow: hidden;
-      transition: border-color 240ms ease, transform 300ms var(--ease-out-expo);
-    }
-    .spotlight-surface::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(16, 185, 129, 0.1), transparent 46%);
-      opacity: 0;
-      transition: opacity 250ms ease;
-      pointer-events: none;
-    }
-    .spotlight-surface:hover {
-      border-color: var(--border-strong);
-      transform: translate3d(0, -4px, 0);
-    }
-    .spotlight-surface:hover::before {
-      opacity: 1;
-    }
-    .spotlight-surface h3 {
-      font-size: 1.08rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text-primary);
-    }
-    .spotlight-surface p {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
+      max-width: 1140px;
+      margin: 0 auto;
+      perspective: 1300px;
     }
 
-    /* ==================== ACT 6: PEACE-OF-MIND SETUP WIZARD TOUR ==================== */
-    .setup-section {
-      padding: 114px 0 124px;
-      border-top: 1px solid var(--border-hairline);
-    }
-
-    .setup-layout {
-      display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 48px;
-      align-items: center;
-    }
-    @media (max-width: 960px) {
-      .setup-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .peace-banner {
-      margin-top: 18px;
-      padding: 15px 18px;
-      border-radius: 14px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.24);
-      font-size: 0.87rem;
-      color: #d1fae5;
-      line-height: 1.68;
-    }
-
-    .wizard-step-switcher {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .wiz-pill {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      width: 100%;
-      text-align: inherit;
-      font-family: inherit;
-      background: transparent;
-      border: 1px solid var(--border-hairline);
-      border-radius: 14px;
-      padding: 15px 18px;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease, transform 220ms var(--ease-out-expo);
-    }
-    .wiz-pill:hover {
-      border-color: var(--border-strong);
-    }
-    .wiz-pill.active {
-      background: var(--bg-surface);
-      border-color: var(--ivory);
-      color: var(--text-primary);
-      transform: translate3d(-4px, 0, 0);
-    }
-    html[dir="ltr"] .wiz-pill.active {
-      transform: translate3d(4px, 0, 0);
-    }
-
-    .wiz-num {
-      width: 26px;
-      height: 26px;
-      border-radius: 99px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 600;
-      border: 1px solid var(--border-strong);
-      flex-shrink: 0;
-    }
-    .wiz-pill.active .wiz-num {
-      background: var(--ivory);
-      color: var(--ink-dark);
-      border-color: var(--ivory);
-    }
-
-    .wiz-text strong {
-      display: block;
-      font-size: 0.96rem;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .wiz-text span {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-    }
-    .wiz-pill.active .wiz-text span {
-      color: var(--text-secondary);
-    }
-
-    .wizard-preview-box {
+    .reactor-grid {
       position: relative;
-      border-radius: 20px;
-      background: #060709;
-      border: 1px solid var(--border-strong);
-      overflow: hidden;
-      aspect-ratio: 844 / 564;
-      box-shadow: 0 36px 94px rgba(0, 0, 0, 0.82);
-      cursor: zoom-in;
-      will-change: transform;
+      display: grid;
+      grid-template-columns: 1fr 260px 1fr;
+      grid-template-rows: auto auto;
+      gap: 28px 34px;
+      align-items: center;
+      transform-style: preserve-3d;
     }
 
-    .wizard-preview-img {
+    /* Connecting neural conduits behind the 3D hub */
+    .reactor-conduits {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      opacity: 0;
-      transform: scale(0.98);
-      transition: opacity 360ms var(--ease-out-expo), transform 420ms var(--ease-out-expo);
       pointer-events: none;
-    }
-    .wizard-preview-img.active {
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
+      z-index: 0;
     }
 
-    .integrity-details {
-      margin-top: 20px;
-      border: 1px solid var(--border-hairline);
-      border-radius: 12px;
-      background: var(--bg-stage);
-      padding: 14px 18px;
-    }
-    .integrity-details summary {
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      list-style: none;
+    /* Center 3D Arbor Reactor Pillar */
+    .reactor-centerpiece {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      height: 310px;
       display: flex;
       align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      transform-style: preserve-3d;
+    }
+
+    .reactor-hub-3d {
+      width: 210px;
+      height: 210px;
+      position: relative;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .reactor-ring-back {
+      position: absolute;
+      inset: -18px;
+      border-radius: 50%;
+      border: 1px dashed rgba(52, 211, 153, 0.24);
+      transform: translate3d(0, 0, -40px);
+    }
+
+    .reactor-vault-shell {
+      position: absolute;
+      inset: 14px;
+      border-radius: 44px;
+      background: linear-gradient(155deg, #131D24 0%, #070B0E 100%);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      box-shadow: 0 32px 72px rgba(0, 0, 0, 0.82);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate3d(0, 0, 12px);
+    }
+
+    .reactor-emblem-front {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate3d(0, 0, 48px);
+      pointer-events: none;
+    }
+
+    .reactor-node-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(13, 18, 24, 0.9);
+      border: 1px solid var(--line-subtle);
+      border-radius: 16px;
+      padding: 26px 28px;
+      transition: transform 260ms var(--ease-smooth), border-color 220ms ease;
+      will-change: transform;
+    }
+
+    .reactor-node-card:hover {
+      border-color: var(--line-emerald);
+      transform: translate3d(0, -4px, 16px);
+    }
+
+    .reactor-node-metric {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--emerald-bright);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .reactor-node-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+    }
+
+    .reactor-node-copy {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.58;
+    }
+
+    /* ==========================================================================
+       ACT 4: INTERACTIVE OBSIDIAN DARK VS. STUDIO DAYLIGHT CALIBRATION
+       ========================================================================== */
+    .calibration-section {
+      padding: 124px 0;
+      border-top: 1px solid var(--line-subtle);
+    }
+
+    .calibration-header-row {
+      display: flex;
+      align-items: flex-end;
       justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
     }
-    .integrity-details summary::-webkit-details-marker {
-      display: none;
+
+    .theme-Quick-pills {
+      display: inline-flex;
+      gap: 6px;
+      padding: 5px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--line-subtle);
     }
-    .integrity-body {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border-hairline);
+
+    .theme-pill-btn {
+      appearance: none;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 7px 15px;
+      border-radius: 999px;
       font-size: 0.83rem;
-      color: var(--text-muted);
-      line-height: 1.7;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 180ms ease, color 180ms ease;
     }
-    .hash-strip {
-      margin-top: 10px;
+
+    .theme-pill-btn.is-active {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .split-stage {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 36px 90px rgba(0, 0, 0, 0.72);
+      user-select: none;
+      touch-action: pan-y;
+      aspect-ratio: 1520 / 940;
+      background: var(--bg-surface);
+      cursor: ew-resize;
+    }
+
+    .split-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .split-light-layer {
+      clip-path: inset(0 0 0 52%);
+      will-change: clip-path;
+    }
+
+    .split-handle-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 52%;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.9);
+      transform: translate3d(-50%, 0, 0);
+      pointer-events: none;
+      z-index: 4;
+      will-change: left;
+    }
+
+    .split-knob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(9, 13, 18, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       ACT 5: MULTI-PLATFORM DOWNLOAD DOCK & MAVYR STUDIO FOOTER
+       ========================================================================== */
+    .download-section {
+      position: relative;
+      padding: 132px 0 96px;
+      border-top: 1px solid var(--line-subtle);
+      overflow: clip;
+      background:
+        radial-gradient(720px 420px at 50% 0%, rgba(16, 185, 129, 0.13), transparent 72%),
+        var(--bg-void);
+    }
+
+    /* Deep background Arbor crest linework */
+    .closing-crest-bg {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      width: 520px;
+      height: 520px;
+      transform: translate3d(-50%, 0, 0);
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .download-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .download-head {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 52px;
+    }
+
+    .download-head .section-subtitle {
+      margin: 0 auto;
+    }
+
+    /* Asymmetric 3-OS Platform Matrix */
+    .platform-dock {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      gap: 18px;
+      max-width: 1060px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .platform-card {
+      border-radius: 16px;
+      padding: 30px;
+      background: var(--bg-surface);
+      border: 1px solid var(--line-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      transition: border-color 220ms ease, transform 220ms var(--ease-smooth);
+    }
+
+    .platform-card-primary {
+      background: linear-gradient(165deg, rgba(18, 29, 36, 0.96) 0%, rgba(10, 15, 20, 0.98) 100%);
+      border-color: rgba(52, 211, 153, 0.34);
+    }
+
+    .platform-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .platform-os-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+    }
+
+    .platform-card-primary .platform-os-badge {
+      background: rgba(16, 185, 129, 0.14);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--emerald-bright);
+    }
+
+    .platform-status-tag {
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.13);
+      color: var(--emerald-bright);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+    }
+
+    .platform-status-soon {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      border-color: var(--line-subtle);
+    }
+
+    .platform-name {
+      font-size: 1.32rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .platform-arch {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .platform-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-dock-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 20px;
+      border-radius: 12px;
+      background: var(--text-primary);
+      color: #050709;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.94rem;
+      transition: transform 200ms var(--ease-smooth), background-color 200ms ease;
+    }
+
+    .btn-dock-download:hover {
+      background: #FFFFFF;
+      transform: translate3d(0, -1.5px, 0);
+    }
+
+    .btn-dock-soon {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line-subtle);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: default;
+    }
+
+    .checksum-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      background: var(--bg-void);
-      border: 1px solid var(--border-hairline);
-    }
-    .hash-code {
-      font-size: 0.74rem;
-      color: var(--text-secondary);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .copy-mini-btn {
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-      border: 1px solid var(--border-strong);
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 0.74rem;
-      font-family: inherit;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .copy-mini-btn:hover {
-      background: #242938;
-    }
-
-    /* ==================== GRAND FINALE PORTAL CTA ==================== */
-    .closing-cta {
-      position: relative;
-      padding: 118px 0;
-      text-align: center;
-      border-top: 1px solid var(--border-hairline);
-      overflow: hidden;
-    }
-
-    .closing-portal-glow {
-      position: absolute;
-      left: 50%;
-      bottom: -35%;
-      width: 860px;
-      height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(245, 246, 248, 0.08) 42%, transparent 70%);
-      transform: translate3d(-50%, 0, 0) scale(0.75);
-      pointer-events: none;
-      will-change: transform, opacity;
-    }
-
-    .closing-cta h2 {
-      font-size: clamp(2.15rem, 4.3vw, 3.45rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-bottom: 16px;
-      text-wrap: balance;
-    }
-
-    .closing-cta p {
-      color: var(--text-secondary);
-      font-size: 1.08rem;
-      margin-bottom: 34px;
-    }
-
-    .footer {
-      border-top: 1px solid var(--border-hairline);
-      padding: 34px 0;
+      font-size: 0.78rem;
       color: var(--text-muted);
-      font-size: 0.84rem;
-      position: relative;
-      z-index: 3;
     }
-    .footer-inner {
+
+    .checksum-copy-btn {
+      appearance: none;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 180ms ease;
+    }
+
+    .checksum-copy-btn:hover {
+      color: var(--emerald-bright);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--line-subtle);
+      padding: 36px 0 44px;
+      background: var(--bg-void);
+    }
+
+    .footer-row {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 24px;
+      flex-wrap: wrap;
     }
+
     .footer-brand {
       display: flex;
       align-items: center;
       gap: 14px;
     }
-    .footer-brand img {
-      height: 18px;
-      opacity: 0.88;
+
+    .mavyr-mark {
+      height: 24px;
+      width: auto;
+      opacity: 0.92;
+      display: block;
     }
 
-    /* ==================== SCROLL REVEAL CHOREOGRAPHY ==================== */
-    [data-reveal] {
-      opacity: 0;
-      transform: translate3d(0, 36px, 0) scale(0.985);
-      transition: opacity 740ms var(--ease-out-expo), transform 820ms var(--ease-out-expo);
-      transition-delay: var(--delay, 0ms);
-    }
-    [data-reveal].in-view {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
 
-    /* Fullscreen Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 300;
-      background: rgba(4, 5, 7, 0.93);
-      backdrop-filter: blur(14px);
+    .footer-links {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 28px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 240ms ease;
-      cursor: zoom-out;
+      gap: 22px;
+      font-size: 0.85rem;
     }
-    .lightbox.open {
+
+    .footer-links a,
+    .footer-links button {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links button:hover {
+      color: var(--text-primary);
+    }
+
+    /* Scroll reveal baseline: always crisp and readable from frame 0 */
+    .reveal-up {
       opacity: 1;
-      pointer-events: auto;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
-    .lightbox img {
-      max-width: 95vw;
-      max-height: 92vh;
-      border-radius: 14px;
-      border: 1px solid var(--border-strong);
-      transform: scale(0.96);
-      transition: transform 280ms var(--ease-out-expo);
+
+    @media (max-width: 440px) {
+      .brand-release-tag {
+        display: none;
+      }
+      .btn-win-primary {
+        padding: 0 14px;
+        font-size: 0.87rem;
+      }
     }
-    .lightbox.open img {
-      transform: scale(1);
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .disciplines-layout {
+        grid-template-columns: 1fr;
+      }
+      .discipline-rail {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .reactor-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .reactor-centerpiece {
+        grid-column: 1;
+        grid-row: auto;
+        order: -1;
+        height: 240px;
+      }
+      .reactor-conduits {
+        display: none;
+      }
+      .platform-dock {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+      .container {
+        padding: 0 18px;
+      }
+      .hero-section {
+        padding-top: 104px;
+        padding-bottom: 76px;
+      }
+      .logo-portal-viewport {
+        width: 176px;
+        height: 176px;
+        margin-bottom: 22px;
+      }
+      .orbit-svg {
+        width: 176px;
+        height: 176px;
+      }
+      .monolith-disc {
+        width: 122px;
+        height: 122px;
+        border-radius: 30px;
+      }
+      .arbor-hero-svg, .arbor-crown-svg {
+        width: 92px;
+        height: 92px;
+      }
+      .os-download-cluster {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-win-primary, .btn-os-soon {
+        justify-content: center;
+        width: 100%;
+      }
+      .discipline-rail {
+        grid-template-columns: 1fr;
+      }
+      .disciplines-section, .core-section, .calibration-section, .download-section {
+        padding: 84px 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      #worldCanvas { display: none; }
-      [data-reveal] {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
-      .hero-3d-frame, .parallax-card, .ribbon-row, .closing-portal-glow {
+      .workstation-frame-3d {
         transform: none !important;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Layer 0: Interactive 3D Spatial Depth Field -->
-  <canvas id="worldCanvas" aria-hidden="true"></canvas>
-  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
-  <div class="ambient-horizon" id="ambientHorizon"></div>
-
-  <!-- Floating Glass Navbar -->
-  <div class="navbar-wrap">
-    <header class="navbar">
-      <a href="#" class="brand-cluster">
-        <img src="assets/arbor-icon.png" alt="Arbor AI" class="brand-icon" />
-        <span class="brand-title">Arbor AI Studio</span>
-        <span class="brand-divider"></span>
-        <img src="assets/mavyr-logo.png" alt="MAVYR Studio" class="nav-mavyr" />
-      </a>
-
-      <div class="nav-actions">
-        <a href="#whats-new-v21" class="ghost-pill hide-mobile">
-          <span class="pill-new-dot"></span>
-          <span data-i18n="navWhatsNew">ما الجديد في v2.1</span>
-        </a>
-        <a href="#safe-setup" class="ghost-pill hide-mobile" data-i18n="navSafety">التثبيت الآمن</a>
-        <button type="button" class="ghost-pill" id="langBtn">English</button>
-        <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="nav-cta" id="navDownloadBtn">
-          <span data-i18n="navCta">تحميل لويندوز</span>
-        </a>
-      </div>
-    </header>
+  <!-- Scroll reading progress filament -->
+  <div class="scroll-filament" aria-hidden="true">
+    <div class="scroll-filament-bar" id="scrollFilament"></div>
   </div>
 
-  <main>
-    <!-- ACT 1: HERO + 3D MULTI-PLANE UNFOLD + HIGH-TRUST STRIP -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-copy-wrap" id="heroCopyWrap" data-reveal>
-          <div class="hero-eyebrow">
-            <span class="pill-new-dot" style="margin:0;"></span>
-            <span data-i18n="heroBadge">الإصدار الجديد v2.2 متاح الآن — صلاحيات أربور كود الذكية، ضغط التوكن التلقائي، و Wan 3.0</span>
-          </div>
+  <!-- Reusable SVG Symbols (Official Arbor Neural Tree + Crisp OS Icons) -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+    <defs>
+      <linearGradient id="arborEmeraldGrad" x1="60" y1="112" x2="60" y2="14" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#059669" />
+        <stop offset="55%" stop-color="#10B981" />
+        <stop offset="100%" stop-color="#6EE7B7" />
+      </linearGradient>
+      <linearGradient id="arborPulseGrad" x1="60" y1="112" x2="60" y2="14" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#10B981" stop-opacity="0.1" />
+        <stop offset="60%" stop-color="#6EE7B7" stop-opacity="0.95" />
+        <stop offset="100%" stop-color="#E0F2FE" stop-opacity="1" />
+      </linearGradient>
 
-          <h1 data-i18n="heroTitle">عالم إنتاج سينمائي وبرمجي متكامل، يعمل بالكامل على جهازك.</h1>
-          <p class="hero-sub" data-i18n="heroSub">
-            استوديو مكتبي واحد يجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، وأربور كود للبرمجة — بواجهة رسومية نظيفة وخصوصية محلية تامة من تطوير ⁦MAVYR Studio⁩.
+      <!-- Windows 11 4-pane geometric mark -->
+      <symbol id="icon-windows" viewBox="0 0 20 20">
+        <path fill="currentColor" d="M2.5 2.5h6.8v6.8H2.5V2.5zm8.2 0h6.8v6.8h-6.8V2.5zM2.5 10.7h6.8v6.8H2.5v-6.8zm8.2 0h6.8v6.8h-6.8v-6.8z"/>
+      </symbol>
+
+      <!-- Apple geometric mark -->
+      <symbol id="icon-apple" viewBox="0 0 20 20">
+        <path fill="currentColor" d="M13.62 10.58c.02 2.13 1.87 2.84 1.89 2.85-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.72-2.17 1.74-.95.02-1.25-.56-2.34-.56-1.09 0-1.43.54-2.32.58-.93.04-1.64-.93-2.24-1.79-1.22-1.76-2.15-4.97-.9-7.14.62-1.08 1.73-1.76 2.93-1.78.91-.02 1.78.62 2.34.62.56 0 1.61-.76 2.71-.65.46.02 1.76.19 2.59 1.4-.07.04-1.55.9-1.51 2.71zM11.84 5.3c.5-.6.83-1.44.74-2.28-.72.03-1.59.48-2.1 1.08-.46.53-.86 1.38-.75 2.2.8.06 1.62-.4 2.11-1z"/>
+      </symbol>
+
+      <!-- Linux kernel / terminal geometric mark -->
+      <symbol id="icon-linux" viewBox="0 0 20 20">
+        <path fill="currentColor" d="M10 2.2c-2.32 0-3.7 1.76-3.7 4.22 0 1.24.33 2.22.33 2.86 0 .82-1.58 2.16-1.98 3.88-.32 1.37.24 2.88 1.48 3.58.78.44 2.16.66 3.87.66s3.09-.22 3.87-.66c1.24-.7 1.8-2.21 1.48-3.58-.4-1.72-1.98-3.06-1.98-3.88 0-.64.33-1.62.33-2.86 0-2.46-1.38-4.22-3.7-4.22zm-1.25 3.6a.75.75 0 110 1.5.75.75 0 010-1.5zm2.5 0a.75.75 0 110 1.5.75.75 0 010-1.5zM10 8.2c.92 0 1.65.36 1.65.8s-.73.8-1.65.8-1.65-.36-1.65-.8.73-.8 1.65-.8zm0 2.7c1.48 0 2.65 1.18 2.65 2.75 0 1.34-.96 2.15-2.65 2.15s-2.65-.81-2.65-2.15c0-1.57 1.17-2.75 2.65-2.75z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Floating Header -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-shell" id="navShell" aria-label="Primary">
+        <a href="#top" class="brand-link">
+          <svg class="brand-mark-mini" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <rect x="8" y="8" width="104" height="104" rx="28" fill="#0D151B" stroke="rgba(52,211,153,0.34)" stroke-width="3"/>
+            <path d="M60 98 L60 24 M60 70 C60 56, 42 48, 38 32 M60 70 C60 56, 78 48, 82 32 M60 78 C52 66, 26 60, 22 44 M60 78 C68 66, 94 60, 98 44" stroke="url(#arborEmeraldGrad)" stroke-width="5.2" stroke-linecap="round"/>
+            <circle cx="60" cy="22" r="5.5" fill="#6EE7B7"/>
+            <circle cx="38" cy="30" r="4.5" fill="#34D399"/>
+            <circle cx="82" cy="30" r="4.5" fill="#34D399"/>
+          </svg>
+          <span>Arbor AI</span>
+          <span class="brand-release-tag tabular">v2.2</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#capabilities" data-i18n="nav_capabilities">Capabilities</a></li>
+          <li><a href="#architecture" data-i18n="nav_architecture">Architecture</a></li>
+          <li><a href="#calibration" data-i18n="nav_calibration">Interface</a></li>
+          <li><a href="#download" data-i18n="nav_download">Download</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" class="lang-btn" id="langSwitchBtn" aria-label="Switch language">العربية</button>
+          <a href="#download" class="nav-cta" data-i18n="nav_cta">Get Arbor</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ========================================================================
+         ACT 1: 3D ARBOR LOGO PORTAL & WORKSTATION STAGE
+         ======================================================================== -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <!-- Multi-Plane 3D Arbor Neural Monolith -->
+        <div class="logo-portal-viewport" id="logoViewport" aria-hidden="true">
+          <div class="logo-portal-rig" id="logoRig">
+            <!-- Plane -3: Deep emerald aura -->
+            <div class="logo-plane logo-plane-aura"></div>
+
+            <!-- Plane -2: Counter-rotating orbital calibration rings -->
+            <div class="logo-plane logo-plane-orbit">
+              <svg class="orbit-svg" id="heroOrbitSvg" viewBox="0 0 240 240" fill="none">
+                <circle cx="120" cy="120" r="108" stroke="rgba(52, 211, 153, 0.16)" stroke-width="1" stroke-dasharray="4 8"/>
+                <circle cx="120" cy="120" r="92" stroke="rgba(224, 242, 254, 0.08)" stroke-width="1"/>
+                <path d="M 120 12 A 108 108 0 0 1 214 66" stroke="rgba(52, 211, 153, 0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M 120 228 A 108 108 0 0 1 26 174" stroke="rgba(56, 189, 248, 0.38)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Plane -1: Sculpted obsidian glass disc -->
+            <div class="logo-plane logo-plane-plinth">
+              <div class="monolith-disc">
+                <div class="monolith-sheen" id="monolithSheen"></div>
+              </div>
+            </div>
+
+            <!-- Plane +1: Arbor Neural Tree trunk, roots, & bioluminescent sap streams -->
+            <div class="logo-plane logo-plane-tree">
+              <svg class="arbor-hero-svg" viewBox="0 0 120 120" fill="none">
+                <!-- Base organic neural tree -->
+                <path d="M 42 110 C 50 104, 57 96, 60 84" stroke="url(#arborEmeraldGrad)" stroke-width="3.6" stroke-linecap="round" opacity="0.82"/>
+                <path d="M 78 110 C 70 104, 63 96, 60 84" stroke="url(#arborEmeraldGrad)" stroke-width="3.6" stroke-linecap="round" opacity="0.82"/>
+                <path d="M 60 80 C 52 66, 22 60, 18 42" stroke="url(#arborEmeraldGrad)" stroke-width="4.2" stroke-linecap="round"/>
+                <path d="M 60 80 C 68 66, 98 60, 102 42" stroke="url(#arborEmeraldGrad)" stroke-width="4.2" stroke-linecap="round"/>
+                <path d="M 60 72 C 60 56, 40 48, 36 28" stroke="url(#arborEmeraldGrad)" stroke-width="4.8" stroke-linecap="round"/>
+                <path d="M 60 72 C 60 56, 80 48, 84 28" stroke="url(#arborEmeraldGrad)" stroke-width="4.8" stroke-linecap="round"/>
+                <path d="M 60 106 L 60 20" stroke="url(#arborEmeraldGrad)" stroke-width="5.6" stroke-linecap="round"/>
+
+                <!-- Upward bioluminescent signal pulses -->
+                <path class="sap-pulse" d="M 60 106 L 60 20" stroke="url(#arborPulseGrad)" stroke-width="3" stroke-linecap="round"/>
+                <path class="sap-pulse sap-pulse-delay-1" d="M 60 72 C 60 56, 40 48, 36 28" stroke="url(#arborPulseGrad)" stroke-width="2.6" stroke-linecap="round"/>
+                <path class="sap-pulse sap-pulse-delay-2" d="M 60 72 C 60 56, 80 48, 84 28" stroke="url(#arborPulseGrad)" stroke-width="2.6" stroke-linecap="round"/>
+                <path class="sap-pulse sap-pulse-delay-2" d="M 60 80 C 52 66, 22 60, 18 42" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
+                <path class="sap-pulse sap-pulse-delay-1" d="M 60 80 C 68 66, 98 60, 102 42" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Plane +2: Elevated 3D canopy nodes floating ahead in Z-space -->
+            <div class="logo-plane logo-plane-crown">
+              <svg class="arbor-crown-svg" viewBox="0 0 120 120" fill="none">
+                <circle class="crown-node" cx="60" cy="18" r="5.6" fill="#A7F3D0"/>
+                <circle class="crown-node crown-node-d1" cx="36" cy="26" r="4.7" fill="#6EE7B7"/>
+                <circle class="crown-node crown-node-d1" cx="84" cy="26" r="4.7" fill="#6EE7B7"/>
+                <circle class="crown-node crown-node-d2" cx="18" cy="40" r="4.1" fill="#34D399"/>
+                <circle class="crown-node crown-node-d2" cx="102" cy="40" r="4.1" fill="#34D399"/>
+                <circle cx="60" cy="94" r="2.8" fill="#6EE7B7" opacity="0.85"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flagship Studio Copy -->
+        <div class="hero-copy-wrap" id="heroCopyWrap">
+          <h1 class="hero-title" data-i18n="hero_title">
+            Cinema, pipelines, and code. Native to your GPU.
+          </h1>
+          <p class="hero-lead" data-i18n="hero_lead">
+            Direct 1080p video, wire visual node graphs, and ship software inside one unified desktop workstation—engineered by MAVYR Studio around 68 open-source models and smart multi-API routing.
           </p>
 
-          <div class="hero-cta-group">
-            <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="btn-premiere" id="heroDownloadBtn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              <span data-i18n="heroCta">تحميل Arbor AI Studio لويندوز (ملف واحد جاهز)</span>
+          <!-- Multi-Platform OS Download Cluster -->
+          <div class="os-download-cluster" role="group" aria-label="Download Arbor AI Studio">
+            <a
+              href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe"
+              class="btn-win-primary"
+            >
+              <svg class="os-icon" aria-hidden="true"><use href="#icon-windows"></use></svg>
+              <span data-i18n="cta_win">Download for Windows</span>
+              <span class="btn-win-meta tabular">v2.2 · x64</span>
             </a>
 
-            <div class="hero-specs">
-              <span><strong class="mono" id="releaseVersionText">v2.2.0 Stable</strong></span>
-              <span>·</span>
-              <span><strong class="mono" id="releaseSizeText">254 MB</strong></span>
-              <span>·</span>
-              <span><strong>Windows 10 / 11 (64-bit)</strong></span>
-              <span>·</span>
-              <span><strong>MAVYR Studio</strong></span>
-            </div>
+            <button type="button" class="btn-os-soon" data-os-soon="macOS">
+              <svg class="os-icon" aria-hidden="true"><use href="#icon-apple"></use></svg>
+              <span>macOS</span>
+              <span class="soon-pill" data-i18n="badge_soon">Soon</span>
+            </button>
+
+            <button type="button" class="btn-os-soon" data-os-soon="Linux">
+              <svg class="os-icon" aria-hidden="true"><use href="#icon-linux"></use></svg>
+              <span>Linux</span>
+              <span class="soon-pill" data-i18n="badge_soon">Soon</span>
+            </button>
           </div>
 
-          <!-- Psychological Safety & Simplicity Chips -->
-          <div class="trust-strip">
-            <div class="trust-chip">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              <span data-i18n="tr1">تثبيت رسومي أنيق بدون نوافذ أوامر سوداء</span>
-            </div>
-            <div class="trust-chip">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-              <span data-i18n="tr2">يعمل بأمان بدون طلب صلاحيات مسؤول (Admin)</span>
-            </div>
-            <div class="trust-chip">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-              <span data-i18n="tr3">يبدأ خفيفاً ونظيفاً بدون داتا أو استهلاك بالخلفية</span>
-            </div>
-          </div>
+          <p class="hero-os-note tabular" id="heroOsNote" data-i18n="hero_spec_line">
+            Windows 10 &amp; 11 (64-bit) · Release 2.2.0 · 254 MB
+          </p>
         </div>
 
-        <div class="hero-3d-perspective">
-          <!-- Floating 3D Depth Satellites -->
-          <div class="hero-satellite hero-sat-right" id="heroSatRight">
-            <span class="sat-tag mono">NEW IN v2.1 · VIDEO</span>
-            <span class="sat-title" data-i18n="sat1Title">محرك Wan 3.0 Cinema & Turbo</span>
-            <span class="sat-sub" data-i18n="sat1Sub">مشاهد 1080p متزامنة ونسخة خفيفة لكروت 8GB</span>
-          </div>
-
-          <div class="hero-satellite hero-sat-left" id="heroSatLeft">
-            <span class="sat-tag mono">SMART MULTI-API</span>
-            <span class="sat-title" data-i18n="sat2Title">تبديل تلقائي للمفاتيح المجانية</span>
-            <span class="sat-sub" data-i18n="sat2Sub">Groq · Gemini · OpenRouter · Cerebras</span>
-          </div>
-
-          <div class="hero-3d-frame" id="hero3dFrame" data-zoom="assets/screen-home.png">
-            <div class="hero-3d-glare" id="hero3dGlare"></div>
-            <img src="assets/screen-home.png" alt="Arbor AI Studio Main Workstation" />
+        <!-- 3D Perspective Workstation Reveal -->
+        <div class="workstation-stage-outer" id="workstationStage">
+          <div class="workstation-frame-3d" id="workstationFrame">
+            <img
+              src="assets/lp-home-en.png"
+              data-lang-img="lp-home"
+              alt="Arbor AI Studio v2.2 Workstation Home"
+              width="1520"
+              height="940"
+              fetchpriority="high"
+            />
+            <div class="workstation-glare" id="workstationGlare" aria-hidden="true"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ACT 2: SCROLL-LINKED KINETIC DUAL RIBBONS -->
-    <section class="kinetic-ribbons" aria-label="68 Open-Source Engines">
-      <div class="ribbon-row" id="ribbonRowA">
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Cinema</strong> · 1080p Multimodal AV</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Turbo 5B</strong> · 8GB VRAM Ready</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>FLUX.1 Kontext</strong> · Precision Image Edit</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Qwen-Image</strong> · Bilingual Typography</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>HunyuanVideo I2V</strong> · 24fps Cinema</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>SeedVR2 4K</strong> · Super Resolution</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>MMAudio V2</strong> · Video-Synced Foley</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Kokoro-82M</strong> · Natural Voice</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Qwen 2.5 Coder</strong> · Local Agent</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Cinema</strong> · 1080p Multimodal AV</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Turbo 5B</strong> · 8GB VRAM Ready</span>
-        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>FLUX.1 Kontext</strong> · Precision Image Edit</span>
-      </div>
-
-      <div class="ribbon-row" id="ribbonRowB">
-        <span class="ribbon-chip"><strong>68 Verified Open Models</strong> · Zero Pre-Installed Bloat</span>
-        <span class="ribbon-chip"><strong>Smart Multi-API Router</strong> · Free Cloud Key Failover</span>
-        <span class="ribbon-chip"><strong>Comfy Node Graph</strong> · Visual Production Pipelines</span>
-        <span class="ribbon-chip"><strong>Arbor Code Sandbox</strong> · Local Project Intelligence</span>
-        <span class="ribbon-chip"><strong>Universal Storage Engine</strong> · Works on Every Windows PC</span>
-        <span class="ribbon-chip"><strong>One-Click Official Updates</strong> · Pure Graphical Experience</span>
-        <span class="ribbon-chip"><strong>68 Verified Open Models</strong> · Zero Pre-Installed Bloat</span>
-        <span class="ribbon-chip"><strong>Smart Multi-API Router</strong> · Free Cloud Key Failover</span>
-        <span class="ribbon-chip"><strong>Comfy Node Graph</strong> · Visual Production Pipelines</span>
-      </div>
-    </section>
-
-    <!-- ACT 3: PINNED 3D STACKING PORTAL FOR WHAT'S NEW IN v2.1 -->
-    <section class="v21-portal-section" id="whats-new-v21">
+    <!-- ========================================================================
+         ACT 2: FOUR DISCIPLINES IN ONE UNIFIED RUNTIME
+         ======================================================================== -->
+    <section class="disciplines-section" id="capabilities">
       <div class="container">
-        <div class="section-intro" data-reveal>
-          <div class="section-eyebrow mono">RELEASE v2.2 · IMMERSIVE UPDATE TOUR</div>
-          <h2 data-i18n="wnHeading">ما الجديد في الإصدار v2.2 — مرّر لتستكشف كل إضافة.</h2>
-          <p data-i18n="wnSub">مع كل حركة سكرول، تنتقل داخل أحدث الإضافات المصممة لتسهيل شغلك الإبداعي والبرمجي بدون أي تعقيد تقني.</p>
+        <div class="section-head reveal-up">
+          <h2 class="section-title" data-i18n="disc_heading">
+            Four disciplines. One unified runtime.
+          </h2>
+          <p class="section-subtitle" data-i18n="disc_sub">
+            Move between generative video, node-based compositing, repository engineering, and multi-provider routing without leaving your local workspace.
+          </p>
         </div>
 
-        <div class="v21-portal-track" id="v21PortalTrack">
-          <div class="v21-portal-sticky">
-            <div class="portal-nav-pills" id="v21NavPills">
-              <button type="button" class="portal-pill-btn active" data-v21-btn="0" data-i18n="wnPill1">01 · محرك Wan 3.0 الجديد</button>
-              <button type="button" class="portal-pill-btn" data-v21-btn="1" data-i18n="wnPill2">02 · الموجّه الذكي للـ API</button>
-              <button type="button" class="portal-pill-btn" data-v21-btn="2" data-i18n="wnPill3">03 · التوافق مع كل الأجهزة</button>
-              <button type="button" class="portal-pill-btn" data-v21-btn="3" data-i18n="wnPill4">04 · تحديثات نقية بضغطة زر</button>
-            </div>
+        <div class="disciplines-layout reveal-up">
+          <div class="discipline-rail" role="tablist" aria-label="Workstation capabilities">
+            <button
+              type="button"
+              class="discipline-tab is-active"
+              role="tab"
+              aria-selected="true"
+              data-tab-index="0"
+            >
+              <div class="discipline-tab-header">
+                <span class="discipline-tab-title" data-i18n="tab0_title">Generative Cinema &amp; Audio</span>
+                <span class="discipline-spec tabular">Wan 3.0 · FLUX.1</span>
+              </div>
+              <p class="discipline-tab-desc" data-i18n="tab0_desc">
+                Direct multi-shot 1080p video, photorealistic stills, and synchronized foley audio with verified camera prompts and VRAM-aware presets.
+              </p>
+              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
+            </button>
 
-            <div class="v21-deck-stage" id="v21DeckStage">
-              <!-- Card 1 -->
-              <article class="v21-deck-card" data-v21-card="0">
-                <div class="v21-card-copy">
-                  <span class="v21-badge mono" data-i18n="wn1Badge">NEW OPEN-SOURCE VIDEO · 68 MODELS</span>
-                  <h3 data-i18n="wn1Title">محرك الفيديو السينمائي Wan 3.0 بنسختين</h3>
-                  <p data-i18n="wn1Desc">أضفنا الجيل الأحدث Wan 3.0 في صدارة مكتبة الموديلات لإنتاج مشاهد متصلة بدقة 1080p مع تناغم صوتي وبصري، إلى جانب نسخة Turbo السريعة المصممة لكروت 8GB VRAM.</p>
-                  <ul class="v21-feature-points">
-                    <li data-i18n="wn1Pt1">نسخة Wan 3.0 Cinema لإخراج اللقطات السينمائية بدقة 1080p</li>
-                    <li data-i18n="wn1Pt2">نسخة Wan 3.0 Turbo 5B الخفيفة والسريعة لكروت 8 جيجابايت</li>
-                    <li data-i18n="wn1Pt3">توسيع المكتبة إلى 68 موديلاً مفتوح المصدر جاهزاً للتنزيل الاختياري</li>
-                  </ul>
-                </div>
-                <div class="v21-card-visual" data-zoom="assets/v21_wan30_models.png">
-                  <img src="assets/v21_wan30_models.png" alt="Wan 3.0 Cinema & Turbo in 68-Model Library" />
-                </div>
-              </article>
+            <button
+              type="button"
+              class="discipline-tab"
+              role="tab"
+              aria-selected="false"
+              data-tab-index="1"
+            >
+              <div class="discipline-tab-header">
+                <span class="discipline-tab-title" data-i18n="tab1_title">Infinite Node Pipelines</span>
+                <span class="discipline-spec tabular">DAG · 4K SeedVR2</span>
+              </div>
+              <p class="discipline-tab-desc" data-i18n="tab1_desc">
+                Chain prompt directors, image synthesis, motion models, 4K upscalers, and audio mastering on a non-destructive visual graph.
+              </p>
+              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
+            </button>
 
-              <!-- Card 2 -->
-              <article class="v21-deck-card" data-v21-card="1">
-                <div class="v21-card-copy">
-                  <span class="v21-badge mono" data-i18n="wn2Badge">CLAUDE-GRADE CODE · AUTO-COMPACT · SMART API</span>
-                  <h3 data-i18n="wn2Title">أربور كود بصلاحيات ذكية، ضغط تلقائي للتوكن، وفحص حي للـ API</h3>
-                  <p data-i18n="wn2Desc">اختر مشروعك من المجلدات الأخيرة، تحكّم في التعديلات بثلاث صلاحيات (تخطيط، استئذان، أو تلقائي Auto)، واستمتع بمحادثات فائقة السرعة بفضل ضغط السياق التلقائي وفحص مفاتيح الـ API لحظة الحفظ.</p>
-                  <ul class="v21-feature-points">
-                    <li data-i18n="wn2Pt1">3 مستويات صلاحيات للمشروع (Plan / Ask / Auto) مع قائمة المشاريع الأخيرة</li>
-                    <li data-i18n="wn2Pt2">ضغط وتلخيص تلقائي للتوكن (Auto-Compact) لكل موديل لمنع ثقل الشات الطويل</li>
-                    <li data-i18n="wn2Pt3">فحص مباشر لمفاتيح الـ API وتبديل ذكي فوري بين المزودات المجانية والاحترافية</li>
-                  </ul>
-                </div>
-                <div class="v21-card-visual" data-zoom="assets/v22_arbor_code_claude.png">
-                  <img src="assets/v22_arbor_code_claude.png" alt="Arbor Code v2.2 Permissions & Auto-Compact" />
-                </div>
-              </article>
+            <button
+              type="button"
+              class="discipline-tab"
+              role="tab"
+              aria-selected="false"
+              data-tab-index="2"
+            >
+              <div class="discipline-tab-header">
+                <span class="discipline-tab-title" data-i18n="tab2_title">Arbor Code Workspace</span>
+                <span class="discipline-spec tabular">Plan · Ask · Auto</span>
+              </div>
+              <p class="discipline-tab-desc" data-i18n="tab2_desc">
+                Bind any local repository with granular file-write permissions and automatic context compaction across 1M-token engineering sessions.
+              </p>
+              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
+            </button>
 
-              <!-- Card 3 -->
-              <article class="v21-deck-card" data-v21-card="2">
-                <div class="v21-card-copy">
-                  <span class="v21-badge mono" data-i18n="wn3Badge">UNIVERSAL WINDOWS COMPATIBILITY</span>
-                  <h3 data-i18n="wn3Title">مدير تنزيلات ذكي يعمل بسلاسة على كل جهاز</h3>
-                  <p data-i18n="wn3Desc">سواء كان جهازك يحتوي على قرص C فقط أو عدة أقراص، يكتشف البرنامج تلقائياً المجلدات الصالحة للكتابة ويعرض المساحة المتبقية الحقيقية وسرعة التحميل لحظة بلحظة.</p>
-                  <ul class="v21-feature-points">
-                    <li data-i18n="wn3Pt1">تعرّف وتعافٍ تلقائي للمسارات على جميع أجهزة اللابتوب والمكتبي</li>
-                    <li data-i18n="wn3Pt2">إيقاف مؤقت واستكمال من نفس الميجابايت مع زر إعادة محاولة فوري</li>
-                    <li data-i18n="wn3Pt3">قائمة بداية سريعة لأشهر 6 محركات فيديو وصوت وترقية 4K وبرمجة</li>
-                  </ul>
-                </div>
-                <div class="v21-card-visual" data-zoom="assets/v21_download_manager.png">
-                  <img src="assets/v21_download_manager.png" alt="Universal Cross-PC Download Manager" />
-                </div>
-              </article>
+            <button
+              type="button"
+              class="discipline-tab"
+              role="tab"
+              aria-selected="false"
+              data-tab-index="3"
+            >
+              <div class="discipline-tab-header">
+                <span class="discipline-tab-title" data-i18n="tab3_title">Smart Multi-API Gateway</span>
+                <span class="discipline-spec tabular">16 Providers</span>
+              </div>
+              <p class="discipline-tab-desc" data-i18n="tab3_desc">
+                Pair zero-cost local GGUF inference with encrypted cloud keys across Gemini, Claude, OpenRouter, and Groq with instant failover.
+              </p>
+              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
+            </button>
+          </div>
 
-              <!-- Card 4 -->
-              <article class="v21-deck-card" data-v21-card="3">
-                <div class="v21-card-copy">
-                  <span class="v21-badge mono" data-i18n="wn4Badge">CLEAN ONE-CLICK UPDATES</span>
-                  <h3 data-i18n="wn4Title">تبويب «ما الجديد» وتحديث رسمي هادئ بضغطة واحدة</h3>
-                  <p data-i18n="wn4Desc">أزلنا كل الإعدادات التقنية غير المفيدة للمستخدم؛ أصبح لديك تبويب مصوّر مدمج لعرض كل جديد، مع تحديث تلقائي رسومي بشريط تحميل واضح وبدون أي نوافذ أوامر مزعجة.</p>
-                  <ul class="v21-feature-points">
-                    <li data-i18n="wn4Pt1">تبويب «ما الجديد» داخل البرنامج بلقطات شاشة حقيقية وأزرار تجربة فورية</li>
-                    <li data-i18n="wn4Pt2">شريط تحميل حي للتحديثات وترقية رسومية أنيقة تحفظ كل مشاريعك</li>
-                    <li data-i18n="wn4Pt3">واجهة إعدادات نقية ومبسطة 100% بالعربية والإنجليزية</li>
-                  </ul>
-                </div>
-                <div class="v21-card-visual" data-zoom="assets/v21_whats_new.png">
-                  <img src="assets/v21_whats_new.png" alt="In-App What's New Hub & Clean Settings" />
-                </div>
-              </article>
+          <div class="discipline-screen-stage">
+            <div class="discipline-window">
+              <img
+                src="assets/lp-studio-en.png"
+                data-lang-img="lp-studio"
+                data-shot-index="0"
+                class="discipline-shot is-active"
+                alt="Arbor AI Generative Cinema Studio"
+                width="1520"
+                height="940"
+                loading="lazy"
+              />
+              <img
+                src="assets/lp-nodes-en.png"
+                data-lang-img="lp-nodes"
+                data-shot-index="1"
+                class="discipline-shot"
+                alt="Arbor AI Infinite Node Canvas"
+                width="1520"
+                height="940"
+                loading="lazy"
+              />
+              <img
+                src="assets/lp-code-en.png"
+                data-lang-img="lp-code"
+                data-shot-index="2"
+                class="discipline-shot"
+                alt="Arbor Code Repository Workspace and Permissions"
+                width="1520"
+                height="940"
+                loading="lazy"
+              />
+              <img
+                src="assets/lp-router-en.png"
+                data-lang-img="lp-router"
+                data-shot-index="3"
+                class="discipline-shot"
+                alt="Arbor AI Unified Multi-API Smart Router"
+                width="1520"
+                height="940"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ACT 4: STICKY SCROLL-DRIVEN 4-WORLD WORKSTATION TOUR -->
-    <section class="scrolly-section">
+    <!-- ========================================================================
+         ACT 3: 3D ARBOR NEURAL CORE ARCHITECTURE
+         ======================================================================== -->
+    <section class="core-section" id="architecture">
       <div class="container">
-        <div class="section-intro" data-reveal>
-          <div class="section-eyebrow mono">FOUR UNIFIED WORKSPACES</div>
-          <h2 data-i18n="tourHeading">أربعة عوالم إبداعية تتحرك بتناغم واحد.</h2>
-          <p data-i18n="tourSub">مرّر للأسفل للغوص داخل بيئات العمل الحقيقية في الاستوديو، أو اضغط على أي شاشة لتكبيرها بدقتها الكاملة.</p>
+        <div class="core-head-centered reveal-up">
+          <h2 class="section-title" data-i18n="arch_heading">
+            Engineered around local sovereignty.
+          </h2>
+          <p class="section-subtitle" data-i18n="arch_sub">
+            Every subsystem—from GPU memory scheduling to AES-256 credential storage—executes directly on your machine with zero telemetry.
+          </p>
         </div>
 
-        <div class="scrolly-track" id="scrollyTrack">
-          <div class="scrolly-sticky">
-            <div class="chapter-list" id="chapterList">
-              <button type="button" class="chapter-btn active" data-chapter="0">
-                <h3 data-i18n="ch1Title">استوديو الميديا السينمائي</h3>
-                <p data-i18n="ch1Desc">جلسات مخصصة للفيديو والصور والصوت تفلتر الموديلات تلقائياً مع استعراض المراجع ونسخ البرومبت بضغطة واحدة.</p>
-                <div class="chapter-progress"><div class="chapter-progress-fill"></div></div>
-              </button>
+        <div class="reactor-arena reveal-up" id="reactorArena">
+          <!-- Animated Neural Conduits radiating from the central 3D Arbor Core -->
+          <svg class="reactor-conduits" viewBox="0 0 1140 420" fill="none" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 570 210 C 460 210, 430 105, 340 105" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
+            <path d="M 570 210 C 680 210, 710 105, 800 105" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
+            <path d="M 570 210 C 460 210, 430 315, 340 315" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
+            <path d="M 570 210 C 680 210, 710 315, 800 315" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
 
-              <button type="button" class="chapter-btn" data-chapter="1">
-                <h3 data-i18n="ch2Title">محرر مسارات النود التفاعلي</h3>
-                <p data-i18n="ch2Desc">ابنِ سلاسل إنتاج متقدمة واربط عقد التوليد والتحسين مع إضافة سريعة بالزر الأيمن وترتيب هندسي فوري.</p>
-                <div class="chapter-progress"><div class="chapter-progress-fill"></div></div>
-              </button>
+            <path class="sap-pulse" d="M 570 210 C 460 210, 430 105, 340 105" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
+            <path class="sap-pulse sap-pulse-delay-1" d="M 570 210 C 680 210, 710 105, 800 105" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
+            <path class="sap-pulse sap-pulse-delay-2" d="M 570 210 C 460 210, 430 315, 340 315" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
+            <path class="sap-pulse sap-pulse-delay-1" d="M 570 210 C 680 210, 710 315, 800 315" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
 
-              <button type="button" class="chapter-btn" data-chapter="2">
-                <h3 data-i18n="ch3Title">أربور كود للبرمجة المحلية</h3>
-                <p data-i18n="ch3Desc">اربط أي مجلد مشروع على جهازك ليقرأ المساعد البرمجي ملفاتك ويبني معك الكود مباشرة بأسلوب احترافي نظيف.</p>
-                <div class="chapter-progress"><div class="chapter-progress-fill"></div></div>
-              </button>
+          <div class="reactor-grid">
+            <!-- Top-Left Module -->
+            <article class="reactor-node-card">
+              <span class="reactor-node-metric tabular" data-i18n="node1_tag">68 OPEN-WEIGHT ENGINES</span>
+              <h3 class="reactor-node-title" data-i18n="node1_title">On-demand model library</h3>
+              <p class="reactor-node-copy" data-i18n="node1_copy">
+                Pull only the checkpoints your production needs—from Wan 3.0 Cinema and HunyuanVideo to Qwen 2.5 Coder—with resumable shard verification.
+              </p>
+            </article>
 
-              <button type="button" class="chapter-btn" data-chapter="3">
-                <h3 data-i18n="ch4Title">مراقب الأداء الحي للعتاد</h3>
-                <p data-i18n="ch4Desc">قراءة فورية لاستهلاك كرت الشاشة والذاكرة وحرارة الـ GPU لضمان أعلى استقرار أثناء الريندر والتشغيل.</p>
-                <div class="chapter-progress"><div class="chapter-progress-fill"></div></div>
-              </button>
-            </div>
-
-            <div class="scrolly-stage-frame" id="scrollyStage">
-              <img src="assets/screen-studio.png" alt="Generative Studio" class="scrolly-slide-img active" data-slide="0" />
-              <img src="assets/screen-node-editor.png" alt="Node Graph Editor" class="scrolly-slide-img" data-slide="1" />
-              <img src="assets/screen-code.png" alt="Arbor Code" class="scrolly-slide-img" data-slide="2" />
-              <img src="assets/screen-telemetry.png" alt="Live Hardware Telemetry" class="scrolly-slide-img" data-slide="3" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ACT 5: PARALLAX DUAL THEME + ARCHITECTURE HIGHLIGHTS -->
-    <section class="craft-section">
-      <div class="container">
-        <div class="section-intro" data-reveal>
-          <div class="section-eyebrow mono">OBSIDIAN DARK & STUDIO DAYLIGHT</div>
-          <h2 data-i18n="craftHeading">دقة بصرية في الوضع الليلي والنهاري.</h2>
-          <p data-i18n="craftSub">هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، وتتحرك معك بانسيابية مع كل تمريرة.</p>
-        </div>
-
-        <div class="parallax-showcase">
-          <div class="parallax-card" data-parallax="-38" data-zoom="assets/screen-workflows.png" data-reveal>
-            <img src="assets/screen-workflows.png" alt="Workflows Hub Dark Mode" />
-            <div class="parallax-caption">
-              <strong data-i18n="pDarkTitle">الوضع الليلي السينمائي (Obsidian)</strong>
-              <span data-i18n="pDarkSub">تركيز بصري طويل بدون إجهاد</span>
-            </div>
-          </div>
-
-          <div class="parallax-card" data-parallax="38" data-zoom="assets/screen-home-light.png" data-reveal style="--delay: 120ms;">
-            <img src="assets/screen-home-light.png" alt="Studio Daylight Mode" />
-            <div class="parallax-caption">
-              <strong data-i18n="pLightTitle">الوضع النهاري المتوازن (Daylight)</strong>
-              <span data-i18n="pLightSub">تباين نقي لبيئات الإضاءة العالية</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="specs-ribbon">
-          <div class="spotlight-surface" data-reveal style="--delay: 0ms;">
-            <h3 data-i18n="sp1Title">ملف واحد مستقل وجاهز فوراً</h3>
-            <p data-i18n="sp1Desc">محرك التشغيل والواجهة مدمجة بالكامل في ملف واحد؛ يفتح فوراً دون الحاجة لتثبيت Python أو Node.js أو أي إضافات معقدة.</p>
-          </div>
-          <div class="spotlight-surface" data-reveal style="--delay: 90ms;">
-            <h3 data-i18n="sp2Title">خصوصية محلية 100% على جهازك</h3>
-            <p data-i18n="sp2Desc">جميع مخرجاتك ومشاريعك ومفاتيحك تُحفظ محلياً على قرصك فقط تحت سيطرتك، بدون رفع أي ملفات لخوادم خارجية.</p>
-          </div>
-          <div class="spotlight-surface" data-reveal style="--delay: 180ms;">
-            <h3 data-i18n="sp3Title">تحديثات رسومية هادئة وآمنة</h3>
-            <p data-i18n="sp3Desc">تصل التحديثات من قناة MAVYR Studio الرسمية بواجهة رسومية نظيفة وشريط تقدم واضح دون أي نوافذ أوامر سوداء.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ACT 6: HIGH-TRUST PREMIERE SETUP WIZARD EXPERIENCE -->
-    <section class="setup-section" id="safe-setup">
-      <div class="container">
-        <div class="setup-layout">
-          <div data-reveal>
-            <div class="section-eyebrow mono">ZERO HASSLE · PURE TRUST</div>
-            <h2 class="section-heading" style="font-size: clamp(1.85rem, 3.2vw, 2.65rem); font-weight: 700; line-height: 1.16; letter-spacing: -0.025em; margin-bottom: 12px;" data-i18n="setupHeading">
-              تثبيت سهل، شفاف، ومطمئن من أول ثانية.
-            </h2>
-            <p style="color: var(--text-secondary); font-size: 1rem;" data-i18n="setupSub">
-              صممنا معالج التثبيت في MAVYR Studio ليكون واضحاً وبسيطاً لأي مستخدم: ثلاث خطوات رسومية هادئة فقط بدون أي شاشات معقدة.
-            </p>
-
-            <div class="peace-banner" data-i18n="peaceBanner">
-              ✓ مصمم لراحتك واطمئنانك: لا يطلب صلاحيات مسؤول النظام (Admin)، لا يفتح أي نوافذ أوامر (Terminal)، يبدأ فارغاً ونظيفاً تماماً، ويتضمن أداة إلغاء تثبيت رسمية آمنة في إعدادات ويندوز.
-            </div>
-
-            <div class="wizard-step-switcher" id="wizardStepList">
-              <button type="button" class="wiz-pill active" data-wiz="0">
-                <span class="wiz-num mono">1</span>
-                <span class="wiz-text">
-                  <strong data-i18n="ws1Title">الترحيب واختيار اللغة</strong>
-                  <span data-i18n="ws1Sub">واجهة ترحيب راقية تدعم العربية والإنجليزية بضغطة زر</span>
-                </span>
-              </button>
-
-              <button type="button" class="wiz-pill" data-wiz="1">
-                <span class="wiz-num mono">2</span>
-                <span class="wiz-text">
-                  <strong data-i18n="ws2Title">مراجعة اتفاقية MAVYR Studio</strong>
-                  <span data-i18n="ws2Sub">وثيقة حقوق واضحة ومباشرة لحماية المستخدم والمنتج</span>
-                </span>
-              </button>
-
-              <button type="button" class="wiz-pill" data-wiz="2">
-                <span class="wiz-num mono">3</span>
-                <span class="wiz-text">
-                  <strong data-i18n="ws3Title">تحديد المجلدات والتشغيل الفوري</strong>
-                  <span data-i18n="ws3Sub">اختيار تلقائي ذكي لأفضل قرص متاح على جهازك وتشغيل فوري</span>
-                </span>
-              </button>
-            </div>
-
-            <details class="integrity-details">
-              <summary>
-                <span data-i18n="verifySummary">ملاحظة التشغيل الأول على ويندوز وبصمة التحقق SHA-256</span>
-                <span class="mono">+</span>
-              </summary>
-              <div class="integrity-body">
-                <p data-i18n="verifyNote">
-                  يعمل المثبّت بصلاحيات المستخدم العادية الآمنة دون المساس بملفات النظام. عند فتح أي برنامج مكتبي جديد لأول مرة على Windows، في حال ظهور نافذة الحماية القياسية اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».
-                </p>
-                <div class="hash-strip">
-                  <span class="hash-code mono" id="shaHashValue">SHA-256: 210ef30262bc81bb073cb9b5078e5fcd068cf6cf940f7bd856366b3f652c429a</span>
-                  <button type="button" class="copy-mini-btn" id="copyHashBtn" data-i18n="copyBtn">نسخ</button>
+            <!-- Center 3D Arbor Neural Core -->
+            <div class="reactor-centerpiece" aria-hidden="true">
+              <div class="reactor-hub-3d" id="reactorHub3d">
+                <div class="reactor-ring-back" id="reactorRingBack"></div>
+                <div class="reactor-vault-shell"></div>
+                <div class="reactor-emblem-front">
+                  <svg width="108" height="108" viewBox="0 0 120 120" fill="none">
+                    <path d="M 42 110 C 50 104, 57 96, 60 84 M 78 110 C 70 104, 63 96, 60 84 M 60 80 C 52 66, 22 60, 18 42 M 60 80 C 68 66, 98 60, 102 42 M 60 72 C 60 56, 40 48, 36 28 M 60 72 C 60 56, 80 48, 84 28 M 60 106 L 60 20" stroke="url(#arborEmeraldGrad)" stroke-width="4.8" stroke-linecap="round"/>
+                    <path class="sap-pulse" d="M 60 106 L 60 20" stroke="#A7F3D0" stroke-width="2.8" stroke-linecap="round"/>
+                    <circle cx="60" cy="18" r="5.5" fill="#A7F3D0"/>
+                    <circle cx="36" cy="26" r="4.5" fill="#6EE7B7"/>
+                    <circle cx="84" cy="26" r="4.5" fill="#6EE7B7"/>
+                    <circle cx="18" cy="40" r="4" fill="#34D399"/>
+                    <circle cx="102" cy="40" r="4" fill="#34D399"/>
+                  </svg>
                 </div>
               </div>
-            </details>
-          </div>
+            </div>
 
-          <div class="wizard-preview-box" id="wizardPreviewStage" data-reveal style="--delay: 120ms;">
-            <img src="assets/screen-setup-welcome.png" alt="Setup Step 1 Welcome" class="wizard-preview-img active" data-wiz-img="0" />
-            <img src="assets/screen-setup-license.png" alt="Setup Step 2 License" class="wizard-preview-img" data-wiz-img="1" />
-            <img src="assets/screen-setup.png" alt="Setup Step 3 Workspace Paths" class="wizard-preview-img" data-wiz-img="2" />
+            <!-- Top-Right Module -->
+            <article class="reactor-node-card">
+              <span class="reactor-node-metric tabular" data-i18n="node2_tag">UP TO 1M TOKENS</span>
+              <h3 class="reactor-node-title" data-i18n="node2_title">Adaptive context compaction</h3>
+              <p class="reactor-node-copy" data-i18n="node2_copy">
+                Per-model token budgets automatically summarize older turns before context saturation, keeping deep architectural sessions responsive.
+              </p>
+            </article>
+
+            <!-- Bottom-Left Module -->
+            <article class="reactor-node-card">
+              <span class="reactor-node-metric tabular" data-i18n="node3_tag">8 GB TO MULTI-GPU</span>
+              <h3 class="reactor-node-title" data-i18n="node3_title">Live hardware telemetry</h3>
+              <p class="reactor-node-copy" data-i18n="node3_copy">
+                Real-time GPU utilization, VRAM allocation, and thermal monitoring match quantization and offload settings to your exact card.
+              </p>
+            </article>
+
+            <!-- Bottom-Right Module -->
+            <article class="reactor-node-card">
+              <span class="reactor-node-metric tabular" data-i18n="node4_tag">AES-256 LOCAL VAULT</span>
+              <h3 class="reactor-node-title" data-i18n="node4_title">Private by architecture</h3>
+              <p class="reactor-node-copy" data-i18n="node4_copy">
+                Source trees, rendered masters, node graphs, and encrypted API keys stay on your local disks with no mandatory cloud sign-in.
+              </p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- GRAND FINALE PORTAL CTA -->
-    <section class="closing-cta" id="closingSection">
-      <div class="closing-portal-glow" id="closingPortalGlow"></div>
-      <div class="container" data-reveal>
-        <h2 data-i18n="closingTitle">ادخل عالم Arbor AI Studio الآن.</h2>
-        <p data-i18n="closingSub">ملف واحد أنيق، خالٍ من التعقيد، جاهز للعمل على جهازك خلال ثوانٍ.</p>
-        <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="btn-premiere" id="bottomDownloadBtn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          <span data-i18n="closingBtn">تحميل المثبّت الرسمي (Arbor_AI_Setup.exe)</span>
-        </a>
+    <!-- ========================================================================
+         ACT 4: CALIBRATED FOR COLOR SUITES & DAYLIGHT DESKS
+         ======================================================================== -->
+    <section class="calibration-section" id="calibration">
+      <div class="container">
+        <div class="calibration-header-row reveal-up">
+          <div>
+            <h2 class="section-title" data-i18n="cal_heading">
+              Calibrated for color suites and daylight desks.
+            </h2>
+            <p class="section-subtitle" data-i18n="cal_sub">
+              Drag the optical divider to inspect Obsidian Dark and Studio Daylight—both tuned for long creative and engineering sessions.
+            </p>
+          </div>
+
+          <div class="theme-Quick-pills" role="group" aria-label="Preview surface mode">
+            <button type="button" class="theme-pill-btn" data-split-preset="14" data-i18n="cal_btn_dark">Obsidian Dark</button>
+            <button type="button" class="theme-pill-btn is-active" data-split-preset="50" data-i18n="cal_btn_split">50 / 50 Split</button>
+            <button type="button" class="theme-pill-btn" data-split-preset="86" data-i18n="cal_btn_light">Studio Daylight</button>
+          </div>
+        </div>
+
+        <div class="split-stage reveal-up" id="splitStage" aria-label="Obsidian Dark and Studio Daylight interface comparison">
+          <img
+            src="assets/lp-home-en.png"
+            data-lang-img="lp-home"
+            class="split-img"
+            alt="Arbor AI Studio in Obsidian Dark mode"
+            width="1520"
+            height="940"
+            loading="lazy"
+          />
+          <img
+            src="assets/lp-home-light-en.png"
+            data-lang-img="lp-home-light"
+            class="split-img split-light-layer"
+            id="splitLightLayer"
+            alt="Arbor AI Studio in Studio Daylight mode"
+            width="1520"
+            height="940"
+            loading="lazy"
+          />
+          <div class="split-handle-line" id="splitHandle">
+            <div class="split-knob" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <path d="M7 6L3 10L7 14M13 6L17 10L13 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ACT 5: MULTI-PLATFORM DOWNLOAD MATRIX
+         ======================================================================== -->
+    <section class="download-section" id="download">
+      <!-- Subtle oversized Arbor Neural Tree watermark -->
+      <svg class="closing-crest-bg" id="closingCrest" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" stroke="#34D399" stroke-width="0.6" stroke-dasharray="2 4"/>
+        <path d="M 42 110 C 50 104, 57 96, 60 84 M 78 110 C 70 104, 63 96, 60 84 M 60 80 C 52 66, 22 60, 18 42 M 60 80 C 68 66, 98 60, 102 42 M 60 72 C 60 56, 40 48, 36 28 M 60 72 C 60 56, 80 48, 84 28 M 60 106 L 60 20" stroke="#34D399" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="60" cy="18" r="4" fill="#34D399"/>
+        <circle cx="36" cy="26" r="3.2" fill="#34D399"/>
+        <circle cx="84" cy="26" r="3.2" fill="#34D399"/>
+        <circle cx="18" cy="40" r="2.8" fill="#34D399"/>
+        <circle cx="102" cy="40" r="2.8" fill="#34D399"/>
+      </svg>
+
+      <div class="container download-inner">
+        <div class="download-head reveal-up">
+          <h2 class="section-title" data-i18n="dl_heading">
+            Build on Arbor AI Studio.
+          </h2>
+          <p class="section-subtitle" data-i18n="dl_sub">
+            Release 2.2 is available now for Windows x64, with native Apple Silicon and Linux builds in active development at MAVYR Studio.
+          </p>
+        </div>
+
+        <div class="platform-dock reveal-up">
+          <!-- Windows Primary Card -->
+          <div class="platform-card platform-card-primary">
+            <div>
+              <div class="platform-top">
+                <div class="platform-os-badge">
+                  <svg width="22" height="22" aria-hidden="true"><use href="#icon-windows"></use></svg>
+                </div>
+                <span class="platform-status-tag tabular" data-i18n="win_status">v2.2.0 · Available</span>
+              </div>
+              <h3 class="platform-name" style="margin-top:20px;">Windows</h3>
+              <p class="platform-arch tabular" data-i18n="win_arch">Windows 10 &amp; 11 (64-bit) · 254 MB</p>
+            </div>
+
+            <div class="platform-actions">
+              <a
+                href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe"
+                class="btn-dock-download"
+              >
+                <svg class="os-icon" aria-hidden="true"><use href="#icon-windows"></use></svg>
+                <span data-i18n="cta_win">Download for Windows</span>
+              </a>
+              <div class="checksum-row">
+                <span class="tabular">Arbor_AI_Setup.exe</span>
+                <button type="button" class="checksum-copy-btn tabular" id="copyShaBtn" data-i18n="copy_sha">
+                  Copy SHA-256
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- macOS Coming Soon Card -->
+          <div class="platform-card">
+            <div>
+              <div class="platform-top">
+                <div class="platform-os-badge">
+                  <svg width="22" height="22" aria-hidden="true"><use href="#icon-apple"></use></svg>
+                </div>
+                <span class="platform-status-tag platform-status-soon" data-i18n="soon_full">Coming soon</span>
+              </div>
+              <h3 class="platform-name" style="margin-top:20px;">macOS</h3>
+              <p class="platform-arch" data-i18n="mac_arch">Apple Silicon (M1 – M4) · Universal</p>
+            </div>
+
+            <div class="platform-actions">
+              <button type="button" class="btn-dock-soon" disabled aria-disabled="true">
+                <svg class="os-icon" aria-hidden="true"><use href="#icon-apple"></use></svg>
+                <span data-i18n="soon_full">Coming soon</span>
+              </button>
+              <div class="checksum-row">
+                <span data-i18n="in_dev_note">In development at MAVYR Studio</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linux Coming Soon Card -->
+          <div class="platform-card">
+            <div>
+              <div class="platform-top">
+                <div class="platform-os-badge">
+                  <svg width="22" height="22" aria-hidden="true"><use href="#icon-linux"></use></svg>
+                </div>
+                <span class="platform-status-tag platform-status-soon" data-i18n="soon_full">Coming soon</span>
+              </div>
+              <h3 class="platform-name" style="margin-top:20px;">Linux</h3>
+              <p class="platform-arch" data-i18n="linux_arch">Ubuntu / Fedora (x64) · AppImage</p>
+            </div>
+
+            <div class="platform-actions">
+              <button type="button" class="btn-dock-soon" disabled aria-disabled="true">
+                <svg class="os-icon" aria-hidden="true"><use href="#icon-linux"></use></svg>
+                <span data-i18n="soon_full">Coming soon</span>
+              </button>
+              <div class="checksum-row">
+                <span data-i18n="in_dev_note">In development at MAVYR Studio</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
+  <!-- Minimalist Studio Footer -->
+  <footer class="site-footer">
+    <div class="container footer-row">
       <div class="footer-brand">
-        <img src="assets/mavyr-logo.png" alt="MAVYR Studio" />
-        <span data-i18n="footerCopy">جميع الحقوق محفوظة © 2026 MAVYR Studio. برنامج محمي بحقوق الملكية الفكرية.</span>
+        <img src="assets/mavyr-logo.png" alt="MAVYR Studio" class="mavyr-mark" width="96" height="24" />
+        <span class="footer-copy" data-i18n="footer_rights">© 2026 MAVYR Studio. All rights reserved.</span>
       </div>
-      <span class="mono">Arbor AI Studio · MAVYR Studio</span>
+
+      <div class="footer-links">
+        <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest" target="_blank" rel="noopener" data-i18n="footer_releases">
+          Release 2.2.0 Notes
+        </a>
+        <button type="button" id="footerLangBtn">العربية</button>
+      </div>
     </div>
   </footer>
 
-  <!-- Full-Resolution Lightbox -->
-  <div class="lightbox" id="lightboxModal">
-    <img id="lightboxImg" src="" alt="Full Resolution Preview" />
-  </div>
-
   <script>
-    const I18N = {
-      ar: {
-        navWhatsNew: 'ما الجديد في v2.2',
-        navSafety: 'التثبيت الآمن',
-        navCta: 'تحميل لويندوز',
-        heroBadge: 'الإصدار الجديد v2.2 متاح الآن — صلاحيات أربور كود الذكية، ضغط التوكن التلقائي، و Wan 3.0',
-        heroTitle: 'عالم إنتاج سينمائي وبرمجي متكامل، يعمل بالكامل على جهازك.',
-        heroSub: 'استوديو مكتبي واحد يجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، وأربور كود للبرمجة — بواجهة رسومية نظيفة وخصوصية محلية تامة من تطوير \u2066MAVYR\u00A0Studio\u2069.',
-        heroCta: 'تحميل Arbor AI Studio لويندوز (ملف واحد جاهز)',
-        tr1: 'تثبيت رسومي أنيق بدون نوافذ أوامر سوداء',
-        tr2: 'يعمل بأمان بدون طلب صلاحيات مسؤول (Admin)',
-        tr3: 'يبدأ خفيفاً ونظيفاً بدون داتا أو استهلاك بالخلفية',
-        sat1Title: 'محرك Wan 3.0 Cinema & Turbo',
-        sat1Sub: 'مشاهد 1080p متزامنة ونسخة خفيفة لكروت 8GB',
-        sat2Title: 'تبديل تلقائي للمفاتيح المجانية',
-        sat2Sub: 'Groq · Gemini · OpenRouter · Cerebras',
-        wnHeading: 'ما الجديد في الإصدار v2.2 — مرّر لتستكشف كل إضافة.',
-        wnSub: 'مع كل حركة سكرول، تنتقل داخل أحدث الإضافات المصممة لتسهيل شغلك الإبداعي والبرمجي بدون أي تعقيد تقني.',
-        wnPill1: '01 · محرك Wan 3.0 الجديد',
-        wnPill2: '02 · أربور كود والموجّه الذكي',
-        wnPill3: '03 · التوافق مع كل الأجهزة',
-        wnPill4: '04 · تحديثات نقية بضغطة زر',
-        wn1Badge: 'NEW OPEN-SOURCE VIDEO · 68 MODELS',
-        wn1Title: 'محرك الفيديو السينمائي Wan 3.0 بنسختين',
-        wn1Desc: 'أضفنا الجيل الأحدث Wan 3.0 في صدارة مكتبة الموديلات لإنتاج مشاهد متصلة بدقة 1080p مع تناغم صوتي وبصري، إلى جانب نسخة Turbo السريعة المصممة لكروت 8GB VRAM.',
-        wn1Pt1: 'نسخة Wan 3.0 Cinema لإخراج اللقطات السينمائية بدقة 1080p',
-        wn1Pt2: 'نسخة Wan 3.0 Turbo 5B الخفيفة والسريعة لكروت 8 جيجابايت',
-        wn1Pt3: 'توسيع المكتبة إلى 68 موديلاً مفتوح المصدر جاهزاً للتنزيل الاختياري',
-        wn2Badge: 'CLAUDE-GRADE CODE · AUTO-COMPACT · SMART API',
-        wn2Title: 'أربور كود بصلاحيات ذكية، ضغط تلقائي للتوكن، وفحص حي للـ API',
-        wn2Desc: 'اختر مشروعك من المجلدات الأخيرة، تحكّم في التعديلات بثلاث صلاحيات (تخطيط، استئذان، أو تلقائي Auto)، واستمتع بمحادثات فائقة السرعة بفضل ضغط السياق التلقائي وفحص مفاتيح الـ API لحظة الحفظ.',
-        wn2Pt1: '3 مستويات صلاحيات للمشروع (Plan / Ask / Auto) مع قائمة المشاريع الأخيرة',
-        wn2Pt2: 'ضغط وتلخيص تلقائي للتوكن (Auto-Compact) لكل موديل لمنع ثقل الشات الطويل',
-        wn2Pt3: 'فحص مباشر لمفاتيح الـ API وتبديل ذكي فوري بين المزودات المجانية والاحترافية',
-        wn3Badge: 'UNIVERSAL WINDOWS COMPATIBILITY',
-        wn3Title: 'مدير تنزيلات ذكي يعمل بسلاسة على كل جهاز',
-        wn3Desc: 'سواء كان جهازك يحتوي على قرص C فقط أو عدة أقراص، يكتشف البرنامج تلقائياً المجلدات الصالحة للكتابة ويعرض المساحة المتبقية الحقيقية وسرعة التحميل لحظة بلحظة.',
-        wn3Pt1: 'تعرّف وتعافٍ تلقائي للمسارات على جميع أجهزة اللابتوب والمكتبي',
-        wn3Pt2: 'إيقاف مؤقت واستكمال من نفس الميجابايت مع زر إعادة محاولة فوري',
-        wn3Pt3: 'قائمة بداية سريعة لأشهر 6 محركات فيديو وصوت وترقية 4K وبرمجة',
-        wn4Badge: 'CLEAN ONE-CLICK UPDATES',
-        wn4Title: 'تبويب «ما الجديد» وتحديث رسمي هادئ بضغطة واحدة',
-        wn4Desc: 'أزلنا كل الإعدادات التقنية غير المفيدة للمستخدم؛ أصبح لديك تبويب مصوّر مدمج لعرض كل جديد، مع تحديث تلقائي رسومي بشريط تحميل واضح وبدون أي نوافذ أوامر مزعجة.',
-        wn4Pt1: 'تبويب «ما الجديد» داخل البرنامج بلقطات شاشة حقيقية وأزرار تجربة فورية',
-        wn4Pt2: 'شريط تحميل حي للتحديثات وترقية رسومية أنيقة تحفظ كل مشاريعك',
-        wn4Pt3: 'واجهة إعدادات نقية ومبسطة 100% بالعربية والإنجليزية',
-        tourHeading: 'أربعة عوالم إبداعية تتحرك بتناغم واحد.',
-        tourSub: 'مرّر للأسفل للغوص داخل بيئات العمل الحقيقية في الاستوديو، أو اضغط على أي شاشة لتكبيرها بدقتها الكاملة.',
-        ch1Title: 'استوديو الميديا السينمائي',
-        ch1Desc: 'جلسات مخصصة للفيديو والصور والصوت تفلتر الموديلات تلقائياً مع استعراض المراجع ونسخ البرومبت بضغطة واحدة.',
-        ch2Title: 'محرر مسارات النود التفاعلي',
-        ch2Desc: 'ابنِ سلاسل إنتاج متقدمة واربط عقد التوليد والتحسين مع إضافة سريعة بالزر الأيمن وترتيب هندسي فوري.',
-        ch3Title: 'أربور كود للبرمجة المحلية',
-        ch3Desc: 'اربط أي مجلد مشروع على جهازك ليقرأ المساعد البرمجي ملفاتك ويبني معك الكود مباشرة بأسلوب احترافي نظيف.',
-        ch4Title: 'مراقب الأداء الحي للعتاد',
-        ch4Desc: 'قراءة فورية لاستهلاك كرت الشاشة والذاكرة وحرارة الـ GPU لضمان أعلى استقرار أثناء الريندر والتشغيل.',
-        craftHeading: 'دقة بصرية في الوضع الليلي والنهاري.',
-        craftSub: 'هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، وتتحرك معك بانسيابية مع كل تمريرة.',
-        pDarkTitle: 'الوضع الليلي السينمائي (Obsidian)',
-        pDarkSub: 'تركيز بصري طويل بدون إجهاد',
-        pLightTitle: 'الوضع النهاري المتوازن (Daylight)',
-        pLightSub: 'تباين نقي لبيئات الإضاءة العالية',
-        sp1Title: 'ملف واحد مستقل وجاهز فوراً',
-        sp1Desc: 'محرك التشغيل والواجهة مدمجة بالكامل في ملف واحد؛ يفتح فوراً دون الحاجة لتثبيت Python أو Node.js أو أي إضافات معقدة.',
-        sp2Title: 'خصوصية محلية 100% على جهازك',
-        sp2Desc: 'جميع مخرجاتك ومشاريعك ومفاتيحك تُحفظ محلياً على قرصك فقط تحت سيطرتك، بدون رفع أي ملفات لخوادم خارجية.',
-        sp3Title: 'تحديثات رسومية هادئة وآمنة',
-        sp3Desc: 'تصل التحديثات من قناة MAVYR Studio الرسمية بواجهة رسومية نظيفة وشريط تقدم واضح دون أي نوافذ أوامر سوداء.',
-        setupHeading: 'تثبيت سهل، شفاف، ومطمئن من أول ثانية.',
-        setupSub: 'صممنا معالج التثبيت في MAVYR Studio ليكون واضحاً وبسيطاً لأي مستخدم: ثلاث خطوات رسومية هادئة فقط بدون أي شاشات معقدة.',
-        peaceBanner: '✓ مصمم لراحتك واطمئنانك: لا يطلب صلاحيات مسؤول النظام (Admin)، لا يفتح أي نوافذ أوامر (Terminal)، يبدأ فارغاً ونظيفاً تماماً، ويتضمن أداة إلغاء تثبيت رسمية آمنة في إعدادات ويندوز.',
-        ws1Title: 'الترحيب واختيار اللغة',
-        ws1Sub: 'واجهة ترحيب راقية تدعم العربية والإنجليزية بضغطة زر',
-        ws2Title: 'مراجعة اتفاقية MAVYR Studio',
-        ws2Sub: 'وثيقة حقوق واضحة ومباشرة لحماية المستخدم والمنتج',
-        ws3Title: 'تحديد المجلدات والتشغيل الفوري',
-        ws3Sub: 'اختيار تلقائي ذكي لأفضل قرص متاح على جهازك وتشغيل فوري',
-        verifySummary: 'ملاحظة التشغيل الأول على ويندوز وبصمة التحقق SHA-256',
-        verifyNote: 'يعمل المثبّت بصلاحيات المستخدم العادية الآمنة دون المساس بملفات النظام. عند فتح أي برنامج مكتبي جديد لأول مرة على Windows، في حال ظهور نافذة الحماية القياسية اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».',
-        copyBtn: 'نسخ',
-        copiedBtn: 'تم ✓',
-        closingTitle: 'ادخل عالم Arbor AI Studio الآن.',
-        closingSub: 'ملف واحد أنيق، خالٍ من التعقيد، جاهز للعمل على جهازك خلال ثوانٍ.',
-        closingBtn: 'تحميل المثبّت الرسمي (Arbor_AI_Setup.exe)',
-        footerCopy: 'جميع الحقوق محفوظة © 2026 MAVYR Studio. برنامج محمي بحقوق الملكية الفكرية.'
-      },
-      en: {
-        navWhatsNew: "What's New in v2.2",
-        navSafety: 'Safe Setup',
-        navCta: 'Download for Windows',
-        heroBadge: 'Release v2.2 Now Live — Claude-Style Code Permissions, Auto-Compact Memory & Wan 3.0',
-        heroTitle: 'A vast cinema & coding AI universe, running natively on your PC.',
-        heroSub: 'One calm desktop workstation uniting generative video, image & audio, visual node pipelines, and local project coding—crafted with 100% local privacy by MAVYR Studio.',
-        heroCta: 'Download Arbor AI Studio for Windows (All-in-One)',
-        tr1: 'Pure Graphical Setup — Zero Black Terminal Windows',
-        tr2: 'Runs Safely Without Administrator Elevation',
-        tr3: 'Starts Clean & Lightweight with Zero Background Bloat',
-        sat1Title: 'Wan 3.0 Cinema & 8GB Turbo',
-        sat1Sub: '1080p multi-shot AV + fast 8 GB VRAM edition',
-        sat2Title: 'Smart Free-API Failover',
-        sat2Sub: 'Groq · Gemini · OpenRouter · Cerebras',
-        wnHeading: "What's New in Release v2.2 — Scroll Inside Every Upgrade.",
-        wnSub: 'Every scroll propels you through the newest practical additions built for effortless video creation and coding.',
-        wnPill1: '01 · Wan 3.0 Cinema & Turbo',
-        wnPill2: '02 · Arbor Code & Smart API',
-        wnPill3: '03 · Universal PC Storage',
-        wnPill4: '04 · Pure One-Click Updates',
-        wn1Badge: 'NEW OPEN-SOURCE VIDEO · 68 MODELS',
-        wn1Title: 'Open-Source Wan 3.0 Cinema & 8GB Turbo',
-        wn1Desc: 'Added next-gen Wan 3.0 at the top of the catalog for 1080p multi-shot audiovisual storytelling alongside a fast Turbo 5B edition built for 8 GB GPUs.',
-        wn1Pt1: 'Wan 3.0 Cinema Multimodal for 1080p multi-shot scenes',
-        wn1Pt2: 'Wan 3.0 Turbo 5B optimized for consumer 8 GB VRAM cards',
-        wn1Pt3: 'Expanded library of 68 verified on-demand open-source models',
-        wn2Badge: 'CLAUDE-GRADE CODE · AUTO-COMPACT · SMART API',
-        wn2Title: 'Arbor Code Permissions, Auto-Compact Context & Live API Check',
-        wn2Desc: 'Switch recent project folders in one click, choose Plan / Ask / Auto file permissions, and keep chats lightning-fast forever with per-model Auto-Compaction and live API key verification.',
-        wn2Pt1: '3 workspace permission modes (Plan / Ask / Auto) + Recent Folders switcher',
-        wn2Pt2: 'Automatic per-model token compaction (1M Gemini, 200K Claude, 128K Groq, 32K Local)',
-        wn2Pt3: 'Live API key verification on save + zero-downtime multi-provider failover',
-        wn3Badge: 'UNIVERSAL WINDOWS COMPATIBILITY',
-        wn3Title: 'Self-Healing Download Engine for Every Windows PC',
-        wn3Desc: 'Whether your laptop has a single C: drive or multiple disks, Arbor AI automatically selects writable storage with live free-space gauges and instant pause/resume.',
-        wn3Pt1: 'Automatic writable folder detection across all Windows 10/11 PCs',
-        wn3Pt2: 'Byte-exact Pause, Resume, and 1-Click Retry on unstable networks',
-        wn3Pt3: '6 curated quick-start engines ready to queue in one click',
-        wn4Badge: 'CLEAN ONE-CLICK UPDATES',
-        wn4Title: "Visual What's New Hub & Silent Graphical Updates",
-        wn4Desc: 'All technical clutter has been removed. Explore visual highlights right inside the app and install official updates with a clean live progress bar—never a terminal window.',
-        wn4Pt1: "Dedicated in-app What's New tab with real screenshots & Try Now buttons",
-        wn4Pt2: 'Live MB/s update progress bar & smooth graphical auto-restart',
-        wn4Pt3: 'Streamlined bilingual Arabic & English workstation settings',
-        tourHeading: 'Four creative worlds moving in seamless harmony.',
-        tourSub: 'Scroll down to dive into live workspaces inside Arbor AI Studio, or click any screen to inspect full resolution.',
-        ch1Title: 'Generative Media Studio',
-        ch1Desc: 'Dedicated video, image, and audio sessions filter compatible models automatically with reference controls and instant prompt copy.',
-        ch2Title: 'Interactive Node Graph Engine',
-        ch2Desc: 'Build multi-stage creative pipelines with right-click node insertion and clean geometric auto-layout.',
-        ch3Title: 'Arbor Code Local Workspace',
-        ch3Desc: 'Bind any project folder on your machine so Arbor Code inspects, creates, and refactors files directly on disk.',
-        ch4Title: 'Live GPU & Hardware Profiler',
-        ch4Desc: 'Real-time VRAM, GPU load, temperature, and disk speed telemetry keeps heavy creative renders smooth and safe.',
-        craftHeading: 'Precision across Obsidian Dark & Studio Daylight.',
-        craftSub: 'Calibrated contrast in both Arabic and English, gliding smoothly with every scroll.',
-        pDarkTitle: 'Cinema Obsidian Mode',
-        pDarkSub: 'Engineered for deep focus sessions',
-        pLightTitle: 'Calibrated Daylight Mode',
-        pLightSub: 'Crisp clarity in bright studio environments',
-        sp1Title: 'Self-Contained Single File',
-        sp1Desc: 'Compiled desktop shell and inference engine packaged into one clean file—no Python, Node.js, or external setup required.',
-        sp2Title: '100% Local Privacy on Your Disk',
-        sp2Desc: 'Every render, workflow, and encrypted key stays strictly on your own drives with zero cloud uploads.',
-        sp3Title: 'Calm Graphical Updates',
-        sp3Desc: 'Official MAVYR Studio updates download with a clear progress bar and upgrade graphically without command prompts.',
-        setupHeading: 'Simple, transparent, and reassuring from second one.',
-        setupSub: 'MAVYR Studio designed the installer to feel effortless for everyone: three calm graphical steps with zero technical friction.',
-        peaceBanner: '✓ Built for complete peace of mind: requires NO Administrator rights, opens ZERO black terminal windows, starts 100% clean with zero background bloat, and includes a safe official Windows uninstaller.',
-        ws1Title: 'Welcome & Language Choice',
-        ws1Sub: 'Clean studio introduction with instant Arabic/English switching',
-        ws2Title: 'MAVYR Studio License Review',
-        ws2Sub: 'Clear, transparent license agreement protecting both user and studio',
-        ws3Title: 'Smart Folder Detection & Launch',
-        ws3Sub: 'Automatically picks the best writable drive on your PC and launches cleanly',
-        verifySummary: 'Windows First-Run Note & SHA-256 Checksum',
-        verifyNote: 'The installer runs safely in standard user space without touching Windows system files. On first launch of a new download on Windows, if SmartScreen prompts, click "More info" then "Run anyway".',
-        copyBtn: 'Copy',
-        copiedBtn: 'Copied ✓',
-        closingTitle: 'Step inside Arbor AI Studio today.',
-        closingSub: 'One refined executable, zero complexity, ready on your Windows PC in seconds.',
-        closingBtn: 'Download Official Installer (Arbor_AI_Setup.exe)',
-        footerCopy: 'Copyright © 2026 MAVYR Studio. All Rights Reserved. Proprietary Software.'
-      }
-    };
+    (function () {
+      document.documentElement.classList.add('js-ready');
 
-    let currentLang = 'ar';
-    const rawHash = '210ef30262bc81bb073cb9b5078e5fcd068cf6cf940f7bd856366b3f652c429a';
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const SHA256_V22 = '210ef30262bc81bb073cb9b5078e5fcd068cf6cf940f7bd856366b3f652c429a';
 
-    // 1. Language Switcher
-    const langBtn = document.getElementById('langBtn');
-    function applyLang() {
-      document.documentElement.lang = currentLang;
-      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-      langBtn.textContent = currentLang === 'ar' ? 'English' : 'عربي';
-      const dict = I18N[currentLang];
-      document.querySelectorAll('[data-i18n]').forEach((el) => {
-        const k = el.getAttribute('data-i18n');
-        if (dict[k]) el.textContent = dict[k];
-      });
-      cacheLayoutMetrics();
-    }
-    langBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'ar' ? 'en' : 'ar';
-      applyLang();
-    });
+      const I18N = {
+        en: {
+          nav_capabilities: 'Capabilities',
+          nav_architecture: 'Architecture',
+          nav_calibration: 'Interface',
+          nav_download: 'Download',
+          nav_cta: 'Get Arbor',
 
-    // 2. IntersectionObserver Reveal Choreography
-    const revealEls = document.querySelectorAll('[data-reveal]');
-    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
+          hero_title: 'Cinema, pipelines, and code. Native to your GPU.',
+          hero_lead: 'Direct 1080p video, wire visual node graphs, and ship software inside one unified desktop workstation—engineered by MAVYR Studio around 68 open-source models and smart multi-API routing.',
+          cta_win: 'Download for Windows',
+          badge_soon: 'Soon',
+          hero_spec_line: 'Windows 10 & 11 (64-bit) · Release 2.2.0 · 254 MB',
+          hero_soon_feedback: '{os} builds are currently in active development at MAVYR Studio. Windows x64 is available today.',
+
+          disc_heading: 'Four disciplines. One unified runtime.',
+          disc_sub: 'Move between generative video, node-based compositing, repository engineering, and multi-provider routing without leaving your local workspace.',
+
+          tab0_title: 'Generative Cinema & Audio',
+          tab0_desc: 'Direct multi-shot 1080p video, photorealistic stills, and synchronized foley audio with verified camera prompts and VRAM-aware presets.',
+          tab1_title: 'Infinite Node Pipelines',
+          tab1_desc: 'Chain prompt directors, image synthesis, motion models, 4K upscalers, and audio mastering on a non-destructive visual graph.',
+          tab2_title: 'Arbor Code Workspace',
+          tab2_desc: 'Bind any local repository with granular file-write permissions and automatic context compaction across 1M-token engineering sessions.',
+          tab3_title: 'Smart Multi-API Gateway',
+          tab3_desc: 'Pair zero-cost local GGUF inference with encrypted cloud keys across Gemini, Claude, OpenRouter, and Groq with instant failover.',
+
+          arch_heading: 'Engineered around local sovereignty.',
+          arch_sub: 'Every subsystem—from GPU memory scheduling to AES-256 credential storage—executes directly on your machine with zero telemetry.',
+
+          node1_tag: '68 OPEN-WEIGHT ENGINES',
+          node1_title: 'On-demand model library',
+          node1_copy: 'Pull only the checkpoints your production needs—from Wan 3.0 Cinema and HunyuanVideo to Qwen 2.5 Coder—with resumable shard verification.',
+          node2_tag: 'UP TO 1M TOKENS',
+          node2_title: 'Adaptive context compaction',
+          node2_copy: 'Per-model token budgets automatically summarize older turns before context saturation, keeping deep architectural sessions responsive.',
+          node3_tag: '8 GB TO MULTI-GPU',
+          node3_title: 'Live hardware telemetry',
+          node3_copy: 'Real-time GPU utilization, VRAM allocation, and thermal monitoring match quantization and offload settings to your exact card.',
+          node4_tag: 'AES-256 LOCAL VAULT',
+          node4_title: 'Private by architecture',
+          node4_copy: 'Source trees, rendered masters, node graphs, and encrypted API keys stay on your local disks with no mandatory cloud sign-in.',
+
+          cal_heading: 'Calibrated for color suites and daylight desks.',
+          cal_sub: 'Drag the optical divider to inspect Obsidian Dark and Studio Daylight—both tuned for long creative and engineering sessions.',
+          cal_btn_dark: 'Obsidian Dark',
+          cal_btn_split: '50 / 50 Split',
+          cal_btn_light: 'Studio Daylight',
+
+          dl_heading: 'Build on Arbor AI Studio.',
+          dl_sub: 'Release 2.2 is available now for Windows x64, with native Apple Silicon and Linux builds in active development at MAVYR Studio.',
+          win_status: 'v2.2.0 · Available',
+          win_arch: 'Windows 10 & 11 (64-bit) · 254 MB',
+          soon_full: 'Coming soon',
+          mac_arch: 'Apple Silicon (M1 – M4) · Universal',
+          linux_arch: 'Ubuntu / Fedora (x64) · AppImage',
+          in_dev_note: 'In development at MAVYR Studio',
+          copy_sha: 'Copy SHA-256',
+          copied_sha: 'SHA-256 Copied',
+
+          footer_rights: '© 2026 MAVYR Studio. All rights reserved.',
+          footer_releases: 'Release 2.2.0 Notes'
+        },
+
+        ar: {
+          nav_capabilities: 'القدرات',
+          nav_architecture: 'المعمارية',
+          nav_calibration: 'الواجهة',
+          nav_download: 'التنزيل',
+          nav_cta: 'نزّل Arbor',
+
+          hero_title: 'السينما، مسارات التوليد، والكود. مباشرةً على معالجك الرسومي.',
+          hero_lead: 'أخرج الفيديو بدقة 1080p، واربط مسارات العُقد البصرية، وطوّر مشاريعك البرمجية داخل محطة عمل مكتبية واحدة من ابتكار \u2066MAVYR\u00A0Studio\u2069 مع 68 موديلاً مفتوح المصدر وتوجيه ذكي للـ API.',
+          cta_win: 'تنزيل لنظام Windows',
+          badge_soon: 'قريباً',
+          hero_spec_line: 'Windows 10 & 11 (64-bit) · الإصدار 2.2.0 · 254 MB',
+          hero_soon_feedback: 'نسخة {os} قيد التطوير حالياً في استوديو \u2066MAVYR\u00A0Studio\u2069 — نسخة Windows x64 متاحة للتنزيل الآن.',
+
+          disc_heading: 'أربع بيئات احترافية في محرك واحد متكامل.',
+          disc_sub: 'انتقل بسلاسة بين الإخراج السينمائي، ومسارات العُقد البصرية، وهندسة الكود، وتوجيه مزودات الـ API دون مغادرة مساحة عملك المحلية.',
+
+          tab0_title: 'الإخراج السينمائي والصوتيات',
+          tab0_desc: 'ولّد لقطات فيديو 1080p متعددة المشاهد وصوراً فائقة الواقعية ومؤثرات صوتية متزامنة عبر Wan 3.0 و FLUX.1.',
+          tab1_title: 'مسارات العُقد البصرية اللانهائية',
+          tab1_desc: 'اربط التوجيه النصي وتوليد المشاهد وترقية الدقة إلى 4K عبر SeedVR2 والماستر الصوتي داخل مخطط بصري مرن.',
+          tab2_title: 'بيئة Arbor Code الهندسية',
+          tab2_desc: 'اربط أي مستودع كود محلي مع صلاحيات دقيقة (تخطيط، استئذان، أو تعديل تلقائي) وضغط ذكي للسياق حتى مليون توكن.',
+          tab3_title: 'بوابة الـ API الموحّدة والتوجيه الذكي',
+          tab3_desc: 'ادمج تشغيل موديلات GGUF المحلية مجاناً مع مفاتيح السحابة المشفّرة لـ Gemini و Claude و Groq مع تبديل تلقائي فوري.',
+
+          arch_heading: 'معمارية مبنية على السيادة الكاملة لجهازك.',
+          arch_sub: 'كل طبقة في النظام—من جدولة ذاكرة الـ VRAM إلى تشفير المفاتيح بمعيار AES-256—تعمل محلياً على جهازك دون أي تتبع.',
+
+          node1_tag: '68 محركاً مفتوح المصدر',
+          node1_title: 'مكتبة موديلات عند الطلب',
+          node1_copy: 'نزّل الموديلات التي يتطلبها مشروعك فقط—من Wan 3.0 Cinema و HunyuanVideo إلى Qwen 2.5 Coder—مع استكمال تلقائي وتحقق من سلامة الملفات.',
+          node2_tag: 'سياق يصل إلى 1M توكن',
+          node2_title: 'ضغط ذكي وتلقائي للذاكرة',
+          node2_copy: 'ميزانية توكن مخصّصة لكل موديل تلخّص الحوارات الطويلة تلقائياً قبل امتلاء السياق للحفاظ على سرعة الاستجابة.',
+          node3_tag: 'من 8 GB حتى تعدد الكروت',
+          node3_title: 'قراءة حية لموارد العتاد',
+          node3_copy: 'مراقبة لحظية لاستهلاك المعالج الرسومي والـ VRAM والحرارة لضبط دقة التشغيل بما يلائم كارت الشاشة لديك.',
+          node4_tag: 'خزنة AES-256 محلية',
+          node4_title: 'خصوصية أصيلة في التصميم',
+          node4_copy: 'ملفات مشاريعك، ومخرجاتك السينمائية، ومفاتيح الـ API المشفّرة تبقى بالكامل على أقراصك المحلية دون حسابات سحابية إجبارية.',
+
+          cal_heading: 'معايرة بصرية لغرف المونتاج وإضاءة النهار.',
+          cal_sub: 'اسحب الفاصل البصري لمعاينة الوضع الليلي الداكن ووضع الإضاءة النهارية المصمّمين لجلسات العمل الطويلة.',
+          cal_btn_dark: 'الوضع الليلي',
+          cal_btn_split: 'مقارنة 50 / 50',
+          cal_btn_light: 'الإضاءة النهارية',
+
+          dl_heading: 'ابدأ البناء على Arbor AI Studio.',
+          dl_sub: 'الإصدار 2.2 متاح الآن لنظام Windows x64، مع استمرار تطوير نسخ macOS و Linux داخل \u2066MAVYR\u00A0Studio\u2069.',
+          win_status: 'v2.2.0 · متاح الآن',
+          win_arch: 'Windows 10 & 11 (64-bit) · 254 MB',
+          soon_full: 'قريباً',
+          mac_arch: 'معالجات Apple Silicon (M1 – M4)',
+          linux_arch: 'توزيعات Ubuntu / Fedora (x64) · AppImage',
+          in_dev_note: 'قيد التطوير في \u2066MAVYR\u00A0Studio\u2069',
+          copy_sha: 'نسخ SHA-256',
+          copied_sha: 'تم نسخ SHA-256',
+
+          footer_rights: '© 2026 \u2066MAVYR\u00A0Studio\u2069. جميع الحقوق محفوظة.',
+          footer_releases: 'ملاحظات الإصدار 2.2.0'
+        }
+      };
+
+      // Default language is strictly English ('en')
+      let currentLang = 'en';
+
+      const langSwitchBtn = document.getElementById('langSwitchBtn');
+      const footerLangBtn = document.getElementById('footerLangBtn');
+      const heroOsNote = document.getElementById('heroOsNote');
+      let osNoteTimer = null;
+
+      function setLanguage(lang) {
+        currentLang = lang === 'ar' ? 'ar' : 'en';
+        const html = document.documentElement;
+        html.lang = currentLang;
+        html.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+        const dict = I18N[currentLang];
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) {
+            el.textContent = dict[key];
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
-      revealEls.forEach((el) => io.observe(el));
-    } else {
-      revealEls.forEach((el) => el.classList.add('in-view'));
-    }
 
-    // 3. Layer 0: 3D Spatial Warp Canvas (Drives Z-depth forward with every scroll!)
-    const canvas = document.getElementById('worldCanvas');
-    const ctx = canvas ? canvas.getContext('2d') : null;
-    const stars = [];
-    const STAR_COUNT = 115;
-    let cw = window.innerWidth;
-    let ch = window.innerHeight;
-    let pointerX = 0;
-    let pointerY = 0;
-    let warpBoost = 0;
+        // Swap genuine v2.2 workstation renders to match active language
+        document.querySelectorAll('[data-lang-img]').forEach((img) => {
+          const base = img.getAttribute('data-lang-img');
+          img.src = 'assets/' + base + '-' + currentLang + '.png';
+        });
 
-    function initWorldStars() {
-      if (!canvas || prefersReducedMotion) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      cw = window.innerWidth;
-      ch = window.innerHeight;
-      canvas.width = Math.floor(cw * dpr);
-      canvas.height = Math.floor(ch * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (stars.length === 0) {
-        for (let i = 0; i < STAR_COUNT; i++) {
-          stars.push({
-            x: (Math.random() - 0.5) * 2200,
-            y: (Math.random() - 0.5) * 1600,
-            z: Math.random() * 1400 + 80,
-            emerald: i % 5 === 0
-          });
-        }
-      }
-    }
-
-    function renderWorldCanvas() {
-      if (!ctx || prefersReducedMotion) return;
-      ctx.clearRect(0, 0, cw, ch);
-      const cx = cw * 0.5 + pointerX * 26;
-      const cy = ch * 0.46 + pointerY * 18;
-      const fov = 520;
-      const speed = 0.65 + warpBoost;
-      warpBoost *= 0.91;
-
-      for (let i = 0; i < stars.length; i++) {
-        const s = stars[i];
-        s.z -= speed;
-        if (s.z <= 25) {
-          s.z = 1450;
-          s.x = (Math.random() - 0.5) * 2200;
-          s.y = (Math.random() - 0.5) * 1600;
-        }
-        const scale = fov / s.z;
-        const sx = cx + s.x * scale;
-        const sy = cy + s.y * scale;
-        if (sx < -20 || sx > cw + 20 || sy < -20 || sy > ch + 20) continue;
-
-        const alpha = Math.min(0.68, (1 - s.z / 1450) * 0.78);
-        const radius = Math.max(0.7, Math.min(2.6, scale * 1.45));
-
-        if (warpBoost > 1.4) {
-          const prevScale = fov / (s.z + warpBoost * 3.6);
-          const px = cx + s.x * prevScale;
-          const py = cy + s.y * prevScale;
-          ctx.strokeStyle = s.emerald
-            ? `rgba(16, 185, 129, ${(alpha * 0.75).toFixed(3)})`
-            : `rgba(245, 246, 248, ${(alpha * 0.45).toFixed(3)})`;
-          ctx.lineWidth = radius * 0.85;
-          ctx.beginPath();
-          ctx.moveTo(px, py);
-          ctx.lineTo(sx, sy);
-          ctx.stroke();
-        } else {
-          ctx.fillStyle = s.emerald
-            ? `rgba(16, 185, 129, ${alpha.toFixed(3)})`
-            : `rgba(245, 246, 248, ${(alpha * 0.65).toFixed(3)})`;
-          ctx.beginPath();
-          ctx.arc(sx, sy, radius, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-      requestAnimationFrame(renderWorldCanvas);
-    }
-
-    if (!prefersReducedMotion && canvas) {
-      initWorldStars();
-      requestAnimationFrame(renderWorldCanvas);
-      window.addEventListener('pointermove', (e) => {
-        pointerX = (e.clientX / Math.max(1, cw)) - 0.5;
-        pointerY = (e.clientY / Math.max(1, ch)) - 0.5;
-      }, { passive: true });
-    }
-
-    // 4. Unified 60/120fps Composite-Only Scroll Physics Engine (Zero Layout Thrashing!)
-    const progressBar = document.getElementById('scrollProgressBar');
-    const ambientHorizon = document.getElementById('ambientHorizon');
-    const hero3dFrame = document.getElementById('hero3dFrame');
-    const hero3dGlare = document.getElementById('hero3dGlare');
-    const heroSatRight = document.getElementById('heroSatRight');
-    const heroSatLeft = document.getElementById('heroSatLeft');
-    const ribbonRowA = document.getElementById('ribbonRowA');
-    const ribbonRowB = document.getElementById('ribbonRowB');
-
-    const v21PortalTrack = document.getElementById('v21PortalTrack');
-    const v21Cards = Array.from(document.querySelectorAll('[data-v21-card]'));
-    const v21Btns = Array.from(document.querySelectorAll('[data-v21-btn]'));
-
-    const scrollyTrack = document.getElementById('scrollyTrack');
-    const chapterBtns = Array.from(document.querySelectorAll('.chapter-btn'));
-    const chapterFills = chapterBtns.map((b) => b.querySelector('.chapter-progress-fill'));
-    const scrollyImgs = Array.from(document.querySelectorAll('.scrolly-slide-img'));
-
-    const parallaxCards = Array.from(document.querySelectorAll('[data-parallax]'));
-    const setupSection = document.getElementById('safe-setup');
-    const closingSection = document.getElementById('closingSection');
-    const closingPortalGlow = document.getElementById('closingPortalGlow');
-
-    const wizBtns = Array.from(document.querySelectorAll('.wiz-pill'));
-    const wizImgs = Array.from(document.querySelectorAll('.wizard-preview-img'));
-
-    // Cached document offsets (recomputed ONLY on resize/load, never per-frame!)
-    const metrics = {
-      docScrollable: 1,
-      vh: window.innerHeight,
-      vw: window.innerWidth,
-      v21Top: 0,
-      v21Span: 1,
-      scrollyTop: 0,
-      scrollySpan: 1,
-      parallaxCenters: [],
-      setupTop: 0,
-      setupHeight: 1,
-      closingTop: 0
-    };
-
-    function cacheLayoutMetrics() {
-      const sy = window.scrollY || window.pageYOffset;
-      metrics.vh = window.innerHeight;
-      metrics.vw = window.innerWidth;
-      metrics.docScrollable = Math.max(1, document.documentElement.scrollHeight - metrics.vh);
-
-      if (v21PortalTrack) {
-        const r = v21PortalTrack.getBoundingClientRect();
-        metrics.v21Top = sy + r.top;
-        metrics.v21Span = Math.max(1, v21PortalTrack.offsetHeight - metrics.vh);
-      }
-      if (scrollyTrack) {
-        const r = scrollyTrack.getBoundingClientRect();
-        metrics.scrollyTop = sy + r.top;
-        metrics.scrollySpan = Math.max(1, scrollyTrack.offsetHeight - metrics.vh);
-      }
-      metrics.parallaxCenters = parallaxCards.map((card) => {
-        const prev = card.style.transform;
-        card.style.transform = 'none';
-        const r = card.getBoundingClientRect();
-        card.style.transform = prev;
-        return {
-          el: card,
-          centerY: sy + r.top + r.height * 0.5,
-          amp: parseFloat(card.getAttribute('data-parallax') || '0')
-        };
-      });
-      if (setupSection) {
-        const r = setupSection.getBoundingClientRect();
-        metrics.setupTop = sy + r.top;
-        metrics.setupHeight = Math.max(1, r.height);
-      }
-      if (closingSection) {
-        const r = closingSection.getBoundingClientRect();
-        metrics.closingTop = sy + r.top;
-      }
-    }
-
-    let targetScrollY = window.scrollY || 0;
-    let smoothScrollY = targetScrollY;
-    let lastRawScrollY = targetScrollY;
-    let physicsRunning = false;
-    let activeChapter = 0;
-    let activeV21Idx = 0;
-    let activeWiz = 0;
-    let userClickedWiz = false;
-
-    function selectWizStep(idx) {
-      if (idx === activeWiz) return;
-      activeWiz = idx;
-      wizBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
-      wizImgs.forEach((img, i) => img.classList.toggle('active', i === idx));
-    }
-
-    wizBtns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        userClickedWiz = true;
-        selectWizStep(idx);
-      });
-    });
-
-    function setChapter(idx, fillRatio) {
-      if (idx !== activeChapter) {
-        activeChapter = idx;
-        chapterBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
-        scrollyImgs.forEach((img, i) => img.classList.toggle('active', i === idx));
-      }
-      chapterFills.forEach((f, i) => {
-        if (!f) return;
-        const val = i < idx ? 1 : (i === idx ? fillRatio : 0);
-        f.style.transform = `scaleX(${val.toFixed(3)})`;
-      });
-    }
-
-    chapterBtns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        if (metrics.vw >= 960 && scrollyTrack) {
-          const targetY = metrics.scrollyTop + metrics.scrollySpan * ((idx + 0.14) / 4);
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
-        } else {
-          setChapter(idx, 1);
-        }
-      });
-    });
-
-    v21Btns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        if (metrics.vw >= 960 && v21PortalTrack) {
-          const targetY = metrics.v21Top + metrics.v21Span * (idx / 3.05);
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
-        } else if (v21Cards[idx]) {
-          v21Cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-    });
-
-    function applyScrollChoreography(sy) {
-      const docProgress = Math.min(1, Math.max(0, sy / metrics.docScrollable));
-      progressBar.style.transform = `scaleX(${docProgress.toFixed(4)})`;
-
-      if (prefersReducedMotion) return;
-
-      // Ambient horizon subtle breathing shift
-      if (ambientHorizon) {
-        const hy = Math.sin(docProgress * Math.PI * 2) * 28;
-        ambientHorizon.style.transform = `translate3d(-50%, ${hy.toFixed(1)}px, 0)`;
+        const nextLabel = currentLang === 'en' ? 'العربية' : 'English';
+        if (langSwitchBtn) langSwitchBtn.textContent = nextLabel;
+        if (footerLangBtn) footerLangBtn.textContent = nextLabel;
+        if (heroOsNote) heroOsNote.classList.remove('is-highlighted');
       }
 
-      // Act 1: Hero 3D Multi-Plane Unfold + Satellites
-      const heroT = Math.min(1, Math.max(0, sy / 540));
-      const rotX = (1 - heroT) * 19;
-      const sc = 0.88 + heroT * 0.12;
-      const ty = (1 - heroT) * 32;
-      hero3dFrame.style.transform = `rotateX(${rotX.toFixed(2)}deg) scale(${sc.toFixed(4)}) translate3d(0, ${ty.toFixed(1)}px, 0)`;
-      hero3dGlare.style.opacity = (1 - heroT * 0.68).toFixed(3);
-      hero3dGlare.style.transform = `translate3d(${(heroT * 14).toFixed(1)}%, 0, 0)`;
-
-      if (metrics.vw >= 1040) {
-        if (heroSatRight) {
-          heroSatRight.style.transform = `translate3d(${(heroT * 26).toFixed(1)}px, ${(-heroT * 44).toFixed(1)}px, 0)`;
-        }
-        if (heroSatLeft) {
-          heroSatLeft.style.transform = `translate3d(${(-heroT * 26).toFixed(1)}px, ${(-heroT * 36).toFixed(1)}px, 0)`;
-        }
+      if (langSwitchBtn) {
+        langSwitchBtn.addEventListener('click', () => {
+          setLanguage(currentLang === 'en' ? 'ar' : 'en');
+        });
       }
-
-      // Act 2: Counter-Kinetic Horizontal Ribbons
-      const shift = (sy * 0.24) % 920;
-      if (ribbonRowA) ribbonRowA.style.transform = `translate3d(${(-shift).toFixed(1)}px, 0, 0)`;
-      if (ribbonRowB) ribbonRowB.style.transform = `translate3d(${(shift - 320).toFixed(1)}px, 0, 0)`;
-
-      // Act 3: Pinned 3D Stacking Portal for Release v2.1 (Desktop)
-      if (metrics.vw >= 960 && v21Cards.length === 4) {
-        const rawP = (sy - metrics.v21Top) / metrics.v21Span;
-        const p = Math.min(1, Math.max(0, rawP));
-        const stagePos = p * 3; // 0..3 across 4 cards
-        const currentIdx = Math.min(3, Math.round(stagePos));
-        if (currentIdx !== activeV21Idx) {
-          activeV21Idx = currentIdx;
-          v21Btns.forEach((b, i) => b.classList.toggle('active', i === currentIdx));
-        }
-
-        for (let i = 0; i < 4; i++) {
-          const card = v21Cards[i];
-          if (i === 0) {
-            const depthBehind = Math.max(0, stagePos);
-            const scaleDown = Math.max(0.86, 1 - depthBehind * 0.042);
-            const pushUp = -Math.min(48, depthBehind * 16);
-            const fade = Math.max(0.32, 1 - depthBehind * 0.24);
-            card.style.zIndex = '1';
-            card.style.opacity = fade.toFixed(3);
-            card.style.transform = `translate3d(0, ${pushUp.toFixed(1)}px, 0) scale(${scaleDown.toFixed(4)})`;
-          } else {
-            // Card i enters between (i - 1) and i
-            const enterT = Math.min(1, Math.max(0, stagePos - (i - 1)));
-            const easedEnter = 1 - Math.pow(1 - enterT, 3);
-            const depthAfter = Math.max(0, stagePos - i);
-            const yPct = (1 - easedEnter) * 108;
-            const scaleVal = (0.94 + easedEnter * 0.06) - Math.min(0.1, depthAfter * 0.042);
-            const pushUpPx = -Math.min(44, depthAfter * 16);
-            const alpha = enterT <= 0.005 ? 0 : Math.max(0.35, Math.min(1, enterT * 2.4) - depthAfter * 0.22);
-
-            card.style.zIndex = String(i + 1);
-            card.style.opacity = alpha.toFixed(3);
-            card.style.transform = `translate3d(0, calc(${yPct.toFixed(2)}% + ${pushUpPx.toFixed(1)}px), 0) scale(${scaleVal.toFixed(4)})`;
-          }
-        }
-      } else {
-        v21Cards.forEach((c) => {
-          c.style.opacity = '1';
-          c.style.transform = 'none';
+      if (footerLangBtn) {
+        footerLangBtn.addEventListener('click', () => {
+          setLanguage(currentLang === 'en' ? 'ar' : 'en');
         });
       }
 
-      // Act 4: Sticky 4-World Workstation Tour
-      if (metrics.vw >= 960 && scrollyTrack) {
-        const raw = (sy - metrics.scrollyTop) / metrics.scrollySpan;
-        if (raw >= -0.06 && raw <= 1.08) {
-          const clamped = Math.min(0.999, Math.max(0, raw));
-          const chIdx = Math.min(3, Math.floor(clamped * 4));
-          const subProgress = (clamped * 4) - chIdx;
-          setChapter(chIdx, Math.min(1, Math.max(0.08, subProgress)));
+      // Coming soon OS buttons tactile feedback
+      document.querySelectorAll('[data-os-soon]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const osName = btn.getAttribute('data-os-soon') || 'macOS';
+          const template = I18N[currentLang].hero_soon_feedback;
+          if (heroOsNote) {
+            heroOsNote.textContent = template.replace('{os}', osName);
+            heroOsNote.classList.add('is-highlighted');
+            clearTimeout(osNoteTimer);
+            osNoteTimer = setTimeout(() => {
+              heroOsNote.classList.remove('is-highlighted');
+              heroOsNote.textContent = I18N[currentLang].hero_spec_line;
+            }, 4600);
+          }
+        });
+      });
+
+      // Copy SHA-256 button
+      const copyShaBtn = document.getElementById('copyShaBtn');
+      if (copyShaBtn) {
+        copyShaBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(SHA256_V22);
+            copyShaBtn.textContent = I18N[currentLang].copied_sha;
+            setTimeout(() => {
+              copyShaBtn.textContent = I18N[currentLang].copy_sha;
+            }, 2400);
+          } catch (_) {}
+        });
+      }
+
+      // Interactive Workstation Capabilities Tabs
+      const tabs = Array.from(document.querySelectorAll('.discipline-tab'));
+      const shots = Array.from(document.querySelectorAll('.discipline-shot'));
+
+      function activateTab(idx) {
+        tabs.forEach((t, i) => {
+          const active = i === idx;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        shots.forEach((s, i) => {
+          s.classList.toggle('is-active', i === idx);
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const idx = Number(tab.getAttribute('data-tab-index') || 0);
+          activateTab(idx);
+        });
+      });
+
+      // Interactive Obsidian Dark / Studio Daylight Split Divider
+      const splitStage = document.getElementById('splitStage');
+      const splitLightLayer = document.getElementById('splitLightLayer');
+      const splitHandle = document.getElementById('splitHandle');
+      const splitPresetBtns = Array.from(document.querySelectorAll('[data-split-preset]'));
+      let isDraggingSplit = false;
+
+      function setSplitPercent(pct) {
+        const clamped = Math.max(6, Math.min(94, pct));
+        if (splitLightLayer) {
+          splitLightLayer.style.clipPath = `inset(0 0 0 ${clamped}%)`;
+        }
+        if (splitHandle) {
+          splitHandle.style.left = `${clamped}%`;
         }
       }
 
-      // Act 5: Opposite-Velocity 3D Parallax Cards
-      if (metrics.vw >= 900) {
-        const viewCenter = sy + metrics.vh * 0.5;
-        for (let i = 0; i < metrics.parallaxCenters.length; i++) {
-          const item = metrics.parallaxCenters[i];
-          const rel = (item.centerY - viewCenter) / metrics.vh;
-          if (rel > -1.3 && rel < 1.3) {
-            const py = (rel * item.amp).toFixed(1);
-            item.el.style.transform = `translate3d(0, ${py}px, 0)`;
+      setSplitPercent(50);
+
+      function updateSplitFromPointer(clientX) {
+        if (!splitStage) return;
+        const rect = splitStage.getBoundingClientRect();
+        const pct = ((clientX - rect.left) / rect.width) * 100;
+        setSplitPercent(pct);
+        splitPresetBtns.forEach((b) => b.classList.remove('is-active'));
+      }
+
+      if (splitStage) {
+        splitStage.addEventListener('pointerdown', (e) => {
+          isDraggingSplit = true;
+          splitStage.setPointerCapture(e.pointerId);
+          updateSplitFromPointer(e.clientX);
+        });
+        splitStage.addEventListener('pointermove', (e) => {
+          if (!isDraggingSplit) return;
+          updateSplitFromPointer(e.clientX);
+        });
+        splitStage.addEventListener('pointerup', () => {
+          isDraggingSplit = false;
+        });
+        splitStage.addEventListener('pointercancel', () => {
+          isDraggingSplit = false;
+        });
+      }
+
+      splitPresetBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = Number(btn.getAttribute('data-split-preset') || 50);
+          setSplitPercent(val);
+          splitPresetBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+        });
+      });
+
+      // Reveal observer
+      const revealEls = document.querySelectorAll('.reveal-up');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('in-view'));
+      }
+
+      // Composite-Only 60/120fps Scroll & Pointer 3D Depth Engine
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const navShell = document.getElementById('navShell');
+      const scrollFilament = document.getElementById('scrollFilament');
+      const logoRig = document.getElementById('logoRig');
+      const heroOrbitSvg = document.getElementById('heroOrbitSvg');
+      const monolithSheen = document.getElementById('monolithSheen');
+      const heroCopyWrap = document.getElementById('heroCopyWrap');
+      const workstationFrame = document.getElementById('workstationFrame');
+      const workstationGlare = document.getElementById('workstationGlare');
+      const reactorArena = document.getElementById('reactorArena');
+      const reactorHub3d = document.getElementById('reactorHub3d');
+      const reactorRingBack = document.getElementById('reactorRingBack');
+      const closingCrest = document.getElementById('closingCrest');
+
+      let pointerX = 0;
+      let pointerY = 0;
+      let targetPointerX = 0;
+      let targetPointerY = 0;
+      let rafPending = false;
+
+      function scheduleFrame() {
+        if (!rafPending && !prefersReducedMotion) {
+          rafPending = true;
+          requestAnimationFrame(renderFrame);
+        }
+      }
+
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          targetPointerX = (e.clientX / window.innerWidth - 0.5) * 2;
+          targetPointerY = (e.clientY / window.innerHeight - 0.5) * 2;
+          scheduleFrame();
+        },
+        { passive: true }
+      );
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          const sy = window.scrollY || 0;
+          if (navShell) {
+            navShell.classList.toggle('is-scrolled', sy > 24);
+          }
+          scheduleFrame();
+        },
+        { passive: true }
+      );
+
+      function renderFrame() {
+        rafPending = false;
+        const sy = window.scrollY || 0;
+        const docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pageProgress = Math.max(0, Math.min(1, sy / docH));
+
+        if (scrollFilament) {
+          scrollFilament.style.transform = `scaleX(${pageProgress.toFixed(4)})`;
+        }
+
+        // Smooth pointer interpolation
+        pointerX += (targetPointerX - pointerX) * 0.18;
+        pointerY += (targetPointerY - pointerY) * 0.18;
+
+        // 1. Hero 3D Arbor Neural Monolith: pointer tilt + scroll optical expansion
+        const heroProgress = Math.max(0, Math.min(1, sy / 540));
+        if (logoRig) {
+          const tiltY = pointerX * 16;
+          const tiltX = -pointerY * 14 + heroProgress * 10;
+          const scale = 1 + heroProgress * 0.42;
+          const liftY = -heroProgress * 28;
+          logoRig.style.transform = `translate3d(0, ${liftY.toFixed(1)}px, 0) scale3d(${scale.toFixed(3)}, ${scale.toFixed(3)}, 1) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+          logoRig.style.opacity = String(Math.max(0.15, 1 - heroProgress * 0.85));
+        }
+
+        if (heroOrbitSvg) {
+          const deg = sy * 0.16 + pointerX * 18;
+          heroOrbitSvg.style.transform = `rotate(${deg.toFixed(1)}deg)`;
+        }
+
+        if (monolithSheen) {
+          monolithSheen.style.transform = `translate3d(${(pointerX * 26).toFixed(1)}px, ${(pointerY * 26).toFixed(1)}px, 0)`;
+        }
+
+        if (heroCopyWrap) {
+          const copyFade = Math.max(0.25, 1 - heroProgress * 0.55);
+          heroCopyWrap.style.transform = `translate3d(0, ${(-heroProgress * 16).toFixed(1)}px, 0)`;
+          heroCopyWrap.style.opacity = copyFade.toFixed(3);
+        }
+
+        // 2. 3D Workstation Monitor: levels from 13deg perspective tilt into crisp 0deg studio view
+        const wsProgress = Math.max(0, Math.min(1, sy / 420));
+        const easedWs = 1 - Math.pow(1 - wsProgress, 3);
+        if (workstationFrame) {
+          const rotX = (1 - easedWs) * 13;
+          const zVal = (1 - easedWs) * -85;
+          const yVal = (1 - easedWs) * 12;
+          const sc = 0.95 + easedWs * 0.05;
+          workstationFrame.style.transform = `translate3d(0, ${yVal.toFixed(1)}px, ${zVal.toFixed(1)}px) rotateX(${rotX.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+        }
+        if (workstationGlare) {
+          const glareShift = -45 + easedWs * 95;
+          workstationGlare.style.transform = `translate3d(${glareShift.toFixed(1)}%, 0, 0)`;
+        }
+
+        // 3. Act 3 Reactor 3D Hub parallax
+        if (reactorArena && reactorHub3d) {
+          const rect = reactorArena.getBoundingClientRect();
+          const vh = window.innerHeight || 900;
+          if (rect.top < vh && rect.bottom > 0) {
+            const rel = (vh * 0.5 - (rect.top + rect.height * 0.5)) / vh;
+            const rX = rel * 18 - pointerY * 9;
+            const rY = pointerX * 14;
+            reactorHub3d.style.transform = `rotateX(${rX.toFixed(2)}deg) rotateY(${rY.toFixed(2)}deg)`;
+            if (reactorRingBack) {
+              reactorRingBack.style.transform = `translate3d(0, 0, -40px) rotate(${(sy * 0.09).toFixed(1)}deg)`;
+            }
           }
         }
-      }
 
-      // Act 6: Scroll-Responsive Setup Step Scrub (unless user manually clicked a step)
-      if (!userClickedWiz && setupSection) {
-        const relSetup = (sy + metrics.vh * 0.55 - metrics.setupTop) / metrics.setupHeight;
-        if (relSetup >= 0 && relSetup <= 1.05) {
-          const autoStep = Math.min(2, Math.max(0, Math.floor(relSetup * 3)));
-          selectWizStep(autoStep);
+        // 4. Closing Arbor Crest subtle depth rise
+        if (closingCrest) {
+          const crestOffset = (1 - pageProgress) * 48;
+          closingCrest.style.transform = `translate3d(-50%, ${crestOffset.toFixed(1)}px, 0) scale(${(0.94 + pageProgress * 0.08).toFixed(3)})`;
+        }
+
+        if (Math.abs(targetPointerX - pointerX) > 0.004 || Math.abs(targetPointerY - pointerY) > 0.004) {
+          scheduleFrame();
         }
       }
 
-      // Finale Expanding Portal Glow
-      if (closingPortalGlow) {
-        const dist = (sy + metrics.vh - metrics.closingTop) / Math.max(1, metrics.vh);
-        const pGlow = Math.min(1.35, Math.max(0.65, 0.65 + dist * 0.65));
-        closingPortalGlow.style.transform = `translate3d(-50%, 0, 0) scale(${pGlow.toFixed(3)})`;
+      if (!prefersReducedMotion) {
+        renderFrame();
       }
-    }
-
-    function stepPhysics() {
-      smoothScrollY += (targetScrollY - smoothScrollY) * 0.13;
-      if (Math.abs(targetScrollY - smoothScrollY) < 0.25) {
-        smoothScrollY = targetScrollY;
-      }
-      applyScrollChoreography(smoothScrollY);
-
-      if (Math.abs(targetScrollY - smoothScrollY) >= 0.25) {
-        requestAnimationFrame(stepPhysics);
-      } else {
-        physicsRunning = false;
-      }
-    }
-
-    window.addEventListener('scroll', () => {
-      targetScrollY = window.scrollY || window.pageYOffset;
-      const delta = Math.abs(targetScrollY - lastRawScrollY);
-      lastRawScrollY = targetScrollY;
-      warpBoost = Math.min(12, warpBoost + delta * 0.085);
-
-      if (!physicsRunning) {
-        physicsRunning = true;
-        requestAnimationFrame(stepPhysics);
-      }
-    }, { passive: true });
-
-    window.addEventListener('resize', () => {
-      initWorldStars();
-      cacheLayoutMetrics();
-      applyScrollChoreography(window.scrollY || 0);
-    }, { passive: true });
-
-    window.addEventListener('load', () => {
-      cacheLayoutMetrics();
-      applyScrollChoreography(window.scrollY || 0);
-    });
-
-    cacheLayoutMetrics();
-    applyScrollChoreography(targetScrollY);
-
-    // 5. Spotlight Hover Surface Coordinates
-    document.querySelectorAll('.spotlight-surface').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${(e.clientX - r.left).toFixed(0)}px`);
-        card.style.setProperty('--my', `${(e.clientY - r.top).toFixed(0)}px`);
-      }, { passive: true });
-    });
-
-    // 6. Full-Resolution Lightbox
-    const lightbox = document.getElementById('lightboxModal');
-    const lightboxImg = document.getElementById('lightboxImg');
-    function openZoom(src) {
-      if (!src) return;
-      lightboxImg.src = src;
-      lightbox.classList.add('open');
-    }
-
-    document.querySelectorAll('[data-zoom]').forEach((el) => {
-      el.addEventListener('click', () => openZoom(el.getAttribute('data-zoom')));
-    });
-    document.getElementById('scrollyStage').addEventListener('click', () => {
-      const activeImg = scrollyImgs[activeChapter];
-      if (activeImg) openZoom(activeImg.getAttribute('src'));
-    });
-    document.getElementById('wizardPreviewStage').addEventListener('click', () => {
-      const activeImg = wizImgs[activeWiz];
-      if (activeImg) openZoom(activeImg.getAttribute('src'));
-    });
-    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('open');
-    });
-
-    // 7. Copy SHA-256
-    document.getElementById('copyHashBtn').addEventListener('click', (e) => {
-      const btn = e.currentTarget;
-      navigator.clipboard.writeText(rawHash).then(() => {
-        btn.textContent = I18N[currentLang].copiedBtn;
-        setTimeout(() => {
-          btn.textContent = I18N[currentLang].copyBtn;
-        }, 1800);
-      });
-    });
+    })();
   </script>
 </body>
 </html>

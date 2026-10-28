@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Arbor AI Studio — MAVYR Studio</title>
-  <meta name="description" content="استوديو الذكاء الاصطناعي المكتبي المتكامل لتوليد الميديا، مسارات النود المرئية، وأربور كود. من تطوير MAVYR Studio." />
+  <meta name="description" content="استوديو الذكاء الاصطناعي المكتبي المتكامل لتوليد الفيديو والصور والصوت، مسارات النود المرئية، وأربور كود. من تطوير MAVYR Studio." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Arbor AI Studio — Official Release by MAVYR Studio" />
@@ -20,18 +20,20 @@
 
   <style>
     :root {
-      --bg-void: #050507;
-      --bg-stage: #0a0a0e;
-      --bg-surface: #111116;
-      --bg-elevated: #17171e;
-      --border-hairline: rgba(255, 255, 255, 0.075);
-      --border-strong: rgba(255, 255, 255, 0.16);
-      --text-primary: #f5f5f7;
-      --text-secondary: #9d9daa;
-      --text-muted: #62626f;
-      --ivory: #f5f5f7;
+      --bg-void: #040507;
+      --bg-stage: #090b10;
+      --bg-surface: #0f1219;
+      --bg-elevated: #161a24;
+      --border-hairline: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.17);
+      --text-primary: #f5f6f8;
+      --text-secondary: #a1a6b5;
+      --text-muted: #656b7c;
+      --ivory: #f5f6f8;
       --ivory-hover: #ffffff;
-      --ink-dark: #070709;
+      --ink-dark: #060709;
+      --emerald: #10b981;
+      --emerald-soft: rgba(16, 185, 129, 0.14);
       --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -42,7 +44,7 @@
     }
 
     ::selection {
-      background: rgba(245, 245, 247, 0.22);
+      background: rgba(16, 185, 129, 0.28);
       color: #ffffff;
     }
 
@@ -51,14 +53,14 @@
       height: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #050507;
+      background: #040507;
     }
     ::-webkit-scrollbar-thumb {
-      background: #272732;
+      background: #232836;
       border-radius: 99px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #3e3e4e;
+      background: #363e52;
     }
 
     html {
@@ -88,73 +90,83 @@
       unicode-bidi: isolate;
     }
 
-    /* Top Scroll Progress Hairline (Composite scaleX only) */
+    /* ==================== LAYER 0: 3D SPATIAL WORLD CANVAS ==================== */
+    #worldCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    .ambient-horizon {
+      position: fixed;
+      top: -32vh;
+      left: 50%;
+      width: 98vw;
+      max-width: 1320px;
+      height: 70vh;
+      transform: translate3d(-50%, 0, 0);
+      background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.085) 0%, rgba(245, 246, 248, 0.045) 36%, transparent 72%);
+      pointer-events: none;
+      z-index: 1;
+      will-change: transform, opacity;
+    }
+
+    /* Top Scroll Progress Beam (Composite scaleX only) */
     .scroll-progress-bar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: var(--ivory);
+      height: 2.5px;
+      background: linear-gradient(90deg, var(--emerald), var(--ivory));
       transform-origin: right center;
       transform: scaleX(0);
-      z-index: 200;
+      z-index: 220;
       pointer-events: none;
-      opacity: 0.9;
     }
     html[dir="ltr"] .scroll-progress-bar {
       transform-origin: left center;
     }
 
-    /* Ambient Cinema Studio Lighting */
-    .ambient-halo {
-      position: fixed;
-      top: -28vh;
-      left: 50%;
-      width: 96vw;
-      max-width: 1180px;
-      height: 62vh;
-      transform: translate3d(-50%, 0, 0);
-      background: radial-gradient(ellipse at center, rgba(245, 245, 247, 0.075) 0%, rgba(160, 165, 190, 0.025) 42%, transparent 72%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1220px;
       margin: 0 auto;
       padding: 0 28px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
-    /* Floating Minimalist Header */
+    /* ==================== FLOATING GLASS NAVBAR ==================== */
     .navbar-wrap {
       position: fixed;
       top: 18px;
       left: 0;
       right: 0;
-      z-index: 120;
+      z-index: 150;
       padding: 0 20px;
       pointer-events: none;
     }
 
     .navbar {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
-      height: 58px;
+      height: 60px;
       padding: 0 18px;
       border-radius: 999px;
-      background: rgba(12, 12, 16, 0.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(9, 11, 16, 0.74);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border-hairline);
       display: flex;
       align-items: center;
       justify-content: space-between;
       pointer-events: auto;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.52);
     }
 
     .brand-cluster {
@@ -166,8 +178,8 @@
     }
 
     .brand-icon {
-      width: 32px;
-      height: 32px;
+      width: 33px;
+      height: 33px;
       border-radius: 9px;
       border: 1px solid var(--border-strong);
     }
@@ -187,7 +199,7 @@
 
     .nav-mavyr {
       height: 15px;
-      opacity: 0.82;
+      opacity: 0.86;
     }
 
     .nav-actions {
@@ -206,12 +218,23 @@
       font-weight: 500;
       cursor: pointer;
       font-family: inherit;
+      text-decoration: none;
       transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
     }
     .ghost-pill:hover {
       color: var(--text-primary);
       border-color: var(--border-strong);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .pill-new-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+      margin-inline-end: 6px;
+      vertical-align: middle;
     }
 
     .nav-cta {
@@ -223,30 +246,52 @@
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 600;
-      padding: 7px 16px;
+      padding: 7px 17px;
       border-radius: 999px;
       transition: transform 200ms var(--ease-out-expo), background-color 180ms ease;
     }
     .nav-cta:hover {
       background: var(--ivory-hover);
-      transform: scale(1.025);
+      transform: scale(1.03);
     }
 
-    /* ==================== HERO + 3D SCROLL UNFOLD ==================== */
+    @media (max-width: 680px) {
+      .hide-mobile {
+        display: none;
+      }
+    }
+
+    /* ==================== ACT 1: HERO + 3D MULTI-PLANE STAGE ==================== */
     .hero {
-      padding: 156px 0 60px;
+      padding: 150px 0 64px;
       text-align: center;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      color: #d1fae5;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 24px;
     }
 
     .hero-copy-wrap {
-      max-width: 820px;
-      margin: 0 auto 42px;
+      max-width: 860px;
+      margin: 0 auto 38px;
+      will-change: transform, opacity;
     }
 
     .hero h1 {
-      font-size: clamp(2.35rem, 5.2vw, 4.35rem);
+      font-size: clamp(2.4rem, 5.4vw, 4.55rem);
       font-weight: 700;
-      line-height: 1.12;
+      line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--text-primary);
       margin-bottom: 22px;
@@ -254,9 +299,9 @@
     }
 
     .hero-sub {
-      font-size: clamp(1.02rem, 1.45vw, 1.2rem);
+      font-size: clamp(1.02rem, 1.45vw, 1.22rem);
       color: var(--text-secondary);
-      max-width: 64ch;
+      max-width: 65ch;
       margin: 0 auto 34px;
       font-weight: 400;
     }
@@ -265,7 +310,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
     .btn-premiere {
@@ -276,51 +321,72 @@
       background: var(--ivory);
       color: var(--ink-dark);
       text-decoration: none;
-      font-size: 1.02rem;
+      font-size: 1.04rem;
       font-weight: 600;
-      padding: 16px 34px;
+      padding: 17px 36px;
       border-radius: 999px;
-      box-shadow: 0 20px 50px rgba(245, 245, 247, 0.14);
-      transition: transform 240ms var(--ease-out-expo), background-color 200ms ease, box-shadow 240ms ease;
+      filter: drop-shadow(0 18px 38px rgba(245, 246, 248, 0.16));
+      transition: transform 240ms var(--ease-out-expo), background-color 200ms ease;
     }
     .btn-premiere:hover {
       background: var(--ivory-hover);
-      transform: translate3d(0, -2px, 0) scale(1.015);
-      box-shadow: 0 26px 64px rgba(245, 245, 247, 0.22);
+      transform: translate3d(0, -3px, 0) scale(1.02);
     }
 
     .hero-specs {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
+      gap: 16px;
       font-size: 0.82rem;
       color: var(--text-muted);
-    }
-    .hero-specs span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
     .hero-specs strong {
       color: var(--text-secondary);
       font-weight: 500;
     }
 
-    /* 3D Perspective Stage */
+    /* High-Trust Psychological Safety Strip */
+    .trust-strip {
+      margin: 26px auto 0;
+      max-width: 960px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(15, 18, 25, 0.82);
+      border: 1px solid var(--border-hairline);
+      font-size: 0.79rem;
+      color: var(--text-secondary);
+    }
+    .trust-chip svg {
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    /* 3D Multi-Plane Stage */
     .hero-3d-perspective {
-      margin-top: 48px;
-      perspective: 1600px;
+      margin-top: 52px;
+      perspective: 1800px;
+      position: relative;
     }
 
     .hero-3d-frame {
       position: relative;
-      border-radius: 20px;
+      border-radius: 22px;
       background: var(--bg-stage);
       border: 1px solid var(--border-strong);
       overflow: hidden;
-      box-shadow: 0 42px 110px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.04);
-      transform: rotateX(15deg) scale(0.91) translate3d(0, 22px, 0);
+      box-shadow: 0 46px 120px rgba(0, 0, 0, 0.88), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transform: rotateX(19deg) scale(0.88) translate3d(0, 32px, 0);
       transform-origin: center top;
       will-change: transform;
       cursor: zoom-in;
@@ -329,7 +395,7 @@
     .hero-3d-glare {
       position: absolute;
       inset: 0;
-      background: linear-gradient(125deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.02) 28%, transparent 56%);
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.025) 30%, transparent 58%);
       pointer-events: none;
       z-index: 3;
       will-change: opacity, transform;
@@ -341,21 +407,123 @@
       height: auto;
     }
 
-    /* ==================== STICKY SCROLL-DRIVEN 4-CHAPTER TOUR ==================== */
-    .scrolly-section {
-      position: relative;
-      padding: 120px 0 80px;
+    /* Floating 3D Depth Satellites around Hero */
+    .hero-satellite {
+      position: absolute;
+      z-index: 6;
+      background: rgba(12, 15, 22, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 13px 18px;
+      text-align: start;
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.68);
+      pointer-events: none;
+      will-change: transform;
+    }
+    .hero-sat-right {
+      top: 12%;
+      right: -18px;
+    }
+    .hero-sat-left {
+      bottom: 14%;
+      left: -18px;
+    }
+    .sat-tag {
+      font-size: 0.7rem;
+      color: var(--emerald);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .sat-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: block;
+    }
+    .sat-sub {
+      font-size: 0.76rem;
+      color: var(--text-secondary);
     }
 
+    @media (max-width: 1040px) {
+      .hero-satellite {
+        display: none;
+      }
+    }
+
+    /* ==================== ACT 2: SCROLL-LINKED KINETIC DUAL RIBBONS ==================== */
+    .kinetic-ribbons {
+      padding: 46px 0;
+      overflow: hidden;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      background: rgba(9, 11, 16, 0.62);
+      position: relative;
+      z-index: 3;
+      direction: ltr;
+    }
+
+    .ribbon-row {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      will-change: transform;
+    }
+    .ribbon-row + .ribbon-row {
+      margin-top: 14px;
+    }
+
+    .ribbon-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .ribbon-chip strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .ribbon-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    /* ==================== SHARED SECTION HEADINGS ==================== */
     .section-intro {
-      max-width: 700px;
-      margin-bottom: 56px;
+      max-width: 740px;
+      margin-bottom: 52px;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.76rem;
+      color: var(--ivory);
+      margin-bottom: 16px;
     }
 
     .section-intro h2 {
-      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      font-size: clamp(1.95rem, 3.7vw, 3.15rem);
       font-weight: 700;
-      line-height: 1.16;
+      line-height: 1.15;
       letter-spacing: -0.025em;
       margin-bottom: 14px;
       text-wrap: balance;
@@ -364,19 +532,194 @@
     .section-intro p {
       font-size: 1.06rem;
       color: var(--text-secondary);
-      max-width: 60ch;
+      max-width: 62ch;
+    }
+
+    /* ==================== ACT 3: PINNED 3D STACKING PORTAL (WHAT'S NEW v2.1) ==================== */
+    .v21-portal-section {
+      position: relative;
+      padding: 116px 0 80px;
+    }
+
+    .portal-nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .portal-pill-btn {
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-hairline);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+    }
+    .portal-pill-btn.active {
+      background: var(--ivory);
+      color: var(--ink-dark);
+      border-color: var(--ivory);
+      font-weight: 600;
+    }
+
+    @media (min-width: 960px) {
+      .v21-portal-track {
+        height: 360vh;
+        position: relative;
+      }
+      .v21-portal-sticky {
+        position: sticky;
+        top: 88px;
+      }
+      .v21-deck-stage {
+        position: relative;
+        height: min(74vh, 620px);
+        perspective: 1600px;
+      }
+      .v21-deck-card {
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-strong);
+        box-shadow: 0 36px 96px rgba(0, 0, 0, 0.82);
+        display: grid;
+        grid-template-columns: 0.88fr 1.12fr;
+        overflow: hidden;
+        transform-origin: center top;
+        will-change: transform, opacity;
+      }
+    }
+
+    @media (max-width: 959px) {
+      .v21-deck-stage {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .v21-deck-card {
+        border-radius: 20px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-strong);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+
+    .v21-card-copy {
+      padding: 38px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      background: linear-gradient(165deg, rgba(22, 26, 36, 0.72) 0%, rgba(12, 15, 21, 0.96) 100%);
+    }
+
+    .v21-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--emerald-soft);
+      border: 1px solid rgba(16, 185, 129, 0.32);
+      color: #6ee7b7;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .v21-card-copy h3 {
+      font-size: clamp(1.45rem, 2.3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .v21-card-copy p {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      line-height: 1.72;
+    }
+
+    .v21-feature-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 4px;
+    }
+    .v21-feature-points li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.87rem;
+      color: var(--text-primary);
+    }
+    .v21-feature-points li::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .v21-card-visual {
+      position: relative;
+      background: #06070a;
+      border-inline-start: 1px solid var(--border-hairline);
+      overflow: hidden;
+      cursor: zoom-in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .v21-card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 14px;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+      transition: transform 360ms var(--ease-out-expo);
+    }
+    .v21-card-visual:hover img {
+      transform: scale(1.02);
+    }
+
+    /* ==================== ACT 4: STICKY 4-WORLD WORKSTATION DEEP TOUR ==================== */
+    .scrolly-section {
+      position: relative;
+      padding: 110px 0 90px;
+      border-top: 1px solid var(--border-hairline);
     }
 
     @media (min-width: 960px) {
       .scrolly-track {
-        height: 310vh;
+        height: 330vh;
         position: relative;
       }
       .scrolly-sticky {
         position: sticky;
         top: 94px;
         display: grid;
-        grid-template-columns: 360px 1fr;
+        grid-template-columns: 365px 1fr;
         gap: 34px;
         align-items: center;
       }
@@ -402,22 +745,24 @@
       font-family: inherit;
       background: transparent;
       border: 1px solid transparent;
-      border-radius: 14px;
+      border-radius: 15px;
       padding: 18px 20px;
       cursor: pointer;
       color: var(--text-secondary);
       overflow: hidden;
-      transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease;
+      transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease, transform 240ms var(--ease-out-expo);
     }
-
     .chapter-btn:hover {
-      background: rgba(255, 255, 255, 0.025);
+      background: rgba(255, 255, 255, 0.03);
     }
-
     .chapter-btn.active {
       background: var(--bg-surface);
       border-color: var(--border-strong);
       color: var(--text-primary);
+      transform: translate3d(-4px, 0, 0);
+    }
+    html[dir="ltr"] .chapter-btn.active {
+      transform: translate3d(4px, 0, 0);
     }
 
     .chapter-btn h3 {
@@ -426,14 +771,12 @@
       margin-bottom: 6px;
       color: inherit;
     }
-
     .chapter-btn p {
       font-size: 0.88rem;
       line-height: 1.6;
       color: var(--text-muted);
       transition: color 240ms ease;
     }
-
     .chapter-btn.active p {
       color: var(--text-secondary);
     }
@@ -443,7 +786,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 2px;
+      height: 2.5px;
       background: rgba(255, 255, 255, 0.06);
       opacity: 0;
       transition: opacity 200ms ease;
@@ -454,7 +797,7 @@
     .chapter-progress-fill {
       height: 100%;
       width: 100%;
-      background: var(--ivory);
+      background: var(--emerald);
       transform-origin: right center;
       transform: scaleX(0);
     }
@@ -464,13 +807,14 @@
 
     .scrolly-stage-frame {
       position: relative;
-      border-radius: 18px;
+      border-radius: 20px;
       background: var(--bg-stage);
       border: 1px solid var(--border-strong);
       overflow: hidden;
       aspect-ratio: 16 / 10;
-      box-shadow: 0 32px 84px rgba(0, 0, 0, 0.72);
+      box-shadow: 0 36px 92px rgba(0, 0, 0, 0.76);
       cursor: zoom-in;
+      perspective: 1200px;
     }
 
     .scrolly-slide-img {
@@ -481,98 +825,29 @@
       object-fit: cover;
       object-position: top center;
       opacity: 0;
-      transform: scale(1.03);
-      transition: opacity 460ms var(--ease-out-expo), transform 560ms var(--ease-out-expo);
+      transform: scale(1.06) translate3d(0, 22px, 0);
+      transition: opacity 520ms var(--ease-out-expo), transform 620ms var(--ease-out-expo);
       pointer-events: none;
     }
-
     .scrolly-slide-img.active {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) translate3d(0, 0, 0);
       pointer-events: auto;
     }
 
-    /* ==================== WHAT'S NEW IN v2.1 SECTION ==================== */
-    .whatsnew-section {
-      padding: 108px 0;
-      border-top: 1px solid var(--border-hairline);
-    }
-
-    .whatsnew-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 0.78rem;
-      color: var(--ivory);
-      margin-bottom: 16px;
-    }
-
-    .whatsnew-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 44px;
-    }
-
-    @media (max-width: 860px) {
-      .whatsnew-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .whatsnew-card {
-      border-radius: 18px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      overflow: hidden;
-      transition: border-color 240ms ease, transform 320ms var(--ease-out-expo);
-      cursor: zoom-in;
-    }
-    .whatsnew-card:hover {
-      border-color: var(--border-strong);
-      transform: translate3d(0, -4px, 0);
-    }
-    .whatsnew-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      object-position: top center;
-      border-bottom: 1px solid var(--border-hairline);
-    }
-    .whatsnew-card-body {
-      padding: 22px 24px;
-    }
-    .whatsnew-card-body h3 {
-      font-size: 1.06rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-    .whatsnew-card-body p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.68;
-    }
-
-    /* ==================== PARALLAX DUAL THEME & TELEMETRY SHOWCASE ==================== */
+    /* ==================== ACT 5: DEEP PARALLAX THEMES + TRUST PILLARS ==================== */
     .craft-section {
-      padding: 110px 0;
+      padding: 116px 0;
       border-top: 1px solid var(--border-hairline);
     }
 
     .parallax-showcase {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 28px;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 30px;
       align-items: center;
       margin-top: 48px;
     }
-
     @media (max-width: 900px) {
       .parallax-showcase {
         grid-template-columns: 1fr;
@@ -581,15 +856,14 @@
 
     .parallax-card {
       position: relative;
-      border-radius: 18px;
+      border-radius: 20px;
       background: var(--bg-surface);
       border: 1px solid var(--border-hairline);
       overflow: hidden;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 30px 76px rgba(0, 0, 0, 0.65);
       will-change: transform;
       cursor: zoom-in;
     }
-
     .parallax-card img {
       display: block;
       width: 100%;
@@ -614,14 +888,12 @@
       color: var(--text-muted);
     }
 
-    /* Spotlight Architecture Pillars (3 calm editorial columns, no icon-box clichés) */
     .specs-ribbon {
       margin-top: 64px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-
     @media (max-width: 860px) {
       .specs-ribbon {
         grid-template-columns: 1fr;
@@ -630,7 +902,7 @@
 
     .spotlight-surface {
       position: relative;
-      border-radius: 16px;
+      border-radius: 18px;
       background: var(--bg-surface);
       border: 1px solid var(--border-hairline);
       padding: 28px;
@@ -641,19 +913,18 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.065), transparent 45%);
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(16, 185, 129, 0.1), transparent 46%);
       opacity: 0;
       transition: opacity 250ms ease;
       pointer-events: none;
     }
     .spotlight-surface:hover {
       border-color: var(--border-strong);
-      transform: translate3d(0, -3px, 0);
+      transform: translate3d(0, -4px, 0);
     }
     .spotlight-surface:hover::before {
       opacity: 1;
     }
-
     .spotlight-surface h3 {
       font-size: 1.08rem;
       font-weight: 600;
@@ -666,30 +937,40 @@
       line-height: 1.7;
     }
 
-    /* ==================== PREMIERE WIZARD SETUP SECTION ==================== */
+    /* ==================== ACT 6: PEACE-OF-MIND SETUP WIZARD TOUR ==================== */
     .setup-section {
-      padding: 110px 0 120px;
+      padding: 114px 0 124px;
       border-top: 1px solid var(--border-hairline);
     }
 
     .setup-layout {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 48px;
       align-items: center;
     }
-
     @media (max-width: 960px) {
       .setup-layout {
         grid-template-columns: 1fr;
       }
     }
 
+    .peace-banner {
+      margin-top: 18px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.24);
+      font-size: 0.87rem;
+      color: #d1fae5;
+      line-height: 1.68;
+    }
+
     .wizard-step-switcher {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin: 28px 0;
+      margin: 24px 0;
     }
 
     .wiz-pill {
@@ -754,13 +1035,14 @@
 
     .wizard-preview-box {
       position: relative;
-      border-radius: 18px;
-      background: #070709;
+      border-radius: 20px;
+      background: #060709;
       border: 1px solid var(--border-strong);
       overflow: hidden;
       aspect-ratio: 844 / 564;
-      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 36px 94px rgba(0, 0, 0, 0.82);
       cursor: zoom-in;
+      will-change: transform;
     }
 
     .wizard-preview-img {
@@ -770,7 +1052,7 @@
       height: 100%;
       object-fit: contain;
       opacity: 0;
-      transform: scale(0.985);
+      transform: scale(0.98);
       transition: opacity 360ms var(--ease-out-expo), transform 420ms var(--ease-out-expo);
       pointer-events: none;
     }
@@ -780,9 +1062,8 @@
       pointer-events: auto;
     }
 
-    /* Subtle collapsible / quiet integrity bar */
     .integrity-details {
-      margin-top: 22px;
+      margin-top: 20px;
       border: 1px solid var(--border-hairline);
       border-radius: 12px;
       background: var(--bg-stage);
@@ -839,19 +1120,33 @@
       flex-shrink: 0;
     }
     .copy-mini-btn:hover {
-      background: #24242f;
+      background: #242938;
     }
 
-    /* ==================== CLOSING CTA & FOOTER ==================== */
+    /* ==================== GRAND FINALE PORTAL CTA ==================== */
     .closing-cta {
-      padding: 96px 0;
+      position: relative;
+      padding: 118px 0;
       text-align: center;
       border-top: 1px solid var(--border-hairline);
-      background: radial-gradient(ellipse at bottom, rgba(245, 245, 247, 0.055) 0%, transparent 65%);
+      overflow: hidden;
+    }
+
+    .closing-portal-glow {
+      position: absolute;
+      left: 50%;
+      bottom: -35%;
+      width: 860px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(245, 246, 248, 0.08) 42%, transparent 70%);
+      transform: translate3d(-50%, 0, 0) scale(0.75);
+      pointer-events: none;
+      will-change: transform, opacity;
     }
 
     .closing-cta h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2.15rem, 4.3vw, 3.45rem);
       font-weight: 700;
       letter-spacing: -0.025em;
       margin-bottom: 16px;
@@ -860,8 +1155,8 @@
 
     .closing-cta p {
       color: var(--text-secondary);
-      font-size: 1.05rem;
-      margin-bottom: 32px;
+      font-size: 1.08rem;
+      margin-bottom: 34px;
     }
 
     .footer {
@@ -869,6 +1164,8 @@
       padding: 34px 0;
       color: var(--text-muted);
       font-size: 0.84rem;
+      position: relative;
+      z-index: 3;
     }
     .footer-inner {
       display: flex;
@@ -884,19 +1181,19 @@
     }
     .footer-brand img {
       height: 18px;
-      opacity: 0.85;
+      opacity: 0.88;
     }
 
     /* ==================== SCROLL REVEAL CHOREOGRAPHY ==================== */
     [data-reveal] {
       opacity: 0;
-      transform: translate3d(0, 34px, 0);
-      transition: opacity 720ms var(--ease-out-expo), transform 780ms var(--ease-out-expo);
+      transform: translate3d(0, 36px, 0) scale(0.985);
+      transition: opacity 740ms var(--ease-out-expo), transform 820ms var(--ease-out-expo);
       transition-delay: var(--delay, 0ms);
     }
     [data-reveal].in-view {
       opacity: 1;
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
     /* Fullscreen Lightbox */
@@ -904,7 +1201,7 @@
       position: fixed;
       inset: 0;
       z-index: 300;
-      background: rgba(4, 4, 6, 0.92);
+      background: rgba(4, 5, 7, 0.93);
       backdrop-filter: blur(14px);
       display: flex;
       align-items: center;
@@ -933,24 +1230,23 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      #worldCanvas { display: none; }
       [data-reveal] {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
       }
-      .hero-3d-frame {
-        transform: none !important;
-      }
-      .scrolly-slide-img, .wizard-preview-img {
-        transition: opacity 150ms linear !important;
+      .hero-3d-frame, .parallax-card, .ribbon-row, .closing-portal-glow {
         transform: none !important;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Layer 0: Interactive 3D Spatial Depth Field -->
+  <canvas id="worldCanvas" aria-hidden="true"></canvas>
   <div class="scroll-progress-bar" id="scrollProgressBar"></div>
-  <div class="ambient-halo" id="ambientHalo"></div>
+  <div class="ambient-horizon" id="ambientHorizon"></div>
 
   <!-- Floating Glass Navbar -->
   <div class="navbar-wrap">
@@ -963,7 +1259,11 @@
       </a>
 
       <div class="nav-actions">
-        <a href="#whats-new-v21" class="ghost-pill" style="text-decoration: none;" data-i18n="navWhatsNew">ما الجديد في v2.1</a>
+        <a href="#whats-new-v21" class="ghost-pill hide-mobile">
+          <span class="pill-new-dot"></span>
+          <span data-i18n="navWhatsNew">ما الجديد في v2.1</span>
+        </a>
+        <a href="#safe-setup" class="ghost-pill hide-mobile" data-i18n="navSafety">التثبيت الآمن</a>
         <button type="button" class="ghost-pill" id="langBtn">English</button>
         <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="nav-cta" id="navDownloadBtn">
           <span data-i18n="navCta">تحميل لويندوز</span>
@@ -973,38 +1273,72 @@
   </div>
 
   <main>
-    <!-- 1. HERO + 3D PERSPECTIVE UNFOLD -->
+    <!-- ACT 1: HERO + 3D MULTI-PLANE UNFOLD + HIGH-TRUST STRIP -->
     <section class="hero">
       <div class="container">
-        <div class="hero-copy-wrap" data-reveal>
-          <h1 data-i18n="heroTitle">استوديو الذكاء الاصطناعي المتكامل، مصمم بمعايير السينما.</h1>
+        <div class="hero-copy-wrap" id="heroCopyWrap" data-reveal>
+          <div class="hero-eyebrow">
+            <span class="pill-new-dot" style="margin:0;"></span>
+            <span data-i18n="heroBadge">الإصدار الجديد v2.1 متاح الآن — يشمل Wan 3.0 Cinema و 68 موديلاً مفتوح المصدر</span>
+          </div>
+
+          <h1 data-i18n="heroTitle">عالم إنتاج سينمائي وبرمجي متكامل، يعمل بالكامل على جهازك.</h1>
           <p class="hero-sub" data-i18n="heroSub">
-            بيئة مكتبية واحدة تجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، ومساعد البرمجة المحلي أربور كود — بأداء فوري وخصوصية كاملة من تطوير MAVYR Studio.
+            استوديو مكتبي واحد يجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، وأربور كود للبرمجة — بواجهة رسومية نظيفة وخصوصية محلية تامة من تطوير ⁦MAVYR Studio⁩.
           </p>
 
           <div class="hero-cta-group">
             <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="btn-premiere" id="heroDownloadBtn">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              <span data-i18n="heroCta">تحميل Arbor AI Studio لويندوز</span>
+              <span data-i18n="heroCta">تحميل Arbor AI Studio لويندوز (ملف واحد جاهز)</span>
             </a>
 
             <div class="hero-specs">
-              <span><strong class="mono" id="releaseVersionText">v2.1.0 Stable</strong></span>
+              <span><strong class="mono" id="releaseVersionText">v2.1.1 Stable</strong></span>
               <span>·</span>
-              <span><strong class="mono" id="releaseSizeText">254 MB · Single Setup</strong></span>
+              <span><strong class="mono" id="releaseSizeText">254 MB</strong></span>
               <span>·</span>
               <span><strong>Windows 10 / 11 (64-bit)</strong></span>
               <span>·</span>
               <span><strong>MAVYR Studio</strong></span>
             </div>
           </div>
+
+          <!-- Psychological Safety & Simplicity Chips -->
+          <div class="trust-strip">
+            <div class="trust-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              <span data-i18n="tr1">تثبيت رسومي أنيق بدون نوافذ أوامر سوداء</span>
+            </div>
+            <div class="trust-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <span data-i18n="tr2">يعمل بأمان بدون طلب صلاحيات مسؤول (Admin)</span>
+            </div>
+            <div class="trust-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <span data-i18n="tr3">يبدأ خفيفاً ونظيفاً بدون داتا أو استهلاك بالخلفية</span>
+            </div>
+          </div>
         </div>
 
         <div class="hero-3d-perspective">
+          <!-- Floating 3D Depth Satellites -->
+          <div class="hero-satellite hero-sat-right" id="heroSatRight">
+            <span class="sat-tag mono">NEW IN v2.1 · VIDEO</span>
+            <span class="sat-title" data-i18n="sat1Title">محرك Wan 3.0 Cinema & Turbo</span>
+            <span class="sat-sub" data-i18n="sat1Sub">مشاهد 1080p متزامنة ونسخة خفيفة لكروت 8GB</span>
+          </div>
+
+          <div class="hero-satellite hero-sat-left" id="heroSatLeft">
+            <span class="sat-tag mono">SMART MULTI-API</span>
+            <span class="sat-title" data-i18n="sat2Title">تبديل تلقائي للمفاتيح المجانية</span>
+            <span class="sat-sub" data-i18n="sat2Sub">Groq · Gemini · OpenRouter · Cerebras</span>
+          </div>
+
           <div class="hero-3d-frame" id="hero3dFrame" data-zoom="assets/screen-home.png">
             <div class="hero-3d-glare" id="hero3dGlare"></div>
             <img src="assets/screen-home.png" alt="Arbor AI Studio Main Workstation" />
@@ -1013,12 +1347,135 @@
       </div>
     </section>
 
-    <!-- 2. STICKY SCROLL-DRIVEN 4-CHAPTER WORKSTATION TOUR -->
+    <!-- ACT 2: SCROLL-LINKED KINETIC DUAL RIBBONS -->
+    <section class="kinetic-ribbons" aria-label="68 Open-Source Engines">
+      <div class="ribbon-row" id="ribbonRowA">
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Cinema</strong> · 1080p Multimodal AV</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Turbo 5B</strong> · 8GB VRAM Ready</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>FLUX.1 Kontext</strong> · Precision Image Edit</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Qwen-Image</strong> · Bilingual Typography</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>HunyuanVideo I2V</strong> · 24fps Cinema</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>SeedVR2 4K</strong> · Super Resolution</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>MMAudio V2</strong> · Video-Synced Foley</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Kokoro-82M</strong> · Natural Voice</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Qwen 2.5 Coder</strong> · Local Agent</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Cinema</strong> · 1080p Multimodal AV</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>Wan 3.0 Turbo 5B</strong> · 8GB VRAM Ready</span>
+        <span class="ribbon-chip"><span class="ribbon-dot"></span><strong>FLUX.1 Kontext</strong> · Precision Image Edit</span>
+      </div>
+
+      <div class="ribbon-row" id="ribbonRowB">
+        <span class="ribbon-chip"><strong>68 Verified Open Models</strong> · Zero Pre-Installed Bloat</span>
+        <span class="ribbon-chip"><strong>Smart Multi-API Router</strong> · Free Cloud Key Failover</span>
+        <span class="ribbon-chip"><strong>Comfy Node Graph</strong> · Visual Production Pipelines</span>
+        <span class="ribbon-chip"><strong>Arbor Code Sandbox</strong> · Local Project Intelligence</span>
+        <span class="ribbon-chip"><strong>Universal Storage Engine</strong> · Works on Every Windows PC</span>
+        <span class="ribbon-chip"><strong>One-Click Official Updates</strong> · Pure Graphical Experience</span>
+        <span class="ribbon-chip"><strong>68 Verified Open Models</strong> · Zero Pre-Installed Bloat</span>
+        <span class="ribbon-chip"><strong>Smart Multi-API Router</strong> · Free Cloud Key Failover</span>
+        <span class="ribbon-chip"><strong>Comfy Node Graph</strong> · Visual Production Pipelines</span>
+      </div>
+    </section>
+
+    <!-- ACT 3: PINNED 3D STACKING PORTAL FOR WHAT'S NEW IN v2.1 -->
+    <section class="v21-portal-section" id="whats-new-v21">
+      <div class="container">
+        <div class="section-intro" data-reveal>
+          <div class="section-eyebrow mono">RELEASE v2.1 · IMMERSIVE UPDATE TOUR</div>
+          <h2 data-i18n="wnHeading">ما الجديد في الإصدار v2.1 — مرّر لتستكشف كل إضافة.</h2>
+          <p data-i18n="wnSub">مع كل حركة سكرول، تنتقل داخل أحدث الإضافات المصممة لتسهيل شغلك الإبداعي والبرمجي بدون أي تعقيد تقني.</p>
+        </div>
+
+        <div class="v21-portal-track" id="v21PortalTrack">
+          <div class="v21-portal-sticky">
+            <div class="portal-nav-pills" id="v21NavPills">
+              <button type="button" class="portal-pill-btn active" data-v21-btn="0" data-i18n="wnPill1">01 · محرك Wan 3.0 الجديد</button>
+              <button type="button" class="portal-pill-btn" data-v21-btn="1" data-i18n="wnPill2">02 · الموجّه الذكي للـ API</button>
+              <button type="button" class="portal-pill-btn" data-v21-btn="2" data-i18n="wnPill3">03 · التوافق مع كل الأجهزة</button>
+              <button type="button" class="portal-pill-btn" data-v21-btn="3" data-i18n="wnPill4">04 · تحديثات نقية بضغطة زر</button>
+            </div>
+
+            <div class="v21-deck-stage" id="v21DeckStage">
+              <!-- Card 1 -->
+              <article class="v21-deck-card" data-v21-card="0">
+                <div class="v21-card-copy">
+                  <span class="v21-badge mono" data-i18n="wn1Badge">NEW OPEN-SOURCE VIDEO · 68 MODELS</span>
+                  <h3 data-i18n="wn1Title">محرك الفيديو السينمائي Wan 3.0 بنسختين</h3>
+                  <p data-i18n="wn1Desc">أضفنا الجيل الأحدث Wan 3.0 في صدارة مكتبة الموديلات لإنتاج مشاهد متصلة بدقة 1080p مع تناغم صوتي وبصري، إلى جانب نسخة Turbo السريعة المصممة لكروت 8GB VRAM.</p>
+                  <ul class="v21-feature-points">
+                    <li data-i18n="wn1Pt1">نسخة Wan 3.0 Cinema لإخراج اللقطات السينمائية بدقة 1080p</li>
+                    <li data-i18n="wn1Pt2">نسخة Wan 3.0 Turbo 5B الخفيفة والسريعة لكروت 8 جيجابايت</li>
+                    <li data-i18n="wn1Pt3">توسيع المكتبة إلى 68 موديلاً مفتوح المصدر جاهزاً للتنزيل الاختياري</li>
+                  </ul>
+                </div>
+                <div class="v21-card-visual" data-zoom="assets/v21_wan30_models.png">
+                  <img src="assets/v21_wan30_models.png" alt="Wan 3.0 Cinema & Turbo in 68-Model Library" />
+                </div>
+              </article>
+
+              <!-- Card 2 -->
+              <article class="v21-deck-card" data-v21-card="1">
+                <div class="v21-card-copy">
+                  <span class="v21-badge mono" data-i18n="wn2Badge">MULTI-API SMART ROUTER</span>
+                  <h3 data-i18n="wn2Title">ربط المفاتيح المجانية والتبديل التلقائي الذكي</h3>
+                  <p data-i18n="wn2Desc">اربط عدة مفاتيح مجانية أو مدفوعة من Groq وGemini وOpenRouter وCerebras في ثوانٍ داخل أربور كود وشات؛ يتولى الموجّه الذكي التبديل تلقائياً عند انتهاء حصة أي مفتاح بدون توقف.</p>
+                  <ul class="v21-feature-points">
+                    <li data-i18n="wn2Pt1">أوضاع توجيه ذكية: المجاني أولاً، الأسرع استجابة، أو الأقوى للبرمجة</li>
+                    <li data-i18n="wn2Pt2">تبديل لحظي صامت للمفتاح البديل بدون قطع المحادثة أو الكود</li>
+                    <li data-i18n="wn2Pt3">تشفير محلي كامل AES-256 لجميع مفاتيحك على قرص جهازك</li>
+                  </ul>
+                </div>
+                <div class="v21-card-visual" data-zoom="assets/v21_smart_router.png">
+                  <img src="assets/v21_smart_router.png" alt="Smart Multi-API Router Hub" />
+                </div>
+              </article>
+
+              <!-- Card 3 -->
+              <article class="v21-deck-card" data-v21-card="2">
+                <div class="v21-card-copy">
+                  <span class="v21-badge mono" data-i18n="wn3Badge">UNIVERSAL WINDOWS COMPATIBILITY</span>
+                  <h3 data-i18n="wn3Title">مدير تنزيلات ذكي يعمل بسلاسة على كل جهاز</h3>
+                  <p data-i18n="wn3Desc">سواء كان جهازك يحتوي على قرص C فقط أو عدة أقراص، يكتشف البرنامج تلقائياً المجلدات الصالحة للكتابة ويعرض المساحة المتبقية الحقيقية وسرعة التحميل لحظة بلحظة.</p>
+                  <ul class="v21-feature-points">
+                    <li data-i18n="wn3Pt1">تعرّف وتعافٍ تلقائي للمسارات على جميع أجهزة اللابتوب والمكتبي</li>
+                    <li data-i18n="wn3Pt2">إيقاف مؤقت واستكمال من نفس الميجابايت مع زر إعادة محاولة فوري</li>
+                    <li data-i18n="wn3Pt3">قائمة بداية سريعة لأشهر 6 محركات فيديو وصوت وترقية 4K وبرمجة</li>
+                  </ul>
+                </div>
+                <div class="v21-card-visual" data-zoom="assets/v21_download_manager.png">
+                  <img src="assets/v21_download_manager.png" alt="Universal Cross-PC Download Manager" />
+                </div>
+              </article>
+
+              <!-- Card 4 -->
+              <article class="v21-deck-card" data-v21-card="3">
+                <div class="v21-card-copy">
+                  <span class="v21-badge mono" data-i18n="wn4Badge">CLEAN ONE-CLICK UPDATES</span>
+                  <h3 data-i18n="wn4Title">تبويب «ما الجديد» وتحديث رسمي هادئ بضغطة واحدة</h3>
+                  <p data-i18n="wn4Desc">أزلنا كل الإعدادات التقنية غير المفيدة للمستخدم؛ أصبح لديك تبويب مصوّر مدمج لعرض كل جديد، مع تحديث تلقائي رسومي بشريط تحميل واضح وبدون أي نوافذ أوامر مزعجة.</p>
+                  <ul class="v21-feature-points">
+                    <li data-i18n="wn4Pt1">تبويب «ما الجديد» داخل البرنامج بلقطات شاشة حقيقية وأزرار تجربة فورية</li>
+                    <li data-i18n="wn4Pt2">شريط تحميل حي للتحديثات وترقية رسومية أنيقة تحفظ كل مشاريعك</li>
+                    <li data-i18n="wn4Pt3">واجهة إعدادات نقية ومبسطة 100% بالعربية والإنجليزية</li>
+                  </ul>
+                </div>
+                <div class="v21-card-visual" data-zoom="assets/v21_whats_new.png">
+                  <img src="assets/v21_whats_new.png" alt="In-App What's New Hub & Clean Settings" />
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 4: STICKY SCROLL-DRIVEN 4-WORLD WORKSTATION TOUR -->
     <section class="scrolly-section">
       <div class="container">
         <div class="section-intro" data-reveal>
+          <div class="section-eyebrow mono">FOUR UNIFIED WORKSPACES</div>
           <h2 data-i18n="tourHeading">أربعة عوالم إبداعية تتحرك بتناغم واحد.</h2>
-          <p data-i18n="tourSub">مرّر للأسفل لاستكشاف بيئات العمل الحقيقية من داخل الاستوديو، أو اضغط على أي شاشة لتكبيرها بدقتها الكاملة.</p>
+          <p data-i18n="tourSub">مرّر للأسفل للغوص داخل بيئات العمل الحقيقية في الاستوديو، أو اضغط على أي شاشة لتكبيرها بدقتها الكاملة.</p>
         </div>
 
         <div class="scrolly-track" id="scrollyTrack">
@@ -1043,8 +1500,8 @@
               </button>
 
               <button type="button" class="chapter-btn" data-chapter="3">
-                <h3 data-i18n="ch4Title">مكتبة 68 موديلاً مفتوح المصدر</h3>
-                <p data-i18n="ch4Desc">يبدأ البرنامج خفيفاً بصفر موديلات مسبقة؛ استعرض مواصفات العتاد وحمّل ما تختاره فقط بما فيها Wan 3.0 الجديد.</p>
+                <h3 data-i18n="ch4Title">مراقب الأداء الحي للعتاد</h3>
+                <p data-i18n="ch4Desc">قراءة فورية لاستهلاك كرت الشاشة والذاكرة وحرارة الـ GPU لضمان أعلى استقرار أثناء الريندر والتشغيل.</p>
                 <div class="chapter-progress"><div class="chapter-progress-fill"></div></div>
               </button>
             </div>
@@ -1053,68 +1510,24 @@
               <img src="assets/screen-studio.png" alt="Generative Studio" class="scrolly-slide-img active" data-slide="0" />
               <img src="assets/screen-node-editor.png" alt="Node Graph Editor" class="scrolly-slide-img" data-slide="1" />
               <img src="assets/screen-code.png" alt="Arbor Code" class="scrolly-slide-img" data-slide="2" />
-              <img src="assets/v21_wan30_models.png" alt="68 Open Models Library" class="scrolly-slide-img" data-slide="3" />
+              <img src="assets/screen-telemetry.png" alt="Live Hardware Telemetry" class="scrolly-slide-img" data-slide="3" />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2.5 WHAT'S NEW IN RELEASE v2.1 -->
-    <section class="whatsnew-section" id="whats-new-v21">
-      <div class="container">
-        <div class="section-intro" data-reveal>
-          <div class="whatsnew-pill mono">RELEASE v2.1 · WHAT'S NEW</div>
-          <h2 data-i18n="wnHeading">ما الجديد في الإصدار v2.1</h2>
-          <p data-i18n="wnSub">إضافات عملية مصوّرة صُممت لرفع جودة الإنتاج وسرعة البرمجة والتوافق مع كل أجهزة ويندوز.</p>
-        </div>
-
-        <div class="whatsnew-grid">
-          <article class="whatsnew-card" data-zoom="assets/v21_wan30_models.png" data-reveal>
-            <img src="assets/v21_wan30_models.png" alt="Wan 3.0 Cinema & Turbo Video" />
-            <div class="whatsnew-card-body">
-              <h3 data-i18n="wn1Title">محرك الفيديو المفتوح Wan 3.0 بنسختين</h3>
-              <p data-i18n="wn1Desc">أضفنا Wan 3.0 Cinema لإخراج المشاهد السينمائية بدقة 1080p، ونسخة Wan 3.0 Turbo 5B السريعة المتوافقة مع كروت 8GB VRAM.</p>
-            </div>
-          </article>
-
-          <article class="whatsnew-card" data-zoom="assets/v21_smart_router.png" data-reveal style="--delay: 90ms;">
-            <img src="assets/v21_smart_router.png" alt="Smart Multi-API Router" />
-            <div class="whatsnew-card-body">
-              <h3 data-i18n="wn2Title">الموجّه الذكي ومفاتيح الـ API المجانية</h3>
-              <p data-i18n="wn2Desc">اربط حساباتك المجانية من Groq وGemini وOpenRouter وCerebras في ثوانٍ داخل أربور كود مع تبديل تلقائي فوري بدون انقطاع.</p>
-            </div>
-          </article>
-
-          <article class="whatsnew-card" data-zoom="assets/v21_download_manager.png" data-reveal>
-            <img src="assets/v21_download_manager.png" alt="Cross-PC Download Engine" />
-            <div class="whatsnew-card-body">
-              <h3 data-i18n="wn3Title">مدير تنزيلات ذكي متوافق مع كل الأجهزة</h3>
-              <p data-i18n="wn3Desc">تعرّف تلقائي على أقراص التخزين المتاحة على أي كمبيوتر أو لابتوب، مع قراءة حية للمساحة وإيقاف واستكمال فوري للتحميل.</p>
-            </div>
-          </article>
-
-          <article class="whatsnew-card" data-zoom="assets/v21_whats_new.png" data-reveal style="--delay: 90ms;">
-            <img src="assets/v21_whats_new.png" alt="In-App What's New Tab" />
-            <div class="whatsnew-card-body">
-              <h3 data-i18n="wn4Title">تبويب «ما الجديد» وإعدادات تحديث أنقى</h3>
-              <p data-i18n="wn4Desc">صفحة مدمجة داخل البرنامج تعرض أحدث المزايا بالصور التوضيحية وأزرار التجربة الفورية، مع تحديثات رسمية بضغطة واحدة.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. PARALLAX DUAL THEME + ARCHITECTURE HIGHLIGHTS -->
+    <!-- ACT 5: PARALLAX DUAL THEME + ARCHITECTURE HIGHLIGHTS -->
     <section class="craft-section">
       <div class="container">
         <div class="section-intro" data-reveal>
+          <div class="section-eyebrow mono">OBSIDIAN DARK & STUDIO DAYLIGHT</div>
           <h2 data-i18n="craftHeading">دقة بصرية في الوضع الليلي والنهاري.</h2>
-          <p data-i18n="craftSub">هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، مع مراقبة لحظية لاستهلاك كرت الشاشة والمعالج.</p>
+          <p data-i18n="craftSub">هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، وتتحرك معك بانسيابية مع كل تمريرة.</p>
         </div>
 
         <div class="parallax-showcase">
-          <div class="parallax-card" data-parallax="-24" data-zoom="assets/screen-workflows.png" data-reveal>
+          <div class="parallax-card" data-parallax="-38" data-zoom="assets/screen-workflows.png" data-reveal>
             <img src="assets/screen-workflows.png" alt="Workflows Hub Dark Mode" />
             <div class="parallax-caption">
               <strong data-i18n="pDarkTitle">الوضع الليلي السينمائي (Obsidian)</strong>
@@ -1122,7 +1535,7 @@
             </div>
           </div>
 
-          <div class="parallax-card" data-parallax="24" data-zoom="assets/screen-home-light.png" data-reveal style="--delay: 120ms;">
+          <div class="parallax-card" data-parallax="38" data-zoom="assets/screen-home-light.png" data-reveal style="--delay: 120ms;">
             <img src="assets/screen-home-light.png" alt="Studio Daylight Mode" />
             <div class="parallax-caption">
               <strong data-i18n="pLightTitle">الوضع النهاري المتوازن (Daylight)</strong>
@@ -1133,39 +1546,44 @@
 
         <div class="specs-ribbon">
           <div class="spotlight-surface" data-reveal style="--delay: 0ms;">
-            <h3 data-i18n="sp1Title">ملف واحد مستقل بالكامل</h3>
-            <p data-i18n="sp1Desc">محرك التشغيل والواجهة مترجمة ومدمجة بالكامل؛ يعمل مباشرة دون تثبيت Python أو Node.js أو أي تبعيات خارجية.</p>
+            <h3 data-i18n="sp1Title">ملف واحد مستقل وجاهز فوراً</h3>
+            <p data-i18n="sp1Desc">محرك التشغيل والواجهة مدمجة بالكامل في ملف واحد؛ يفتح فوراً دون الحاجة لتثبيت Python أو Node.js أو أي إضافات معقدة.</p>
           </div>
           <div class="spotlight-surface" data-reveal style="--delay: 90ms;">
-            <h3 data-i18n="sp2Title">خصوصية محلية وتشفير AES-256</h3>
-            <p data-i18n="sp2Desc">جميع مخرجاتك ومشاريعك ومفاتيح الـ API تُحفظ مشفرة محلياً على أقراص جهازك تحت سيطرتك الكاملة.</p>
+            <h3 data-i18n="sp2Title">خصوصية محلية 100% على جهازك</h3>
+            <p data-i18n="sp2Desc">جميع مخرجاتك ومشاريعك ومفاتيحك تُحفظ محلياً على قرصك فقط تحت سيطرتك، بدون رفع أي ملفات لخوادم خارجية.</p>
           </div>
           <div class="spotlight-surface" data-reveal style="--delay: 180ms;">
-            <h3 data-i18n="sp3Title">تحديث تلقائي صامت في الخلفية</h3>
-            <p data-i18n="sp3Desc">تصلك التحسينات والإصدارات الجديدة من قناة MAVYR Studio الرسمية بضغطة واحدة مع الحفاظ التام على إعداداتك.</p>
+            <h3 data-i18n="sp3Title">تحديثات رسومية هادئة وآمنة</h3>
+            <p data-i18n="sp3Desc">تصل التحديثات من قناة MAVYR Studio الرسمية بواجهة رسومية نظيفة وشريط تقدم واضح دون أي نوافذ أوامر سوداء.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. PREMIERE SETUP WIZARD EXPERIENCE -->
-    <section class="setup-section">
+    <!-- ACT 6: HIGH-TRUST PREMIERE SETUP WIZARD EXPERIENCE -->
+    <section class="setup-section" id="safe-setup">
       <div class="container">
         <div class="setup-layout">
           <div data-reveal>
+            <div class="section-eyebrow mono">ZERO HASSLE · PURE TRUST</div>
             <h2 class="section-heading" style="font-size: clamp(1.85rem, 3.2vw, 2.65rem); font-weight: 700; line-height: 1.16; letter-spacing: -0.025em; margin-bottom: 12px;" data-i18n="setupHeading">
-              تجربة تثبيت راقية خطوة بخطوة.
+              تثبيت سهل، شفاف، ومطمئن من أول ثانية.
             </h2>
             <p style="color: var(--text-secondary); font-size: 1rem;" data-i18n="setupSub">
-              معالج إعداد حديث وهادئ من تطوير MAVYR Studio يأخذك من الترحيب ومراجعة الترخيص حتى تشغيل الاستوديو في ثوانٍ.
+              صممنا معالج التثبيت في MAVYR Studio ليكون واضحاً وبسيطاً لأي مستخدم: ثلاث خطوات رسومية هادئة فقط بدون أي شاشات معقدة.
             </p>
+
+            <div class="peace-banner" data-i18n="peaceBanner">
+              ✓ مصمم لراحتك واطمئنانك: لا يطلب صلاحيات مسؤول النظام (Admin)، لا يفتح أي نوافذ أوامر (Terminal)، يبدأ فارغاً ونظيفاً تماماً، ويتضمن أداة إلغاء تثبيت رسمية آمنة في إعدادات ويندوز.
+            </div>
 
             <div class="wizard-step-switcher" id="wizardStepList">
               <button type="button" class="wiz-pill active" data-wiz="0">
                 <span class="wiz-num mono">1</span>
                 <span class="wiz-text">
-                  <strong data-i18n="ws1Title">الترحيب وبدء الإعداد</strong>
-                  <span data-i18n="ws1Sub">واجهة ترحيب نظيفة تدعم العربية والإنجليزية فوراً</span>
+                  <strong data-i18n="ws1Title">الترحيب واختيار اللغة</strong>
+                  <span data-i18n="ws1Sub">واجهة ترحيب راقية تدعم العربية والإنجليزية بضغطة زر</span>
                 </span>
               </button>
 
@@ -1173,15 +1591,15 @@
                 <span class="wiz-num mono">2</span>
                 <span class="wiz-text">
                   <strong data-i18n="ws2Title">مراجعة اتفاقية MAVYR Studio</strong>
-                  <span data-i18n="ws2Sub">وثيقة ترخيص واضحة مع التمرير للقراءة الكاملة والموافقة</span>
+                  <span data-i18n="ws2Sub">وثيقة حقوق واضحة ومباشرة لحماية المستخدم والمنتج</span>
                 </span>
               </button>
 
               <button type="button" class="wiz-pill" data-wiz="2">
                 <span class="wiz-num mono">3</span>
                 <span class="wiz-text">
-                  <strong data-i18n="ws3Title">اختيار المسارات والتشغيل الفوري</strong>
-                  <span data-i18n="ws3Sub">تحديد مجلدات الاستوديو والمخرجات وتثبيت الحزمة بضغطة واحدة</span>
+                  <strong data-i18n="ws3Title">تحديد المجلدات والتشغيل الفوري</strong>
+                  <span data-i18n="ws3Sub">اختيار تلقائي ذكي لأفضل قرص متاح على جهازك وتشغيل فوري</span>
                 </span>
               </button>
             </div>
@@ -1193,10 +1611,10 @@
               </summary>
               <div class="integrity-body">
                 <p data-i18n="verifyNote">
-                  يعمل المثبّت بصلاحيات المستخدم القياسية الآمنة دون طلب صلاحيات مسؤول النظام. عند فتح نسخة جديدة لأول مرة على Windows، في حال ظهور تنبيه SmartScreen القياسي اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».
+                  يعمل المثبّت بصلاحيات المستخدم العادية الآمنة دون المساس بملفات النظام. عند فتح أي برنامج مكتبي جديد لأول مرة على Windows، في حال ظهور نافذة الحماية القياسية اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».
                 </p>
                 <div class="hash-strip">
-                  <span class="hash-code mono" id="shaHashValue">SHA-256: 0c3942f8826ddc53f3b3b5cea2a7b4066a07533dd567933c0ea7cca80d343237</span>
+                  <span class="hash-code mono" id="shaHashValue">SHA-256: 2e3c43f1c545cd6062ea78bcf146ebce1a2b31d7db98818f88668cca99109cd6</span>
                   <button type="button" class="copy-mini-btn" id="copyHashBtn" data-i18n="copyBtn">نسخ</button>
                 </div>
               </div>
@@ -1212,13 +1630,14 @@
       </div>
     </section>
 
-    <!-- 5. CLOSING PREMIERE CTA -->
-    <section class="closing-cta">
+    <!-- GRAND FINALE PORTAL CTA -->
+    <section class="closing-cta" id="closingSection">
+      <div class="closing-portal-glow" id="closingPortalGlow"></div>
       <div class="container" data-reveal>
-        <h2 data-i18n="closingTitle">جاهز لبدء الإنتاج على جهازك؟</h2>
-        <p data-i18n="closingSub">حمّل الحزمة الرسمية الشاملة وابدأ العمل على Arbor AI Studio خلال لحظات.</p>
+        <h2 data-i18n="closingTitle">ادخل عالم Arbor AI Studio الآن.</h2>
+        <p data-i18n="closingSub">ملف واحد أنيق، خالٍ من التعقيد، جاهز للعمل على جهازك خلال ثوانٍ.</p>
         <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="btn-premiere" id="bottomDownloadBtn">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
@@ -1248,118 +1667,178 @@
     const I18N = {
       ar: {
         navWhatsNew: 'ما الجديد في v2.1',
+        navSafety: 'التثبيت الآمن',
         navCta: 'تحميل لويندوز',
-        heroTitle: 'استوديو الذكاء الاصطناعي المتكامل، مصمم بمعايير السينما.',
-        heroSub: 'بيئة مكتبية واحدة تجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، ومساعد البرمجة المحلي أربور كود — بأداء فوري وخصوصية كاملة من تطوير MAVYR Studio.',
-        heroCta: 'تحميل Arbor AI Studio لويندوز',
+        heroBadge: 'الإصدار الجديد v2.1 متاح الآن — يشمل Wan 3.0 Cinema و 68 موديلاً مفتوح المصدر',
+        heroTitle: 'عالم إنتاج سينمائي وبرمجي متكامل، يعمل بالكامل على جهازك.',
+        heroSub: 'استوديو مكتبي واحد يجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، وأربور كود للبرمجة — بواجهة رسومية نظيفة وخصوصية محلية تامة من تطوير \u2066MAVYR\u00A0Studio\u2069.',
+        heroCta: 'تحميل Arbor AI Studio لويندوز (ملف واحد جاهز)',
+        tr1: 'تثبيت رسومي أنيق بدون نوافذ أوامر سوداء',
+        tr2: 'يعمل بأمان بدون طلب صلاحيات مسؤول (Admin)',
+        tr3: 'يبدأ خفيفاً ونظيفاً بدون داتا أو استهلاك بالخلفية',
+        sat1Title: 'محرك Wan 3.0 Cinema & Turbo',
+        sat1Sub: 'مشاهد 1080p متزامنة ونسخة خفيفة لكروت 8GB',
+        sat2Title: 'تبديل تلقائي للمفاتيح المجانية',
+        sat2Sub: 'Groq · Gemini · OpenRouter · Cerebras',
+        wnHeading: 'ما الجديد في الإصدار v2.1 — مرّر لتستكشف كل إضافة.',
+        wnSub: 'مع كل حركة سكرول، تنتقل داخل أحدث الإضافات المصممة لتسهيل شغلك الإبداعي والبرمجي بدون أي تعقيد تقني.',
+        wnPill1: '01 · محرك Wan 3.0 الجديد',
+        wnPill2: '02 · الموجّه الذكي للـ API',
+        wnPill3: '03 · التوافق مع كل الأجهزة',
+        wnPill4: '04 · تحديثات نقية بضغطة زر',
+        wn1Badge: 'NEW OPEN-SOURCE VIDEO · 68 MODELS',
+        wn1Title: 'محرك الفيديو السينمائي Wan 3.0 بنسختين',
+        wn1Desc: 'أضفنا الجيل الأحدث Wan 3.0 في صدارة مكتبة الموديلات لإنتاج مشاهد متصلة بدقة 1080p مع تناغم صوتي وبصري، إلى جانب نسخة Turbo السريعة المصممة لكروت 8GB VRAM.',
+        wn1Pt1: 'نسخة Wan 3.0 Cinema لإخراج اللقطات السينمائية بدقة 1080p',
+        wn1Pt2: 'نسخة Wan 3.0 Turbo 5B الخفيفة والسريعة لكروت 8 جيجابايت',
+        wn1Pt3: 'توسيع المكتبة إلى 68 موديلاً مفتوح المصدر جاهزاً للتنزيل الاختياري',
+        wn2Badge: 'MULTI-API SMART ROUTER',
+        wn2Title: 'ربط المفاتيح المجانية والتبديل التلقائي الذكي',
+        wn2Desc: 'اربط عدة مفاتيح مجانية أو مدفوعة من Groq وGemini وOpenRouter وCerebras في ثوانٍ داخل أربور كود وشات؛ يتولى الموجّه الذكي التبديل تلقائياً عند انتهاء حصة أي مفتاح بدون توقف.',
+        wn2Pt1: 'أوضاع توجيه ذكية: المجاني أولاً، الأسرع استجابة، أو الأقوى للبرمجة',
+        wn2Pt2: 'تبديل لحظي صامت للمفتاح البديل بدون قطع المحادثة أو الكود',
+        wn2Pt3: 'تشفير محلي كامل AES-256 لجميع مفاتيحك على قرص جهازك',
+        wn3Badge: 'UNIVERSAL WINDOWS COMPATIBILITY',
+        wn3Title: 'مدير تنزيلات ذكي يعمل بسلاسة على كل جهاز',
+        wn3Desc: 'سواء كان جهازك يحتوي على قرص C فقط أو عدة أقراص، يكتشف البرنامج تلقائياً المجلدات الصالحة للكتابة ويعرض المساحة المتبقية الحقيقية وسرعة التحميل لحظة بلحظة.',
+        wn3Pt1: 'تعرّف وتعافٍ تلقائي للمسارات على جميع أجهزة اللابتوب والمكتبي',
+        wn3Pt2: 'إيقاف مؤقت واستكمال من نفس الميجابايت مع زر إعادة محاولة فوري',
+        wn3Pt3: 'قائمة بداية سريعة لأشهر 6 محركات فيديو وصوت وترقية 4K وبرمجة',
+        wn4Badge: 'CLEAN ONE-CLICK UPDATES',
+        wn4Title: 'تبويب «ما الجديد» وتحديث رسمي هادئ بضغطة واحدة',
+        wn4Desc: 'أزلنا كل الإعدادات التقنية غير المفيدة للمستخدم؛ أصبح لديك تبويب مصوّر مدمج لعرض كل جديد، مع تحديث تلقائي رسومي بشريط تحميل واضح وبدون أي نوافذ أوامر مزعجة.',
+        wn4Pt1: 'تبويب «ما الجديد» داخل البرنامج بلقطات شاشة حقيقية وأزرار تجربة فورية',
+        wn4Pt2: 'شريط تحميل حي للتحديثات وترقية رسومية أنيقة تحفظ كل مشاريعك',
+        wn4Pt3: 'واجهة إعدادات نقية ومبسطة 100% بالعربية والإنجليزية',
         tourHeading: 'أربعة عوالم إبداعية تتحرك بتناغم واحد.',
-        tourSub: 'مرّر للأسفل لاستكشاف بيئات العمل الحقيقية من داخل الاستوديو، أو اضغط على أي شاشة لتكبيرها بدقتها الكاملة.',
+        tourSub: 'مرّر للأسفل للغوص داخل بيئات العمل الحقيقية في الاستوديو، أو اضغط على أي شاشة لتكبيرها بدقتها الكاملة.',
         ch1Title: 'استوديو الميديا السينمائي',
         ch1Desc: 'جلسات مخصصة للفيديو والصور والصوت تفلتر الموديلات تلقائياً مع استعراض المراجع ونسخ البرومبت بضغطة واحدة.',
         ch2Title: 'محرر مسارات النود التفاعلي',
         ch2Desc: 'ابنِ سلاسل إنتاج متقدمة واربط عقد التوليد والتحسين مع إضافة سريعة بالزر الأيمن وترتيب هندسي فوري.',
         ch3Title: 'أربور كود للبرمجة المحلية',
         ch3Desc: 'اربط أي مجلد مشروع على جهازك ليقرأ المساعد البرمجي ملفاتك ويبني معك الكود مباشرة بأسلوب احترافي نظيف.',
-        ch4Title: 'مكتبة 68 موديلاً مفتوح المصدر',
-        ch4Desc: 'يبدأ البرنامج خفيفاً بصفر موديلات مسبقة؛ استعرض مواصفات العتاد وحمّل ما تختاره فقط بما فيها Wan 3.0 الجديد.',
-        wnHeading: 'ما الجديد في الإصدار v2.1',
-        wnSub: 'إضافات عملية مصوّرة صُممت لرفع جودة الإنتاج وسرعة البرمجة والتوافق مع كل أجهزة ويندوز.',
-        wn1Title: 'محرك الفيديو المفتوح Wan 3.0 بنسختين',
-        wn1Desc: 'أضفنا Wan 3.0 Cinema لإخراج المشاهد السينمائية بدقة 1080p، ونسخة Wan 3.0 Turbo 5B السريعة المتوافقة مع كروت 8GB VRAM.',
-        wn2Title: 'الموجّه الذكي ومفاتيح الـ API المجانية',
-        wn2Desc: 'اربط حساباتك المجانية من Groq وGemini وOpenRouter وCerebras في ثوانٍ داخل أربور كود مع تبديل تلقائي فوري بدون انقطاع.',
-        wn3Title: 'مدير تنزيلات ذكي متوافق مع كل الأجهزة',
-        wn3Desc: 'تعرّف تلقائي على أقراص التخزين المتاحة على أي كمبيوتر أو لابتوب، مع قراءة حية للمساحة وإيقاف واستكمال فوري للتحميل.',
-        wn4Title: 'تبويب «ما الجديد» وإعدادات تحديث أنقى',
-        wn4Desc: 'صفحة مدمجة داخل البرنامج تعرض أحدث المزايا بالصور التوضيحية وأزرار التجربة الفورية، مع تحديثات رسمية بضغطة واحدة.',
+        ch4Title: 'مراقب الأداء الحي للعتاد',
+        ch4Desc: 'قراءة فورية لاستهلاك كرت الشاشة والذاكرة وحرارة الـ GPU لضمان أعلى استقرار أثناء الريندر والتشغيل.',
         craftHeading: 'دقة بصرية في الوضع الليلي والنهاري.',
-        craftSub: 'هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، مع مراقبة لحظية لاستهلاك كرت الشاشة والمعالج.',
+        craftSub: 'هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، وتتحرك معك بانسيابية مع كل تمريرة.',
         pDarkTitle: 'الوضع الليلي السينمائي (Obsidian)',
         pDarkSub: 'تركيز بصري طويل بدون إجهاد',
         pLightTitle: 'الوضع النهاري المتوازن (Daylight)',
         pLightSub: 'تباين نقي لبيئات الإضاءة العالية',
-        sp1Title: 'ملف واحد مستقل بالكامل',
-        sp1Desc: 'محرك التشغيل والواجهة مترجمة ومدمجة بالكامل؛ يعمل مباشرة دون تثبيت Python أو Node.js أو أي تبعيات خارجية.',
-        sp2Title: 'خصوصية محلية وتشفير AES-256',
-        sp2Desc: 'جميع مخرجاتك ومشاريعك ومفاتيح الـ API تُحفظ مشفرة محلياً على أقراص جهازك تحت سيطرتك الكاملة.',
-        sp3Title: 'تحديث تلقائي صامت في الخلفية',
-        sp3Desc: 'تصلك التحسينات والإصدارات الجديدة من قناة MAVYR Studio الرسمية بضغطة واحدة مع الحفاظ التام على إعداداتك.',
-        setupHeading: 'تجربة تثبيت راقية خطوة بخطوة.',
-        setupSub: 'معالج إعداد حديث وهادئ من تطوير MAVYR Studio يأخذك من الترحيب ومراجعة الترخيص حتى تشغيل الاستوديو في ثوانٍ.',
-        ws1Title: 'الترحيب وبدء الإعداد',
-        ws1Sub: 'واجهة ترحيب نظيفة تدعم العربية والإنجليزية فوراً',
+        sp1Title: 'ملف واحد مستقل وجاهز فوراً',
+        sp1Desc: 'محرك التشغيل والواجهة مدمجة بالكامل في ملف واحد؛ يفتح فوراً دون الحاجة لتثبيت Python أو Node.js أو أي إضافات معقدة.',
+        sp2Title: 'خصوصية محلية 100% على جهازك',
+        sp2Desc: 'جميع مخرجاتك ومشاريعك ومفاتيحك تُحفظ محلياً على قرصك فقط تحت سيطرتك، بدون رفع أي ملفات لخوادم خارجية.',
+        sp3Title: 'تحديثات رسومية هادئة وآمنة',
+        sp3Desc: 'تصل التحديثات من قناة MAVYR Studio الرسمية بواجهة رسومية نظيفة وشريط تقدم واضح دون أي نوافذ أوامر سوداء.',
+        setupHeading: 'تثبيت سهل، شفاف، ومطمئن من أول ثانية.',
+        setupSub: 'صممنا معالج التثبيت في MAVYR Studio ليكون واضحاً وبسيطاً لأي مستخدم: ثلاث خطوات رسومية هادئة فقط بدون أي شاشات معقدة.',
+        peaceBanner: '✓ مصمم لراحتك واطمئنانك: لا يطلب صلاحيات مسؤول النظام (Admin)، لا يفتح أي نوافذ أوامر (Terminal)، يبدأ فارغاً ونظيفاً تماماً، ويتضمن أداة إلغاء تثبيت رسمية آمنة في إعدادات ويندوز.',
+        ws1Title: 'الترحيب واختيار اللغة',
+        ws1Sub: 'واجهة ترحيب راقية تدعم العربية والإنجليزية بضغطة زر',
         ws2Title: 'مراجعة اتفاقية MAVYR Studio',
-        ws2Sub: 'وثيقة ترخيص واضحة مع التمرير للقراءة الكاملة والموافقة',
-        ws3Title: 'اختيار المسارات والتشغيل الفوري',
-        ws3Sub: 'تحديد مجلدات الاستوديو والمخرجات وتثبيت الحزمة بضغطة واحدة',
+        ws2Sub: 'وثيقة حقوق واضحة ومباشرة لحماية المستخدم والمنتج',
+        ws3Title: 'تحديد المجلدات والتشغيل الفوري',
+        ws3Sub: 'اختيار تلقائي ذكي لأفضل قرص متاح على جهازك وتشغيل فوري',
         verifySummary: 'ملاحظة التشغيل الأول على ويندوز وبصمة التحقق SHA-256',
-        verifyNote: 'يعمل المثبّت بصلاحيات المستخدم القياسية الآمنة دون طلب صلاحيات مسؤول النظام. عند فتح نسخة جديدة لأول مرة على Windows، في حال ظهور تنبيه SmartScreen القياسي اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».',
+        verifyNote: 'يعمل المثبّت بصلاحيات المستخدم العادية الآمنة دون المساس بملفات النظام. عند فتح أي برنامج مكتبي جديد لأول مرة على Windows، في حال ظهور نافذة الحماية القياسية اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».',
         copyBtn: 'نسخ',
         copiedBtn: 'تم ✓',
-        closingTitle: 'جاهز لبدء الإنتاج على جهازك؟',
-        closingSub: 'حمّل الحزمة الرسمية الشاملة وابدأ العمل على Arbor AI Studio خلال لحظات.',
+        closingTitle: 'ادخل عالم Arbor AI Studio الآن.',
+        closingSub: 'ملف واحد أنيق، خالٍ من التعقيد، جاهز للعمل على جهازك خلال ثوانٍ.',
         closingBtn: 'تحميل المثبّت الرسمي (Arbor_AI_Setup.exe)',
         footerCopy: 'جميع الحقوق محفوظة © 2026 MAVYR Studio. برنامج محمي بحقوق الملكية الفكرية.'
       },
       en: {
         navWhatsNew: "What's New in v2.1",
+        navSafety: 'Safe Setup',
         navCta: 'Download for Windows',
-        heroTitle: 'The unified AI workstation, crafted to cinema standards.',
-        heroSub: 'One native desktop environment uniting generative video, image & audio, visual node pipelines, and local project coding—engineered with full local privacy by MAVYR Studio.',
-        heroCta: 'Download Arbor AI Studio for Windows',
+        heroBadge: 'Release v2.1 Now Live — Featuring Wan 3.0 Cinema & 68 Open-Source Models',
+        heroTitle: 'A vast cinema & coding AI universe, running natively on your PC.',
+        heroSub: 'One calm desktop workstation uniting generative video, image & audio, visual node pipelines, and local project coding—crafted with 100% local privacy by MAVYR Studio.',
+        heroCta: 'Download Arbor AI Studio for Windows (All-in-One)',
+        tr1: 'Pure Graphical Setup — Zero Black Terminal Windows',
+        tr2: 'Runs Safely Without Administrator Elevation',
+        tr3: 'Starts Clean & Lightweight with Zero Background Bloat',
+        sat1Title: 'Wan 3.0 Cinema & 8GB Turbo',
+        sat1Sub: '1080p multi-shot AV + fast 8 GB VRAM edition',
+        sat2Title: 'Smart Free-API Failover',
+        sat2Sub: 'Groq · Gemini · OpenRouter · Cerebras',
+        wnHeading: "What's New in Release v2.1 — Scroll Inside Every Upgrade.",
+        wnSub: 'Every scroll propels you through the newest practical additions built for effortless video creation and coding.',
+        wnPill1: '01 · Wan 3.0 Cinema & Turbo',
+        wnPill2: '02 · Smart Multi-API Router',
+        wnPill3: '03 · Universal PC Storage',
+        wnPill4: '04 · Pure One-Click Updates',
+        wn1Badge: 'NEW OPEN-SOURCE VIDEO · 68 MODELS',
+        wn1Title: 'Open-Source Wan 3.0 Cinema & 8GB Turbo',
+        wn1Desc: 'Added next-gen Wan 3.0 at the top of the catalog for 1080p multi-shot audiovisual storytelling alongside a fast Turbo 5B edition built for 8 GB GPUs.',
+        wn1Pt1: 'Wan 3.0 Cinema Multimodal for 1080p multi-shot scenes',
+        wn1Pt2: 'Wan 3.0 Turbo 5B optimized for consumer 8 GB VRAM cards',
+        wn1Pt3: 'Expanded library of 68 verified on-demand open-source models',
+        wn2Badge: 'MULTI-API SMART ROUTER',
+        wn2Title: 'Connect Free Cloud Keys with Instant Auto-Failover',
+        wn2Desc: 'Add free or paid keys from Groq, Gemini, OpenRouter, and Cerebras inside Arbor Code & Chat; the Smart Router switches keys automatically if a quota fills up.',
+        wn2Pt1: 'Smart modes: Free-First, Fastest Latency, or Pro Coding',
+        wn2Pt2: 'Zero-downtime automatic failover mid-conversation',
+        wn2Pt3: 'Local AES-256 key encryption stored strictly on your drive',
+        wn3Badge: 'UNIVERSAL WINDOWS COMPATIBILITY',
+        wn3Title: 'Self-Healing Download Engine for Every Windows PC',
+        wn3Desc: 'Whether your laptop has a single C: drive or multiple disks, Arbor AI automatically selects writable storage with live free-space gauges and instant pause/resume.',
+        wn3Pt1: 'Automatic writable folder detection across all Windows 10/11 PCs',
+        wn3Pt2: 'Byte-exact Pause, Resume, and 1-Click Retry on unstable networks',
+        wn3Pt3: '6 curated quick-start engines ready to queue in one click',
+        wn4Badge: 'CLEAN ONE-CLICK UPDATES',
+        wn4Title: "Visual What's New Hub & Silent Graphical Updates",
+        wn4Desc: 'All technical clutter has been removed. Explore visual highlights right inside the app and install official updates with a clean live progress bar—never a terminal window.',
+        wn4Pt1: "Dedicated in-app What's New tab with real screenshots & Try Now buttons",
+        wn4Pt2: 'Live MB/s update progress bar & smooth graphical auto-restart',
+        wn4Pt3: 'Streamlined bilingual Arabic & English workstation settings',
         tourHeading: 'Four creative worlds moving in seamless harmony.',
-        tourSub: 'Scroll down to experience live workspaces inside Arbor AI Studio, or click any screen to inspect full resolution.',
+        tourSub: 'Scroll down to dive into live workspaces inside Arbor AI Studio, or click any screen to inspect full resolution.',
         ch1Title: 'Generative Media Studio',
         ch1Desc: 'Dedicated video, image, and audio sessions filter compatible models automatically with reference controls and instant prompt copy.',
         ch2Title: 'Interactive Node Graph Engine',
         ch2Desc: 'Build multi-stage creative pipelines with right-click node insertion and clean geometric auto-layout.',
         ch3Title: 'Arbor Code Local Workspace',
         ch3Desc: 'Bind any project folder on your machine so Arbor Code inspects, creates, and refactors files directly on disk.',
-        ch4Title: '68 Open-Source Models Library',
-        ch4Desc: 'Ships lightweight with zero pre-installed bloat—check exact VRAM specs and download only the models you choose, including Wan 3.0.',
-        wnHeading: "What's New in Release v2.1",
-        wnSub: 'Visual highlights designed to elevate creative video quality, multi-API coding speed, and cross-PC reliability.',
-        wn1Title: 'Open-Source Wan 3.0 Cinema & Turbo',
-        wn1Desc: 'Added Wan 3.0 Cinema for 1080p multi-shot scenes alongside Wan 3.0 Turbo 5B engineered for fast 8 GB VRAM GPUs.',
-        wn2Title: 'Smart Multi-API Router & Free Keys',
-        wn2Desc: 'Connect free keys from Groq, Gemini, OpenRouter, and Cerebras inside Arbor Code with seamless automatic failover.',
-        wn3Title: 'Universal Cross-PC Download Manager',
-        wn3Desc: 'Automatically detects writable storage across every Windows PC and laptop with live speed charts, pause/resume, and 1-click retry.',
-        wn4Title: "In-App What's New Hub & Clean Updates",
-        wn4Desc: 'Explore visual release highlights with 1-click Try Now actions right inside the app, plus streamlined one-click updates.',
+        ch4Title: 'Live GPU & Hardware Profiler',
+        ch4Desc: 'Real-time VRAM, GPU load, temperature, and disk speed telemetry keeps heavy creative renders smooth and safe.',
         craftHeading: 'Precision across Obsidian Dark & Studio Daylight.',
-        craftSub: 'Calibrated contrast in both Arabic and English alongside live 1-second GPU, VRAM, CPU, and RAM profiling.',
+        craftSub: 'Calibrated contrast in both Arabic and English, gliding smoothly with every scroll.',
         pDarkTitle: 'Cinema Obsidian Mode',
         pDarkSub: 'Engineered for deep focus sessions',
         pLightTitle: 'Calibrated Daylight Mode',
         pLightSub: 'Crisp clarity in bright studio environments',
-        sp1Title: 'Self-Contained Single Executable',
-        sp1Desc: 'Compiled desktop shell and inference engine packaged into one file—no Python, Node.js, or external runtimes needed.',
-        sp2Title: '100% Local Privacy & AES-256',
-        sp2Desc: 'Every render, workflow, and encrypted API key stays strictly on your local drives under your control.',
-        sp3Title: 'Silent Background Auto-Updates',
-        sp3Desc: 'Receive verified software updates from MAVYR Studio seamlessly in the background while keeping your workspace intact.',
-        setupHeading: 'A premiere step-by-step setup wizard.',
-        setupSub: 'A calm, modern installer crafted by MAVYR Studio guides you from welcome and license review to studio launch in seconds.',
+        sp1Title: 'Self-Contained Single File',
+        sp1Desc: 'Compiled desktop shell and inference engine packaged into one clean file—no Python, Node.js, or external setup required.',
+        sp2Title: '100% Local Privacy on Your Disk',
+        sp2Desc: 'Every render, workflow, and encrypted key stays strictly on your own drives with zero cloud uploads.',
+        sp3Title: 'Calm Graphical Updates',
+        sp3Desc: 'Official MAVYR Studio updates download with a clear progress bar and upgrade graphically without command prompts.',
+        setupHeading: 'Simple, transparent, and reassuring from second one.',
+        setupSub: 'MAVYR Studio designed the installer to feel effortless for everyone: three calm graphical steps with zero technical friction.',
+        peaceBanner: '✓ Built for complete peace of mind: requires NO Administrator rights, opens ZERO black terminal windows, starts 100% clean with zero background bloat, and includes a safe official Windows uninstaller.',
         ws1Title: 'Welcome & Language Choice',
         ws1Sub: 'Clean studio introduction with instant Arabic/English switching',
         ws2Title: 'MAVYR Studio License Review',
-        ws2Sub: 'Dedicated scrollable license agreement with read-to-unlock confirmation',
-        ws3Title: 'Workspace Paths & Instant Launch',
-        ws3Sub: 'Confirm your app, renders, and models folders and launch in one click',
+        ws2Sub: 'Clear, transparent license agreement protecting both user and studio',
+        ws3Title: 'Smart Folder Detection & Launch',
+        ws3Sub: 'Automatically picks the best writable drive on your PC and launches cleanly',
         verifySummary: 'Windows First-Run Note & SHA-256 Checksum',
-        verifyNote: 'The installer runs safely in standard user space without requesting Administrator elevation. On first launch of a new download on Windows, if SmartScreen prompts, click "More info" then "Run anyway".',
+        verifyNote: 'The installer runs safely in standard user space without touching Windows system files. On first launch of a new download on Windows, if SmartScreen prompts, click "More info" then "Run anyway".',
         copyBtn: 'Copy',
         copiedBtn: 'Copied ✓',
-        closingTitle: 'Ready to create on your workstation?',
-        closingSub: 'Download the official all-in-one installer and launch Arbor AI Studio in seconds.',
+        closingTitle: 'Step inside Arbor AI Studio today.',
+        closingSub: 'One refined executable, zero complexity, ready on your Windows PC in seconds.',
         closingBtn: 'Download Official Installer (Arbor_AI_Setup.exe)',
         footerCopy: 'Copyright © 2026 MAVYR Studio. All Rights Reserved. Proprietary Software.'
       }
     };
 
     let currentLang = 'ar';
-    const rawHash = '0c3942f8826ddc53f3b3b5cea2a7b4066a07533dd567933c0ea7cca80d343237';
+    const rawHash = '2e3c43f1c545cd6062ea78bcf146ebce1a2b31d7db98818f88668cca99109cd6';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // 1. Language Switcher
@@ -1373,13 +1852,14 @@
         const k = el.getAttribute('data-i18n');
         if (dict[k]) el.textContent = dict[k];
       });
+      cacheLayoutMetrics();
     }
     langBtn.addEventListener('click', () => {
       currentLang = currentLang === 'ar' ? 'en' : 'ar';
       applyLang();
     });
 
-    // 2. IntersectionObserver Scroll Reveal Choreography
+    // 2. IntersectionObserver Reveal Choreography
     const revealEls = document.querySelectorAll('[data-reveal]');
     if (!prefersReducedMotion && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
@@ -1388,26 +1868,203 @@
             entry.target.classList.add('in-view');
           }
         });
-      }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
       revealEls.forEach((el) => io.observe(el));
     } else {
       revealEls.forEach((el) => el.classList.add('in-view'));
     }
 
-    // 3. Hardware-Accelerated Scroll Loop (Hero 3D Unfold + Top Progress +Sticky Scrollytelling + Parallax)
+    // 3. Layer 0: 3D Spatial Warp Canvas (Drives Z-depth forward with every scroll!)
+    const canvas = document.getElementById('worldCanvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const stars = [];
+    const STAR_COUNT = 115;
+    let cw = window.innerWidth;
+    let ch = window.innerHeight;
+    let pointerX = 0;
+    let pointerY = 0;
+    let warpBoost = 0;
+
+    function initWorldStars() {
+      if (!canvas || prefersReducedMotion) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cw = window.innerWidth;
+      ch = window.innerHeight;
+      canvas.width = Math.floor(cw * dpr);
+      canvas.height = Math.floor(ch * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (stars.length === 0) {
+        for (let i = 0; i < STAR_COUNT; i++) {
+          stars.push({
+            x: (Math.random() - 0.5) * 2200,
+            y: (Math.random() - 0.5) * 1600,
+            z: Math.random() * 1400 + 80,
+            emerald: i % 5 === 0
+          });
+        }
+      }
+    }
+
+    function renderWorldCanvas() {
+      if (!ctx || prefersReducedMotion) return;
+      ctx.clearRect(0, 0, cw, ch);
+      const cx = cw * 0.5 + pointerX * 26;
+      const cy = ch * 0.46 + pointerY * 18;
+      const fov = 520;
+      const speed = 0.65 + warpBoost;
+      warpBoost *= 0.91;
+
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        s.z -= speed;
+        if (s.z <= 25) {
+          s.z = 1450;
+          s.x = (Math.random() - 0.5) * 2200;
+          s.y = (Math.random() - 0.5) * 1600;
+        }
+        const scale = fov / s.z;
+        const sx = cx + s.x * scale;
+        const sy = cy + s.y * scale;
+        if (sx < -20 || sx > cw + 20 || sy < -20 || sy > ch + 20) continue;
+
+        const alpha = Math.min(0.68, (1 - s.z / 1450) * 0.78);
+        const radius = Math.max(0.7, Math.min(2.6, scale * 1.45));
+
+        if (warpBoost > 1.4) {
+          const prevScale = fov / (s.z + warpBoost * 3.6);
+          const px = cx + s.x * prevScale;
+          const py = cy + s.y * prevScale;
+          ctx.strokeStyle = s.emerald
+            ? `rgba(16, 185, 129, ${(alpha * 0.75).toFixed(3)})`
+            : `rgba(245, 246, 248, ${(alpha * 0.45).toFixed(3)})`;
+          ctx.lineWidth = radius * 0.85;
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(sx, sy);
+          ctx.stroke();
+        } else {
+          ctx.fillStyle = s.emerald
+            ? `rgba(16, 185, 129, ${alpha.toFixed(3)})`
+            : `rgba(245, 246, 248, ${(alpha * 0.65).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      requestAnimationFrame(renderWorldCanvas);
+    }
+
+    if (!prefersReducedMotion && canvas) {
+      initWorldStars();
+      requestAnimationFrame(renderWorldCanvas);
+      window.addEventListener('pointermove', (e) => {
+        pointerX = (e.clientX / Math.max(1, cw)) - 0.5;
+        pointerY = (e.clientY / Math.max(1, ch)) - 0.5;
+      }, { passive: true });
+    }
+
+    // 4. Unified 60/120fps Composite-Only Scroll Physics Engine (Zero Layout Thrashing!)
     const progressBar = document.getElementById('scrollProgressBar');
+    const ambientHorizon = document.getElementById('ambientHorizon');
     const hero3dFrame = document.getElementById('hero3dFrame');
     const hero3dGlare = document.getElementById('hero3dGlare');
+    const heroSatRight = document.getElementById('heroSatRight');
+    const heroSatLeft = document.getElementById('heroSatLeft');
+    const ribbonRowA = document.getElementById('ribbonRowA');
+    const ribbonRowB = document.getElementById('ribbonRowB');
+
+    const v21PortalTrack = document.getElementById('v21PortalTrack');
+    const v21Cards = Array.from(document.querySelectorAll('[data-v21-card]'));
+    const v21Btns = Array.from(document.querySelectorAll('[data-v21-btn]'));
+
     const scrollyTrack = document.getElementById('scrollyTrack');
     const chapterBtns = Array.from(document.querySelectorAll('.chapter-btn'));
     const chapterFills = chapterBtns.map((b) => b.querySelector('.chapter-progress-fill'));
     const scrollyImgs = Array.from(document.querySelectorAll('.scrolly-slide-img'));
-    const parallaxCards = Array.from(document.querySelectorAll('[data-parallax]'));
 
+    const parallaxCards = Array.from(document.querySelectorAll('[data-parallax]'));
+    const setupSection = document.getElementById('safe-setup');
+    const closingSection = document.getElementById('closingSection');
+    const closingPortalGlow = document.getElementById('closingPortalGlow');
+
+    const wizBtns = Array.from(document.querySelectorAll('.wiz-pill'));
+    const wizImgs = Array.from(document.querySelectorAll('.wizard-preview-img'));
+
+    // Cached document offsets (recomputed ONLY on resize/load, never per-frame!)
+    const metrics = {
+      docScrollable: 1,
+      vh: window.innerHeight,
+      vw: window.innerWidth,
+      v21Top: 0,
+      v21Span: 1,
+      scrollyTop: 0,
+      scrollySpan: 1,
+      parallaxCenters: [],
+      setupTop: 0,
+      setupHeight: 1,
+      closingTop: 0
+    };
+
+    function cacheLayoutMetrics() {
+      const sy = window.scrollY || window.pageYOffset;
+      metrics.vh = window.innerHeight;
+      metrics.vw = window.innerWidth;
+      metrics.docScrollable = Math.max(1, document.documentElement.scrollHeight - metrics.vh);
+
+      if (v21PortalTrack) {
+        const r = v21PortalTrack.getBoundingClientRect();
+        metrics.v21Top = sy + r.top;
+        metrics.v21Span = Math.max(1, v21PortalTrack.offsetHeight - metrics.vh);
+      }
+      if (scrollyTrack) {
+        const r = scrollyTrack.getBoundingClientRect();
+        metrics.scrollyTop = sy + r.top;
+        metrics.scrollySpan = Math.max(1, scrollyTrack.offsetHeight - metrics.vh);
+      }
+      metrics.parallaxCenters = parallaxCards.map((card) => {
+        const prev = card.style.transform;
+        card.style.transform = 'none';
+        const r = card.getBoundingClientRect();
+        card.style.transform = prev;
+        return {
+          el: card,
+          centerY: sy + r.top + r.height * 0.5,
+          amp: parseFloat(card.getAttribute('data-parallax') || '0')
+        };
+      });
+      if (setupSection) {
+        const r = setupSection.getBoundingClientRect();
+        metrics.setupTop = sy + r.top;
+        metrics.setupHeight = Math.max(1, r.height);
+      }
+      if (closingSection) {
+        const r = closingSection.getBoundingClientRect();
+        metrics.closingTop = sy + r.top;
+      }
+    }
+
+    let targetScrollY = window.scrollY || 0;
+    let smoothScrollY = targetScrollY;
+    let lastRawScrollY = targetScrollY;
+    let physicsRunning = false;
     let activeChapter = 0;
-    let smoothHeroT = 0;
-    let targetHeroT = 0;
-    let rafActive = false;
+    let activeV21Idx = 0;
+    let activeWiz = 0;
+    let userClickedWiz = false;
+
+    function selectWizStep(idx) {
+      if (idx === activeWiz) return;
+      activeWiz = idx;
+      wizBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+      wizImgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+    }
+
+    wizBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        userClickedWiz = true;
+        selectWizStep(idx);
+      });
+    });
 
     function setChapter(idx, fillRatio) {
       if (idx !== activeChapter) {
@@ -1424,11 +2081,8 @@
 
     chapterBtns.forEach((btn, idx) => {
       btn.addEventListener('click', () => {
-        if (window.innerWidth >= 960 && scrollyTrack) {
-          const rect = scrollyTrack.getBoundingClientRect();
-          const trackTop = window.scrollY + rect.top;
-          const scrollable = scrollyTrack.offsetHeight - window.innerHeight;
-          const targetY = trackTop + scrollable * ((idx + 0.15) / 4);
+        if (metrics.vw >= 960 && scrollyTrack) {
+          const targetY = metrics.scrollyTop + metrics.scrollySpan * ((idx + 0.14) / 4);
           window.scrollTo({ top: targetY, behavior: 'smooth' });
         } else {
           setChapter(idx, 1);
@@ -1436,23 +2090,99 @@
       });
     });
 
-    function updateScrollTargets() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const docProgress = Math.min(1, Math.max(0, scrollY / docH));
+    v21Btns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        if (metrics.vw >= 960 && v21PortalTrack) {
+          const targetY = metrics.v21Top + metrics.v21Span * (idx / 3.05);
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        } else if (v21Cards[idx]) {
+          v21Cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
+
+    function applyScrollChoreography(sy) {
+      const docProgress = Math.min(1, Math.max(0, sy / metrics.docScrollable));
       progressBar.style.transform = `scaleX(${docProgress.toFixed(4)})`;
 
       if (prefersReducedMotion) return;
 
-      // Hero 3D Unfold target (0 at top -> 1 by 480px scroll)
-      targetHeroT = Math.min(1, Math.max(0, scrollY / 480));
+      // Ambient horizon subtle breathing shift
+      if (ambientHorizon) {
+        const hy = Math.sin(docProgress * Math.PI * 2) * 28;
+        ambientHorizon.style.transform = `translate3d(-50%, ${hy.toFixed(1)}px, 0)`;
+      }
 
-      // Sticky Scrollytelling 4 Chapters on desktop
-      if (window.innerWidth >= 960 && scrollyTrack) {
-        const rect = scrollyTrack.getBoundingClientRect();
-        const scrollable = Math.max(1, scrollyTrack.offsetHeight - window.innerHeight);
-        const raw = -rect.top / scrollable;
-        if (raw >= -0.05 && raw <= 1.08) {
+      // Act 1: Hero 3D Multi-Plane Unfold + Satellites
+      const heroT = Math.min(1, Math.max(0, sy / 540));
+      const rotX = (1 - heroT) * 19;
+      const sc = 0.88 + heroT * 0.12;
+      const ty = (1 - heroT) * 32;
+      hero3dFrame.style.transform = `rotateX(${rotX.toFixed(2)}deg) scale(${sc.toFixed(4)}) translate3d(0, ${ty.toFixed(1)}px, 0)`;
+      hero3dGlare.style.opacity = (1 - heroT * 0.68).toFixed(3);
+      hero3dGlare.style.transform = `translate3d(${(heroT * 14).toFixed(1)}%, 0, 0)`;
+
+      if (metrics.vw >= 1040) {
+        if (heroSatRight) {
+          heroSatRight.style.transform = `translate3d(${(heroT * 26).toFixed(1)}px, ${(-heroT * 44).toFixed(1)}px, 0)`;
+        }
+        if (heroSatLeft) {
+          heroSatLeft.style.transform = `translate3d(${(-heroT * 26).toFixed(1)}px, ${(-heroT * 36).toFixed(1)}px, 0)`;
+        }
+      }
+
+      // Act 2: Counter-Kinetic Horizontal Ribbons
+      const shift = (sy * 0.24) % 920;
+      if (ribbonRowA) ribbonRowA.style.transform = `translate3d(${(-shift).toFixed(1)}px, 0, 0)`;
+      if (ribbonRowB) ribbonRowB.style.transform = `translate3d(${(shift - 320).toFixed(1)}px, 0, 0)`;
+
+      // Act 3: Pinned 3D Stacking Portal for Release v2.1 (Desktop)
+      if (metrics.vw >= 960 && v21Cards.length === 4) {
+        const rawP = (sy - metrics.v21Top) / metrics.v21Span;
+        const p = Math.min(1, Math.max(0, rawP));
+        const stagePos = p * 3; // 0..3 across 4 cards
+        const currentIdx = Math.min(3, Math.round(stagePos));
+        if (currentIdx !== activeV21Idx) {
+          activeV21Idx = currentIdx;
+          v21Btns.forEach((b, i) => b.classList.toggle('active', i === currentIdx));
+        }
+
+        for (let i = 0; i < 4; i++) {
+          const card = v21Cards[i];
+          if (i === 0) {
+            const depthBehind = Math.max(0, stagePos);
+            const scaleDown = Math.max(0.86, 1 - depthBehind * 0.042);
+            const pushUp = -Math.min(48, depthBehind * 16);
+            const fade = Math.max(0.32, 1 - depthBehind * 0.24);
+            card.style.zIndex = '1';
+            card.style.opacity = fade.toFixed(3);
+            card.style.transform = `translate3d(0, ${pushUp.toFixed(1)}px, 0) scale(${scaleDown.toFixed(4)})`;
+          } else {
+            // Card i enters between (i - 1) and i
+            const enterT = Math.min(1, Math.max(0, stagePos - (i - 1)));
+            const easedEnter = 1 - Math.pow(1 - enterT, 3);
+            const depthAfter = Math.max(0, stagePos - i);
+            const yPct = (1 - easedEnter) * 108;
+            const scaleVal = (0.94 + easedEnter * 0.06) - Math.min(0.1, depthAfter * 0.042);
+            const pushUpPx = -Math.min(44, depthAfter * 16);
+            const alpha = enterT <= 0.005 ? 0 : Math.max(0.35, Math.min(1, enterT * 2.4) - depthAfter * 0.22);
+
+            card.style.zIndex = String(i + 1);
+            card.style.opacity = alpha.toFixed(3);
+            card.style.transform = `translate3d(0, calc(${yPct.toFixed(2)}% + ${pushUpPx.toFixed(1)}px), 0) scale(${scaleVal.toFixed(4)})`;
+          }
+        }
+      } else {
+        v21Cards.forEach((c) => {
+          c.style.opacity = '1';
+          c.style.transform = 'none';
+        });
+      }
+
+      // Act 4: Sticky 4-World Workstation Tour
+      if (metrics.vw >= 960 && scrollyTrack) {
+        const raw = (sy - metrics.scrollyTop) / metrics.scrollySpan;
+        if (raw >= -0.06 && raw <= 1.08) {
           const clamped = Math.min(0.999, Math.max(0, raw));
           const chIdx = Math.min(3, Math.floor(clamped * 4));
           const subProgress = (clamped * 4) - chIdx;
@@ -1460,78 +2190,84 @@
         }
       }
 
-      // Opposite Parallax Cards (transform only)
-      if (window.innerWidth >= 900) {
-        const vh = window.innerHeight;
-        parallaxCards.forEach((card) => {
-          const r = card.getBoundingClientRect();
-          if (r.bottom > -100 && r.top < vh + 100) {
-            const centerOffset = ((r.top + r.height * 0.5) - vh * 0.5) / vh;
-            const amp = parseFloat(card.getAttribute('data-parallax') || '0');
-            const y = (centerOffset * amp).toFixed(1);
-            card.style.transform = `translate3d(0, ${y}px, 0)`;
+      // Act 5: Opposite-Velocity 3D Parallax Cards
+      if (metrics.vw >= 900) {
+        const viewCenter = sy + metrics.vh * 0.5;
+        for (let i = 0; i < metrics.parallaxCenters.length; i++) {
+          const item = metrics.parallaxCenters[i];
+          const rel = (item.centerY - viewCenter) / metrics.vh;
+          if (rel > -1.3 && rel < 1.3) {
+            const py = (rel * item.amp).toFixed(1);
+            item.el.style.transform = `translate3d(0, ${py}px, 0)`;
           }
-        });
+        }
       }
 
-      if (!rafActive) {
-        rafActive = true;
-        requestAnimationFrame(tickLerp);
+      // Act 6: Scroll-Responsive Setup Step Scrub (unless user manually clicked a step)
+      if (!userClickedWiz && setupSection) {
+        const relSetup = (sy + metrics.vh * 0.55 - metrics.setupTop) / metrics.setupHeight;
+        if (relSetup >= 0 && relSetup <= 1.05) {
+          const autoStep = Math.min(2, Math.max(0, Math.floor(relSetup * 3)));
+          selectWizStep(autoStep);
+        }
+      }
+
+      // Finale Expanding Portal Glow
+      if (closingPortalGlow) {
+        const dist = (sy + metrics.vh - metrics.closingTop) / Math.max(1, metrics.vh);
+        const pGlow = Math.min(1.35, Math.max(0.65, 0.65 + dist * 0.65));
+        closingPortalGlow.style.transform = `translate3d(-50%, 0, 0) scale(${pGlow.toFixed(3)})`;
       }
     }
 
-    function tickLerp() {
-      smoothHeroT += (targetHeroT - smoothHeroT) * 0.14;
-      const rotX = (1 - smoothHeroT) * 15;
-      const sc = 0.91 + smoothHeroT * 0.09;
-      const ty = (1 - smoothHeroT) * 22;
-      hero3dFrame.style.transform = `rotateX(${rotX.toFixed(2)}deg) scale(${sc.toFixed(4)}) translate3d(0, ${ty.toFixed(1)}px, 0)`;
-      hero3dGlare.style.opacity = (1 - smoothHeroT * 0.65).toFixed(3);
+    function stepPhysics() {
+      smoothScrollY += (targetScrollY - smoothScrollY) * 0.13;
+      if (Math.abs(targetScrollY - smoothScrollY) < 0.25) {
+        smoothScrollY = targetScrollY;
+      }
+      applyScrollChoreography(smoothScrollY);
 
-      if (Math.abs(targetHeroT - smoothHeroT) > 0.0015) {
-        requestAnimationFrame(tickLerp);
+      if (Math.abs(targetScrollY - smoothScrollY) >= 0.25) {
+        requestAnimationFrame(stepPhysics);
       } else {
-        rafActive = false;
+        physicsRunning = false;
       }
     }
 
-    window.addEventListener('scroll', updateScrollTargets, { passive: true });
-    window.addEventListener('resize', updateScrollTargets, { passive: true });
-    updateScrollTargets();
+    window.addEventListener('scroll', () => {
+      targetScrollY = window.scrollY || window.pageYOffset;
+      const delta = Math.abs(targetScrollY - lastRawScrollY);
+      lastRawScrollY = targetScrollY;
+      warpBoost = Math.min(12, warpBoost + delta * 0.085);
 
-    // 4. Spotlight Hover Surface Coordinates
+      if (!physicsRunning) {
+        physicsRunning = true;
+        requestAnimationFrame(stepPhysics);
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      initWorldStars();
+      cacheLayoutMetrics();
+      applyScrollChoreography(window.scrollY || 0);
+    }, { passive: true });
+
+    window.addEventListener('load', () => {
+      cacheLayoutMetrics();
+      applyScrollChoreography(window.scrollY || 0);
+    });
+
+    cacheLayoutMetrics();
+    applyScrollChoreography(targetScrollY);
+
+    // 5. Spotlight Hover Surface Coordinates
     document.querySelectorAll('.spotlight-surface').forEach((card) => {
       card.addEventListener('pointermove', (e) => {
         const r = card.getBoundingClientRect();
         card.style.setProperty('--mx', `${(e.clientX - r.left).toFixed(0)}px`);
         card.style.setProperty('--my', `${(e.clientY - r.top).toFixed(0)}px`);
-      });
+      }, { passive: true });
     });
-
-    // 5. Premiere Setup Wizard Step Switcher (Interactive + Gentle Auto-Cycle when visible)
-    const wizBtns = Array.from(document.querySelectorAll('.wiz-pill'));
-    const wizImgs = Array.from(document.querySelectorAll('.wizard-preview-img'));
-    let activeWiz = 0;
-    let userClickedWiz = false;
-
-    function selectWizStep(idx) {
-      activeWiz = idx;
-      wizBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
-      wizImgs.forEach((img, i) => img.classList.toggle('active', i === idx));
-    }
-
-    wizBtns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        userClickedWiz = true;
-        selectWizStep(idx);
-      });
-    });
-
-    setInterval(() => {
-      if (!userClickedWiz && !document.hidden) {
-        selectWizStep((activeWiz + 1) % 3);
-      }
-    }, 4200);
 
     // 6. Full-Resolution Lightbox
     const lightbox = document.getElementById('lightboxModal');
@@ -1560,36 +2296,14 @@
 
     // 7. Copy SHA-256
     document.getElementById('copyHashBtn').addEventListener('click', (e) => {
-      navigator.clipboard.writeText(rawHash);
       const btn = e.currentTarget;
-      btn.textContent = I18N[currentLang].copiedBtn;
-      setTimeout(() => { btn.textContent = I18N[currentLang].copyBtn; }, 1600);
+      navigator.clipboard.writeText(rawHash).then(() => {
+        btn.textContent = I18N[currentLang].copiedBtn;
+        setTimeout(() => {
+          btn.textContent = I18N[currentLang].copyBtn;
+        }, 1800);
+      });
     });
-
-    // 8. Live Sync from GitHub Releases Feed
-    fetch('https://api.github.com/repos/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((rel) => {
-        if (!rel) return;
-        if (rel.tag_name) {
-          document.getElementById('releaseVersionText').textContent = rel.tag_name + ' Stable';
-        }
-        const setupAsset = (rel.assets || []).find((a) => a.name && a.name.toLowerCase().endsWith('.exe'));
-        if (setupAsset) {
-          if (setupAsset.browser_download_url) {
-            document.getElementById('heroDownloadBtn').href = setupAsset.browser_download_url;
-            document.getElementById('navDownloadBtn').href = setupAsset.browser_download_url;
-            document.getElementById('bottomDownloadBtn').href = setupAsset.browser_download_url;
-          }
-          if (setupAsset.size) {
-            const mb = Math.round(setupAsset.size / 1048576);
-            document.getElementById('releaseSizeText').textContent = mb + ' MB · Single Setup';
-          }
-        }
-      })
-      .catch(() => {});
-
-    applyLang();
   </script>
 </body>
 </html>

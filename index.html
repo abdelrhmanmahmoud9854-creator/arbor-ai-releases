@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Arbor AI Studio — محطة الذكاء الاصطناعي الإبداعية والبرمجية | MAVYR Studio</title>
+  <meta name="description" content="استوديو متكامل على جهازك لتوليد الفيديو والصور والصوت، مسارات النود الاحترافية، ومساعد البرمجة المحلي أربور كود مع مكتبة تضم 66 موديلاً مفتوح المصدر." />
+
+  <!-- OpenGraph Preview for WhatsApp / Telegram / Discord -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Arbor AI Studio v2.0 — التحميل الرسمي لنظام ويندوز" />
+  <meta property="og:description" content="استوديو الذكاء الاصطناعي المحلي لتوليد الفيديو والصور والصوت، مسارات النود، وأربور كود. تطوير Abdelrhman Mahmoud — MAVYR Studio." />
+  <meta property="og:image" content="https://abdelrhmanmahmoud9854-creator.github.io/arbor-ai-releases/assets/screen-home.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="assets/arbor-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-obsidian: #07090d;
+      --bg-stage: #0d1118;
+      --bg-surface: #121822;
+      --bg-elevated: #171f2c;
+      --border-hairline: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.15);
+      --ink-primary: #f3f5f8;
+      --ink-secondary: #9ca6b8;
+      --ink-muted: #687387;
+      --arbor-emerald: #10b981;
+      --arbor-emerald-hover: #34d399;
+      --arbor-emerald-soft: rgba(16, 185, 129, 0.12);
+      --font-ar: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+      --font-en: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-obsidian);
+      color: var(--ink-primary);
+    }
+
+    body {
+      font-family: var(--font-ar);
+      background-color: var(--bg-obsidian);
+      background-image: radial-gradient(ellipse 80% 420px at 50% 0%, rgba(16, 185, 129, 0.09), transparent 72%);
+      color: var(--ink-primary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html[dir="ltr"] body {
+      font-family: var(--font-en);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* Navigation Bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 9, 13, 0.82);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .topbar-inner {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border-strong);
+    }
+
+    .mavyr-nav-logo {
+      height: 22px;
+      opacity: 0.9;
+      object-fit: contain;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      height: 38px;
+      padding-inline: 14px;
+      border-radius: 9px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--arbor-emerald);
+      background: var(--bg-elevated);
+    }
+
+    .nav-dl-btn {
+      height: 38px;
+      padding-inline: 16px;
+      border-radius: 9px;
+      background: var(--arbor-emerald);
+      color: #04110c;
+      font-size: 0.86rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.18s ease;
+    }
+
+    .nav-dl-btn:hover {
+      background: var(--arbor-emerald-hover);
+    }
+
+    /* Editorial Hero */
+    .hero {
+      padding-top: 64px;
+      padding-bottom: 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .hero-headline {
+      font-size: clamp(2rem, 3.8vw, 3.15rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      max-width: 24ch;
+    }
+
+    .hero-lead {
+      margin-top: 18px;
+      font-size: 1.08rem;
+      color: var(--ink-secondary);
+      max-width: 62ch;
+    }
+
+    .cta-panel {
+      background: var(--bg-stage);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .primary-download-btn {
+      width: 100%;
+      min-height: 54px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      background: var(--arbor-emerald);
+      color: #04110c;
+      font-size: 1.02rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.18s ease, transform 0.15s ease;
+    }
+
+    .primary-download-btn:hover {
+      background: var(--arbor-emerald-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta-meta-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-hairline);
+      font-size: 0.84rem;
+      color: var(--ink-secondary);
+    }
+
+    .cta-meta-item strong {
+      display: block;
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+
+    /* Interactive Workstation Showcase Stage */
+    .stage-section {
+      padding-bottom: 72px;
+    }
+
+    .stage-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .stage-tab {
+      padding: 9px 15px;
+      border-radius: 10px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-stage);
+      color: var(--ink-secondary);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .stage-tab:hover {
+      color: var(--ink-primary);
+      border-color: var(--border-strong);
+    }
+
+    .stage-tab.active {
+      background: var(--arbor-emerald-soft);
+      color: var(--ink-primary);
+      border-color: var(--arbor-emerald);
+    }
+
+    .workstation-frame {
+      background: var(--bg-stage);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+    }
+
+    .workstation-img-wrap {
+      position: relative;
+      background: #05070a;
+      cursor: zoom-in;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .workstation-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .workstation-caption-bar {
+      padding: 16px 22px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--bg-surface);
+    }
+
+    .caption-text {
+      font-size: 0.94rem;
+      color: var(--ink-secondary);
+    }
+
+    .caption-text strong {
+      color: var(--ink-primary);
+    }
+
+    .zoom-hint {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+
+    /* Editorial Capability Pillars (Clean Rule Grid, Not Generic Cards) */
+    .pillars-section {
+      padding-block: 64px;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .section-heading {
+      font-size: clamp(1.5rem, 2.5vw, 2.05rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      color: var(--ink-secondary);
+      max-width: 65ch;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .pillar-item {
+      padding: 28px 24px 12px;
+      border-inline-end: 1px solid var(--border-hairline);
+    }
+
+    .pillar-item:nth-child(3n) {
+      border-inline-end: none;
+    }
+
+    .pillar-item:nth-child(n+4) {
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 28px;
+    }
+
+    .pillar-item h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--ink-primary);
+    }
+
+    .pillar-item p {
+      font-size: 0.93rem;
+      color: var(--ink-secondary);
+      line-height: 1.65;
+    }
+
+    /* Setup Preview, Trust & Authenticity Verification */
+    .trust-section {
+      padding-block: 72px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--arbor-emerald-soft);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--arbor-emerald);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-row h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .step-row p {
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+    }
+
+    .reassurance-box {
+      margin-top: 28px;
+      padding: 20px;
+      border-radius: 14px;
+      background: var(--bg-stage);
+      border: 1px solid var(--border-strong);
+    }
+
+    .reassurance-box h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-primary);
+    }
+
+    .reassurance-box p {
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+      margin-bottom: 14px;
+    }
+
+    .hash-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 9px;
+      background: var(--bg-obsidian);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .hash-value {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--arbor-emerald);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      direction: ltr;
+    }
+
+    .copy-btn {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      border-radius: 7px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--ink-primary);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--arbor-emerald);
+    }
+
+    .setup-preview-card {
+      background: var(--bg-stage);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .setup-preview-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      border: 1px solid var(--border-hairline);
+      cursor: zoom-in;
+    }
+
+    .setup-preview-caption {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--ink-secondary);
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-hairline);
+      padding-block: 36px;
+      color: var(--ink-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand img {
+      height: 22px;
+      object-fit: contain;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(4, 6, 10, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: min(1360px, 96vw);
+      max-height: 90vh;
+      border-radius: 12px;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pillar-item {
+        border-inline-end: none;
+        border-bottom: 1px solid var(--border-hairline);
+        padding-inline: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-group">
+        <img src="assets/arbor-icon.png" alt="Arbor AI" class="brand-icon" />
+        <div class="brand-title">
+          <span>Arbor AI Studio</span>
+        </div>
+        <div class="brand-divider"></div>
+        <img src="assets/mavyr-logo.png" alt="MAVYR Studio" class="mavyr-nav-logo" />
+      </div>
+
+      <div class="nav-actions">
+        <button type="button" class="lang-btn" id="langToggleBtn">English</button>
+        <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="nav-dl-btn" id="navDownloadBtn">
+          <span data-i18n="navDownload">تحميل لويندوز</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="hero-headline" data-i18n="heroHeadline">
+            استوديو الذكاء الاصطناعي المتكامل لتوليد الميديا، مسارات النود، والبرمجة المحلية على جهازك.
+          </h1>
+          <p class="hero-lead" data-i18n="heroLead">
+            يجمع Arbor AI Studio بين استوديو إنتاج الفيديو والصور والصوت، محرر مسارات العمل المرئية، ومساعد البرمجة المحلي أربور كود داخل تطبيق سطح مكتب واحد سريع ومستقل بالكامل على نظام ويندوز.
+          </p>
+        </div>
+
+        <div class="cta-panel">
+          <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="primary-download-btn" id="heroDownloadBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span data-i18n="ctaPrimary">تحميل المثبّت الشامل (Arbor_AI_Setup.exe)</span>
+          </a>
+
+          <div class="cta-meta-list">
+            <div class="cta-meta-item">
+              <span data-i18n="metaVersionLabel">الإصدار الحالي</span>
+              <strong class="mono" id="releaseVersionText">v2.0.0 Stable</strong>
+            </div>
+            <div class="cta-meta-item">
+              <span data-i18n="metaSizeLabel">الحزمة المدمجة</span>
+              <strong class="mono" id="releaseSizeText">253 MB · Single .exe</strong>
+            </div>
+            <div class="cta-meta-item">
+              <span data-i18n="metaOsLabel">النظام المدعوم</span>
+              <strong class="mono">Windows 10 / 11 (64-bit)</strong>
+            </div>
+            <div class="cta-meta-item">
+              <span data-i18n="metaPublisherLabel">تطوير ونشر</span>
+              <strong>MAVYR Studio</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Real App Screenshots Stage -->
+    <section class="stage-section">
+      <div class="container">
+        <div class="stage-tabs" id="stageTabs" role="tablist"></div>
+
+        <div class="workstation-frame">
+          <div class="workstation-img-wrap" id="stageImgTrigger">
+            <img id="stageActiveImg" src="assets/screen-home.png" alt="Arbor AI Studio Screenshot" />
+          </div>
+          <div class="workstation-caption-bar">
+            <p class="caption-text" id="stageActiveCaption"></p>
+            <span class="zoom-hint" data-i18n="zoomHint">اضغط على الصورة لتكبيرها بالحجم الكامل</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Capabilities -->
+    <section class="pillars-section">
+      <div class="container">
+        <h2 class="section-heading" data-i18n="pillarsHeading">مصمم للإنتاج الحقيقي بدون تعقيد</h2>
+        <p class="section-sub" data-i18n="pillarsSub">
+          ملف تثبيت واحد يجهّز كل شيء تلقائياً بدون الحاجة لتثبيت Python أو Node.js، وبدون أي موديلات إجبارية تستهلك مساحة جهازك عند أول تشغيل.
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar-item">
+            <h3 data-i18n="p1Title">استوديو توليد الفيديو والصور والصوت</h3>
+            <p data-i18n="p1Desc">بيئة إنتاج موحّدة تفصل موديلات الفيديو والصور والصوت بذكاء حسب الجلسة، مع استعراض العروض الرسمية ونسخ البرومبت المرجعي بضغطة واحدة.</p>
+          </div>
+          <div class="pillar-item">
+            <h3 data-i18n="p2Title">مسارات النود المرئية الاحترافية</h3>
+            <p data-i18n="p2Desc">أنشئ مسارات عمل جديدة أو افتح مشاريعك المحفوظة داخل لوحة عقد تفاعلية تدعم الإضافة السريعة بالزر الأيمن والترتيب الهندسي عند الطلب.</p>
+          </div>
+          <div class="pillar-item">
+            <h3 data-i18n="p3Title">أربور كود وأربور شات</h3>
+            <p data-i18n="p3TitleSub" style="display:none"></p>
+            <p data-i18n="p3Desc">مساعد برمجة محلي بأسلوب Claude Code يمكنك ربطه بأي مجلد مشروع على جهازك لقراءة وبناء الملفات مباشرة، بجانب شات ذكي عام.</p>
+          </div>
+          <div class="pillar-item">
+            <h3 data-i18n="p4Title">مكتبة 66 موديلاً ومدير تنزيلات مستقل</h3>
+            <p data-i18n="p4Desc">البرنامج يأتي خفيفاً بصفر موديلات محمّلة مسبقاً؛ تصفح متطلبات كل موديل بدقة وحمّل ما تحتاجه فقط عبر مدير تنزيلات مستقل يدعم الاستكمال.</p>
+          </div>
+          <div class="pillar-item">
+            <h3 data-i18n="p5Title">مراقب لحظي لاستهلاك العتاد</h3>
+            <p data-i18n="p5Desc">متابعة حية كل ثانية لاستهلاك كرت الشاشة (GPU / VRAM)، المعالج (CPU)، والذاكرة العشوائية (RAM) بأسلوب مدير المهام لضمان استقرار جهازك.</p>
+          </div>
+          <div class="pillar-item">
+            <h3 data-i18n="p6Title">خصوصية محلية وتحديث تلقائي صامت</h3>
+            <p data-i18n="p6Desc">تُحفظ جميع مخرجاتك ومفاتيح الـ API مشفرة بـ AES-256 محلياً على جهازك، بينما يصلك أي تحديث برمجي جديد تلقائياً في الخلفية بضغطة زر.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust, Authenticity & 3-Step Setup Preview -->
+    <section class="trust-section">
+      <div class="container trust-grid">
+        <div>
+          <h2 class="section-heading" data-i18n="trustHeading">تثبيت آمن وموثوق في 3 خطوات</h2>
+          <p class="section-sub" style="margin-bottom: 12px;" data-i18n="trustSub">
+            تم حزم وتوقيع النسخة الرسمية في ملف واحد مستقل ليعمل فوراً على أي جهاز ويندوز 10 أو 11.
+          </p>
+
+          <ol class="step-list">
+            <li class="step-row">
+              <span class="step-num">1</span>
+              <div>
+                <h4 data-i18n="step1Title">حمّل الملف الواحد (Arbor_AI_Setup.exe)</h4>
+                <p data-i18n="step1Desc">اضغط على زر التحميل بالأعلى لتنزيل ملف التثبيت الشامل مباشرة من خادم الإصدارات الرسمي.</p>
+              </div>
+            </li>
+            <li class="step-row">
+              <span class="step-num">2</span>
+              <div>
+                <h4 data-i18n="step2Title">اختر مجلدات الحفظ واضغط تثبيت</h4>
+                <p data-i18n="step2Desc">ستفتح لك نافذة التثبيت الظاهرة بالصورة المقابلة لتحديد مسار البرنامج ومجلد المخرجات ومجلد الموديلات.</p>
+              </div>
+            </li>
+            <li class="step-row">
+              <span class="step-num">3</span>
+              <div>
+                <h4 data-i18n="step3Title">يعمل الاستوديو فوراً مع تفعيل التحديث التلقائي</h4>
+                <p data-i18n="step3Desc">يُنشئ المثبّت اختصار سطح المكتب ويفتح البرنامج جاهزاً للعمل بالعربية أو الإنجليزية وفي الوضع الليلي أو النهاري.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="reassurance-box">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <span data-i18n="verifyTitle">بصمة التحقق الأمني وملاحظة التشغيل الأول على ويندوز</span>
+            </h4>
+            <p data-i18n="verifyDesc">
+              نظراً لأن Arbor AI Studio تطبيق سطح مكتب مستقل من تطوير MAVYR Studio، قد يعرض نظام Windows عند فتح ملف التثبيت لأول مرة نافذة تنبيه قياسية؛ اضغط على «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال». يمكنك دائماً مطابقة بصمة الملف الرقمية SHA-256 التالية للتأكد من سلامته 100%:
+            </p>
+            <div class="hash-bar">
+              <span class="hash-value" id="shaHashValue">SHA-256: 755aecaf534175d3cf60609aabfbf791ff98d01ded761c5ff0458fa8e83f5991</span>
+              <button type="button" class="copy-btn" id="copyHashBtn" data-i18n="copyHash">نسخ البصمة</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-preview-card">
+          <img src="assets/screen-setup.png" alt="نافذة تثبيت Arbor AI Studio الرسمية" id="setupPreviewImg" />
+          <p class="setup-preview-caption" data-i18n="setupCaption">
+            شكل نافذة المثبّت الرسمي الشامل (Arbor_AI_Setup.exe) عند فتحها على جهازك
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/mavyr-logo.png" alt="MAVYR Studio" />
+        <span data-i18n="footerCopy">جميع الحقوق محفوظة © 2026 عبد الرحمن محمود (Abdelrhman Mahmoud — MAVYR Studio). برنامج محمي بحقوق الملكية الفكرية.</span>
+      </div>
+      <span class="mono">Arbor AI Studio · Proprietary License</span>
+    </div>
+  </footer>
+
+  <!-- Fullscreen Image Lightbox -->
+  <div class="lightbox" id="lightboxModal">
+    <img id="lightboxImg" src="" alt="Preview" />
+  </div>
+
+  <script>
+    const SLIDES = [
+      {
+        id: 'home',
+        img: 'assets/screen-home.png',
+        tabAr: 'الواجهة الرئيسية',
+        tabEn: 'Studio Home',
+        capAr: '<strong>الواجهة الرئيسية المنظمة:</strong> وصول فوري لكل أقسام الاستوديو مع مؤشرات استهلاك الجهاز الحية بالأعلى ودعم الوضع الليلي والنهاري.',
+        capEn: '<strong>Clean Studio Home:</strong> Instant access to generative workspaces, node pipelines, and live hardware telemetry.'
+      },
+      {
+        id: 'studio',
+        img: 'assets/screen-studio.png',
+        tabAr: 'استوديو التوليد',
+        tabEn: 'Generative Studio',
+        capAr: '<strong>استوديو التوليد الإبداعي:</strong> فلترة ذكية لموديلات الفيديو والصور والصوت مع معاينة المراجع والنتائج بدقة سينمائية.',
+        capEn: '<strong>Generative Media Studio:</strong> Dedicated video, image, and audio creation sessions with reference asset controls.'
+      },
+      {
+        id: 'workflows',
+        img: 'assets/screen-workflows.png',
+        tabAr: 'مركز مسارات النود',
+        tabEn: 'Workflows Hub',
+        capAr: '<strong>مركز مسارات العمل:</strong> ابدأ مسار نود جديداً أو افتح قوالبك المحفوظة لإنتاج سلاسل توليد متعددة المراحل.',
+        capEn: '<strong>Visual Workflows Hub:</strong> Create new pipelines or resume saved multi-stage production templates.'
+      },
+      {
+        id: 'editor',
+        img: 'assets/screen-node-editor.png',
+        tabAr: 'محرر العقد التفاعلي',
+        tabEn: 'Node Graph Editor',
+        capAr: '<strong>محرر العقد (Node Graph):</strong> ربط مرن بين موديلات التوليد والتحسين مع قائمة إضافة سريعة بالزر الأيمن وتنسيق هندسي.',
+        capEn: '<strong>Interactive Node Graph:</strong> Connect prompts, generators, and upscalers with right-click node insertion and auto-layout.'
+      },
+      {
+        id: 'code',
+        img: 'assets/screen-code.png',
+        tabAr: 'أربور كود للبرمجة',
+        tabEn: 'Arbor Code',
+        capAr: '<strong>أربور كود وأربور شات:</strong> اربط أي مجلد مشروع محلي على جهازك ليعمل المساعد البرمجي مباشرة على ملفاتك بأسلوب Claude Code.',
+        capEn: '<strong>Arbor Code & Chat:</strong> Bind any local project folder on your PC for direct code reading, creation, and refactoring.'
+      },
+      {
+        id: 'models',
+        img: 'assets/screen-models.png',
+        tabAr: 'مكتبة 66 موديل',
+        tabEn: '66-Model Library',
+        capAr: '<strong>مكتبة الموديلات المحدّثة:</strong> عرض غير مقصوص للفيديو الرسمي، المتطلبات الكاملة لكرت الشاشة، ونسخ البرومبت المرجعي بضغطة زر.',
+        capEn: '<strong>66 Open-Source Models:</strong> Full hardware specs, uncropped showcase previews, and one-click official prompt copy.'
+      },
+      {
+        id: 'light',
+        img: 'assets/screen-home-light.png',
+        tabAr: 'الوضع النهاري (EN)',
+        tabEn: 'Daylight Theme',
+        capAr: '<strong>دعم كامل للوضع النهاري واللغتين:</strong> تبديل سلس بين العربية والإنجليزية وبين الوضع الليلي السينمائي والوضع النهاري.',
+        capEn: '<strong>Calibrated Light & Dark Modes:</strong> Switch seamlessly between Obsidian Dark and Studio Daylight in Arabic or English.'
+      }
+    ];
+
+    const I18N = {
+      ar: {
+        navDownload: 'تحميل لويندوز',
+        heroHeadline: 'استوديو الذكاء الاصطناعي المتكامل لتوليد الميديا، مسارات النود، والبرمجة المحلية على جهازك.',
+        heroLead: 'يجمع Arbor AI Studio بين استوديو إنتاج الفيديو والصور والصوت، محرر مسارات العمل المرئية، ومساعد البرمجة المحلي أربور كود داخل تطبيق سطح مكتب واحد سريع ومستقل بالكامل على نظام ويندوز.',
+        ctaPrimary: 'تحميل المثبّت الشامل (Arbor_AI_Setup.exe)',
+        metaVersionLabel: 'الإصدار الحالي',
+        metaSizeLabel: 'الحزمة المدمجة',
+        metaOsLabel: 'النظام المدعوم',
+        metaPublisherLabel: 'تطوير ونشر',
+        zoomHint: 'اضغط على الصورة لتكبيرها بالحجم الكامل',
+        pillarsHeading: 'مصمم للإنتاج الحقيقي بدون تعقيد',
+        pillarsSub: 'ملف تثبيت واحد يجهّز كل شيء تلقائياً بدون الحاجة لتثبيت Python أو Node.js، وبدون أي موديلات إجبارية تستهلك مساحة جهازك عند أول تشغيل.',
+        p1Title: 'استوديو توليد الفيديو والصور والصوت',
+        p1Desc: 'بيئة إنتاج موحّدة تفصل موديلات الفيديو والصور والصوت بذكاء حسب الجلسة، مع استعراض العروض الرسمية ونسخ البرومبت المرجعي بضغطة واحدة.',
+        p2Title: 'مسارات النود المرئية الاحترافية',
+        p2Desc: 'أنشئ مسارات عمل جديدة أو افتح مشاريعك المحفوظة داخل لوحة عقد تفاعلية تدعم الإضافة السريعة بالزر الأيمن والترتيب الهندسي عند الطلب.',
+        p3Title: 'أربور كود وأربور شات',
+        p3Desc: 'مساعد برمجة محلي بأسلوب Claude Code يمكنك ربطه بأي مجلد مشروع على جهازك لقراءة وبناء الملفات مباشرة، بجانب شات ذكي عام.',
+        p4Title: 'مكتبة 66 موديلاً ومدير تنزيلات مستقل',
+        p4Desc: 'البرنامج يأتي خفيفاً بصفر موديلات محمّلة مسبقاً؛ تصفح متطلبات كل موديل بدقة وحمّل ما تحتاجه فقط عبر مدير تنزيلات مستقل يدعم الاستكمال.',
+        p5Title: 'مراقب لحظي لاستهلاك العتاد',
+        p5Desc: 'متابعة حية كل ثانية لاستهلاك كرت الشاشة (GPU / VRAM)، المعالج (CPU)، والذاكرة العشوائية (RAM) بأسلوب مدير المهام لضمان استقرار جهازك.',
+        p6Title: 'خصوصية محلية وتحديث تلقائي صامت',
+        p6Desc: 'تُحفظ جميع مخرجاتك ومفاتيح الـ API مشفرة بـ AES-256 محلياً على جهازك، بينما يصلك أي تحديث برمجي جديد تلقائياً في الخلفية بضغطة زر.',
+        trustHeading: 'تثبيت آمن وموثوق في 3 خطوات',
+        trustSub: 'تم حزم وتوقيع النسخة الرسمية في ملف واحد مستقل ليعمل فوراً على أي جهاز ويندوز 10 أو 11.',
+        step1Title: 'حمّل الملف الواحد (Arbor_AI_Setup.exe)',
+        step1Desc: 'اضغط على زر التحميل بالأعلى لتنزيل ملف التثبيت الشامل مباشرة من خادم الإصدارات الرسمي.',
+        step2Title: 'اختر مجلدات الحفظ واضغط تثبيت',
+        step2Desc: 'ستفتح لك نافذة التثبيت الظاهرة بالصورة المقابلة لتحديد مسار البرنامج ومجلد المخرجات ومجلد الموديلات.',
+        step3Title: 'يعمل الاستوديو فوراً مع تفعيل التحديث التلقائي',
+        step3Desc: 'يُنشئ المثبّت اختصار سطح المكتب ويفتح البرنامج جاهزاً للعمل بالعربية أو الإنجليزية وفي الوضع الليلي أو النهاري.',
+        verifyTitle: 'بصمة التحقق الأمني وملاحظة التشغيل الأول على ويندوز',
+        verifyDesc: 'نظراً لأن Arbor AI Studio تطبيق سطح مكتب مستقل من تطوير MAVYR Studio، قد يعرض نظام Windows عند فتح ملف التثبيت لأول مرة نافذة تنبيه قياسية؛ اضغط على «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال». يمكنك دائماً مطابقة بصمة الملف الرقمية SHA-256 التالية للتأكد من سلامته 100%:',
+        copyHash: 'نسخ البصمة',
+        copiedHash: 'تم النسخ ✓',
+        setupCaption: 'شكل نافذة المثبّت الرسمي الشامل (Arbor_AI_Setup.exe) عند فتحها على جهازك',
+        footerCopy: 'جميع الحقوق محفوظة © 2026 عبد الرحمن محمود (Abdelrhman Mahmoud — MAVYR Studio). برنامج محمي بحقوق الملكية الفكرية.'
+      },
+      en: {
+        navDownload: 'Download for Windows',
+        heroHeadline: 'Your local AI workstation for generative media, visual node workflows, and project coding.',
+        heroLead: 'Arbor AI Studio unifies video, image, and audio generation, Comfy-style node pipelines, a 66-model open-source library, and Arbor Code inside one self-contained Windows desktop application.',
+        ctaPrimary: 'Download All-in-One Installer (Arbor_AI_Setup.exe)',
+        metaVersionLabel: 'Latest Release',
+        metaSizeLabel: 'Standalone Bundle',
+        metaOsLabel: 'Platform',
+        metaPublisherLabel: 'Publisher',
+        zoomHint: 'Click screenshot to view full resolution',
+        pillarsHeading: 'Built for real production without setup friction',
+        pillarsSub: 'One standalone installer sets up the entire compiled desktop engine—no Python or Node.js required, and zero pre-installed model bloat on first launch.',
+        p1Title: 'Generative Video, Image & Audio Studio',
+        p1Desc: 'Modality-aware studio sessions filter video, image, and audio models automatically with official showcase previews and one-click reference prompt copy.',
+        p2Title: 'Visual Node Workflows',
+        p2Desc: 'Launch fresh node graphs or reopen saved multi-stage workflows with right-click quick node insertion and on-demand Dagre layout.',
+        p3Title: 'Arbor Code & Arbor Chat',
+        p3Desc: 'Claude Code-style local coding assistant that binds directly to any project folder on your PC to inspect and build files alongside general chat.',
+        p4Title: '66-Model Library & Download Manager',
+        p4Desc: 'Starts lightweight with 0 pre-installed models. Inspect full VRAM requirements and download only the models you choose with resumable transfers.',
+        p5Title: 'Live Task-Manager Hardware Profiler',
+        p5Desc: 'Real-time 1-second GPU, VRAM, CPU, and RAM monitoring keeps heavy local generations smooth and within thermal guardrails.',
+        p6Title: '100% Local Privacy & Silent Auto-Updates',
+        p6Desc: 'Renders and AES-256 encrypted keys remain strictly on your workstation while new software releases install seamlessly in the background.',
+        trustHeading: 'Verified 3-step setup',
+        trustSub: 'Packaged into a single self-extracting Windows executable ready to run out of the box on Windows 10 and 11.',
+        step1Title: 'Download Arbor_AI_Setup.exe',
+        step1Desc: 'Click the download button above to get the single self-contained installer directly from our official release feed.',
+        step2Title: 'Choose your studio folders & click Install',
+        step2Desc: 'The exact dark-obsidian installer shown beside these steps lets you pick your app, renders, and models directories.',
+        step3Title: 'Launch immediately with Auto-Update enabled',
+        step3Desc: 'Setup creates your desktop shortcut and opens Arbor AI Studio ready in Arabic or English, Dark or Light mode.',
+        verifyTitle: 'SHA-256 Integrity Check & Windows First-Run Note',
+        verifyDesc: 'Because Arbor AI Studio is an independent desktop application by MAVYR Studio, Windows SmartScreen may show a standard prompt on first launch—click "More info" then "Run anyway". You can verify authenticity anytime with the official SHA-256 checksum below:',
+        copyHash: 'Copy Hash',
+        copiedHash: 'Copied ✓',
+        setupCaption: 'Official Arbor_AI_Setup.exe all-in-one installer window on Windows 10/11',
+        footerCopy: 'Copyright © 2026 Abdelrhman Mahmoud — MAVYR Studio. All Rights Reserved. Proprietary Software.'
+      }
+    };
+
+    let currentLang = 'ar';
+    let activeSlideIdx = 0;
+    const rawHash = '755aecaf534175d3cf60609aabfbf791ff98d01ded761c5ff0458fa8e83f5991';
+
+    const tabsContainer = document.getElementById('stageTabs');
+    const stageImg = document.getElementById('stageActiveImg');
+    const stageCaption = document.getElementById('stageActiveCaption');
+    const langBtn = document.getElementById('langToggleBtn');
+    const lightbox = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function renderSlides() {
+      tabsContainer.innerHTML = '';
+      SLIDES.forEach((s, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'stage-tab' + (idx === activeSlideIdx ? ' active' : '');
+        btn.textContent = currentLang === 'ar' ? s.tabAr : s.tabEn;
+        btn.onclick = () => {
+          activeSlideIdx = idx;
+          renderSlides();
+        };
+        tabsContainer.appendChild(btn);
+      });
+
+      const active = SLIDES[activeSlideIdx];
+      stageImg.src = active.img;
+      stageCaption.innerHTML = currentLang === 'ar' ? active.capAr : active.capEn;
+    }
+
+    function applyLanguage() {
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      langBtn.textContent = currentLang === 'ar' ? 'English' : 'عربي';
+
+      const dict = I18N[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      renderSlides();
+    }
+
+    langBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      applyLanguage();
+    });
+
+    document.getElementById('stageImgTrigger').addEventListener('click', () => {
+      lightboxImg.src = stageImg.src;
+      lightbox.classList.add('open');
+    });
+
+    document.getElementById('setupPreviewImg').addEventListener('click', (e) => {
+      lightboxImg.src = e.target.src;
+      lightbox.classList.add('open');
+    });
+
+    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+
+    document.getElementById('copyHashBtn').addEventListener('click', (e) => {
+      navigator.clipboard.writeText(rawHash);
+      const btn = e.currentTarget;
+      btn.textContent = I18N[currentLang].copiedHash;
+      setTimeout(() => {
+        btn.textContent = I18N[currentLang].copyHash;
+      }, 1800);
+    });
+
+    // Live sync version & download asset size from official GitHub Release feed
+    fetch('https://api.github.com/repos/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((rel) => {
+        if (!rel) return;
+        if (rel.tag_name) {
+          document.getElementById('releaseVersionText').textContent = rel.tag_name + ' Stable';
+        }
+        const setupAsset = (rel.assets || []).find((a) => a.name && a.name.toLowerCase().endsWith('.exe'));
+        if (setupAsset) {
+          if (setupAsset.browser_download_url) {
+            document.getElementById('heroDownloadBtn').href = setupAsset.browser_download_url;
+            document.getElementById('navDownloadBtn').href = setupAsset.browser_download_url;
+          }
+          if (setupAsset.size) {
+            const mb = Math.round(setupAsset.size / 1048576);
+            document.getElementById('releaseSizeText').textContent = mb + ' MB · Single .exe';
+          }
+        }
+      })
+      .catch(() => {});
+
+    applyLanguage();
+  </script>
+</body>
+</html>

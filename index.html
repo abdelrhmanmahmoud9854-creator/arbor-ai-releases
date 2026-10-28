@@ -492,6 +492,73 @@
       pointer-events: auto;
     }
 
+    /* ==================== WHAT'S NEW IN v2.1 SECTION ==================== */
+    .whatsnew-section {
+      padding: 108px 0;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .whatsnew-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.78rem;
+      color: var(--ivory);
+      margin-bottom: 16px;
+    }
+
+    .whatsnew-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 44px;
+    }
+
+    @media (max-width: 860px) {
+      .whatsnew-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .whatsnew-card {
+      border-radius: 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      overflow: hidden;
+      transition: border-color 240ms ease, transform 320ms var(--ease-out-expo);
+      cursor: zoom-in;
+    }
+    .whatsnew-card:hover {
+      border-color: var(--border-strong);
+      transform: translate3d(0, -4px, 0);
+    }
+    .whatsnew-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    .whatsnew-card-body {
+      padding: 22px 24px;
+    }
+    .whatsnew-card-body h3 {
+      font-size: 1.06rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .whatsnew-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.68;
+    }
+
     /* ==================== PARALLAX DUAL THEME & TELEMETRY SHOWCASE ==================== */
     .craft-section {
       padding: 110px 0;
@@ -896,6 +963,7 @@
       </a>
 
       <div class="nav-actions">
+        <a href="#whats-new-v21" class="ghost-pill" style="text-decoration: none;" data-i18n="navWhatsNew">ما الجديد في v2.1</a>
         <button type="button" class="ghost-pill" id="langBtn">English</button>
         <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe" class="nav-cta" id="navDownloadBtn">
           <span data-i18n="navCta">تحميل لويندوز</span>
@@ -925,9 +993,9 @@
             </a>
 
             <div class="hero-specs">
-              <span><strong class="mono" id="releaseVersionText">v2.0.0 Stable</strong></span>
+              <span><strong class="mono" id="releaseVersionText">v2.1.0 Stable</strong></span>
               <span>·</span>
-              <span><strong class="mono" id="releaseSizeText">253 MB · Single Setup</strong></span>
+              <span><strong class="mono" id="releaseSizeText">254 MB · Single Setup</strong></span>
               <span>·</span>
               <span><strong>Windows 10 / 11 (64-bit)</strong></span>
               <span>·</span>
@@ -975,8 +1043,8 @@
               </button>
 
               <button type="button" class="chapter-btn" data-chapter="3">
-                <h3 data-i18n="ch4Title">مكتبة 66 موديلاً مفتوح المصدر</h3>
-                <p data-i18n="ch4Desc">يبدأ البرنامج خفيفاً بصفر موديلات مسبقة؛ استعرض مواصفات العتاد وحمّل ما تختاره فقط عبر مدير تنزيلات مستقل.</p>
+                <h3 data-i18n="ch4Title">مكتبة 68 موديلاً مفتوح المصدر</h3>
+                <p data-i18n="ch4Desc">يبدأ البرنامج خفيفاً بصفر موديلات مسبقة؛ استعرض مواصفات العتاد وحمّل ما تختاره فقط بما فيها Wan 3.0 الجديد.</p>
                 <div class="chapter-progress"><div class="chapter-progress-fill"></div></div>
               </button>
             </div>
@@ -985,9 +1053,54 @@
               <img src="assets/screen-studio.png" alt="Generative Studio" class="scrolly-slide-img active" data-slide="0" />
               <img src="assets/screen-node-editor.png" alt="Node Graph Editor" class="scrolly-slide-img" data-slide="1" />
               <img src="assets/screen-code.png" alt="Arbor Code" class="scrolly-slide-img" data-slide="2" />
-              <img src="assets/screen-models.png" alt="66 Open Models Library" class="scrolly-slide-img" data-slide="3" />
+              <img src="assets/v21_wan30_models.png" alt="68 Open Models Library" class="scrolly-slide-img" data-slide="3" />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.5 WHAT'S NEW IN RELEASE v2.1 -->
+    <section class="whatsnew-section" id="whats-new-v21">
+      <div class="container">
+        <div class="section-intro" data-reveal>
+          <div class="whatsnew-pill mono">RELEASE v2.1 · WHAT'S NEW</div>
+          <h2 data-i18n="wnHeading">ما الجديد في الإصدار v2.1</h2>
+          <p data-i18n="wnSub">إضافات عملية مصوّرة صُممت لرفع جودة الإنتاج وسرعة البرمجة والتوافق مع كل أجهزة ويندوز.</p>
+        </div>
+
+        <div class="whatsnew-grid">
+          <article class="whatsnew-card" data-zoom="assets/v21_wan30_models.png" data-reveal>
+            <img src="assets/v21_wan30_models.png" alt="Wan 3.0 Cinema & Turbo Video" />
+            <div class="whatsnew-card-body">
+              <h3 data-i18n="wn1Title">محرك الفيديو المفتوح Wan 3.0 بنسختين</h3>
+              <p data-i18n="wn1Desc">أضفنا Wan 3.0 Cinema لإخراج المشاهد السينمائية بدقة 1080p، ونسخة Wan 3.0 Turbo 5B السريعة المتوافقة مع كروت 8GB VRAM.</p>
+            </div>
+          </article>
+
+          <article class="whatsnew-card" data-zoom="assets/v21_smart_router.png" data-reveal style="--delay: 90ms;">
+            <img src="assets/v21_smart_router.png" alt="Smart Multi-API Router" />
+            <div class="whatsnew-card-body">
+              <h3 data-i18n="wn2Title">الموجّه الذكي ومفاتيح الـ API المجانية</h3>
+              <p data-i18n="wn2Desc">اربط حساباتك المجانية من Groq وGemini وOpenRouter وCerebras في ثوانٍ داخل أربور كود مع تبديل تلقائي فوري بدون انقطاع.</p>
+            </div>
+          </article>
+
+          <article class="whatsnew-card" data-zoom="assets/v21_download_manager.png" data-reveal>
+            <img src="assets/v21_download_manager.png" alt="Cross-PC Download Engine" />
+            <div class="whatsnew-card-body">
+              <h3 data-i18n="wn3Title">مدير تنزيلات ذكي متوافق مع كل الأجهزة</h3>
+              <p data-i18n="wn3Desc">تعرّف تلقائي على أقراص التخزين المتاحة على أي كمبيوتر أو لابتوب، مع قراءة حية للمساحة وإيقاف واستكمال فوري للتحميل.</p>
+            </div>
+          </article>
+
+          <article class="whatsnew-card" data-zoom="assets/v21_whats_new.png" data-reveal style="--delay: 90ms;">
+            <img src="assets/v21_whats_new.png" alt="In-App What's New Tab" />
+            <div class="whatsnew-card-body">
+              <h3 data-i18n="wn4Title">تبويب «ما الجديد» وإعدادات تحديث أنقى</h3>
+              <p data-i18n="wn4Desc">صفحة مدمجة داخل البرنامج تعرض أحدث المزايا بالصور التوضيحية وأزرار التجربة الفورية، مع تحديثات رسمية بضغطة واحدة.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1083,7 +1196,7 @@
                   يعمل المثبّت بصلاحيات المستخدم القياسية الآمنة دون طلب صلاحيات مسؤول النظام. عند فتح نسخة جديدة لأول مرة على Windows، في حال ظهور تنبيه SmartScreen القياسي اضغط «More info / مزيد من المعلومات» ثم «Run anyway / تشغيل على أي حال».
                 </p>
                 <div class="hash-strip">
-                  <span class="hash-code mono" id="shaHashValue">SHA-256: 76419c4c731016667000b4e37cefeb82bb75ca70c7fed8bbd3d1e8105b0c1867</span>
+                  <span class="hash-code mono" id="shaHashValue">SHA-256: 0c3942f8826ddc53f3b3b5cea2a7b4066a07533dd567933c0ea7cca80d343237</span>
                   <button type="button" class="copy-mini-btn" id="copyHashBtn" data-i18n="copyBtn">نسخ</button>
                 </div>
               </div>
@@ -1134,6 +1247,7 @@
   <script>
     const I18N = {
       ar: {
+        navWhatsNew: 'ما الجديد في v2.1',
         navCta: 'تحميل لويندوز',
         heroTitle: 'استوديو الذكاء الاصطناعي المتكامل، مصمم بمعايير السينما.',
         heroSub: 'بيئة مكتبية واحدة تجمع توليد الفيديو والصور والصوت، مسارات النود المرئية، ومساعد البرمجة المحلي أربور كود — بأداء فوري وخصوصية كاملة من تطوير MAVYR Studio.',
@@ -1146,8 +1260,18 @@
         ch2Desc: 'ابنِ سلاسل إنتاج متقدمة واربط عقد التوليد والتحسين مع إضافة سريعة بالزر الأيمن وترتيب هندسي فوري.',
         ch3Title: 'أربور كود للبرمجة المحلية',
         ch3Desc: 'اربط أي مجلد مشروع على جهازك ليقرأ المساعد البرمجي ملفاتك ويبني معك الكود مباشرة بأسلوب احترافي نظيف.',
-        ch4Title: 'مكتبة 66 موديلاً مفتوح المصدر',
-        ch4Desc: 'يبدأ البرنامج خفيفاً بصفر موديلات مسبقة؛ استعرض مواصفات العتاد وحمّل ما تختاره فقط عبر مدير تنزيلات مستقل.',
+        ch4Title: 'مكتبة 68 موديلاً مفتوح المصدر',
+        ch4Desc: 'يبدأ البرنامج خفيفاً بصفر موديلات مسبقة؛ استعرض مواصفات العتاد وحمّل ما تختاره فقط بما فيها Wan 3.0 الجديد.',
+        wnHeading: 'ما الجديد في الإصدار v2.1',
+        wnSub: 'إضافات عملية مصوّرة صُممت لرفع جودة الإنتاج وسرعة البرمجة والتوافق مع كل أجهزة ويندوز.',
+        wn1Title: 'محرك الفيديو المفتوح Wan 3.0 بنسختين',
+        wn1Desc: 'أضفنا Wan 3.0 Cinema لإخراج المشاهد السينمائية بدقة 1080p، ونسخة Wan 3.0 Turbo 5B السريعة المتوافقة مع كروت 8GB VRAM.',
+        wn2Title: 'الموجّه الذكي ومفاتيح الـ API المجانية',
+        wn2Desc: 'اربط حساباتك المجانية من Groq وGemini وOpenRouter وCerebras في ثوانٍ داخل أربور كود مع تبديل تلقائي فوري بدون انقطاع.',
+        wn3Title: 'مدير تنزيلات ذكي متوافق مع كل الأجهزة',
+        wn3Desc: 'تعرّف تلقائي على أقراص التخزين المتاحة على أي كمبيوتر أو لابتوب، مع قراءة حية للمساحة وإيقاف واستكمال فوري للتحميل.',
+        wn4Title: 'تبويب «ما الجديد» وإعدادات تحديث أنقى',
+        wn4Desc: 'صفحة مدمجة داخل البرنامج تعرض أحدث المزايا بالصور التوضيحية وأزرار التجربة الفورية، مع تحديثات رسمية بضغطة واحدة.',
         craftHeading: 'دقة بصرية في الوضع الليلي والنهاري.',
         craftSub: 'هوية لونية متوازنة تدعم العربية والإنجليزية بسلاسة، مع مراقبة لحظية لاستهلاك كرت الشاشة والمعالج.',
         pDarkTitle: 'الوضع الليلي السينمائي (Obsidian)',
@@ -1178,6 +1302,7 @@
         footerCopy: 'جميع الحقوق محفوظة © 2026 MAVYR Studio. برنامج محمي بحقوق الملكية الفكرية.'
       },
       en: {
+        navWhatsNew: "What's New in v2.1",
         navCta: 'Download for Windows',
         heroTitle: 'The unified AI workstation, crafted to cinema standards.',
         heroSub: 'One native desktop environment uniting generative video, image & audio, visual node pipelines, and local project coding—engineered with full local privacy by MAVYR Studio.',
@@ -1190,8 +1315,18 @@
         ch2Desc: 'Build multi-stage creative pipelines with right-click node insertion and clean geometric auto-layout.',
         ch3Title: 'Arbor Code Local Workspace',
         ch3Desc: 'Bind any project folder on your machine so Arbor Code inspects, creates, and refactors files directly on disk.',
-        ch4Title: '66 Open-Source Models Library',
-        ch4Desc: 'Ships lightweight with zero pre-installed bloat—check exact VRAM specs and download only the models you choose.',
+        ch4Title: '68 Open-Source Models Library',
+        ch4Desc: 'Ships lightweight with zero pre-installed bloat—check exact VRAM specs and download only the models you choose, including Wan 3.0.',
+        wnHeading: "What's New in Release v2.1",
+        wnSub: 'Visual highlights designed to elevate creative video quality, multi-API coding speed, and cross-PC reliability.',
+        wn1Title: 'Open-Source Wan 3.0 Cinema & Turbo',
+        wn1Desc: 'Added Wan 3.0 Cinema for 1080p multi-shot scenes alongside Wan 3.0 Turbo 5B engineered for fast 8 GB VRAM GPUs.',
+        wn2Title: 'Smart Multi-API Router & Free Keys',
+        wn2Desc: 'Connect free keys from Groq, Gemini, OpenRouter, and Cerebras inside Arbor Code with seamless automatic failover.',
+        wn3Title: 'Universal Cross-PC Download Manager',
+        wn3Desc: 'Automatically detects writable storage across every Windows PC and laptop with live speed charts, pause/resume, and 1-click retry.',
+        wn4Title: "In-App What's New Hub & Clean Updates",
+        wn4Desc: 'Explore visual release highlights with 1-click Try Now actions right inside the app, plus streamlined one-click updates.',
         craftHeading: 'Precision across Obsidian Dark & Studio Daylight.',
         craftSub: 'Calibrated contrast in both Arabic and English alongside live 1-second GPU, VRAM, CPU, and RAM profiling.',
         pDarkTitle: 'Cinema Obsidian Mode',
@@ -1224,7 +1359,7 @@
     };
 
     let currentLang = 'ar';
-    const rawHash = '76419c4c731016667000b4e37cefeb82bb75ca70c7fed8bbd3d1e8105b0c1867';
+    const rawHash = '0c3942f8826ddc53f3b3b5cea2a7b4066a07533dd567933c0ea7cca80d343237';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // 1. Language Switcher

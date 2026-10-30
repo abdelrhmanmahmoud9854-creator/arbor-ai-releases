@@ -196,7 +196,7 @@
         </a>
         <a class="btn btn-big btn-ghost" href="#interface" data-i18n="cta_tour">See the interface</a>
       </div>
-      <p class="hero-meta tabular" id="heroMeta">Windows 10 &amp; 11 (64-bit) · Release 2.4.4 · 464 MB</p>
+      <p class="hero-meta tabular" id="heroMeta">Windows 10 &amp; 11 (64-bit) · Release 2.4.5 · 464 MB</p>
     </div>
     <div class="scroll-hint" data-i18n="scroll">SCROLL</div>
   </header>
@@ -240,7 +240,7 @@
               <div class="os">Linux <span class="soon" data-i18n="soon">Soon</span></div>
             </div>
           </div>
-          <div class="sha"><span>SHA-256</span><code id="shaCode">SHA-256: 3564d370327305f3f77f6e8fd3a6264d090cc8e68e5ce932215369271de876a6</code><button type="button" id="shaCopy" data-i18n="copy">Copy</button></div>
+          <div class="sha"><span>SHA-256</span><code id="shaCode">SHA-256: b02a09c62a7647419b5e2bb72ac9ceba610c419add4216bc13a830f1dc6b1b57</code><button type="button" id="shaCopy" data-i18n="copy">Copy</button></div>
           <dl class="req">
             <dt data-i18n="rq_os">System</dt><dd data-i18n="rq_os_v">Windows 10 / 11, 64-bit</dd>
             <dt data-i18n="rq_gpu">Graphics</dt><dd data-i18n="rq_gpu_v">NVIDIA, AMD or Intel Arc with 6 GB+ VRAM (12 GB recommended)</dd>
@@ -299,13 +299,13 @@
       const REPO = 'abdelrhmanmahmoud9854-creator/arbor-ai-releases';
       const ASSET = 'Arbor_AI_Setup.exe';
       // Fallbacks (kept current by scripts/build_single_installer.ps1) for when the GitHub API is unreachable
-      const SHA256_LATEST = '3564d370327305f3f77f6e8fd3a6264d090cc8e68e5ce932215369271de876a6';
+      const SHA256_LATEST = 'b02a09c62a7647419b5e2bb72ac9ceba610c419add4216bc13a830f1dc6b1b57';
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       /* ================= i18n ================= */
       const T = {
         en: {
-          hero_spec_line: 'Windows 10 & 11 (64-bit) · Release 2.4.4 · 464 MB',
+          hero_spec_line: 'Windows 10 & 11 (64-bit) · Release 2.4.5 · 464 MB',
           shots: {
             home: 'Start screen: jump into a render, a workflow or a coding session.',
             studio: 'Studio: pick a model, add references, watch the frame render live.',
@@ -315,7 +315,7 @@
           },
         },
         ar: {
-          hero_spec_line: 'Windows 10 & 11 (64-bit) · الإصدار 2.4.4 · 464 MB',
+          hero_spec_line: 'Windows 10 & 11 (64-bit) · الإصدار 2.4.5 · 464 MB',
           nav_interface: 'الواجهة', nav_what: 'بيعمل إيه', nav_download: 'التنزيل', nav_get: 'نزّل Arbor',
           eyebrow: 'شغال على كارت الشاشة بتاعك', h1a: 'أفكارك،', h1b: 'بتكبر على جهازك.',
           lede: 'صور وفيديو وصوت وworkflows ومساعد برمجة بالذكاء الاصطناعي — في برنامج واحد على ويندوز بيشغّل موديلات مفتوحة المصدر على كارت الشاشة. من غير سحابة ومن غير رصيد.',

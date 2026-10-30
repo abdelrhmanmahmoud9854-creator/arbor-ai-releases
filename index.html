@@ -3,2389 +3,599 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arbor AI Studio — Creative &amp; Engineering AI Workstation | MAVYR Studio</title>
-  <meta name="description" content="Cinema generation, visual node pipelines, and agentic software engineering—native to your GPU. Built by MAVYR Studio with 70 open-source models and unified multi-API routing." />
-  <meta property="og:title" content="Arbor AI Studio — Native AI Workstation by MAVYR Studio" />
-  <meta property="og:description" content="Direct 1080p video, wire visual node graphs, and ship code inside one local workstation. Download v2.4 for Windows." />
+  <title>Arbor AI Studio — Local AI studio for Windows | MAVYR Studio</title>
+  <meta name="description" content="Generate images, video and audio, wire node workflows and code with AI — on your own GPU. Arbor AI Studio by MAVYR Studio." />
+  <meta property="og:title" content="Arbor AI Studio — by MAVYR Studio" />
+  <meta property="og:description" content="Images, video, audio, node workflows and an AI coding assistant — running on your own GPU." />
   <meta property="og:image" content="https://abdelrhmanmahmoud9854-creator.github.io/arbor-ai-releases/assets/lp-home-en.png" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#050709" />
+  <meta name="theme-color" content="#04070a" />
   <link rel="icon" type="image/png" href="assets/arbor-icon.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-void: #050709;
-      --bg-stage: #090C10;
-      --bg-surface: #0D1218;
-      --bg-elevated: #121922;
-      --line-subtle: rgba(214, 232, 225, 0.08);
-      --line-strong: rgba(214, 232, 225, 0.16);
-      --line-emerald: rgba(16, 185, 129, 0.34);
-
-      --text-primary: #F3F6F8;
-      --text-secondary: rgba(224, 235, 231, 0.72);
-      --text-muted: rgba(205, 220, 214, 0.50);
-
-      --emerald-core: #10B981;
-      --emerald-bright: #34D399;
-      --emerald-deep: #065F46;
-      --cyan-optic: #38BDF8;
-
-      --font-en: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-ar: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-      --container-max: 1240px;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    ::selection {
-      background: rgba(16, 185, 129, 0.28);
-      color: #F8FAFC;
-    }
-
-    ::-webkit-scrollbar {
-      width: 9px;
-      height: 9px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-void);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #18222B;
-      border-radius: 999px;
-      border: 2px solid var(--bg-void);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #23323F;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg-void);
-      color: var(--text-primary);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-
-    body {
-      font-family: var(--font-en);
-      background-color: var(--bg-void);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: clip;
-      position: relative;
-    }
-
-    html[lang="ar"] body {
-      font-family: var(--font-ar);
-      line-height: 1.72;
-    }
-
-    a, button {
-      font-family: inherit;
-      color: inherit;
-    }
-
-    :focus-visible {
-      outline: 2px solid var(--emerald-core);
-      outline-offset: 3px;
-      border-radius: 8px;
-    }
-
-    .tabular {
-      font-variant-numeric: tabular-nums;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* Scroll reading progress filament */
-    .scroll-filament {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      z-index: 120;
-      pointer-events: none;
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .scroll-filament-bar {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--emerald-core), var(--emerald-bright), var(--cyan-optic));
-      transform-origin: 0% 50%;
-      transform: scaleX(0);
-      will-change: transform;
-    }
-    html[dir="rtl"] .scroll-filament-bar {
-      transform-origin: 100% 50%;
-    }
-
-    /* Top Navigation Bar */
-    .site-header {
-      position: fixed;
-      top: 16px;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      pointer-events: none;
-    }
-
-    .nav-shell {
-      pointer-events: auto;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 10px 14px 10px 18px;
-      border-radius: 999px;
-      background: rgba(9, 13, 18, 0.78);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--line-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      transition: background-color 220ms ease, border-color 220ms ease;
-    }
-
-    .nav-shell.is-scrolled {
-      background: rgba(7, 10, 14, 0.92);
-      border-color: var(--line-strong);
-    }
-
-    .brand-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.96rem;
-      letter-spacing: -0.02em;
-      white-space: nowrap;
-    }
-
-    .brand-mark-mini {
-      width: 28px;
-      height: 28px;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    .brand-release-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--emerald-bright);
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.24);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: color 180ms ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-primary);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .lang-btn {
-      appearance: none;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--line-subtle);
-      color: var(--text-secondary);
-      height: 36px;
-      padding: 0 13px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
-    }
-
-    .lang-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--text-primary);
-      border-color: var(--line-strong);
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      height: 36px;
-      padding: 0 16px;
-      border-radius: 999px;
-      background: var(--text-primary);
-      color: #050709;
-      text-decoration: none;
-      font-size: 0.84rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      transition: transform 200ms var(--ease-smooth), background-color 200ms ease;
-    }
-
-    .nav-cta:hover {
-      background: #FFFFFF;
-      transform: translate3d(0, -1px, 0);
-    }
-
-    /* ==========================================================================
-       ACT 1: VOLUMETRIC 3D ARBOR LOGO PORTAL & WORKSTATION STAGE
-       ========================================================================== */
-    .hero-section {
-      position: relative;
-      padding-top: 94px;
-      padding-bottom: 104px;
-      overflow: clip;
-    }
-
-    /* Atmospheric optical field rooted directly behind the 3D logo */
-    .hero-atmosphere {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(620px 390px at 50% 195px, rgba(16, 185, 129, 0.17), rgba(6, 95, 70, 0.05) 52%, transparent 76%),
-        radial-gradient(960px 560px at 50% 640px, rgba(56, 189, 248, 0.08), transparent 72%);
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    /* 3D Interactive Multi-Plane Arbor Neural Sculpture */
-    .logo-portal-viewport {
-      width: 176px;
-      height: 176px;
-      perspective: 1200px;
-      margin-bottom: 18px;
-      position: relative;
-      cursor: grab;
-      user-select: none;
-    }
-
-    .logo-portal-rig {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      will-change: transform, opacity;
-      transition: transform 140ms linear;
-    }
-
-    .logo-plane {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      transform-style: preserve-3d;
-    }
-
-    /* Plane -3: Deep ambient emerald core */
-    .logo-plane-aura {
-      transform: translate3d(0, 0, -90px);
-    }
-    .logo-plane-aura::before {
-      content: "";
-      width: 184px;
-      height: 184px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.36) 0%, rgba(16, 185, 129, 0.09) 48%, transparent 72%);
-    }
-
-    /* Plane -2: Precision orbital azimuth rings */
-    .logo-plane-orbit {
-      transform: translate3d(0, 0, -48px);
-    }
-    .orbit-svg {
-      width: 176px;
-      height: 176px;
-      overflow: visible;
-      will-change: transform;
-    }
-
-    /* Plane -1: Sculpted obsidian glass monolith plinth */
-    .logo-plane-plinth {
-      transform: translate3d(0, 0, 0px);
-    }
-    .monolith-disc {
-      width: 120px;
-      height: 120px;
-      border-radius: 32px;
-      background: linear-gradient(160deg, rgba(22, 32, 40, 0.94) 0%, rgba(8, 12, 16, 0.98) 100%);
-      border: 1px solid rgba(52, 211, 153, 0.28);
-      box-shadow:
-        0 28px 64px rgba(0, 0, 0, 0.78),
-        inset 0 1px 0 rgba(255, 255, 255, 0.14);
-      position: relative;
-      overflow: hidden;
-    }
-    .monolith-sheen {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.22), transparent 55%);
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-    }
-
-    /* Plane +1: Primary Arbor Neural Tree geometry */
-    .logo-plane-tree {
-      transform: translate3d(0, 0, 34px);
-    }
-    .arbor-hero-svg {
-      width: 92px;
-      height: 92px;
-      overflow: visible;
-      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.65));
-    }
-
-    /* Plane +2: Elevated canopy node highlights for unmistakable 3D parallax */
-    .logo-plane-crown {
-      transform: translate3d(0, 0, 62px);
-    }
-    .arbor-crown-svg {
-      width: 92px;
-      height: 92px;
-      overflow: visible;
-    }
-
-    /* Bioluminescent SVG path signal pulse */
-    .sap-pulse {
-      stroke-dasharray: 26 110;
-      animation: sapFlow 3.4s linear infinite;
-    }
-    .sap-pulse-delay-1 {
-      animation-delay: -1.1s;
-    }
-    .sap-pulse-delay-2 {
-      animation-delay: -2.2s;
-    }
-
-    @keyframes sapFlow {
-      from { stroke-dashoffset: 136; }
-      to { stroke-dashoffset: 0; }
-    }
-
-    @keyframes nodeBreath {
-      0%, 100% { transform: scale(1); opacity: 0.92; }
-      50% { transform: scale(1.16); opacity: 1; }
-    }
-
-    .crown-node {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: nodeBreath 3.2s ease-in-out infinite;
-    }
-    .crown-node-d1 { animation-delay: -0.8s; }
-    .crown-node-d2 { animation-delay: -1.6s; }
-
-    /* Hero Typography */
-    .hero-copy-wrap {
-      max-width: 820px;
-      will-change: transform, opacity;
-    }
-
-    .hero-title {
-      font-size: clamp(2.3rem, 4.5vw, 3.85rem);
-      font-weight: 800;
-      line-height: 1.07;
-      letter-spacing: -0.035em;
-      color: var(--text-primary);
-      text-wrap: balance;
-      margin-bottom: 16px;
-    }
-
-    html[lang="ar"] .hero-title {
-      letter-spacing: 0;
-      line-height: 1.18;
-      font-size: clamp(2.1rem, 4.2vw, 3.45rem);
-    }
-
-    .hero-lead {
-      font-size: clamp(0.98rem, 1.28vw, 1.12rem);
-      color: var(--text-secondary);
-      max-width: 64ch;
-      margin: 0 auto 26px;
-      font-weight: 400;
-      text-wrap: pretty;
-    }
-
-    /* Multi-Platform Download Cluster */
-    .os-download-cluster {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 8px;
-      border-radius: 18px;
-      background: rgba(13, 18, 24, 0.86);
-      border: 1px solid var(--line-subtle);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.52);
-    }
-
-    .btn-win-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      height: 48px;
-      padding: 0 20px;
-      border-radius: 12px;
-      background: var(--text-primary);
-      color: #050709;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.94rem;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      transition: transform 200ms var(--ease-smooth), background-color 200ms ease;
-    }
-
-    .btn-win-primary:hover {
-      background: #FFFFFF;
-      transform: translate3d(0, -1.5px, 0);
-    }
-
-    .btn-win-primary:active {
-      transform: translate3d(0, 0, 0) scale(0.99);
-    }
-
-    .btn-win-meta {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 500;
-      color: rgba(5, 7, 9, 0.62);
-      padding-inline-start: 8px;
-      border-inline-start: 1px solid rgba(5, 7, 9, 0.16);
-    }
-
-    .btn-os-soon {
-      appearance: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      height: 48px;
-      padding: 0 16px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--line-subtle);
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-weight: 600;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
-    }
-
-    .btn-os-soon:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: var(--line-strong);
-      color: var(--text-primary);
-    }
-
-    .soon-pill {
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.10);
-      color: #93C5FD;
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      letter-spacing: 0.01em;
-    }
-
-    .os-icon {
-      width: 17px;
-      height: 17px;
-      flex-shrink: 0;
-    }
-
-    .hero-os-note {
-      margin-top: 14px;
-      min-height: 22px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      transition: color 200ms ease, opacity 200ms ease;
-    }
-
-    .hero-os-note.is-highlighted {
-      color: var(--emerald-bright);
-    }
-
-    /* 3D Workstation Depth Stage (Scroll-Driven Perspective Leveling) */
-    .workstation-stage-outer {
-      width: 100%;
-      max-width: 1180px;
-      margin: 30px auto 0;
-      perspective: 1500px;
-      position: relative;
-    }
-
-    .workstation-frame-3d {
-      position: relative;
-      border-radius: 16px;
-      background: var(--bg-surface);
-      border: 1px solid rgba(224, 238, 232, 0.16);
-      box-shadow: 0 44px 110px rgba(0, 0, 0, 0.85);
-      overflow: hidden;
-      transform-origin: 50% 0%;
-      transform: translate3d(0, 12px, -85px) rotateX(13deg) scale(0.95);
-      will-change: transform;
-    }
-
-    .workstation-frame-3d img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .workstation-glare {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(
-        112deg,
-        transparent 24%,
-        rgba(255, 255, 255, 0.07) 46%,
-        rgba(52, 211, 153, 0.08) 50%,
-        transparent 68%
-      );
-      transform: translate3d(-45%, 0, 0);
-      will-change: transform;
-    }
-
-    /* ==========================================================================
-       ACT 2: INTERACTIVE WORKSTATION DISCIPLINES (STICKY / TABBED SHOWCASE)
-       ========================================================================== */
-    .disciplines-section {
-      padding: 128px 0 116px;
-      position: relative;
-      border-top: 1px solid var(--line-subtle);
-    }
-
-    .section-head {
-      max-width: 700px;
-      margin-bottom: 56px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 3.6vw, 3.1rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
-      text-wrap: balance;
-      margin-bottom: 16px;
-    }
-
-    html[lang="ar"] .section-title {
-      letter-spacing: 0;
-      line-height: 1.22;
-    }
-
-    .section-subtitle {
-      font-size: 1.06rem;
-      color: var(--text-secondary);
-      max-width: 62ch;
-    }
-
-    .disciplines-layout {
-      display: grid;
-      grid-template-columns: 370px minmax(0, 1fr);
-      gap: 36px;
-      align-items: start;
-    }
-
-    .discipline-rail {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .discipline-tab {
-      appearance: none;
-      width: 100%;
-      text-align: start;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 14px;
-      padding: 20px 22px;
-      cursor: pointer;
-      position: relative;
-      transition: background-color 220ms ease, border-color 220ms ease, transform 220ms var(--ease-smooth);
-    }
-
-    .discipline-tab:hover {
-      background: rgba(255, 255, 255, 0.025);
-    }
-
-    .discipline-tab.is-active {
-      background: var(--bg-surface);
-      border-color: var(--line-strong);
-    }
-
-    .discipline-tab-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .discipline-tab-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.015em;
-    }
-
-    .discipline-tab:not(.is-active) .discipline-tab-title {
-      color: var(--text-secondary);
-    }
-
-    .discipline-spec {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--emerald-bright);
-      opacity: 0.85;
-    }
-
-    .discipline-tab-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    .discipline-tab:not(.is-active) .discipline-tab-desc {
-      color: var(--text-muted);
-    }
-
-    .discipline-progress-track {
-      margin-top: 14px;
-      height: 2px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 999px;
-      overflow: hidden;
-      display: none;
-    }
-
-    .discipline-tab.is-active .discipline-progress-track {
-      display: block;
-    }
-
-    .discipline-progress-fill {
-      height: 100%;
-      width: 100%;
-      background: var(--emerald-core);
-      transform-origin: 0% 50%;
-      transform: scaleX(1);
-    }
-    html[dir="rtl"] .discipline-progress-fill {
-      transform-origin: 100% 50%;
-    }
-
-    .discipline-screen-stage {
-      perspective: 1400px;
-      position: relative;
-    }
-
-    .discipline-window {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--bg-surface);
-      border: 1px solid var(--line-strong);
-      box-shadow: 0 36px 90px rgba(0, 0, 0, 0.76);
-      aspect-ratio: 1520 / 940;
-    }
-
-    .discipline-shot {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transform: scale3d(0.985, 0.985, 1);
-      transition: opacity 340ms var(--ease-smooth), transform 420ms var(--ease-out-expo);
-      pointer-events: none;
-    }
-
-    .discipline-shot.is-active {
-      opacity: 1;
-      transform: scale3d(1, 1, 1);
-      pointer-events: auto;
-    }
-
-    /* ==========================================================================
-       ACT 3: 3D ARBOR NEURAL CORE REACTOR (SPATIAL LOGO DEPTH ARCHITECTURE)
-       ========================================================================== */
-    .core-section {
-      padding: 124px 0 128px;
-      border-top: 1px solid var(--line-subtle);
-      background:
-        radial-gradient(760px 460px at 50% 54%, rgba(16, 185, 129, 0.11), transparent 72%),
-        var(--bg-stage);
-      position: relative;
-      overflow: clip;
-    }
-
-    .core-head-centered {
-      max-width: 720px;
-      margin: 0 auto 64px;
-      text-align: center;
-    }
-
-    .core-head-centered .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .reactor-arena {
-      position: relative;
-      max-width: 1140px;
-      margin: 0 auto;
-      perspective: 1300px;
-    }
-
-    .reactor-grid {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 260px 1fr;
-      grid-template-rows: auto auto;
-      gap: 28px 34px;
-      align-items: center;
-      transform-style: preserve-3d;
-    }
-
-    /* Connecting neural conduits behind the 3D hub */
-    .reactor-conduits {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Center 3D Arbor Reactor Pillar */
-    .reactor-centerpiece {
-      grid-column: 2;
-      grid-row: 1 / span 2;
-      height: 310px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-      transform-style: preserve-3d;
-    }
-
-    .reactor-hub-3d {
-      width: 210px;
-      height: 210px;
-      position: relative;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    .reactor-ring-back {
-      position: absolute;
-      inset: -18px;
-      border-radius: 50%;
-      border: 1px dashed rgba(52, 211, 153, 0.24);
-      transform: translate3d(0, 0, -40px);
-    }
-
-    .reactor-vault-shell {
-      position: absolute;
-      inset: 14px;
-      border-radius: 44px;
-      background: linear-gradient(155deg, #131D24 0%, #070B0E 100%);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      box-shadow: 0 32px 72px rgba(0, 0, 0, 0.82);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: translate3d(0, 0, 12px);
-    }
-
-    .reactor-emblem-front {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: translate3d(0, 0, 48px);
-      pointer-events: none;
-    }
-
-    .reactor-node-card {
-      position: relative;
-      z-index: 2;
-      background: rgba(13, 18, 24, 0.9);
-      border: 1px solid var(--line-subtle);
-      border-radius: 16px;
-      padding: 26px 28px;
-      transition: transform 260ms var(--ease-smooth), border-color 220ms ease;
-      will-change: transform;
-    }
-
-    .reactor-node-card:hover {
-      border-color: var(--line-emerald);
-      transform: translate3d(0, -4px, 16px);
-    }
-
-    .reactor-node-metric {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--emerald-bright);
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
-    .reactor-node-title {
-      font-size: 1.12rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.015em;
-      margin-bottom: 8px;
-    }
-
-    .reactor-node-copy {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.58;
-    }
-
-    /* ==========================================================================
-       ACT 4: INTERACTIVE OBSIDIAN DARK VS. STUDIO DAYLIGHT CALIBRATION
-       ========================================================================== */
-    .calibration-section {
-      padding: 124px 0;
-      border-top: 1px solid var(--line-subtle);
-    }
-
-    .calibration-header-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 28px;
-      margin-bottom: 44px;
-      flex-wrap: wrap;
-    }
-
-    .theme-Quick-pills {
-      display: inline-flex;
-      gap: 6px;
-      padding: 5px;
-      border-radius: 999px;
-      background: var(--bg-surface);
-      border: 1px solid var(--line-subtle);
-    }
-
-    .theme-pill-btn {
-      appearance: none;
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      padding: 7px 15px;
-      border-radius: 999px;
-      font-size: 0.83rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 180ms ease, color 180ms ease;
-    }
-
-    .theme-pill-btn.is-active {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text-primary);
-    }
-
-    .split-stage {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--line-strong);
-      box-shadow: 0 36px 90px rgba(0, 0, 0, 0.72);
-      user-select: none;
-      touch-action: pan-y;
-      aspect-ratio: 1520 / 940;
-      background: var(--bg-surface);
-      cursor: ew-resize;
-    }
-
-    .split-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      pointer-events: none;
-    }
-
-    .split-light-layer {
-      clip-path: inset(0 0 0 52%);
-      will-change: clip-path;
-    }
-
-    .split-handle-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 52%;
-      width: 2px;
-      background: rgba(255, 255, 255, 0.9);
-      transform: translate3d(-50%, 0, 0);
-      pointer-events: none;
-      z-index: 4;
-      will-change: left;
-    }
-
-    .split-knob {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(9, 13, 18, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFFFFF;
-    }
-
-    /* ==========================================================================
-       ACT 5: MULTI-PLATFORM DOWNLOAD DOCK & MAVYR STUDIO FOOTER
-       ========================================================================== */
-    .download-section {
-      position: relative;
-      padding: 132px 0 96px;
-      border-top: 1px solid var(--line-subtle);
-      overflow: clip;
-      background:
-        radial-gradient(720px 420px at 50% 0%, rgba(16, 185, 129, 0.13), transparent 72%),
-        var(--bg-void);
-    }
-
-    /* Deep background Arbor crest linework */
-    .closing-crest-bg {
-      position: absolute;
-      top: 24px;
-      left: 50%;
-      width: 520px;
-      height: 520px;
-      transform: translate3d(-50%, 0, 0);
-      opacity: 0.08;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .download-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .download-head {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 52px;
-    }
-
-    .download-head .section-subtitle {
-      margin: 0 auto;
-    }
-
-    /* Asymmetric 3-OS Platform Matrix */
-    .platform-dock {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
-      gap: 18px;
-      max-width: 1060px;
-      margin: 0 auto;
-      align-items: stretch;
-    }
-
-    .platform-card {
-      border-radius: 16px;
-      padding: 30px;
-      background: var(--bg-surface);
-      border: 1px solid var(--line-subtle);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 26px;
-      transition: border-color 220ms ease, transform 220ms var(--ease-smooth);
-    }
-
-    .platform-card-primary {
-      background: linear-gradient(165deg, rgba(18, 29, 36, 0.96) 0%, rgba(10, 15, 20, 0.98) 100%);
-      border-color: rgba(52, 211, 153, 0.34);
-    }
-
-    .platform-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .platform-os-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--line-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-primary);
-    }
-
-    .platform-card-primary .platform-os-badge {
-      background: rgba(16, 185, 129, 0.14);
-      border-color: rgba(16, 185, 129, 0.3);
-      color: var(--emerald-bright);
-    }
-
-    .platform-status-tag {
-      font-family: var(--font-mono);
-      font-size: 0.73rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.13);
-      color: var(--emerald-bright);
-      border: 1px solid rgba(16, 185, 129, 0.28);
-    }
-
-    .platform-status-soon {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text-secondary);
-      border-color: var(--line-subtle);
-    }
-
-    .platform-name {
-      font-size: 1.32rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-
-    .platform-arch {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    .platform-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .btn-dock-download {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      height: 48px;
-      padding: 0 20px;
-      border-radius: 12px;
-      background: var(--text-primary);
-      color: #050709;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.94rem;
-      transition: transform 200ms var(--ease-smooth), background-color 200ms ease;
-    }
-
-    .btn-dock-download:hover {
-      background: #FFFFFF;
-      transform: translate3d(0, -1.5px, 0);
-    }
-
-    .btn-dock-soon {
-      appearance: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      height: 48px;
-      padding: 0 18px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--line-subtle);
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: default;
-    }
-
-    .checksum-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .checksum-copy-btn {
-      appearance: none;
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 180ms ease;
-    }
-
-    .checksum-copy-btn:hover {
-      color: var(--emerald-bright);
-    }
-
-    /* Footer */
-    .site-footer {
-      border-top: 1px solid var(--line-subtle);
-      padding: 36px 0 44px;
-      background: var(--bg-void);
-    }
-
-    .footer-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .mavyr-mark {
-      height: 24px;
-      width: auto;
-      opacity: 0.92;
-      display: block;
-    }
-
-    .footer-copy {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 0.85rem;
-    }
-
-    .footer-links a,
-    .footer-links button {
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      text-decoration: none;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: color 180ms ease;
-    }
-
-    .footer-links a:hover,
-    .footer-links button:hover {
-      color: var(--text-primary);
-    }
-
-    /* Scroll reveal baseline: always crisp and readable from frame 0 */
-    .reveal-up {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-    }
-
-    @media (max-width: 440px) {
-      .brand-release-tag {
-        display: none;
-      }
-      .btn-win-primary {
-        padding: 0 14px;
-        font-size: 0.87rem;
-      }
-    }
-
-    /* Responsive Breakpoints */
-    @media (max-width: 1024px) {
-      .disciplines-layout {
-        grid-template-columns: 1fr;
-      }
-      .discipline-rail {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .reactor-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-      .reactor-centerpiece {
-        grid-column: 1;
-        grid-row: auto;
-        order: -1;
-        height: 240px;
-      }
-      .reactor-conduits {
-        display: none;
-      }
-      .platform-dock {
-        grid-template-columns: 1fr;
-        max-width: 560px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .nav-links {
-        display: none;
-      }
-      .container {
-        padding: 0 18px;
-      }
-      .hero-section {
-        padding-top: 104px;
-        padding-bottom: 76px;
-      }
-      .logo-portal-viewport {
-        width: 176px;
-        height: 176px;
-        margin-bottom: 22px;
-      }
-      .orbit-svg {
-        width: 176px;
-        height: 176px;
-      }
-      .monolith-disc {
-        width: 122px;
-        height: 122px;
-        border-radius: 30px;
-      }
-      .arbor-hero-svg, .arbor-crown-svg {
-        width: 92px;
-        height: 92px;
-      }
-      .os-download-cluster {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .btn-win-primary, .btn-os-soon {
-        justify-content: center;
-        width: 100%;
-      }
-      .discipline-rail {
-        grid-template-columns: 1fr;
-      }
-      .disciplines-section, .core-section, .calibration-section, .download-section {
-        padding: 84px 0;
-      }
+      --bg: #04070a;
+      --panel: #0a0f14;
+      --panel-2: #0e151c;
+      --line: rgba(255, 255, 255, 0.07);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --text: #e8eef2;
+      --text-2: #9aa7b1;
+      --text-3: #5f6c76;
+      --sap: #34d399;          /* living-tree green */
+      --sap-dim: rgba(52, 211, 153, 0.14);
+      --pulse: #22d3ee;        /* signal cyan */
+      --warn: #fbbf24;
+      --radius: 18px;
+      --font: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    html[lang="ar"] { --font: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', system-ui, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.55; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    .wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+    .mono { font-family: var(--mono); }
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    /* ---------- nav ---------- */
+    .nav { position: fixed; inset-inline: 0; top: 14px; z-index: 50; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px 8px 16px;
+      border: 1px solid var(--line); border-radius: 16px; background: rgba(6, 10, 14, 0.72); backdrop-filter: blur(14px); }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .brand img { width: 28px; height: 28px; }
+    .ver { font: 600 11px var(--mono); color: var(--sap); padding: 2px 8px; border-radius: 999px; background: var(--sap-dim); }
+    .nav-links { display: flex; gap: 22px; font-size: 14px; color: var(--text-2); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-act { display: flex; gap: 8px; align-items: center; }
+    .chip { padding: 8px 14px; border-radius: 12px; border: 1px solid var(--line-strong); font-size: 13px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px;
+      background: var(--text); color: #05080b; transition: transform .15s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 40px -10px rgba(52, 211, 153, .55); }
+    @media (max-width: 760px) { .nav-links { display: none; } }
+
+    /* ---------- hero: the growing tree ---------- */
+    .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; padding: 120px 0 60px; }
+    #tree { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero-copy { position: relative; text-align: center; max-width: 880px; padding-inline: 16px; pointer-events: none; }
+    .hero-copy > * { pointer-events: auto; }
+    .eyebrow { display: inline-flex; gap: 8px; align-items: center; font: 500 12px var(--mono); color: var(--sap); letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(52, 211, 153, .25); background: rgba(52, 211, 153, .06); }
+    .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--sap); box-shadow: 0 0 12px var(--sap); animation: beat 1.6s infinite; }
+    @keyframes beat { 0%, 100% { transform: scale(1); opacity: 1 } 45% { transform: scale(1.7); opacity: .5 } }
+    h1 { font-size: clamp(40px, 7vw, 86px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; margin: 22px 0 18px; }
+    html[lang="ar"] h1 { letter-spacing: 0; line-height: 1.2; }
+    h1 .grow { background: linear-gradient(100deg, var(--sap), var(--pulse)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lede { font-size: clamp(16px, 2vw, 19px); color: var(--text-2); max-width: 640px; margin: 0 auto 30px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-big { padding: 15px 24px; font-size: 16px; border-radius: 14px; }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+    .btn-ghost:hover { box-shadow: none; border-color: var(--sap); }
+    .hero-meta { margin-top: 16px; font-size: 13px; color: var(--text-3); }
+    .scroll-hint { position: absolute; bottom: 22px; inset-inline: 0; text-align: center; font: 500 11px var(--mono); color: var(--text-3); letter-spacing: .15em; }
+
+    /* ---------- section shell ---------- */
+    section.blk { padding: 110px 0; position: relative; }
+    .kicker { font: 600 12px var(--mono); color: var(--sap); letter-spacing: .12em; text-transform: uppercase; }
+    h2 { font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.025em; margin: 12px 0 14px; font-weight: 800; }
+    html[lang="ar"] h2 { letter-spacing: 0; line-height: 1.3; }
+    .sub { color: var(--text-2); max-width: 620px; font-size: 17px; }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- download: Steam-style live panel ---------- */
+    .dl { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+      background: linear-gradient(180deg, var(--panel), #070b0f); margin-top: 44px; }
+    @media (max-width: 1100px) { .dl { grid-template-columns: 1fr; } }
+    .dl-left { padding: 30px; border-inline-end: 1px solid var(--line); }
+    @media (max-width: 1100px) { .dl-left { border-inline-end: 0; border-bottom: 1px solid var(--line); } }
+    .dl-title { display: flex; align-items: center; gap: 14px; }
+    .dl-title img { width: 54px; height: 54px; border-radius: 14px; }
+    .dl-title h3 { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
+    .dl-title .muted { font-size: 13px; color: var(--text-3); }
+    .ecg-box { margin-top: 26px; border: 1px solid var(--line); border-radius: 16px; background: #05090c; padding: 14px 14px 8px; }
+    .ecg-head { display: flex; justify-content: space-between; align-items: center; font: 500 11px var(--mono); color: var(--text-3); letter-spacing: .08em; text-transform: uppercase; }
+    .ecg-head b { color: var(--sap); font-weight: 700; }
+    #ecg { width: 100%; height: 170px; display: block; margin-top: 8px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+    .stat { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; background: rgba(255, 255, 255, .015); }
+    .stat .k { font: 500 10.5px var(--mono); color: var(--text-3); letter-spacing: .1em; text-transform: uppercase; }
+    .stat .v { font: 700 clamp(17px, 1.7vw, 22px) var(--mono); margin-top: 4px; white-space: nowrap; }
+    .stat .v.sap { color: var(--sap); }
+    @media (max-width: 520px) { .stats { grid-template-columns: 1fr 1fr; } }
+    .dl-right { padding: 30px; display: flex; flex-direction: column; gap: 18px; }
+    .shot { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 9.4; background: #070b0f; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .install { display: flex; flex-direction: column; gap: 10px; }
+    .btn-install { justify-content: space-between; width: 100%; padding: 18px 20px; font-size: 17px; border-radius: 14px;
+      background: linear-gradient(180deg, #3ee0a6, #1fae7c); color: #03140d; position: relative; overflow: hidden; }
+    .btn-install::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .45) 50%, transparent 70%);
+      transform: translateX(-120%); animation: sheen 3.6s ease-in-out infinite; }
+    @keyframes sheen { 60%, 100% { transform: translateX(120%); } }
+    .btn-install small { font: 600 12px var(--mono); opacity: .8; }
+    .os-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .os { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); color: var(--text-2); font-size: 14px; }
+    .soon { font: 600 10.5px var(--mono); color: var(--pulse); padding: 2px 8px; border-radius: 999px; background: rgba(34, 211, 238, .1); }
+    .sha { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--line-strong); font-size: 12px; color: var(--text-2); }
+    .sha code { font: 500 11.5px var(--mono); color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; direction: ltr; }
+    .sha button { font: 600 11px var(--mono); color: var(--sap); padding: 4px 8px; border-radius: 8px; background: var(--sap-dim); }
+    .req { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 13px; color: var(--text-2); }
+    .req dt { color: var(--text-3); }
+    .note { font-size: 12px; color: var(--text-3); line-height: 1.6; }
+    .note b { color: var(--warn); font-weight: 600; }
+
+    /* ---------- interface gallery ---------- */
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 30px; }
+    .tab { padding: 9px 16px; border-radius: 12px; border: 1px solid var(--line); color: var(--text-2); font-size: 14px; font-weight: 600; transition: .2s; }
+    .tab[aria-selected="true"] { background: var(--text); color: #05080b; border-color: var(--text); }
+    .stage { margin-top: 22px; position: relative; border-radius: 22px; border: 1px solid var(--line); overflow: hidden; aspect-ratio: 16 / 9.2; background: #070b0f;
+      box-shadow: 0 40px 120px -40px rgba(52, 211, 153, .25); }
+    .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.02); transition: opacity .6s ease, transform 1.2s ease; }
+    .stage img.on { opacity: 1; transform: none; }
+    .stage-cap { margin-top: 14px; color: var(--text-2); font-size: 15px; min-height: 24px; }
+
+    /* ---------- what it does ---------- */
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+    @media (max-width: 980px) { .grid4 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .grid4 { grid-template-columns: 1fr; } }
+    .card { padding: 22px; border-radius: var(--radius); border: 1px solid var(--line); background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      position: relative; overflow: hidden; transition: border-color .3s, transform .3s; }
+    .card:hover { border-color: rgba(52, 211, 153, .35); transform: translateY(-3px); }
+    .card::before { content: ''; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(var(--sap-dim), transparent 70%);
+      top: var(--my, -200px); left: var(--mx, -200px); transform: translate(-50%, -50%); pointer-events: none; transition: opacity .3s; opacity: 0; }
+    .card:hover::before { opacity: 1; }
+    .card .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--sap-dim); color: var(--sap); margin-bottom: 16px; }
+    .card h3 { font-size: 17px; margin-bottom: 6px; }
+    .card p { font-size: 14px; color: var(--text-2); }
+
+    footer { border-top: 1px solid var(--line); padding: 34px 0 44px; color: var(--text-3); font-size: 13px; }
+    .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .foot img { height: 18px; opacity: .8; }
+
+    /* Mono + tracking only suits Latin labels; Arabic labels use the Arabic face with normal spacing */
+    html[lang="ar"] .eyebrow, html[lang="ar"] .kicker, html[lang="ar"] .stat .k, html[lang="ar"] .ecg-head, html[lang="ar"] .scroll-hint {
+      font-family: var(--font); letter-spacing: 0; text-transform: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .workstation-frame-3d {
-        transform: none !important;
-      }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <!-- Scroll reading progress filament -->
-  <div class="scroll-filament" aria-hidden="true">
-    <div class="scroll-filament-bar" id="scrollFilament"></div>
-  </div>
-
-  <!-- Reusable SVG Symbols (Official Arbor Neural Tree + Crisp OS Icons) -->
-  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
-    <defs>
-      <linearGradient id="arborEmeraldGrad" x1="60" y1="112" x2="60" y2="14" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#059669" />
-        <stop offset="55%" stop-color="#10B981" />
-        <stop offset="100%" stop-color="#6EE7B7" />
-      </linearGradient>
-      <linearGradient id="arborPulseGrad" x1="60" y1="112" x2="60" y2="14" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#10B981" stop-opacity="0.1" />
-        <stop offset="60%" stop-color="#6EE7B7" stop-opacity="0.95" />
-        <stop offset="100%" stop-color="#E0F2FE" stop-opacity="1" />
-      </linearGradient>
-
-      <!-- Windows 11 4-pane geometric mark -->
-      <symbol id="icon-windows" viewBox="0 0 20 20">
-        <path fill="currentColor" d="M2.5 2.5h6.8v6.8H2.5V2.5zm8.2 0h6.8v6.8h-6.8V2.5zM2.5 10.7h6.8v6.8H2.5v-6.8zm8.2 0h6.8v6.8h-6.8v-6.8z"/>
-      </symbol>
-
-      <!-- Apple geometric mark -->
-      <symbol id="icon-apple" viewBox="0 0 20 20">
-        <path fill="currentColor" d="M13.62 10.58c.02 2.13 1.87 2.84 1.89 2.85-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.72-2.17 1.74-.95.02-1.25-.56-2.34-.56-1.09 0-1.43.54-2.32.58-.93.04-1.64-.93-2.24-1.79-1.22-1.76-2.15-4.97-.9-7.14.62-1.08 1.73-1.76 2.93-1.78.91-.02 1.78.62 2.34.62.56 0 1.61-.76 2.71-.65.46.02 1.76.19 2.59 1.4-.07.04-1.55.9-1.51 2.71zM11.84 5.3c.5-.6.83-1.44.74-2.28-.72.03-1.59.48-2.1 1.08-.46.53-.86 1.38-.75 2.2.8.06 1.62-.4 2.11-1z"/>
-      </symbol>
-
-      <!-- Linux kernel / terminal geometric mark -->
-      <symbol id="icon-linux" viewBox="0 0 20 20">
-        <path fill="currentColor" d="M10 2.2c-2.32 0-3.7 1.76-3.7 4.22 0 1.24.33 2.22.33 2.86 0 .82-1.58 2.16-1.98 3.88-.32 1.37.24 2.88 1.48 3.58.78.44 2.16.66 3.87.66s3.09-.22 3.87-.66c1.24-.7 1.8-2.21 1.48-3.58-.4-1.72-1.98-3.06-1.98-3.88 0-.64.33-1.62.33-2.86 0-2.46-1.38-4.22-3.7-4.22zm-1.25 3.6a.75.75 0 110 1.5.75.75 0 010-1.5zm2.5 0a.75.75 0 110 1.5.75.75 0 010-1.5zM10 8.2c.92 0 1.65.36 1.65.8s-.73.8-1.65.8-1.65-.36-1.65-.8.73-.8 1.65-.8zm0 2.7c1.48 0 2.65 1.18 2.65 2.75 0 1.34-.96 2.15-2.65 2.15s-2.65-.81-2.65-2.15c0-1.57 1.17-2.75 2.65-2.75z"/>
-      </symbol>
-    </defs>
-  </svg>
-
-  <!-- Floating Header -->
-  <header class="site-header">
-    <div class="container">
-      <nav class="nav-shell" id="navShell" aria-label="Primary">
-        <a href="#top" class="brand-link">
-          <svg class="brand-mark-mini" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-            <rect x="8" y="8" width="104" height="104" rx="28" fill="#0D151B" stroke="rgba(52,211,153,0.34)" stroke-width="3"/>
-            <path d="M60 98 L60 24 M60 70 C60 56, 42 48, 38 32 M60 70 C60 56, 78 48, 82 32 M60 78 C52 66, 26 60, 22 44 M60 78 C68 66, 94 60, 98 44" stroke="url(#arborEmeraldGrad)" stroke-width="5.2" stroke-linecap="round"/>
-            <circle cx="60" cy="22" r="5.5" fill="#6EE7B7"/>
-            <circle cx="38" cy="30" r="4.5" fill="#34D399"/>
-            <circle cx="82" cy="30" r="4.5" fill="#34D399"/>
-          </svg>
-          <span>Arbor AI</span>
-          <span class="brand-release-tag tabular">v2.4</span>
-        </a>
-
-        <ul class="nav-links">
-          <li><a href="#capabilities" data-i18n="nav_capabilities">Capabilities</a></li>
-          <li><a href="#architecture" data-i18n="nav_architecture">Architecture</a></li>
-          <li><a href="#calibration" data-i18n="nav_calibration">Interface</a></li>
-          <li><a href="#download" data-i18n="nav_download">Download</a></li>
-        </ul>
-
-        <div class="nav-actions">
-          <button type="button" class="lang-btn" id="langSwitchBtn" aria-label="Switch language">العربية</button>
-          <a href="#download" class="nav-cta" data-i18n="nav_cta">Get Arbor</a>
-        </div>
-      </nav>
+  <nav class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top"><img src="assets/arbor-icon.png" alt="" /> Arbor AI <span class="ver" data-live="verShort">v2.4</span></a>
+      <div class="nav-links">
+        <a href="#interface" data-i18n="nav_interface">Interface</a>
+        <a href="#what" data-i18n="nav_what">What it does</a>
+        <a href="#download" data-i18n="nav_download">Download</a>
+      </div>
+      <div class="nav-act">
+        <button class="chip" id="langBtn" type="button">العربية</button>
+        <a class="btn" href="#download" data-i18n="nav_get">Get Arbor</a>
+      </div>
     </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <canvas id="tree" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <span class="eyebrow"><i></i><span data-i18n="eyebrow">Runs on your own GPU</span></span>
+      <h1><span data-i18n="h1a">Your ideas,</span> <span class="grow" data-i18n="h1b">grown locally.</span></h1>
+      <p class="lede" data-i18n="lede">Images, video, voice, node workflows and an AI coding assistant — in one Windows app that runs open-source models on your graphics card. No cloud, no credits.</p>
+      <div class="cta-row">
+        <a class="btn btn-big" href="#download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 4.5 10.5 3.4v8.1H3V4.5Zm0 15 7.5 1.1v-8H3v6.9Zm8.4 1.2L21 22V12.6h-9.6v8.1Zm0-17.4v8.2H21V2l-9.6 1.3Z"/></svg>
+          <span data-i18n="cta_win">Download for Windows</span>
+        </a>
+        <a class="btn btn-big btn-ghost" href="#interface" data-i18n="cta_tour">See the interface</a>
+      </div>
+      <p class="hero-meta tabular" id="heroMeta">Windows 10 &amp; 11 (64-bit) · Release 2.4.3 · 456 MB</p>
+    </div>
+    <div class="scroll-hint" data-i18n="scroll">SCROLL</div>
   </header>
 
-  <main id="top">
-    <!-- ========================================================================
-         ACT 1: 3D ARBOR LOGO PORTAL & WORKSTATION STAGE
-         ======================================================================== -->
-    <section class="hero-section" id="heroSection">
-      <div class="hero-atmosphere" aria-hidden="true"></div>
+  <section class="blk" id="download">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker" data-i18n="dl_kicker">Download</div>
+        <h2 data-i18n="dl_h2">Every release has a pulse.</h2>
+        <p class="sub" data-i18n="dl_sub">Live from GitHub: each beat below is a published version, its height is how many times it was downloaded.</p>
+      </div>
 
-      <div class="container hero-inner">
-        <!-- Multi-Plane 3D Arbor Neural Monolith -->
-        <div class="logo-portal-viewport" id="logoViewport" aria-hidden="true">
-          <div class="logo-portal-rig" id="logoRig">
-            <!-- Plane -3: Deep emerald aura -->
-            <div class="logo-plane logo-plane-aura"></div>
-
-            <!-- Plane -2: Counter-rotating orbital calibration rings -->
-            <div class="logo-plane logo-plane-orbit">
-              <svg class="orbit-svg" id="heroOrbitSvg" viewBox="0 0 240 240" fill="none">
-                <circle cx="120" cy="120" r="108" stroke="rgba(52, 211, 153, 0.16)" stroke-width="1" stroke-dasharray="4 8"/>
-                <circle cx="120" cy="120" r="92" stroke="rgba(224, 242, 254, 0.08)" stroke-width="1"/>
-                <path d="M 120 12 A 108 108 0 0 1 214 66" stroke="rgba(52, 211, 153, 0.5)" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M 120 228 A 108 108 0 0 1 26 174" stroke="rgba(56, 189, 248, 0.38)" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
+      <div class="dl reveal">
+        <div class="dl-left">
+          <div class="dl-title">
+            <img src="assets/arbor-icon.png" alt="" />
+            <div>
+              <h3>Arbor AI Studio</h3>
+              <div class="muted"><span data-i18n="by">by</span> MAVYR Studio · <span data-live="published">—</span></div>
             </div>
-
-            <!-- Plane -1: Sculpted obsidian glass disc -->
-            <div class="logo-plane logo-plane-plinth">
-              <div class="monolith-disc">
-                <div class="monolith-sheen" id="monolithSheen"></div>
-              </div>
-            </div>
-
-            <!-- Plane +1: Arbor Neural Tree trunk, roots, & bioluminescent sap streams -->
-            <div class="logo-plane logo-plane-tree">
-              <svg class="arbor-hero-svg" viewBox="0 0 120 120" fill="none">
-                <!-- Base organic neural tree -->
-                <path d="M 42 110 C 50 104, 57 96, 60 84" stroke="url(#arborEmeraldGrad)" stroke-width="3.6" stroke-linecap="round" opacity="0.82"/>
-                <path d="M 78 110 C 70 104, 63 96, 60 84" stroke="url(#arborEmeraldGrad)" stroke-width="3.6" stroke-linecap="round" opacity="0.82"/>
-                <path d="M 60 80 C 52 66, 22 60, 18 42" stroke="url(#arborEmeraldGrad)" stroke-width="4.2" stroke-linecap="round"/>
-                <path d="M 60 80 C 68 66, 98 60, 102 42" stroke="url(#arborEmeraldGrad)" stroke-width="4.2" stroke-linecap="round"/>
-                <path d="M 60 72 C 60 56, 40 48, 36 28" stroke="url(#arborEmeraldGrad)" stroke-width="4.8" stroke-linecap="round"/>
-                <path d="M 60 72 C 60 56, 80 48, 84 28" stroke="url(#arborEmeraldGrad)" stroke-width="4.8" stroke-linecap="round"/>
-                <path d="M 60 106 L 60 20" stroke="url(#arborEmeraldGrad)" stroke-width="5.6" stroke-linecap="round"/>
-
-                <!-- Upward bioluminescent signal pulses -->
-                <path class="sap-pulse" d="M 60 106 L 60 20" stroke="url(#arborPulseGrad)" stroke-width="3" stroke-linecap="round"/>
-                <path class="sap-pulse sap-pulse-delay-1" d="M 60 72 C 60 56, 40 48, 36 28" stroke="url(#arborPulseGrad)" stroke-width="2.6" stroke-linecap="round"/>
-                <path class="sap-pulse sap-pulse-delay-2" d="M 60 72 C 60 56, 80 48, 84 28" stroke="url(#arborPulseGrad)" stroke-width="2.6" stroke-linecap="round"/>
-                <path class="sap-pulse sap-pulse-delay-2" d="M 60 80 C 52 66, 22 60, 18 42" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
-                <path class="sap-pulse sap-pulse-delay-1" d="M 60 80 C 68 66, 98 60, 102 42" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <!-- Plane +2: Elevated 3D canopy nodes floating ahead in Z-space -->
-            <div class="logo-plane logo-plane-crown">
-              <svg class="arbor-crown-svg" viewBox="0 0 120 120" fill="none">
-                <circle class="crown-node" cx="60" cy="18" r="5.6" fill="#A7F3D0"/>
-                <circle class="crown-node crown-node-d1" cx="36" cy="26" r="4.7" fill="#6EE7B7"/>
-                <circle class="crown-node crown-node-d1" cx="84" cy="26" r="4.7" fill="#6EE7B7"/>
-                <circle class="crown-node crown-node-d2" cx="18" cy="40" r="4.1" fill="#34D399"/>
-                <circle class="crown-node crown-node-d2" cx="102" cy="40" r="4.1" fill="#34D399"/>
-                <circle cx="60" cy="94" r="2.8" fill="#6EE7B7" opacity="0.85"/>
-              </svg>
-            </div>
+          </div>
+          <div class="ecg-box">
+            <div class="ecg-head"><span data-i18n="ecg_label">Release pulse</span><span><b data-live="beats">0</b> <span data-i18n="ecg_unit">releases</span></span></div>
+            <canvas id="ecg" aria-label="Downloads per release"></canvas>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="k" data-i18n="st_version">Version</div><div class="v sap tabular" data-live="version">2.4.2</div></div>
+            <div class="stat"><div class="k" data-i18n="st_size">Size</div><div class="v tabular" data-live="size">456 MB</div></div>
+            <div class="stat"><div class="k" data-i18n="st_downloads">Downloads</div><div class="v tabular" data-live="downloads">—</div></div>
           </div>
         </div>
 
-        <!-- Flagship Studio Copy -->
-        <div class="hero-copy-wrap" id="heroCopyWrap">
-          <h1 class="hero-title" data-i18n="hero_title">
-            Cinema, pipelines, and code. Native to your GPU.
-          </h1>
-          <p class="hero-lead" data-i18n="hero_lead">
-            Direct 1080p video, wire visual node graphs, and ship software inside one unified desktop workstation—engineered by MAVYR Studio around 70 open-source models and smart multi-API routing.
-          </p>
-
-          <!-- Multi-Platform OS Download Cluster -->
-          <div class="os-download-cluster" role="group" aria-label="Download Arbor AI Studio">
-            <a
-              href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe"
-              class="btn-win-primary"
-            >
-              <svg class="os-icon" aria-hidden="true"><use href="#icon-windows"></use></svg>
-              <span data-i18n="cta_win">Download for Windows</span>
-              <span class="btn-win-meta tabular">v2.4 · x64</span>
+        <div class="dl-right">
+          <div class="shot"><img id="dlShot" src="assets/lp-home-en.png" alt="Arbor AI Studio home screen" loading="lazy" /></div>
+          <div class="install">
+            <a class="btn btn-install" id="dlBtn" href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe">
+              <span data-i18n="install">Install for Windows</span><small class="tabular" data-live="btnMeta">v2.4.2 · x64</small>
             </a>
-
-            <button type="button" class="btn-os-soon" data-os-soon="macOS">
-              <svg class="os-icon" aria-hidden="true"><use href="#icon-apple"></use></svg>
-              <span>macOS</span>
-              <span class="soon-pill" data-i18n="badge_soon">Soon</span>
-            </button>
-
-            <button type="button" class="btn-os-soon" data-os-soon="Linux">
-              <svg class="os-icon" aria-hidden="true"><use href="#icon-linux"></use></svg>
-              <span>Linux</span>
-              <span class="soon-pill" data-i18n="badge_soon">Soon</span>
-            </button>
+            <div class="os-row">
+              <div class="os">macOS <span class="soon" data-i18n="soon">Soon</span></div>
+              <div class="os">Linux <span class="soon" data-i18n="soon">Soon</span></div>
+            </div>
           </div>
-
-          <p class="hero-os-note tabular" id="heroOsNote" data-i18n="hero_spec_line">
-            Windows 10 &amp; 11 (64-bit) · Release 2.4.2 · 456 MB
-          </p>
-        </div>
-
-        <!-- 3D Perspective Workstation Reveal -->
-        <div class="workstation-stage-outer" id="workstationStage">
-          <div class="workstation-frame-3d" id="workstationFrame">
-            <img
-              src="assets/lp-home-en.png"
-              data-lang-img="lp-home"
-              alt="Arbor AI Studio v2.4 Workstation Home"
-              width="1520"
-              height="940"
-              fetchpriority="high"
-            />
-            <div class="workstation-glare" id="workstationGlare" aria-hidden="true"></div>
-          </div>
+          <div class="sha"><span>SHA-256</span><code id="shaCode">SHA-256: ff438422597e95a219c2c3faec8c1fff4efa053e59095119d6c9a4e38baeaf41</code><button type="button" id="shaCopy" data-i18n="copy">Copy</button></div>
+          <dl class="req">
+            <dt data-i18n="rq_os">System</dt><dd data-i18n="rq_os_v">Windows 10 / 11, 64-bit</dd>
+            <dt data-i18n="rq_gpu">Graphics</dt><dd data-i18n="rq_gpu_v">NVIDIA, AMD or Intel Arc with 6 GB+ VRAM (12 GB recommended)</dd>
+            <dt data-i18n="rq_ram">Memory</dt><dd data-i18n="rq_ram_v">16 GB RAM (32 GB for large video models)</dd>
+          </dl>
+          <p class="note" data-i18n-html="smartscreen">Windows may show <b>“Windows protected your PC”</b> because the installer isn't code-signed yet. Click <b>More info → Run anyway</b>, and compare the SHA-256 above if you want to be sure the file is ours.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========================================================================
-         ACT 2: FOUR DISCIPLINES IN ONE UNIFIED RUNTIME
-         ======================================================================== -->
-    <section class="disciplines-section" id="capabilities">
-      <div class="container">
-        <div class="section-head reveal-up">
-          <h2 class="section-title" data-i18n="disc_heading">
-            Four disciplines. One unified runtime.
-          </h2>
-          <p class="section-subtitle" data-i18n="disc_sub">
-            Move between generative video, node-based compositing, repository engineering, and multi-provider routing without leaving your local workspace.
-          </p>
-        </div>
-
-        <div class="disciplines-layout reveal-up">
-          <div class="discipline-rail" role="tablist" aria-label="Workstation capabilities">
-            <button
-              type="button"
-              class="discipline-tab is-active"
-              role="tab"
-              aria-selected="true"
-              data-tab-index="0"
-            >
-              <div class="discipline-tab-header">
-                <span class="discipline-tab-title" data-i18n="tab0_title">Generative Cinema &amp; Audio</span>
-                <span class="discipline-spec tabular">Wan 3.0 · FLUX.1</span>
-              </div>
-              <p class="discipline-tab-desc" data-i18n="tab0_desc">
-                Direct multi-shot 1080p video, photorealistic stills, and synchronized foley audio with verified camera prompts and VRAM-aware presets.
-              </p>
-              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
-            </button>
-
-            <button
-              type="button"
-              class="discipline-tab"
-              role="tab"
-              aria-selected="false"
-              data-tab-index="1"
-            >
-              <div class="discipline-tab-header">
-                <span class="discipline-tab-title" data-i18n="tab1_title">Infinite Node Pipelines</span>
-                <span class="discipline-spec tabular">DAG · 4K SeedVR2</span>
-              </div>
-              <p class="discipline-tab-desc" data-i18n="tab1_desc">
-                Chain prompt directors, image synthesis, motion models, 4K upscalers, and audio mastering on a non-destructive visual graph.
-              </p>
-              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
-            </button>
-
-            <button
-              type="button"
-              class="discipline-tab"
-              role="tab"
-              aria-selected="false"
-              data-tab-index="2"
-            >
-              <div class="discipline-tab-header">
-                <span class="discipline-tab-title" data-i18n="tab2_title">Arbor Code Workspace</span>
-                <span class="discipline-spec tabular">Plan · Ask · Auto</span>
-              </div>
-              <p class="discipline-tab-desc" data-i18n="tab2_desc">
-                Bind any local repository with granular file-write permissions and automatic context compaction across 1M-token engineering sessions.
-              </p>
-              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
-            </button>
-
-            <button
-              type="button"
-              class="discipline-tab"
-              role="tab"
-              aria-selected="false"
-              data-tab-index="3"
-            >
-              <div class="discipline-tab-header">
-                <span class="discipline-tab-title" data-i18n="tab3_title">Smart Multi-API Gateway</span>
-                <span class="discipline-spec tabular">16 Providers</span>
-              </div>
-              <p class="discipline-tab-desc" data-i18n="tab3_desc">
-                Pair zero-cost local GGUF inference with encrypted cloud keys across Gemini, Claude, OpenRouter, and Groq with instant failover.
-              </p>
-              <div class="discipline-progress-track"><div class="discipline-progress-fill"></div></div>
-            </button>
-          </div>
-
-          <div class="discipline-screen-stage">
-            <div class="discipline-window">
-              <img
-                src="assets/lp-studio-en.png"
-                data-lang-img="lp-studio"
-                data-shot-index="0"
-                class="discipline-shot is-active"
-                alt="Arbor AI Generative Cinema Studio"
-                width="1520"
-                height="940"
-                loading="lazy"
-              />
-              <img
-                src="assets/lp-nodes-en.png"
-                data-lang-img="lp-nodes"
-                data-shot-index="1"
-                class="discipline-shot"
-                alt="Arbor AI Infinite Node Canvas"
-                width="1520"
-                height="940"
-                loading="lazy"
-              />
-              <img
-                src="assets/lp-code-en.png"
-                data-lang-img="lp-code"
-                data-shot-index="2"
-                class="discipline-shot"
-                alt="Arbor Code Repository Workspace and Permissions"
-                width="1520"
-                height="940"
-                loading="lazy"
-              />
-              <img
-                src="assets/lp-router-en.png"
-                data-lang-img="lp-router"
-                data-shot-index="3"
-                class="discipline-shot"
-                alt="Arbor AI Unified Multi-API Smart Router"
-                width="1520"
-                height="940"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
+  <section class="blk" id="interface">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker" data-i18n="if_kicker">Interface</div>
+        <h2 data-i18n="if_h2">One app. Four rooms.</h2>
       </div>
-    </section>
-
-    <!-- ========================================================================
-         ACT 3: 3D ARBOR NEURAL CORE ARCHITECTURE
-         ======================================================================== -->
-    <section class="core-section" id="architecture">
-      <div class="container">
-        <div class="core-head-centered reveal-up">
-          <h2 class="section-title" data-i18n="arch_heading">
-            Engineered around local sovereignty.
-          </h2>
-          <p class="section-subtitle" data-i18n="arch_sub">
-            Every subsystem—from GPU memory scheduling to AES-256 credential storage—executes directly on your machine with zero telemetry.
-          </p>
-        </div>
-
-        <div class="reactor-arena reveal-up" id="reactorArena">
-          <!-- Animated Neural Conduits radiating from the central 3D Arbor Core -->
-          <svg class="reactor-conduits" viewBox="0 0 1140 420" fill="none" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M 570 210 C 460 210, 430 105, 340 105" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
-            <path d="M 570 210 C 680 210, 710 105, 800 105" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
-            <path d="M 570 210 C 460 210, 430 315, 340 315" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
-            <path d="M 570 210 C 680 210, 710 315, 800 315" stroke="rgba(52,211,153,0.18)" stroke-width="1.5"/>
-
-            <path class="sap-pulse" d="M 570 210 C 460 210, 430 105, 340 105" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
-            <path class="sap-pulse sap-pulse-delay-1" d="M 570 210 C 680 210, 710 105, 800 105" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
-            <path class="sap-pulse sap-pulse-delay-2" d="M 570 210 C 460 210, 430 315, 340 315" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
-            <path class="sap-pulse sap-pulse-delay-1" d="M 570 210 C 680 210, 710 315, 800 315" stroke="url(#arborPulseGrad)" stroke-width="2.2" stroke-linecap="round"/>
-          </svg>
-
-          <div class="reactor-grid">
-            <!-- Top-Left Module -->
-            <article class="reactor-node-card">
-              <span class="reactor-node-metric tabular" data-i18n="node1_tag">70 OPEN-WEIGHT ENGINES</span>
-              <h3 class="reactor-node-title" data-i18n="node1_title">On-demand model library</h3>
-              <p class="reactor-node-copy" data-i18n="node1_copy">
-                Pull only the checkpoints your production needs—from Wan 3.0 Turbo 5B and FLUX.2 Klein to Qwen 2.5 Coder—with hardware-verified readiness.
-              </p>
-            </article>
-
-            <!-- Center 3D Arbor Neural Core -->
-            <div class="reactor-centerpiece" aria-hidden="true">
-              <div class="reactor-hub-3d" id="reactorHub3d">
-                <div class="reactor-ring-back" id="reactorRingBack"></div>
-                <div class="reactor-vault-shell"></div>
-                <div class="reactor-emblem-front">
-                  <svg width="108" height="108" viewBox="0 0 120 120" fill="none">
-                    <path d="M 42 110 C 50 104, 57 96, 60 84 M 78 110 C 70 104, 63 96, 60 84 M 60 80 C 52 66, 22 60, 18 42 M 60 80 C 68 66, 98 60, 102 42 M 60 72 C 60 56, 40 48, 36 28 M 60 72 C 60 56, 80 48, 84 28 M 60 106 L 60 20" stroke="url(#arborEmeraldGrad)" stroke-width="4.8" stroke-linecap="round"/>
-                    <path class="sap-pulse" d="M 60 106 L 60 20" stroke="#A7F3D0" stroke-width="2.8" stroke-linecap="round"/>
-                    <circle cx="60" cy="18" r="5.5" fill="#A7F3D0"/>
-                    <circle cx="36" cy="26" r="4.5" fill="#6EE7B7"/>
-                    <circle cx="84" cy="26" r="4.5" fill="#6EE7B7"/>
-                    <circle cx="18" cy="40" r="4" fill="#34D399"/>
-                    <circle cx="102" cy="40" r="4" fill="#34D399"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Top-Right Module -->
-            <article class="reactor-node-card">
-              <span class="reactor-node-metric tabular" data-i18n="node2_tag">UP TO 1M TOKENS</span>
-              <h3 class="reactor-node-title" data-i18n="node2_title">Adaptive context compaction</h3>
-              <p class="reactor-node-copy" data-i18n="node2_copy">
-                Per-model token budgets automatically summarize older turns before context saturation, keeping deep architectural sessions responsive.
-              </p>
-            </article>
-
-            <!-- Bottom-Left Module -->
-            <article class="reactor-node-card">
-              <span class="reactor-node-metric tabular" data-i18n="node3_tag">8 GB TO MULTI-GPU</span>
-              <h3 class="reactor-node-title" data-i18n="node3_title">Live hardware telemetry</h3>
-              <p class="reactor-node-copy" data-i18n="node3_copy">
-                Real-time GPU utilization, VRAM allocation, and thermal monitoring match quantization and offload settings to your exact card.
-              </p>
-            </article>
-
-            <!-- Bottom-Right Module -->
-            <article class="reactor-node-card">
-              <span class="reactor-node-metric tabular" data-i18n="node4_tag">AES-256 LOCAL VAULT</span>
-              <h3 class="reactor-node-title" data-i18n="node4_title">Private by architecture</h3>
-              <p class="reactor-node-copy" data-i18n="node4_copy">
-                Source trees, rendered masters, node graphs, and encrypted API keys stay on your local disks with no mandatory cloud sign-in.
-              </p>
-            </article>
-          </div>
-        </div>
+      <div class="tabs reveal" role="tablist">
+        <button class="tab" role="tab" data-shot="home" aria-selected="true" data-i18n="t_home">Home</button>
+        <button class="tab" role="tab" data-shot="studio" aria-selected="false" data-i18n="t_studio">Studio</button>
+        <button class="tab" role="tab" data-shot="nodes" aria-selected="false" data-i18n="t_nodes">Workflows</button>
+        <button class="tab" role="tab" data-shot="code" aria-selected="false" data-i18n="t_code">Arbor Code</button>
+        <button class="tab" role="tab" data-shot="router" aria-selected="false" data-i18n="t_router">API Router</button>
       </div>
-    </section>
+      <div class="stage reveal" id="stage"></div>
+      <p class="stage-cap" id="stageCap"></p>
+    </div>
+  </section>
 
-    <!-- ========================================================================
-         ACT 4: CALIBRATED FOR COLOR SUITES & DAYLIGHT DESKS
-         ======================================================================== -->
-    <section class="calibration-section" id="calibration">
-      <div class="container">
-        <div class="calibration-header-row reveal-up">
-          <div>
-            <h2 class="section-title" data-i18n="cal_heading">
-              Calibrated for color suites and daylight desks.
-            </h2>
-            <p class="section-subtitle" data-i18n="cal_sub">
-              Drag the optical divider to inspect Obsidian Dark and Studio Daylight—both tuned for long creative and engineering sessions.
-            </p>
-          </div>
-
-          <div class="theme-Quick-pills" role="group" aria-label="Preview surface mode">
-            <button type="button" class="theme-pill-btn" data-split-preset="14" data-i18n="cal_btn_dark">Obsidian Dark</button>
-            <button type="button" class="theme-pill-btn is-active" data-split-preset="50" data-i18n="cal_btn_split">50 / 50 Split</button>
-            <button type="button" class="theme-pill-btn" data-split-preset="86" data-i18n="cal_btn_light">Studio Daylight</button>
-          </div>
-        </div>
-
-        <div class="split-stage reveal-up" id="splitStage" aria-label="Obsidian Dark and Studio Daylight interface comparison">
-          <img
-            src="assets/lp-home-en.png"
-            data-lang-img="lp-home"
-            class="split-img"
-            alt="Arbor AI Studio in Obsidian Dark mode"
-            width="1520"
-            height="940"
-            loading="lazy"
-          />
-          <img
-            src="assets/lp-home-light-en.png"
-            data-lang-img="lp-home-light"
-            class="split-img split-light-layer"
-            id="splitLightLayer"
-            alt="Arbor AI Studio in Studio Daylight mode"
-            width="1520"
-            height="940"
-            loading="lazy"
-          />
-          <div class="split-handle-line" id="splitHandle">
-            <div class="split-knob" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                <path d="M7 6L3 10L7 14M13 6L17 10L13 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
+  <section class="blk" id="what">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="kicker" data-i18n="w_kicker">What it does</div>
+        <h2 data-i18n="w_h2">Honest about your hardware.</h2>
+        <p class="sub" data-i18n="w_sub">The model library reads your GPU and memory and tells you plainly what will run, what still needs files, and what your PC can't handle — before you download gigabytes.</p>
       </div>
-    </section>
-
-    <!-- ========================================================================
-         ACT 5: MULTI-PLATFORM DOWNLOAD MATRIX
-         ======================================================================== -->
-    <section class="download-section" id="download">
-      <!-- Subtle oversized Arbor Neural Tree watermark -->
-      <svg class="closing-crest-bg" id="closingCrest" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-        <circle cx="60" cy="60" r="56" stroke="#34D399" stroke-width="0.6" stroke-dasharray="2 4"/>
-        <path d="M 42 110 C 50 104, 57 96, 60 84 M 78 110 C 70 104, 63 96, 60 84 M 60 80 C 52 66, 22 60, 18 42 M 60 80 C 68 66, 98 60, 102 42 M 60 72 C 60 56, 40 48, 36 28 M 60 72 C 60 56, 80 48, 84 28 M 60 106 L 60 20" stroke="#34D399" stroke-width="2.2" stroke-linecap="round"/>
-        <circle cx="60" cy="18" r="4" fill="#34D399"/>
-        <circle cx="36" cy="26" r="3.2" fill="#34D399"/>
-        <circle cx="84" cy="26" r="3.2" fill="#34D399"/>
-        <circle cx="18" cy="40" r="2.8" fill="#34D399"/>
-        <circle cx="102" cy="40" r="2.8" fill="#34D399"/>
-      </svg>
-
-      <div class="container download-inner">
-        <div class="download-head reveal-up">
-          <h2 class="section-title" data-i18n="dl_heading">
-            Build on Arbor AI Studio.
-          </h2>
-          <p class="section-subtitle" data-i18n="dl_sub">
-            Release 2.4 is available now for Windows x64, with native Apple Silicon and Linux builds in active development at MAVYR Studio.
-          </p>
-        </div>
-
-        <div class="platform-dock reveal-up">
-          <!-- Windows Primary Card -->
-          <div class="platform-card platform-card-primary">
-            <div>
-              <div class="platform-top">
-                <div class="platform-os-badge">
-                  <svg width="22" height="22" aria-hidden="true"><use href="#icon-windows"></use></svg>
-                </div>
-                <span class="platform-status-tag tabular" data-i18n="win_status">v2.4.2 · Available</span>
-              </div>
-              <h3 class="platform-name" style="margin-top:20px;">Windows</h3>
-              <p class="platform-arch tabular" data-i18n="win_arch">Windows 10 &amp; 11 (64-bit) · 456 MB</p>
-            </div>
-
-            <div class="platform-actions">
-              <a
-                href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest/download/Arbor_AI_Setup.exe"
-                class="btn-dock-download"
-              >
-                <svg class="os-icon" aria-hidden="true"><use href="#icon-windows"></use></svg>
-                <span data-i18n="cta_win">Download for Windows</span>
-              </a>
-              <div class="checksum-row">
-                <span class="tabular">Arbor_AI_Setup.exe</span>
-                <button type="button" class="checksum-copy-btn tabular" id="copyShaBtn" data-i18n="copy_sha">
-                  Copy SHA-256
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- macOS Coming Soon Card -->
-          <div class="platform-card">
-            <div>
-              <div class="platform-top">
-                <div class="platform-os-badge">
-                  <svg width="22" height="22" aria-hidden="true"><use href="#icon-apple"></use></svg>
-                </div>
-                <span class="platform-status-tag platform-status-soon" data-i18n="soon_full">Coming soon</span>
-              </div>
-              <h3 class="platform-name" style="margin-top:20px;">macOS</h3>
-              <p class="platform-arch" data-i18n="mac_arch">Apple Silicon (M1 – M4) · Universal</p>
-            </div>
-
-            <div class="platform-actions">
-              <button type="button" class="btn-dock-soon" disabled aria-disabled="true">
-                <svg class="os-icon" aria-hidden="true"><use href="#icon-apple"></use></svg>
-                <span data-i18n="soon_full">Coming soon</span>
-              </button>
-              <div class="checksum-row">
-                <span data-i18n="in_dev_note">In development at MAVYR Studio</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Linux Coming Soon Card -->
-          <div class="platform-card">
-            <div>
-              <div class="platform-top">
-                <div class="platform-os-badge">
-                  <svg width="22" height="22" aria-hidden="true"><use href="#icon-linux"></use></svg>
-                </div>
-                <span class="platform-status-tag platform-status-soon" data-i18n="soon_full">Coming soon</span>
-              </div>
-              <h3 class="platform-name" style="margin-top:20px;">Linux</h3>
-              <p class="platform-arch" data-i18n="linux_arch">Ubuntu / Fedora (x64) · AppImage</p>
-            </div>
-
-            <div class="platform-actions">
-              <button type="button" class="btn-dock-soon" disabled aria-disabled="true">
-                <svg class="os-icon" aria-hidden="true"><use href="#icon-linux"></use></svg>
-                <span data-i18n="soon_full">Coming soon</span>
-              </button>
-              <div class="checksum-row">
-                <span data-i18n="in_dev_note">In development at MAVYR Studio</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="grid4">
+        <div class="card reveal"><div class="ic">◐</div><h3 data-i18n="c1">Studio</h3><p data-i18n="c1p">Text, image and reference-guided generation for stills, video and voice, with a live preview while the GPU works.</p></div>
+        <div class="card reveal"><div class="ic">⌁</div><h3 data-i18n="c2">Workflows</h3><p data-i18n="c2p">Chain models as nodes: still → upscale → animate → narrate, saved and re-runnable.</p></div>
+        <div class="card reveal"><div class="ic">&lt;/&gt;</div><h3 data-i18n="c3">Arbor Code &amp; Chat</h3><p data-i18n="c3p">Point it at a project folder and work with local models or your own API keys.</p></div>
+        <div class="card reveal"><div class="ic">▦</div><h3 data-i18n="c4">Sessions on disk</h3><p data-i18n="c4p">Every session is a real folder. Delete in the app or in Explorer — both stay in sync.</p></div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- Minimalist Studio Footer -->
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <div class="footer-brand">
-        <img src="assets/mavyr-logo.png" alt="MAVYR Studio" class="mavyr-mark" width="96" height="24" />
-        <span class="footer-copy" data-i18n="footer_rights">© 2026 MAVYR Studio. All rights reserved.</span>
-      </div>
-
-      <div class="footer-links">
-        <a href="https://github.com/abdelrhmanmahmoud9854-creator/arbor-ai-releases/releases/latest" target="_blank" rel="noopener" data-i18n="footer_releases">
-          Release 2.4.0 Notes
-        </a>
-        <button type="button" id="footerLangBtn">العربية</button>
-      </div>
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 MAVYR Studio · <a href="LICENSE.txt" data-i18n="license">License</a></span>
+      <img src="assets/mavyr-logo.png" alt="MAVYR Studio" />
     </div>
   </footer>
 
   <script>
-    (function () {
-      document.documentElement.classList.add('js-ready');
+    (() => {
+      'use strict';
+      const REPO = 'abdelrhmanmahmoud9854-creator/arbor-ai-releases';
+      const ASSET = 'Arbor_AI_Setup.exe';
+      // Fallbacks (kept current by scripts/build_single_installer.ps1) for when the GitHub API is unreachable
+      const SHA256_LATEST = 'ff438422597e95a219c2c3faec8c1fff4efa053e59095119d6c9a4e38baeaf41';
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const SHA256_LATEST = '7634ddbeba5fb2d870bfcb26d74a899da9913e5324e4d3fc6c39961969d76a56';
-
-      const I18N = {
+      /* ================= i18n ================= */
+      const T = {
         en: {
-          nav_capabilities: 'Capabilities',
-          nav_architecture: 'Architecture',
-          nav_calibration: 'Interface',
-          nav_download: 'Download',
-          nav_cta: 'Get Arbor',
-
-          hero_title: 'Cinema, pipelines, and code. Native to your GPU.',
-          hero_lead: 'Direct 1080p video, wire visual node graphs, and ship software inside one unified desktop workstation—engineered by MAVYR Studio around 70 open-source models and smart multi-API routing.',
-          cta_win: 'Download for Windows',
-          badge_soon: 'Soon',
-          hero_spec_line: 'Windows 10 & 11 (64-bit) · Release 2.4.2 · 456 MB',
-          hero_soon_feedback: '{os} builds are currently in active development at MAVYR Studio. Windows x64 is available today.',
-
-          disc_heading: 'Four disciplines. One unified runtime.',
-          disc_sub: 'Move between generative video, node-based compositing, repository engineering, and multi-provider routing without leaving your local workspace.',
-
-          tab0_title: 'Generative Cinema & Audio',
-          tab0_desc: 'Direct multi-shot 1080p video, photorealistic stills, and neural voice synthesis with verified camera prompts and VRAM-aware presets.',
-          tab1_title: 'Infinite Node Pipelines',
-          tab1_desc: 'Chain prompt directors, image synthesis, motion models, Real-ESRGAN 4K upscalers, and audio mastering on a non-destructive visual graph.',
-          tab2_title: 'Arbor Code Workspace',
-          tab2_desc: 'Bind any local repository with granular file-write permissions and automatic context compaction across 1M-token engineering sessions.',
-          tab3_title: 'Smart Multi-API Gateway',
-          tab3_desc: 'Pair zero-cost local GGUF inference with encrypted cloud keys across Gemini, Claude, OpenRouter, and Groq with instant failover.',
-
-          arch_heading: 'Engineered around local sovereignty.',
-          arch_sub: 'Every subsystem—from GPU memory scheduling to AES-256 credential storage—executes directly on your machine with zero telemetry.',
-
-          node1_tag: '70 OPEN-WEIGHT ENGINES',
-          node1_title: 'On-demand model library',
-          node1_copy: 'Pull only the checkpoints your production needs—from Wan 3.0 Turbo 5B and FLUX.2 Klein to Qwen 2.5 Coder—with hardware-verified readiness.',
-          node2_tag: 'UP TO 1M TOKENS',
-          node2_title: 'Adaptive context compaction',
-          node2_copy: 'Per-model token budgets automatically summarize older turns before context saturation, keeping deep architectural sessions responsive.',
-          node3_tag: '8 GB TO MULTI-GPU',
-          node3_title: 'Live hardware telemetry',
-          node3_copy: 'Real-time GPU utilization, VRAM allocation, and thermal monitoring match quantization and offload settings to your exact card.',
-          node4_tag: 'AES-256 LOCAL VAULT',
-          node4_title: 'Private by architecture',
-          node4_copy: 'Source trees, rendered masters, node graphs, and encrypted API keys stay on your local disks with no mandatory cloud sign-in.',
-
-          cal_heading: 'Calibrated for color suites and daylight desks.',
-          cal_sub: 'Drag the optical divider to inspect Obsidian Dark and Studio Daylight—both tuned for long creative and engineering sessions.',
-          cal_btn_dark: 'Obsidian Dark',
-          cal_btn_split: '50 / 50 Split',
-          cal_btn_light: 'Studio Daylight',
-
-          dl_heading: 'Build on Arbor AI Studio.',
-          dl_sub: 'Release 2.4 is available now for Windows x64, with native Apple Silicon and Linux builds in active development at MAVYR Studio.',
-          win_status: 'v2.4.2 · Available',
-          win_arch: 'Windows 10 & 11 (64-bit) · 456 MB',
-          soon_full: 'Coming soon',
-          mac_arch: 'Apple Silicon (M1 – M4) · Universal',
-          linux_arch: 'Ubuntu / Fedora (x64) · AppImage',
-          in_dev_note: 'In development at MAVYR Studio',
-          copy_sha: 'Copy SHA-256',
-          copied_sha: 'SHA-256 Copied',
-
-          footer_rights: '© 2026 MAVYR Studio. All rights reserved.',
-          footer_releases: 'Release 2.4.0 Notes'
-        },
-
-        ar: {
-          nav_capabilities: 'القدرات',
-          nav_architecture: 'المعمارية',
-          nav_calibration: 'الواجهة',
-          nav_download: 'التنزيل',
-          nav_cta: 'نزّل Arbor',
-
-          hero_title: 'السينما، مسارات التوليد، والكود. مباشرةً على معالجك الرسومي.',
-          hero_lead: 'أخرج الفيديو، واربط مسارات العُقد البصرية، وطوّر مشاريعك البرمجية داخل محطة عمل مكتبية واحدة من ابتكار \u2066MAVYR\u00A0Studio\u2069 مع 70 موديلاً مفتوح المصدر وتوجيه ذكي للـ API.',
-          cta_win: 'تنزيل لنظام Windows',
-          badge_soon: 'قريباً',
-          hero_spec_line: 'Windows 10 & 11 (64-bit) · الإصدار 2.4.2 · 456 MB',
-          hero_soon_feedback: 'نسخة {os} قيد التطوير حالياً في استوديو \u2066MAVYR\u00A0Studio\u2069 — نسخة Windows x64 متاحة للتنزيل الآن.',
-
-          disc_heading: 'أربع بيئات احترافية في محرك واحد متكامل.',
-          disc_sub: 'انتقل بسلاسة بين الإخراج السينمائي، ومسارات العُقد البصرية، وهندسة الكود، وتوجيه مزودات الـ API دون مغادرة مساحة عملك المحلية.',
-
-          tab0_title: 'الإخراج السينمائي والصوتيات',
-          tab0_desc: 'ولّد لقطات الفيديو والصور فائقة الواقعية والصوت العصبي محلياً عبر Wan 3.0 Turbo و FLUX.2 و Kokoro-82M.',
-          tab1_title: 'مسارات العُقد البصرية اللانهائية',
-          tab1_desc: 'اربط التوجيه النصي وتوليد المشاهد وترقية الدقة إلى 4K عبر Real-ESRGAN والماستر الصوتي داخل مخطط بصري مرن.',
-          tab2_title: 'بيئة Arbor Code الهندسية',
-          tab2_desc: 'اربط أي مستودع كود محلي مع صلاحيات دقيقة (تخطيط، استئذان، أو تعديل تلقائي) وضغط ذكي للسياق حتى مليون توكن.',
-          tab3_title: 'بوابة الـ API الموحّدة والتوجيه الذكي',
-          tab3_desc: 'ادمج تشغيل موديلات GGUF المحلية مجاناً مع مفاتيح السحابة المشفّرة لـ Gemini و Claude و Groq مع تبديل تلقائي فوري.',
-
-          arch_heading: 'معمارية مبنية على السيادة الكاملة لجهازك.',
-          arch_sub: 'كل طبقة في النظام—من جدولة ذاكرة الـ VRAM إلى تشفير المفاتيح بمعيار AES-256—تعمل محلياً على جهازك دون أي تتبع.',
-
-          node1_tag: '70 محركاً مفتوح المصدر',
-          node1_title: 'مكتبة موديلات عند الطلب',
-          node1_copy: 'نزّل الموديلات المتوافقة مع عتادك—من Wan 3.0 Turbo 5B و FLUX.2 Klein إلى Qwen 2.5 Coder—مع فحص صارم للتبعيات وجاهزية التشغيل.',
-          node2_tag: 'سياق يصل إلى 1M توكن',
-          node2_title: 'ضغط ذكي وتلقائي للذاكرة',
-          node2_copy: 'ميزانية توكن مخصّصة لكل موديل تلخّص الحوارات الطويلة تلقائياً قبل امتلاء السياق للحفاظ على سرعة الاستجابة.',
-          node3_tag: 'من 8 GB حتى تعدد الكروت',
-          node3_title: 'قراءة حية لموارد العتاد',
-          node3_copy: 'مراقبة لحظية لاستهلاك المعالج الرسومي والـ VRAM والحرارة لضبط دقة التشغيل بما يلائم كارت الشاشة لديك.',
-          node4_tag: 'خزنة AES-256 محلية',
-          node4_title: 'خصوصية أصيلة في التصميم',
-          node4_copy: 'ملفات مشاريعك، ومخرجاتك السينمائية، ومفاتيح الـ API المشفّرة تبقى بالكامل على أقراصك المحلية دون حسابات سحابية إجبارية.',
-
-          cal_heading: 'معايرة بصرية لغرف المونتاج وإضاءة النهار.',
-          cal_sub: 'اسحب الفاصل البصري لمعاينة الوضع الليلي الداكن ووضع الإضاءة النهارية المصمّمين لجلسات العمل الطويلة.',
-          cal_btn_dark: 'الوضع الليلي',
-          cal_btn_split: 'مقارنة 50 / 50',
-          cal_btn_light: 'الإضاءة النهارية',
-
-          dl_heading: 'ابدأ البناء على Arbor AI Studio.',
-          dl_sub: 'الإصدار 2.4 متاح الآن لنظام Windows x64، مع استمرار تطوير نسخ macOS و Linux داخل \u2066MAVYR\u00A0Studio\u2069.',
-          win_status: 'v2.4.2 · متاح الآن',
-          win_arch: 'Windows 10 & 11 (64-bit) · 456 MB',
-          soon_full: 'قريباً',
-          mac_arch: 'معالجات Apple Silicon (M1 – M4)',
-          linux_arch: 'توزيعات Ubuntu / Fedora (x64) · AppImage',
-          in_dev_note: 'قيد التطوير في \u2066MAVYR\u00A0Studio\u2069',
-          copy_sha: 'نسخ SHA-256',
-          copied_sha: 'تم نسخ SHA-256',
-
-          footer_rights: '© 2026 \u2066MAVYR\u00A0Studio\u2069. جميع الحقوق محفوظة.',
-          footer_releases: 'ملاحظات الإصدار 2.4.0'
-        }
-      };
-
-      // Default language is strictly English ('en')
-      let currentLang = 'en';
-
-      const langSwitchBtn = document.getElementById('langSwitchBtn');
-      const footerLangBtn = document.getElementById('footerLangBtn');
-      const heroOsNote = document.getElementById('heroOsNote');
-      let osNoteTimer = null;
-
-      function setLanguage(lang) {
-        currentLang = lang === 'ar' ? 'ar' : 'en';
-        const html = document.documentElement;
-        html.lang = currentLang;
-        html.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-        const dict = I18N[currentLang];
-        document.querySelectorAll('[data-i18n]').forEach((el) => {
-          const key = el.getAttribute('data-i18n');
-          if (dict[key]) {
-            el.textContent = dict[key];
-          }
-        });
-
-        // Swap genuine v2.2 workstation renders to match active language
-        document.querySelectorAll('[data-lang-img]').forEach((img) => {
-          const base = img.getAttribute('data-lang-img');
-          img.src = 'assets/' + base + '-' + currentLang + '.png';
-        });
-
-        const nextLabel = currentLang === 'en' ? 'العربية' : 'English';
-        if (langSwitchBtn) langSwitchBtn.textContent = nextLabel;
-        if (footerLangBtn) footerLangBtn.textContent = nextLabel;
-        if (heroOsNote) heroOsNote.classList.remove('is-highlighted');
-      }
-
-      if (langSwitchBtn) {
-        langSwitchBtn.addEventListener('click', () => {
-          setLanguage(currentLang === 'en' ? 'ar' : 'en');
-        });
-      }
-      if (footerLangBtn) {
-        footerLangBtn.addEventListener('click', () => {
-          setLanguage(currentLang === 'en' ? 'ar' : 'en');
-        });
-      }
-
-      // Coming soon OS buttons tactile feedback
-      document.querySelectorAll('[data-os-soon]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const osName = btn.getAttribute('data-os-soon') || 'macOS';
-          const template = I18N[currentLang].hero_soon_feedback;
-          if (heroOsNote) {
-            heroOsNote.textContent = template.replace('{os}', osName);
-            heroOsNote.classList.add('is-highlighted');
-            clearTimeout(osNoteTimer);
-            osNoteTimer = setTimeout(() => {
-              heroOsNote.classList.remove('is-highlighted');
-              heroOsNote.textContent = I18N[currentLang].hero_spec_line;
-            }, 4600);
-          }
-        });
-      });
-
-      // Copy SHA-256 button
-      const copyShaBtn = document.getElementById('copyShaBtn');
-      if (copyShaBtn) {
-        copyShaBtn.addEventListener('click', async () => {
-          try {
-            await navigator.clipboard.writeText(SHA256_LATEST);
-            copyShaBtn.textContent = I18N[currentLang].copied_sha;
-            setTimeout(() => {
-              copyShaBtn.textContent = I18N[currentLang].copy_sha;
-            }, 2400);
-          } catch (_) {}
-        });
-      }
-
-      // Interactive Workstation Capabilities Tabs
-      const tabs = Array.from(document.querySelectorAll('.discipline-tab'));
-      const shots = Array.from(document.querySelectorAll('.discipline-shot'));
-
-      function activateTab(idx) {
-        tabs.forEach((t, i) => {
-          const active = i === idx;
-          t.classList.toggle('is-active', active);
-          t.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        shots.forEach((s, i) => {
-          s.classList.toggle('is-active', i === idx);
-        });
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          const idx = Number(tab.getAttribute('data-tab-index') || 0);
-          activateTab(idx);
-        });
-      });
-
-      // Interactive Obsidian Dark / Studio Daylight Split Divider
-      const splitStage = document.getElementById('splitStage');
-      const splitLightLayer = document.getElementById('splitLightLayer');
-      const splitHandle = document.getElementById('splitHandle');
-      const splitPresetBtns = Array.from(document.querySelectorAll('[data-split-preset]'));
-      let isDraggingSplit = false;
-
-      function setSplitPercent(pct) {
-        const clamped = Math.max(6, Math.min(94, pct));
-        if (splitLightLayer) {
-          splitLightLayer.style.clipPath = `inset(0 0 0 ${clamped}%)`;
-        }
-        if (splitHandle) {
-          splitHandle.style.left = `${clamped}%`;
-        }
-      }
-
-      setSplitPercent(50);
-
-      function updateSplitFromPointer(clientX) {
-        if (!splitStage) return;
-        const rect = splitStage.getBoundingClientRect();
-        const pct = ((clientX - rect.left) / rect.width) * 100;
-        setSplitPercent(pct);
-        splitPresetBtns.forEach((b) => b.classList.remove('is-active'));
-      }
-
-      if (splitStage) {
-        splitStage.addEventListener('pointerdown', (e) => {
-          isDraggingSplit = true;
-          splitStage.setPointerCapture(e.pointerId);
-          updateSplitFromPointer(e.clientX);
-        });
-        splitStage.addEventListener('pointermove', (e) => {
-          if (!isDraggingSplit) return;
-          updateSplitFromPointer(e.clientX);
-        });
-        splitStage.addEventListener('pointerup', () => {
-          isDraggingSplit = false;
-        });
-        splitStage.addEventListener('pointercancel', () => {
-          isDraggingSplit = false;
-        });
-      }
-
-      splitPresetBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const val = Number(btn.getAttribute('data-split-preset') || 50);
-          setSplitPercent(val);
-          splitPresetBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
-        });
-      });
-
-      // Reveal observer
-      const revealEls = document.querySelectorAll('.reveal-up');
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                io.unobserve(entry.target);
-              }
-            });
+          hero_spec_line: 'Windows 10 & 11 (64-bit) · Release 2.4.3 · 456 MB',
+          shots: {
+            home: 'Start screen: jump into a render, a workflow or a coding session.',
+            studio: 'Studio: pick a model, add references, watch the frame render live.',
+            nodes: 'Workflows: connect models into pipelines you can save and re-run.',
+            code: 'Arbor Code: an AI pair-programmer working inside your project folder.',
+            router: 'API Router: plug in free or paid keys; it fails over between providers.',
           },
-          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-        );
-        revealEls.forEach((el) => io.observe(el));
-      } else {
-        revealEls.forEach((el) => el.classList.add('in-view'));
-      }
-
-      // Composite-Only 60/120fps Scroll & Pointer 3D Depth Engine
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const navShell = document.getElementById('navShell');
-      const scrollFilament = document.getElementById('scrollFilament');
-      const logoRig = document.getElementById('logoRig');
-      const heroOrbitSvg = document.getElementById('heroOrbitSvg');
-      const monolithSheen = document.getElementById('monolithSheen');
-      const heroCopyWrap = document.getElementById('heroCopyWrap');
-      const workstationFrame = document.getElementById('workstationFrame');
-      const workstationGlare = document.getElementById('workstationGlare');
-      const reactorArena = document.getElementById('reactorArena');
-      const reactorHub3d = document.getElementById('reactorHub3d');
-      const reactorRingBack = document.getElementById('reactorRingBack');
-      const closingCrest = document.getElementById('closingCrest');
-
-      let pointerX = 0;
-      let pointerY = 0;
-      let targetPointerX = 0;
-      let targetPointerY = 0;
-      let rafPending = false;
-
-      function scheduleFrame() {
-        if (!rafPending && !prefersReducedMotion) {
-          rafPending = true;
-          requestAnimationFrame(renderFrame);
-        }
-      }
-
-      window.addEventListener(
-        'pointermove',
-        (e) => {
-          targetPointerX = (e.clientX / window.innerWidth - 0.5) * 2;
-          targetPointerY = (e.clientY / window.innerHeight - 0.5) * 2;
-          scheduleFrame();
         },
-        { passive: true }
-      );
-
-      window.addEventListener(
-        'scroll',
-        () => {
-          const sy = window.scrollY || 0;
-          if (navShell) {
-            navShell.classList.toggle('is-scrolled', sy > 24);
-          }
-          scheduleFrame();
+        ar: {
+          hero_spec_line: 'Windows 10 & 11 (64-bit) · الإصدار 2.4.3 · 456 MB',
+          nav_interface: 'الواجهة', nav_what: 'بيعمل إيه', nav_download: 'التنزيل', nav_get: 'نزّل Arbor',
+          eyebrow: 'شغال على كارت الشاشة بتاعك', h1a: 'أفكارك،', h1b: 'بتكبر على جهازك.',
+          lede: 'صور وفيديو وصوت وworkflows ومساعد برمجة بالذكاء الاصطناعي — في برنامج واحد على ويندوز بيشغّل موديلات مفتوحة المصدر على كارت الشاشة. من غير سحابة ومن غير رصيد.',
+          cta_win: 'نزّل لويندوز', cta_tour: 'شوف الواجهة', scroll: 'انزل',
+          dl_kicker: 'التنزيل', dl_h2: 'كل نسخة ليها نبض.', dl_sub: 'بيانات حيّة من GitHub: كل نبضة تحت هي نسخة اتنشرت، وطولها على قد عدد مرات تنزيلها.',
+          by: 'من', ecg_label: 'نبض الإصدارات', ecg_unit: 'إصدار', st_version: 'النسخة', st_size: 'الحجم', st_downloads: 'التنزيلات',
+          install: 'سطّب على ويندوز', soon: 'قريبًا', copy: 'نسخ', copied: 'اتنسخ',
+          rq_os: 'النظام', rq_os_v: 'Windows 10 / 11 ـ 64-bit', rq_gpu: 'كارت الشاشة', rq_gpu_v: 'NVIDIA أو AMD أو Intel Arc بذاكرة 6 جيجا أو أكتر (12 جيجا أفضل)',
+          rq_ram: 'الرام', rq_ram_v: '16 جيجا (32 جيجا لموديلات الفيديو الكبيرة)',
+          smartscreen: 'ويندوز ممكن يطلعلك <b>«Windows protected your PC»</b> لأن ملف التسطيب لسه مش موقّع رقميًا. دوس <b>More info ← Run anyway</b>، ولو عايز تتأكد إن الملف بتاعنا قارن الـ SHA-256 اللي فوق.',
+          if_kicker: 'الواجهة', if_h2: 'برنامج واحد. أربع أوض.', t_home: 'الرئيسية', t_studio: 'الاستوديو', t_nodes: 'Workflows', t_code: 'Arbor Code', t_router: 'موجّه الـ API',
+          w_kicker: 'بيعمل إيه', w_h2: 'صريح مع جهازك.', w_sub: 'مكتبة الموديلات بتقرا كارت الشاشة والرام وتقولك بوضوح إيه اللي هيشتغل، وإيه اللي محتاج ملفات، وإيه اللي جهازك مش هيقدر عليه — قبل ما تنزّل جيجات.',
+          c1: 'الاستوديو', c1p: 'توليد صور وفيديو وصوت من نص أو صورة مرجعية، مع معاينة حيّة وكارت الشاشة شغال.',
+          c2: 'Workflows', c2p: 'اربط الموديلات ببعض: صورة ← تكبير ← تحريك ← تعليق صوتي، وتحفظها وتعيدها.',
+          c3: 'Arbor Code و Chat', c3p: 'وجّهه لفولدر مشروعك واشتغل بموديلات محلية أو بمفاتيح API بتاعتك.',
+          c4: 'السشنات على الديسك', c4p: 'كل سشن فولدر حقيقي. امسح من البرنامج أو من ويندوز — الاتنين متزامنين.',
+          license: 'الترخيص',
+          shots: {
+            home: 'الشاشة الرئيسية: ابدأ توليد أو workflow أو سشن برمجة.',
+            studio: 'الاستوديو: اختار موديل، ضيف مراجع، وشوف الفريم بيتولّد لايف.',
+            nodes: 'Workflows: اربط الموديلات في مسارات تحفظها وتشغلها تاني.',
+            code: 'Arbor Code: مبرمج بالذكاء الاصطناعي شغال جوه فولدر مشروعك.',
+            router: 'موجّه الـ API: حط مفاتيح مجانية أو مدفوعة وهو بيبدّل بينهم لوحده.',
+          },
         },
-        { passive: true }
-      );
+      };
+      const EN_DEFAULTS = {};
+      document.querySelectorAll('[data-i18n]').forEach((el) => (EN_DEFAULTS[el.dataset.i18n] = el.textContent));
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => (EN_DEFAULTS[el.dataset.i18nHtml] = el.innerHTML));
 
-      function renderFrame() {
-        rafPending = false;
-        const sy = window.scrollY || 0;
-        const docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        const pageProgress = Math.max(0, Math.min(1, sy / docH));
+      let saved = null;
+      try { saved = localStorage.getItem('arbor_lp_lang'); } catch (_) {}
+      let lang = saved === 'ar' || saved === 'en' ? saved : (navigator.language || '').startsWith('ar') ? 'ar' : 'en';
+      const live = { version: '2.4.2', sizeMb: 456 };
 
-        if (scrollFilament) {
-          scrollFilament.style.transform = `scaleX(${pageProgress.toFixed(4)})`;
-        }
+      function applyLang() {
+        const ar = lang === 'ar';
+        document.documentElement.lang = ar ? 'ar' : 'en';
+        document.documentElement.dir = ar ? 'rtl' : 'ltr';
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const k = el.dataset.i18n;
+          el.textContent = (ar && T.ar[k]) || EN_DEFAULTS[k] || el.textContent;
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+          const k = el.dataset.i18nHtml;
+          el.innerHTML = (ar && T.ar[k]) || EN_DEFAULTS[k];
+        });
+        document.getElementById('langBtn').textContent = ar ? 'English' : 'العربية';
+        renderHeroMeta();
+        renderStage(currentShot, false);
+        const shot = document.getElementById('dlShot');
+        shot.src = `assets/lp-home-${ar ? 'ar' : 'en'}.png`;
+        try { localStorage.setItem('arbor_lp_lang', lang); } catch (_) {}
+      }
+      function renderHeroMeta() {
+        const ar = lang === 'ar';
+        document.getElementById('heroMeta').textContent = ar
+          ? `Windows 10 & 11 (64-bit) · الإصدار ${live.version} · ${live.sizeMb} MB`
+          : `Windows 10 & 11 (64-bit) · Release ${live.version} · ${live.sizeMb} MB`;
+      }
+      document.getElementById('langBtn').addEventListener('click', () => { lang = lang === 'ar' ? 'en' : 'ar'; applyLang(); });
 
-        // Smooth pointer interpolation
-        pointerX += (targetPointerX - pointerX) * 0.18;
-        pointerY += (targetPointerY - pointerY) * 0.18;
+      /* ================= hero: growing tree ================= */
+      const tree = document.getElementById('tree');
+      const tctx = tree.getContext('2d');
+      let segs = [], tips = [], pulses = [], grownAt = 0, mouse = { x: -9999, y: -9999 }, dpr = 1, W = 0, H = 0;
 
-        // 1. Hero 3D Arbor Neural Monolith: pointer tilt + scroll optical expansion
-        const heroProgress = Math.max(0, Math.min(1, sy / 540));
-        if (logoRig) {
-          const tiltY = pointerX * 16;
-          const tiltX = -pointerY * 14 + heroProgress * 10;
-          const scale = 1 + heroProgress * 0.42;
-          const liftY = -heroProgress * 28;
-          logoRig.style.transform = `translate3d(0, ${liftY.toFixed(1)}px, 0) scale3d(${scale.toFixed(3)}, ${scale.toFixed(3)}, 1) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
-          logoRig.style.opacity = String(Math.max(0.15, 1 - heroProgress * 0.85));
-        }
-
-        if (heroOrbitSvg) {
-          const deg = sy * 0.16 + pointerX * 18;
-          heroOrbitSvg.style.transform = `rotate(${deg.toFixed(1)}deg)`;
-        }
-
-        if (monolithSheen) {
-          monolithSheen.style.transform = `translate3d(${(pointerX * 26).toFixed(1)}px, ${(pointerY * 26).toFixed(1)}px, 0)`;
-        }
-
-        if (heroCopyWrap) {
-          const copyFade = Math.max(0.25, 1 - heroProgress * 0.55);
-          heroCopyWrap.style.transform = `translate3d(0, ${(-heroProgress * 16).toFixed(1)}px, 0)`;
-          heroCopyWrap.style.opacity = copyFade.toFixed(3);
-        }
-
-        // 2. 3D Workstation Monitor: levels from 13deg perspective tilt into crisp 0deg studio view
-        const wsProgress = Math.max(0, Math.min(1, sy / 420));
-        const easedWs = 1 - Math.pow(1 - wsProgress, 3);
-        if (workstationFrame) {
-          const rotX = (1 - easedWs) * 13;
-          const zVal = (1 - easedWs) * -85;
-          const yVal = (1 - easedWs) * 12;
-          const sc = 0.95 + easedWs * 0.05;
-          workstationFrame.style.transform = `translate3d(0, ${yVal.toFixed(1)}px, ${zVal.toFixed(1)}px) rotateX(${rotX.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
-        }
-        if (workstationGlare) {
-          const glareShift = -45 + easedWs * 95;
-          workstationGlare.style.transform = `translate3d(${glareShift.toFixed(1)}%, 0, 0)`;
-        }
-
-        // 3. Act 3 Reactor 3D Hub parallax
-        if (reactorArena && reactorHub3d) {
-          const rect = reactorArena.getBoundingClientRect();
-          const vh = window.innerHeight || 900;
-          if (rect.top < vh && rect.bottom > 0) {
-            const rel = (vh * 0.5 - (rect.top + rect.height * 0.5)) / vh;
-            const rX = rel * 18 - pointerY * 9;
-            const rY = pointerX * 14;
-            reactorHub3d.style.transform = `rotateX(${rX.toFixed(2)}deg) rotateY(${rY.toFixed(2)}deg)`;
-            if (reactorRingBack) {
-              reactorRingBack.style.transform = `translate3d(0, 0, -40px) rotate(${(sy * 0.09).toFixed(1)}deg)`;
-            }
+      function rng(seed) { return () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646; }
+      function buildTree() {
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+        W = tree.clientWidth; H = tree.clientHeight;
+        tree.width = W * dpr; tree.height = H * dpr;
+        tctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        segs = []; tips = [];
+        const rand = rng(20261030);
+        const base = Math.min(W, H);
+        function branch(x, y, ang, len, depth, t0, parent) {
+          const x2 = x + Math.cos(ang) * len, y2 = y + Math.sin(ang) * len;
+          const seg = { x, y, x2, y2, depth, t0, dur: 0.32 + depth * 0.03, parent, kids: [] };
+          segs.push(seg);
+          if (parent) parent.kids.push(seg);
+          if (depth >= 7 || len < base * 0.018) { tips.push(seg); return; }
+          const n = depth < 2 ? 2 : rand() < 0.75 ? 2 : 3;
+          for (let i = 0; i < n; i++) {
+            const spread = 0.5 + depth * 0.05 + rand() * 0.3;
+            const a = ang + (i - (n - 1) / 2) * spread + (rand() - 0.5) * 0.25;
+            branch(x2, y2, a, len * (0.7 + rand() * 0.12), depth + 1, t0 + seg.dur * 0.85, seg);
           }
         }
-
-        // 4. Closing Arbor Crest subtle depth rise
-        if (closingCrest) {
-          const crestOffset = (1 - pageProgress) * 48;
-          closingCrest.style.transform = `translate3d(-50%, ${crestOffset.toFixed(1)}px, 0) scale(${(0.94 + pageProgress * 0.08).toFixed(3)})`;
+        // Trunk rises from the bottom centre; canopy frames the headline
+        branch(W / 2, H + 10, -Math.PI / 2, base * 0.27, 0, 0, null);
+        grownAt = performance.now();
+      }
+      function spawnPulse() {
+        // A signal travels from the root up a random path to a tip — data flowing through the tree
+        const path = [];
+        let s = segs[0];
+        while (s) { path.push(s); s = s.kids.length ? s.kids[Math.floor(Math.random() * s.kids.length)] : null; }
+        pulses.push({ path, i: 0, t: 0, speed: 0.06 + Math.random() * 0.05 });
+      }
+      function drawTree(now) {
+        const el = (now - grownAt) / 1000;
+        tctx.clearRect(0, 0, W, H);
+        tctx.lineCap = 'round';
+        for (const s of segs) {
+          const p = reduceMotion ? 1 : Math.max(0, Math.min(1, (el - s.t0) / s.dur));
+          if (p <= 0) continue;
+          const ex = s.x + (s.x2 - s.x) * p, ey = s.y + (s.y2 - s.y) * p;
+          tctx.strokeStyle = `rgba(52, 211, 153, ${0.16 + (7 - s.depth) * 0.04})`;
+          tctx.lineWidth = Math.max(0.6, 7 - s.depth * 0.95);
+          tctx.beginPath(); tctx.moveTo(s.x, s.y); tctx.lineTo(ex, ey); tctx.stroke();
         }
-
-        if (Math.abs(targetPointerX - pointerX) > 0.004 || Math.abs(targetPointerY - pointerY) > 0.004) {
-          scheduleFrame();
+        for (const s of tips) {
+          const p = reduceMotion ? 1 : Math.max(0, Math.min(1, (el - s.t0 - s.dur) / 0.4));
+          if (p <= 0) continue;
+          const d = Math.hypot(mouse.x - s.x2, mouse.y - s.y2);
+          const near = Math.max(0, 1 - d / 160);
+          const r = 1.6 + near * 3.2;
+          tctx.fillStyle = `rgba(52, 211, 153, ${(0.35 + near * 0.65) * p})`;
+          tctx.shadowColor = '#34d399'; tctx.shadowBlur = 6 + near * 18;
+          tctx.beginPath(); tctx.arc(s.x2, s.y2, r, 0, Math.PI * 2); tctx.fill();
         }
+        tctx.shadowBlur = 0;
+        if (!reduceMotion && el > 1.2) {
+          if (Math.random() < 0.06 && pulses.length < 14) spawnPulse();
+          for (const pl of pulses) {
+            pl.t += pl.speed * (1 + pl.i * 0.15);
+            while (pl.t >= 1 && pl.i < pl.path.length) { pl.t -= 1; pl.i++; }
+            if (pl.i >= pl.path.length) continue;
+            const s = pl.path[pl.i];
+            const x = s.x + (s.x2 - s.x) * pl.t, y = s.y + (s.y2 - s.y) * pl.t;
+            const g = tctx.createRadialGradient(x, y, 0, x, y, 10);
+            g.addColorStop(0, 'rgba(34, 211, 238, .95)'); g.addColorStop(1, 'rgba(34, 211, 238, 0)');
+            tctx.fillStyle = g; tctx.beginPath(); tctx.arc(x, y, 10, 0, Math.PI * 2); tctx.fill();
+          }
+          pulses = pulses.filter((p) => p.i < p.path.length);
+        }
+        // Darken the centre so the headline always stays readable over the canopy
+        tctx.save();
+        tctx.translate(W / 2, H * 0.47);
+        tctx.scale(1, 0.42);
+        const v = tctx.createRadialGradient(0, 0, 0, 0, 0, Math.min(W * 0.5, 620));
+        v.addColorStop(0, 'rgba(4, 7, 10, .78)'); v.addColorStop(0.6, 'rgba(4, 7, 10, .5)'); v.addColorStop(1, 'rgba(4, 7, 10, 0)');
+        tctx.fillStyle = v; tctx.fillRect(-W, -H * 2, W * 2, H * 4);
+        tctx.restore();
+      }
+      tree.parentElement.addEventListener('pointermove', (e) => { const r = tree.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+      tree.parentElement.addEventListener('pointerleave', () => (mouse = { x: -9999, y: -9999 }));
+
+      /* ================= download pulse (ECG) ================= */
+      const ecg = document.getElementById('ecg');
+      const ectx = ecg.getContext('2d');
+      let beats = [{ tag: 'v2.4.2', n: 0 }], ecgStart = performance.now();
+      function ecgPath(w, h) {
+        // Flat line with one QRS complex per release, oldest → newest, height ∝ log(downloads)
+        // Each beat needs ~72px; on narrow panels show only the most recent releases that fit
+        const shown = beats.slice(-Math.max(1, Math.floor((w - 24) / 72)));
+        beats.forEach((b) => (b.x = -999));
+        const pts = [], mid = h * 0.62, maxN = Math.max(1, ...shown.map((b) => b.n));
+        const gap = w / (shown.length + 1);
+        let x = 0;
+        shown.forEach((b, i) => {
+          const cx = gap * (i + 1);
+          const amp = (0.22 + 0.7 * (Math.log1p(b.n) / Math.log1p(maxN))) * (h * 0.55);
+          pts.push([x, mid], [cx - 26, mid], [cx - 18, mid - amp * 0.12], [cx - 12, mid], [cx - 6, mid + amp * 0.16],
+            [cx, mid - amp], [cx + 6, mid + amp * 0.28], [cx + 12, mid], [cx + 22, mid - amp * 0.18], [cx + 32, mid]);
+          b.x = cx; b.y = mid - amp;
+          x = cx + 32;
+        });
+        pts.push([w, mid]);
+        return pts;
+      }
+      function drawEcg(now) {
+        const w = ecg.clientWidth, h = ecg.clientHeight;
+        if (ecg.width !== w * dpr) { ecg.width = w * dpr; ecg.height = h * dpr; }
+        ectx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ectx.clearRect(0, 0, w, h);
+        ectx.strokeStyle = 'rgba(255,255,255,.04)'; ectx.lineWidth = 1;
+        for (let gx = 0; gx < w; gx += 20) { ectx.beginPath(); ectx.moveTo(gx, 0); ectx.lineTo(gx, h); ectx.stroke(); }
+        for (let gy = 0; gy < h; gy += 20) { ectx.beginPath(); ectx.moveTo(0, gy); ectx.lineTo(w, gy); ectx.stroke(); }
+        const pts = ecgPath(w, h);
+        const sweep = reduceMotion ? w : (((now - ecgStart) / 3200) % 1) * (w + 80);
+        // trail: line drawn up to the sweep head, brightest near it (monitor phosphor)
+        for (let i = 1; i < pts.length; i++) {
+          const [x1, y1] = pts[i - 1], [x2, y2] = pts[i];
+          if (x1 > sweep) break;
+          const ex = Math.min(x2, sweep), t = (ex - x1) / Math.max(1, x2 - x1), ey = y1 + (y2 - y1) * t;
+          const age = (sweep - ex) / w;
+          ectx.strokeStyle = `rgba(52, 211, 153, ${Math.max(0.18, 1 - age * 1.4)})`;
+          ectx.lineWidth = 2; ectx.shadowColor = '#34d399'; ectx.shadowBlur = age < 0.15 ? 10 : 0;
+          ectx.beginPath(); ectx.moveTo(x1, y1); ectx.lineTo(ex, ey); ectx.stroke();
+        }
+        ectx.shadowBlur = 0;
+        if (!reduceMotion && sweep < w) {
+          const g = ectx.createLinearGradient(sweep - 6, 0, sweep + 50, 0);
+          g.addColorStop(0, 'rgba(4,7,10,0)'); g.addColorStop(0.15, 'rgba(5,9,12,1)');
+          ectx.fillStyle = g; ectx.fillRect(sweep, 0, 60, h);
+        }
+        ectx.font = '500 10px JetBrains Mono, monospace';
+        ectx.textAlign = 'center';
+        beats.forEach((b) => {
+          if (b.x < 0) return;
+          const shown = sweep >= b.x;
+          ectx.fillStyle = shown ? 'rgba(154,167,177,.9)' : 'rgba(95,108,118,.4)';
+          ectx.fillText(b.tag, b.x, h - 4);
+          if (shown && b.n) { ectx.fillStyle = 'rgba(34,211,238,.9)'; ectx.fillText(b.n.toLocaleString(), b.x, Math.max(12, b.y - 8)); }
+        });
       }
 
-      if (!prefersReducedMotion) {
-        renderFrame();
+      /* ================= live release data ================= */
+      function countUp(el, to, fmt = (n) => n.toLocaleString()) {
+        if (reduceMotion) { el.textContent = fmt(to); return; }
+        const t0 = performance.now(), d = 1100;
+        const step = (now) => { const p = Math.min(1, (now - t0) / d), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(Math.round(to * e)); if (p < 1) requestAnimationFrame(step); };
+        requestAnimationFrame(step);
       }
+      const setLive = (k, v) => document.querySelectorAll(`[data-live="${k}"]`).forEach((el) => (el.textContent = v));
+      document.getElementById('shaCode').textContent = SHA256_LATEST;
+      async function loadReleases() {
+        try {
+          const r = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=30`, { headers: { Accept: 'application/vnd.github+json' } });
+          if (!r.ok) throw new Error(r.status);
+          const rels = (await r.json()).filter((x) => !x.draft && !x.prerelease);
+          if (!rels.length) return;
+          const assetOf = (rel) => (rel.assets || []).find((a) => a.name === ASSET) || (rel.assets || [])[0];
+          beats = rels.slice(0, 8).reverse().map((rel) => ({ tag: rel.tag_name, n: (assetOf(rel) || {}).download_count || 0 }));
+          ecgStart = performance.now();
+          const latest = rels[0], a = assetOf(latest);
+          live.version = latest.tag_name.replace(/^v/i, '');
+          if (a) live.sizeMb = Math.round(a.size / 1048576);
+          const total = rels.reduce((s, rel) => s + ((assetOf(rel) || {}).download_count || 0), 0);
+          setLive('version', live.version);
+          setLive('verShort', 'v' + live.version.split('.').slice(0, 2).join('.'));
+          setLive('size', `${live.sizeMb} MB`);
+          setLive('btnMeta', `v${live.version} · x64`);
+          setLive('beats', String(rels.length));
+          setLive('published', new Date(latest.published_at).toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric' }));
+          document.querySelectorAll('[data-live="downloads"]').forEach((el) => countUp(el, total));
+          if (a && a.digest && a.digest.startsWith('sha256:')) document.getElementById('shaCode').textContent = a.digest.slice(7);
+          renderHeroMeta();
+        } catch (_) {
+          setLive('beats', '1');
+        }
+      }
+      document.getElementById('shaCopy').addEventListener('click', async (e) => {
+        try { await navigator.clipboard.writeText(document.getElementById('shaCode').textContent.trim()); e.target.textContent = lang === 'ar' ? T.ar.copied : 'Copied'; setTimeout(() => (e.target.textContent = lang === 'ar' ? T.ar.copy : 'Copy'), 1400); } catch (_) {}
+      });
+
+      /* ================= interface stage ================= */
+      const SHOTS = ['home', 'studio', 'nodes', 'code', 'router'];
+      let currentShot = 'home', autoTimer = null;
+      const stage = document.getElementById('stage');
+      SHOTS.forEach((s) => { const img = document.createElement('img'); img.dataset.shot = s; img.alt = s; img.loading = 'lazy'; stage.appendChild(img); });
+      function renderStage(shot, userPicked) {
+        currentShot = shot;
+        stage.querySelectorAll('img').forEach((img) => {
+          if (img.dataset.shot === shot) { img.src = `assets/lp-${shot}-${lang === 'ar' ? 'ar' : 'en'}.png`; img.classList.add('on'); }
+          else img.classList.remove('on');
+        });
+        document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.shot === shot)));
+        document.getElementById('stageCap').textContent = (T[lang] || T.en).shots[shot];
+        if (userPicked) clearInterval(autoTimer);
+      }
+      document.querySelectorAll('.tab').forEach((t) => t.addEventListener('click', () => renderStage(t.dataset.shot, true)));
+      if (!reduceMotion) autoTimer = setInterval(() => renderStage(SHOTS[(SHOTS.indexOf(currentShot) + 1) % SHOTS.length], false), 5200);
+
+      /* ================= reveal + card glow ================= */
+      const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 70}ms`; io.observe(el); });
+      document.querySelectorAll('.card').forEach((c) => c.addEventListener('pointermove', (e) => {
+        const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }));
+
+      /* ================= boot ================= */
+      buildTree();
+      addEventListener('resize', () => { buildTree(); pulses = []; });
+      applyLang();
+      loadReleases();
+      const loop = (now) => { drawTree(now); drawEcg(now); requestAnimationFrame(loop); };
+      requestAnimationFrame(loop);
     })();
   </script>
 </body>
